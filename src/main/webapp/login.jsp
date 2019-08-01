@@ -11,10 +11,10 @@
 <body>
 <jsp:include page="WEB-INF/jsp/parts/guestHeader.jsp"/>
         <h1>Вход в систему</h1><br/>
-        <form method="post" action="${pageContext.request.contextPath}/login">
+        <form method="post" action="mybank/guest/login">
 
-            <input type="text" name="name"><br/>
-            <input type="password" name="pass"><br/><br/>
+            <input type="email" name="email"><br/>
+            <input type="password" name="password"><br/><br/>
             <input class="button" type="submit" value="Войти">
 
         </form>

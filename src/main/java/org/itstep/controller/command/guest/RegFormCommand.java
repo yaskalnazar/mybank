@@ -1,6 +1,8 @@
-package org.itstep.controller.Command;
+package org.itstep.controller.command.guest;
 
 import org.itstep.controller.JspPath;
+import org.itstep.controller.command.Command;
+
 import javax.servlet.http.HttpServletRequest;
 
 

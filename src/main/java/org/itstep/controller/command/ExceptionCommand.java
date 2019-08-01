@@ -1,4 +1,4 @@
-package org.itstep.controller.Command;
+package org.itstep.controller.command;
 
 import javax.servlet.http.HttpServletRequest;
 

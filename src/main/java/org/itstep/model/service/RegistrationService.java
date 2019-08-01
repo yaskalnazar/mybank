@@ -10,7 +10,10 @@ public class RegistrationService {
     private final static Logger logger = Logger.getLogger(RegistrationService.class);
 
     public User registerNewUser(UserDTO userDTO){
-        logger.info("Fuck " + userDTO.getEmail()+" "+userDTO.getPassword());
-        return new User(1,userDTO.getEmail(),userDTO.getPassword(), User.ROLE.USER);
+        return User.getBuilder()
+                .setEmail(userDTO.getEmail())
+                .setPassword(userDTO.getPassword())
+                .setUserRole(User.Role.USER)
+                .build();
     }
 }

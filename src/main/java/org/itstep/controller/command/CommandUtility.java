@@ -1,4 +1,4 @@
-package org.itstep.controller.Command;
+package org.itstep.controller.command;
 
 import org.itstep.model.entity.User;
 
@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 class CommandUtility {
     static void setUserRole(HttpServletRequest request,
-                     User.ROLE role, String name) {
+                     User.Role role, String name) {
         HttpSession session = request.getSession();
         ServletContext context = request.getServletContext();
         context.setAttribute("userName", name);

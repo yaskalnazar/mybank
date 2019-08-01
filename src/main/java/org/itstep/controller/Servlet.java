@@ -1,6 +1,11 @@
 package org.itstep.controller;
 
-import org.itstep.controller.Command.*;
+import org.apache.log4j.Logger;
+import org.itstep.controller.command.*;
+import org.itstep.controller.command.guest.LoginCommand;
+import org.itstep.controller.command.guest.LoginFormCommand;
+import org.itstep.controller.command.guest.RegFormCommand;
+import org.itstep.controller.command.guest.RegistrationCommand;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -13,6 +18,7 @@ import java.util.HashSet;
 import java.util.Map;
 
 public class Servlet extends HttpServlet {
+    private final static Logger logger = Logger.getLogger(Servlet.class);
     private Map<String, Command> commands = new HashMap<>();
 
     public void init(ServletConfig servletConfig){
@@ -20,13 +26,15 @@ public class Servlet extends HttpServlet {
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
 
+        commands.put("home" , new HomeCommand());
+        commands.put("exception" , new ExceptionCommand());
         commands.put("logout",
                 new LogOutCommand());
-        commands.put("login",
+        commands.put("guest/login",
                 new LoginCommand());
-        commands.put("exception" , new ExceptionCommand());
-        commands.put("reg_form" , new RegFormCommand());
-        commands.put("registration" , new RegistrationCommand());
+        commands.put("guest/reg_form" , new RegFormCommand());
+        commands.put("guest/login_form" , new LoginFormCommand());
+        commands.put("guest/registration" , new RegistrationCommand());
 
     }
 
@@ -45,9 +53,10 @@ public class Servlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getRequestURI();
+        logger.debug("Servlet " + path);
         path = path.replaceAll(".*/mybank/" , "");
         Command command = commands.getOrDefault(path ,
-                (r)->"/index.jsp");
+                new HomeCommand());
         System.out.println(command.getClass().getName());
         String page = command.execute(request);
         request.getRequestDispatcher(page).forward(request,response);

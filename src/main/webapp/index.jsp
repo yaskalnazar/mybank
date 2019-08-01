@@ -26,11 +26,11 @@ String getFormattedDate(){
         </h2>
 
         <br/>
-        <a href="${pageContext.request.contextPath}/login.jsp">Please log in</a>
+        <a href="${pageContext.request.contextPath}/guest/login_form">Please log in</a>
               <br>
-        <a href="${pageContext.request.contextPath}/exception">Exception</a>
+        <a href="${pageContext.request.contextPath}/guest/exception">Exception</a>
               <br>
-        <a href="${pageContext.request.contextPath}/reg_form">registration</a>
+        <a href="${pageContext.request.contextPath}/guest/reg_form">registration</a>
 
 
     </body>

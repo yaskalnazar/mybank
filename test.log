@@ -1,0 +1,310 @@
+2019-08-01 22:07:57 DEBUG RegistrationService:22 - User GUEST
+2019-08-01 22:08:06 DEBUG RegistrationService:22 - User GUEST
+2019-08-01 22:08:10 DEBUG RegistrationService:22 - User GUEST
+2019-08-01 22:08:41 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:08:41 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:08:42 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:08:42 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:08:51 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:08:51 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:09:01 DEBUG RegistrationService:39 - URI /mybank/login.jsp
+2019-08-01 22:09:01 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:09:05 DEBUG RegistrationService:39 - URI /mybank/exception
+2019-08-01 22:09:05 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:09:32 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:09:32 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:09:32 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:09:32 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:09:53 DEBUG RegistrationService:39 - URI /mybank/sdsd
+2019-08-01 22:09:53 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:09:53 DEBUG RegistrationService:22 - User GUEST
+2019-08-01 22:10:03 DEBUG RegistrationService:39 - URI /mybank/sdsd
+2019-08-01 22:10:03 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:10:03 DEBUG RegistrationService:22 - User GUEST
+2019-08-01 22:10:08 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:10:08 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:10:09 DEBUG RegistrationService:39 - URI /mybank/exception
+2019-08-01 22:10:09 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:10:11 DEBUG RegistrationService:39 - URI /mybank/login.jsp
+2019-08-01 22:10:11 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:15:07 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:15:07 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:15:08 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:15:08 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:15:11 DEBUG RegistrationService:39 - URI /mybank/guest/login_form
+2019-08-01 22:15:11 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:16:24 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:16:24 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:16:24 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:16:24 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:16:26 DEBUG RegistrationService:39 - URI /mybank/guest/login_form
+2019-08-01 22:16:26 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:16:29 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:16:29 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:16:33 DEBUG RegistrationService:39 - URI /mybank/guest/reg_form
+2019-08-01 22:16:33 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:16:38 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:16:38 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:16:44 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:16:44 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:16:57 DEBUG RegistrationService:39 - URI /mybank/registration
+2019-08-01 22:16:57 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:17:42 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:17:42 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:17:42 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:17:42 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:17:44 DEBUG RegistrationService:39 - URI /mybank/guest/login_form
+2019-08-01 22:17:44 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:17:47 DEBUG RegistrationService:39 - URI /mybank/sdsd
+2019-08-01 22:17:47 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:19:00 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:19:00 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:19:00 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:19:00 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:19:13 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:19:13 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:19:16 DEBUG RegistrationService:39 - URI /mybank/guest/login_form
+2019-08-01 22:19:16 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:19:16 DEBUG Servlet:56 - Servlet /mybank/guest/login_form
+2019-08-01 22:19:25 DEBUG RegistrationService:39 - URI /mybank/sdsdsd
+2019-08-01 22:19:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:14 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:20:14 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:20:15 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:20:15 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:20:17 DEBUG RegistrationService:39 - URI /mybank/guest/login_form
+2019-08-01 22:20:17 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:20:17 DEBUG Servlet:56 - Servlet /mybank/guest/login_form
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/sdsd
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:20:25 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:20:25 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:21:07 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:21:07 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:21:07 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:21:07 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:21:12 DEBUG RegistrationService:39 - URI /mybank/dfdfdf
+2019-08-01 22:21:12 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:21:12 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:21:12 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:21:12 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:21:12 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:21:18 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:21:18 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:21:18 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:21:18 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:21:18 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:21:18 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:21:30 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:21:30 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:21:35 DEBUG RegistrationService:39 - URI /mybank/sdsd
+2019-08-01 22:21:35 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:21:35 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:21:35 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:21:35 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:21:35 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:23:03 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:23:03 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:23:04 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:23:04 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:23:08 DEBUG RegistrationService:39 - URI /mybank/df
+2019-08-01 22:23:08 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:23:08 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:23:08 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:23:08 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:23:08 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:23:20 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:23:20 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:23:20 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:23:20 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:23:20 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:23:20 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:24:25 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:24:25 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:24:25 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:24:25 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:24:27 DEBUG RegistrationService:39 - URI /mybank/guest/login_form
+2019-08-01 22:24:27 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:24:27 DEBUG Servlet:56 - Servlet /mybank/guest/login_form
+2019-08-01 22:24:31 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:24:31 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:24:31 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:24:31 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:24:31 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:24:31 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:26:19 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:26:19 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:26:20 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:26:20 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:26:22 DEBUG RegistrationService:39 - URI /mybank/guest/login_form
+2019-08-01 22:26:22 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:26:22 DEBUG Servlet:56 - Servlet /mybank/guest/login_form
+2019-08-01 22:26:26 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:26:26 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:26:26 DEBUG Servlet:56 - Servlet /mybank/login
+2019-08-01 22:26:26 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:26:39 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:26:39 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:26:46 DEBUG RegistrationService:39 - URI /mybank/sdsd
+2019-08-01 22:26:46 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:26:46 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:26:46 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:26:46 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:26:46 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:26:53 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:26:53 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:26:53 DEBUG Servlet:56 - Servlet /mybank/login
+2019-08-01 22:26:53 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:27:30 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:27:30 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:30 DEBUG Servlet:56 - Servlet /mybank/login
+2019-08-01 22:27:30 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:27:31 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:27:31 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:31 DEBUG Servlet:56 - Servlet /mybank/login
+2019-08-01 22:27:31 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:27:33 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:27:33 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:33 DEBUG Servlet:56 - Servlet /mybank/login
+2019-08-01 22:27:33 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:27:36 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:27:36 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:36 DEBUG Servlet:56 - Servlet /mybank/login
+2019-08-01 22:27:36 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:27:40 DEBUG RegistrationService:39 - URI /mybank/
+2019-08-01 22:27:40 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:42 DEBUG RegistrationService:39 - URI /mybank/guest/reg_form
+2019-08-01 22:27:42 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:42 DEBUG Servlet:56 - Servlet /mybank/guest/reg_form
+2019-08-01 22:27:45 DEBUG RegistrationService:39 - URI /mybank/registration
+2019-08-01 22:27:45 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:27:45 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:27:45 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:45 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:27:45 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:27:55 DEBUG RegistrationService:39 - URI /mybank/ssf
+2019-08-01 22:27:55 DEBUG RegistrationService:44 - User 0does not have permission
+2019-08-01 22:27:55 DEBUG RegistrationService:39 - URI /mybank/home
+2019-08-01 22:27:55 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:27:55 DEBUG Servlet:56 - Servlet /mybank/home
+2019-08-01 22:27:55 DEBUG HomeCommand:22 - User GUEST
+2019-08-01 22:28:06 DEBUG RegistrationService:39 - URI /mybank/login
+2019-08-01 22:28:06 DEBUG RegistrationService:41 - User 0has permission
+2019-08-01 22:28:06 DEBUG Servlet:56 - Servlet /mybank/login
+2019-08-01 22:28:06 DEBUG HomeCommand:22 - User GUEST

@@ -10,13 +10,19 @@ public class User {
     private String surname;
     private String patronymic;
     private List<Account> accounts;
-    private Role userRole;
+    private Role role;
+
+
 
     public enum Role {
         USER, ADMIN, GUEST
     }
 
-    public User(long id, String email, String password, String name, String surname, String patronymic, List<Account> accounts, Role userRole) {
+    public static UserBuilder getBuilder() {
+        return new UserBuilder();
+    }
+
+    public User(long id, String email, String password, String name, String surname, String patronymic, List<Account> accounts, Role role) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -24,7 +30,7 @@ public class User {
         this.surname = surname;
         this.patronymic = patronymic;
         this.accounts = accounts;
-        this.userRole = userRole;
+        this.role = role;
     }
 
     public static class UserBuilder {
@@ -35,7 +41,7 @@ public class User {
         private String surname;
         private String patronymic;
         private List<Account> accounts;
-        private Role userRole;
+        private Role role;
 
         public UserBuilder setId(long id) {
             this.id = id;
@@ -72,47 +78,78 @@ public class User {
             return this;
         }
 
-        public UserBuilder setUserRole(Role userRole) {
-            this.userRole = userRole;
+        public UserBuilder setUserRole(Role role) {
+            this.role = role;
             return this;
         }
 
         public User build() {
-            return new User(id,email,password,name,surname,patronymic,accounts,userRole);
+            return new User(id,email,password,name,surname,patronymic,accounts,role);
         }
 
-        public long getId() {
-            return id;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getSurname() {
-            return surname;
-        }
-
-        public String getPatronymic() {
-            return patronymic;
-        }
-
-        public List<Account> getAccounts() {
-            return accounts;
-        }
-
-        public Role getUserRole() {
-            return userRole;
-        }
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

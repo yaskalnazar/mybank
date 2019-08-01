@@ -1,5 +1,6 @@
-package org.itstep.controller.Command;
+package org.itstep.controller.command.guest;
 
+import org.itstep.controller.command.Command;
 import org.itstep.model.entity.dto.UserDTO;
 import org.itstep.model.service.RegistrationService;
 
