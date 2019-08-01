@@ -15,7 +15,7 @@
     <div class="row" >
         <div class="col-md-8 col-md-offset-2">
             <h2 class="page-header">Register</h2>
-            <form method="post" autocomplete="off" action="/mybank/registration">
+            <form method="post" autocomplete="off" action="/mybank/guest/registration">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" class="form-control"

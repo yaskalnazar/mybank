@@ -36,8 +36,7 @@ public class AccessConfiquration {
     }
 
     public static boolean isAccessAllowed(String url, User.Role role){
-        return url.contains(role.name().toLowerCase()) | url.equals("/mybank/") | url.equals("/mybank/home")
-        |url.equals("/mybank/login");
+        return url.contains(role.name().toLowerCase()) | url.equals("/mybank/")| url.equals("/mybank/home");
 
     }
 }

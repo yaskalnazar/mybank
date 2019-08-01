@@ -8,6 +8,6 @@
 <body>
 
 <h1>Hello USER!</h1>
-<a href="${pageContext.request.contextPath}/logout">Logout</a>
+<a href="/mybank/user/logout">Logout</a>
 </body>
 </html>

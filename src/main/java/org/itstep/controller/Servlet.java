@@ -2,10 +2,12 @@ package org.itstep.controller;
 
 import org.apache.log4j.Logger;
 import org.itstep.controller.command.*;
+import org.itstep.controller.command.admin.AdminHome;
 import org.itstep.controller.command.guest.LoginCommand;
 import org.itstep.controller.command.guest.LoginFormCommand;
 import org.itstep.controller.command.guest.RegFormCommand;
 import org.itstep.controller.command.guest.RegistrationCommand;
+import org.itstep.controller.command.user.UserHome;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -27,8 +29,12 @@ public class Servlet extends HttpServlet {
                 .setAttribute("loggedUsers", new HashSet<String>());
 
         commands.put("home" , new HomeCommand());
+        commands.put("user/home" , new UserHome());
+        commands.put("admin/home" , new AdminHome());
         commands.put("exception" , new ExceptionCommand());
-        commands.put("logout",
+        commands.put("user/logout",
+                new LogOutCommand());
+        commands.put("admin/logout",
                 new LogOutCommand());
         commands.put("guest/login",
                 new LoginCommand());
@@ -59,6 +65,13 @@ public class Servlet extends HttpServlet {
                 new HomeCommand());
         System.out.println(command.getClass().getName());
         String page = command.execute(request);
-        request.getRequestDispatcher(page).forward(request,response);
+
+        if (page.contains("redirect:")) {
+            logger.debug("Redirecting to " + page);
+            response.sendRedirect(page.replace("redirect:", ""));
+        } else {
+            logger.debug("Forwarding to " + page);
+            request.getRequestDispatcher(page).forward(request,response);
+        }
     }
 }

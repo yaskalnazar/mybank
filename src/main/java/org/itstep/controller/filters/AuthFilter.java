@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.util.Optional;
 
 import static org.itstep.controller.JspPath.ACCESS_DENIED;
 
 public class AuthFilter implements Filter {
-    private final static Logger logger = Logger.getLogger(RegistrationService.class);
+    private final static Logger logger = Logger.getLogger(AuthFilter.class);
 
 
     @Override
@@ -42,9 +43,8 @@ public class AuthFilter implements Filter {
             filterChain.doFilter(request, response);
         } else {
             logger.debug("User " + user.getId() + "does not have permission");
-            resp.sendRedirect("/mybank/home");
+            throw new AccessDeniedException("Main Filter");
         }
-      /*  filterChain.doFilter(request, response);*/
 
     }
 

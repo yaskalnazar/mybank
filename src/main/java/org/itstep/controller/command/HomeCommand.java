@@ -1,9 +1,7 @@
 package org.itstep.controller.command;
 
 import org.apache.log4j.Logger;
-import org.itstep.controller.JspPath;
 import org.itstep.model.entity.User;
-import org.itstep.model.service.RegistrationService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,11 +20,11 @@ public class HomeCommand implements Command {
         logger.debug("User " + user.getRole());
         switch (user.getRole()) {
             case USER:
-                return JspPath.USER_HOME;
+                return "redirect:/mybank/user/home";
             case ADMIN:
-                return JspPath.ADMIN_HOME;
+                return "redirect:/mybank/admin/home";
             default:
-                return JspPath.LOGIN_FORM;
+                return "redirect:/mybank/guest/login_form";
         }
     }
 }
