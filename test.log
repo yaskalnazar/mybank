@@ -2830,3 +2830,437 @@
 2019-08-01 23:39:08 DEBUG AuthFilter:42 - User 0has permission
 2019-08-01 23:39:08 DEBUG Servlet:62 - Servlet /mybank/user/home
 2019-08-01 23:39:08 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:47:45 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:47:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:47:45 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=AAFAD828E1D59FADEB0D4BF0DAF3F720
+2019-08-01 23:47:45 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-01 23:47:45 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:47:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:47:45 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-01 23:47:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:47:45 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-01 23:47:45 DEBUG HomeCommand:20 - User GUEST
+2019-08-01 23:47:45 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-01 23:47:45 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-01 23:47:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:47:45 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-01 23:47:45 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-01 23:47:51 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-01 23:47:51 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:47:51 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-01 23:47:51 DEBUG LoginCommand:54 - User USER
+2019-08-01 23:47:51 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-01 23:47:51 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-01 23:47:51 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:47:51 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-01 23:47:51 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:47:51 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:47:51 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:47:51 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:47:51 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:47:51 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:49:22 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:49:22 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:23 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=D1C821EC71C2898CD3CF0332DEE56C20
+2019-08-01 23:49:23 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-01 23:49:23 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:49:23 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:23 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-01 23:49:23 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:23 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-01 23:49:23 DEBUG HomeCommand:20 - User GUEST
+2019-08-01 23:49:23 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-01 23:49:23 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-01 23:49:23 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:23 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-01 23:49:23 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-01 23:49:33 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-01 23:49:33 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:33 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-01 23:49:33 DEBUG LoginCommand:54 - User USER
+2019-08-01 23:49:33 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-01 23:49:33 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-01 23:49:33 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:33 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-01 23:49:33 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:49:33 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:49:33 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:49:33 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:33 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:49:33 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:49:40 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:49:40 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:40 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:49:40 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:49:40 DEBUG AuthFilter:40 - URI /mybank/user/account/all_accounts/
+2019-08-01 23:49:40 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:40 DEBUG Servlet:62 - Servlet /mybank/user/account/all_accounts/
+2019-08-01 23:49:40 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:49:40 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:49:41 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:49:41 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:41 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:49:41 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:49:41 DEBUG AuthFilter:40 - URI /mybank/user/account/deposit/open/
+2019-08-01 23:49:41 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:41 DEBUG Servlet:62 - Servlet /mybank/user/account/deposit/open/
+2019-08-01 23:49:41 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:49:41 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:49:41 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:49:41 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:41 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:49:41 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:49:41 DEBUG AuthFilter:40 - URI /mybank/user/account/credit/open/
+2019-08-01 23:49:41 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:41 DEBUG Servlet:62 - Servlet /mybank/user/account/credit/open/
+2019-08-01 23:49:41 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:49:41 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:49:41 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:49:41 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:41 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:49:41 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:49:48 DEBUG AuthFilter:40 - URI /mybank/user/logout
+2019-08-01 23:49:48 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:48 DEBUG Servlet:62 - Servlet /mybank/user/logout
+2019-08-01 23:49:48 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-01 23:49:48 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-01 23:49:48 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:49:48 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-01 23:49:48 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-01 23:49:55 DEBUG AuthFilter:40 - URI /mybank/user/login_form
+2019-08-01 23:49:55 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-01 23:49:59 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:49:59 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-01 23:50:05 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-01 23:50:05 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:50:05 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-01 23:50:05 DEBUG LoginCommand:54 - User USER
+2019-08-01 23:50:05 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-01 23:50:05 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-01 23:50:05 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:50:05 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-01 23:50:05 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:50:05 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:50:05 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:50:05 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:50:05 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:50:05 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:50:12 DEBUG AuthFilter:40 - URI /mybank/user/account/deposit/open/
+2019-08-01 23:50:12 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:50:12 DEBUG Servlet:62 - Servlet /mybank/user/account/deposit/open/
+2019-08-01 23:50:12 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:50:12 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:50:12 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:50:12 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:50:12 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:50:12 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:50:14 DEBUG AuthFilter:40 - URI /mybank/user/account/deposit/open/
+2019-08-01 23:50:14 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:50:14 DEBUG Servlet:62 - Servlet /mybank/user/account/deposit/open/
+2019-08-01 23:50:14 DEBUG HomeCommand:20 - User USER
+2019-08-01 23:50:14 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-01 23:50:14 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-01 23:50:14 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:50:14 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-01 23:50:14 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-01 23:51:40 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:51:40 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:51:40 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=41B68C6BBD2B56DA0552EE2CBB7AA666
+2019-08-01 23:51:40 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-01 23:51:40 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:51:40 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:51:40 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-01 23:51:40 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:51:40 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-01 23:51:40 DEBUG HomeCommand:20 - User GUEST
+2019-08-01 23:51:40 DEBUG Servlet:71 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-01 23:51:40 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-01 23:51:40 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:51:40 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-01 23:51:40 DEBUG Servlet:74 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-01 23:51:44 DEBUG AuthFilter:40 - URI /mybank/guest/sdsd
+2019-08-01 23:51:44 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:51:44 DEBUG Servlet:62 - Servlet /mybank/guest/sdsd
+2019-08-01 23:58:31 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:58:31 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:58:32 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=68097F875E64DF317C61AC704A0D0F2E
+2019-08-01 23:58:32 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-01 23:58:32 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-01 23:58:32 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:58:32 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-01 23:58:32 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:58:32 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-01 23:58:32 DEBUG HomeCommand:20 - User GUEST
+2019-08-01 23:58:32 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-01 23:58:32 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-01 23:58:32 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:58:32 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-01 23:58:32 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-01 23:58:35 DEBUG AuthFilter:40 - URI /mybank/guest/sdsd
+2019-08-01 23:58:35 DEBUG AuthFilter:42 - User 0has permission
+2019-08-01 23:58:35 DEBUG Servlet:62 - Servlet /mybank/guest/sdsd
+2019-08-01 23:58:35 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/errors/404error.jsp
+2019-08-02 11:45:13 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 11:45:13 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:14 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=4242F4A0CD1626519DB14F04B4E6690D
+2019-08-02 11:45:14 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 11:45:15 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 11:45:15 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:15 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:45:15 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:15 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:45:15 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 11:45:15 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:45:15 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:45:15 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:15 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:45:15 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:45:18 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 11:45:18 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:18 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:45:18 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:18 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:45:18 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 11:45:18 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:45:18 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:45:18 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:18 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:45:18 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:45:30 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-02 11:45:30 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:30 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-02 11:45:30 DEBUG LoginCommand:54 - User USER
+2019-08-02 11:45:30 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-02 11:45:30 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:45:30 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:30 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:45:30 DEBUG HomeCommand:20 - User USER
+2019-08-02 11:45:30 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-02 11:45:30 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-02 11:45:30 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:30 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-02 11:45:30 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-02 11:45:43 DEBUG AuthFilter:40 - URI /mybank/user/logout
+2019-08-02 11:45:43 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:43 DEBUG Servlet:62 - Servlet /mybank/user/logout
+2019-08-02 11:45:43 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:45:43 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:45:43 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:45:43 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:45:43 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:50:54 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 11:50:54 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:50:54 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=1A30520ED73FC23CF73303126DA785D7
+2019-08-02 11:50:54 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 11:50:55 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 11:50:55 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:50:55 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:50:55 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:50:55 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:50:55 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 11:50:55 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:50:55 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:50:55 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:50:55 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:50:55 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:51:00 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-02 11:51:00 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:00 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-02 11:51:00 DEBUG LoginCommand:33 - User USER
+2019-08-02 11:51:00 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-02 11:51:00 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:51:00 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:00 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:51:00 DEBUG HomeCommand:20 - User USER
+2019-08-02 11:51:00 DEBUG Servlet:70 - Redirecting to redirect:/mybank/user/home
+2019-08-02 11:51:00 DEBUG AuthFilter:40 - URI /mybank/user/home
+2019-08-02 11:51:00 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:00 DEBUG Servlet:62 - Servlet /mybank/user/home
+2019-08-02 11:51:00 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/user/userHome.jsp
+2019-08-02 11:51:01 DEBUG AuthFilter:40 - URI /mybank/user/logout
+2019-08-02 11:51:01 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:01 DEBUG Servlet:62 - Servlet /mybank/user/logout
+2019-08-02 11:51:01 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:51:01 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:51:01 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:01 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:51:01 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:51:05 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-02 11:51:05 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:05 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-02 11:51:05 DEBUG LoginCommand:33 - User ADMIN
+2019-08-02 11:51:05 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-02 11:51:05 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:51:05 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:05 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:51:05 DEBUG HomeCommand:20 - User ADMIN
+2019-08-02 11:51:05 DEBUG Servlet:70 - Redirecting to redirect:/mybank/admin/home
+2019-08-02 11:51:05 DEBUG AuthFilter:40 - URI /mybank/admin/home
+2019-08-02 11:51:05 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:05 DEBUG Servlet:62 - Servlet /mybank/admin/home
+2019-08-02 11:51:05 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/admin/adminHome.jsp
+2019-08-02 11:51:28 DEBUG AuthFilter:40 - URI /mybank/admin/home
+2019-08-02 11:51:28 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:28 DEBUG Servlet:62 - Servlet /mybank/admin/home
+2019-08-02 11:51:28 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/admin/adminHome.jsp
+2019-08-02 11:51:39 DEBUG AuthFilter:40 - URI /mybank/admin/home
+2019-08-02 11:51:39 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 11:51:41 DEBUG AuthFilter:40 - URI /mybank/admin/home
+2019-08-02 11:51:41 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 11:51:45 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 11:51:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:45 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:51:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:45 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:51:45 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 11:51:45 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:51:45 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:51:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:45 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:51:45 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:51:50 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-02 11:51:50 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:50 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-02 11:51:50 DEBUG LoginCommand:33 - User ADMIN
+2019-08-02 11:51:50 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-02 11:51:50 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:51:50 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:50 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:51:50 DEBUG HomeCommand:20 - User ADMIN
+2019-08-02 11:51:50 DEBUG Servlet:70 - Redirecting to redirect:/mybank/admin/home
+2019-08-02 11:51:50 DEBUG AuthFilter:40 - URI /mybank/admin/home
+2019-08-02 11:51:50 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:51:50 DEBUG Servlet:62 - Servlet /mybank/admin/home
+2019-08-02 11:51:50 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/admin/adminHome.jsp
+2019-08-02 11:51:54 DEBUG AuthFilter:40 - URI /mybank/user/logout
+2019-08-02 11:51:54 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 11:52:14 DEBUG AuthFilter:40 - URI /mybank/user/logout
+2019-08-02 11:52:14 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 11:52:17 DEBUG AuthFilter:40 - URI /mybank/df
+2019-08-02 11:52:17 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 11:52:23 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 11:52:23 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:23 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:52:23 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:23 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:52:23 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 11:52:23 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:52:23 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:52:23 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:23 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:52:23 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:52:28 DEBUG AuthFilter:40 - URI /mybank/guest/login
+2019-08-02 11:52:28 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:28 DEBUG Servlet:62 - Servlet /mybank/guest/login
+2019-08-02 11:52:28 DEBUG LoginCommand:33 - User ADMIN
+2019-08-02 11:52:28 DEBUG Servlet:70 - Redirecting to redirect:/mybank/home
+2019-08-02 11:52:28 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 11:52:28 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:28 DEBUG Servlet:62 - Servlet /mybank/home
+2019-08-02 11:52:28 DEBUG HomeCommand:20 - User ADMIN
+2019-08-02 11:52:28 DEBUG Servlet:70 - Redirecting to redirect:/mybank/admin/home
+2019-08-02 11:52:28 DEBUG AuthFilter:40 - URI /mybank/admin/home
+2019-08-02 11:52:28 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:28 DEBUG Servlet:62 - Servlet /mybank/admin/home
+2019-08-02 11:52:28 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/admin/adminHome.jsp
+2019-08-02 11:52:29 DEBUG AuthFilter:40 - URI /mybank/admin/logout
+2019-08-02 11:52:29 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:29 DEBUG Servlet:62 - Servlet /mybank/admin/logout
+2019-08-02 11:52:29 DEBUG Servlet:70 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 11:52:29 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 11:52:29 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 11:52:29 DEBUG Servlet:62 - Servlet /mybank/guest/login_form
+2019-08-02 11:52:29 DEBUG Servlet:73 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 11:52:33 DEBUG AuthFilter:40 - URI /mybank/admin/home
+2019-08-02 11:52:33 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 12:29:45 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:29:45 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:29:45 DEBUG Servlet:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybank?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 12:29:45 ERROR Servlet:38 - Cannot get connection to db
+2019-08-02 12:29:46 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:29:46 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:29:46 DEBUG Servlet:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybank?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 12:29:46 ERROR Servlet:38 - Cannot get connection to db
+2019-08-02 12:30:21 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:30:21 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:30:22 DEBUG Servlet:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybank} Password:{root} User:{root}
+2019-08-02 12:30:22 ERROR Servlet:38 - Cannot get connection to db
+2019-08-02 12:30:22 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:30:22 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:30:22 DEBUG Servlet:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybank} Password:{root} User:{root}
+2019-08-02 12:30:22 ERROR Servlet:38 - Cannot get connection to db
+2019-08-02 12:36:54 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:36:54 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:36:55 DEBUG Servlet:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybank} Password:{root} User:{root}
+2019-08-02 12:36:56 ERROR Servlet:39 - Cannot get connection to db
+2019-08-02 12:36:56 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:36:56 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:36:56 DEBUG Servlet:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybank} Password:{root} User:{root}
+2019-08-02 12:36:56 ERROR Servlet:39 - Cannot get connection to db
+2019-08-02 12:37:37 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:37:37 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:37:38 DEBUG Servlet:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 12:37:39 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=4F005E26B13D35CD9AC2CDDCF05CBC6C
+2019-08-02 12:37:39 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 12:37:39 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 12:37:39 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:37:39 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 12:37:39 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:37:39 DEBUG Servlet:79 - Servlet /mybank/home
+2019-08-02 12:37:39 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 12:37:39 DEBUG Servlet:87 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 12:37:39 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 12:37:39 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 12:37:39 DEBUG Servlet:79 - Servlet /mybank/guest/login_form
+2019-08-02 12:37:39 DEBUG Servlet:90 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 13:42:17 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 13:42:17 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:42:17 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 13:42:17 ERROR JDBCUserDao:55 - User was not added: java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+2019-08-02 13:42:17 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=DB63B3103A9992BEAC6D88BB24985C0F
+2019-08-02 13:42:17 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 13:42:18 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 13:42:18 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:42:18 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 13:42:18 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:42:18 DEBUG Servlet:76 - Servlet /mybank/home
+2019-08-02 13:42:18 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 13:42:18 DEBUG Servlet:84 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 13:42:18 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 13:42:18 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:42:18 DEBUG Servlet:76 - Servlet /mybank/guest/login_form
+2019-08-02 13:42:18 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 13:43:43 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 13:43:43 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:43:44 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 13:43:44 ERROR JDBCUserDao:55 - User was not added: java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+2019-08-02 13:43:44 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=87437B04F7EE4D65AC13F1E50ED44A69
+2019-08-02 13:43:44 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 13:43:44 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 13:43:44 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:43:44 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 13:43:44 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:43:44 DEBUG Servlet:76 - Servlet /mybank/home
+2019-08-02 13:43:44 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 13:43:44 DEBUG Servlet:84 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 13:43:44 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 13:43:44 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:43:44 DEBUG Servlet:76 - Servlet /mybank/guest/login_form
+2019-08-02 13:43:44 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 13:47:19 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 13:47:19 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:47:20 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 13:47:20 ERROR JDBCUserDao:51 - Add user com.mysql.cj.jdbc.ClientPreparedStatement: insert into users ( user_email, user_name, user_surname, user_patronymic, user_role, user_password) values ('admin@a','name','sfsf','pan','admin','admin')
+2019-08-02 13:47:20 DEBUG AuthFilter:40 - URI /mybank/home;jsessionid=EBCB2C212CB765E9DD16886CCF71A052
+2019-08-02 13:47:20 DEBUG AuthFilter:45 - User 0does not have permission
+2019-08-02 13:47:20 DEBUG AuthFilter:40 - URI /mybank/
+2019-08-02 13:47:20 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:47:20 DEBUG AuthFilter:40 - URI /mybank/home
+2019-08-02 13:47:20 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:47:20 DEBUG Servlet:76 - Servlet /mybank/home
+2019-08-02 13:47:20 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 13:47:20 DEBUG Servlet:84 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 13:47:20 DEBUG AuthFilter:40 - URI /mybank/guest/login_form
+2019-08-02 13:47:20 DEBUG AuthFilter:42 - User 0has permission
+2019-08-02 13:47:20 DEBUG Servlet:76 - Servlet /mybank/guest/login_form
+2019-08-02 13:47:20 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp

@@ -15,7 +15,17 @@ public class User {
 
 
     public enum Role {
-        USER, ADMIN, GUEST
+        USER("user"), ADMIN("admin"), GUEST("guest");
+
+        private String name;
+
+        Role(String name) {
+            this.name = name;
+        }
+
+        public String getStringRole(){
+            return name;
+        }
     }
 
     public static UserBuilder getBuilder() {

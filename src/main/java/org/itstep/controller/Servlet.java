@@ -8,6 +8,9 @@ import org.itstep.controller.command.guest.LoginFormCommand;
 import org.itstep.controller.command.guest.RegFormCommand;
 import org.itstep.controller.command.guest.RegistrationCommand;
 import org.itstep.controller.command.user.UserHome;
+import org.itstep.model.dao.jdbc.JDBCDaoFactory;
+import org.itstep.model.dao.jdbc.JDBCUserDao;
+import org.itstep.model.entity.User;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -25,9 +30,18 @@ public class Servlet extends HttpServlet {
 
     public void init(ServletConfig servletConfig){
 
+
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
-
+        User user = User.getBuilder()
+                .setUserRole(User.Role.ADMIN)
+                .setEmail("admin@a")
+                .setPassword("admin")
+                .setName("name")
+                .setPatronymic("pan")
+                .setSurname("sfsf")
+                .build();
+        new JDBCDaoFactory().createUserDao().addNew(user);
         commands.put("home" , new HomeCommand());
         commands.put("user/home" , new UserHome());
         commands.put("admin/home" , new AdminHome());
@@ -62,7 +76,7 @@ public class Servlet extends HttpServlet {
         logger.debug("Servlet " + path);
         path = path.replaceAll(".*/mybank/" , "");
         Command command = commands.getOrDefault(path ,
-                new HomeCommand());
+                (r) -> "/WEB-INF/jsp/errors/404error.jsp");
         System.out.println(command.getClass().getName());
         String page = command.execute(request);
 
