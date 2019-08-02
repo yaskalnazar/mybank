@@ -3,7 +3,8 @@ package org.itstep.model.service;
 import org.apache.log4j.Logger;
 import org.itstep.model.dao.DaoFactory;
 import org.itstep.model.dao.UserDao;
-import org.itstep.model.dto.UserDTO;
+import org.itstep.model.dto.UserLoginDTO;
+import org.itstep.model.dto.UserRegistrationDTO;
 import org.itstep.model.entity.User;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class UserService {
     private final static Logger logger = Logger.getLogger(UserService.class);
 
 
-    public User addNewUser(UserDTO userDTO){
+    public User addNewUser(UserRegistrationDTO userDTO){
         UserDao userDao = DaoFactory.getInstance().createUserDao();
         User user = User.getBuilder()
                 .setEmail(userDTO.getEmail())
@@ -26,6 +27,11 @@ public class UserService {
         user.setId(userDao.addNew(user));
 
         return user;
+    }
+
+    public User loginUser(UserLoginDTO userDTO){
+
+        return null;
     }
 
 }

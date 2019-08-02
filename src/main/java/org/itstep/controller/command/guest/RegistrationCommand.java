@@ -3,62 +3,71 @@ package org.itstep.controller.command.guest;
 import org.apache.log4j.Logger;
 import org.itstep.controller.JspPath;
 import org.itstep.controller.command.Command;
-import org.itstep.model.dto.UserDTO;
+import org.itstep.controller.util.ValidationUtil;
+import org.itstep.model.dto.UserRegistrationDTO;
 import org.itstep.model.exptions.NonUniqueEmailException;
 import org.itstep.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 public class RegistrationCommand implements Command {
-    //private RegistrationService registrationService = new RegistrationService();
     private final static Logger logger = Logger.getLogger(RegistrationCommand.class);
     private UserService userService = new UserService();
+    private ValidationUtil validationUtil = new ValidationUtil();
+
+
 
     //TODO regex check
     // @Override
     public String execute(HttpServletRequest request) {
-        UserDTO userDTO = new UserDTO(
+        if (!validationUtil.isСontain(request, Arrays.asList("email", "password","name","surname","patronymic"))){
+            return JspPath.REG_FORM;
+        }
+
+
+        UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO(
                 request.getParameter("email"),
                 request.getParameter("password"),
                 request.getParameter("name"),
                 request.getParameter("surname"),
                 request.getParameter("patronymic"));
 
-        if(userDTO.getEmail().equals("")){
+        if(userRegistrationDTO.getEmail().equals("")){
             request.setAttribute("wrongEmail", "wrongEmail");
             return JspPath.REG_FORM;
         }
-        request.setAttribute("email", userDTO.getEmail());
+        request.setAttribute("email", userRegistrationDTO.getEmail());
 
 
-        if(userDTO.getName().equals("")){
+        if(userRegistrationDTO.getName().equals("")){
             request.setAttribute("wrongName", "wrongName");
             return JspPath.REG_FORM;
         }
-        request.setAttribute("name", userDTO.getName());
+        request.setAttribute("name", userRegistrationDTO.getName());
 
 
-        if(userDTO.getSurname().equals("")){
+        if(userRegistrationDTO.getSurname().equals("")){
             request.setAttribute("wrongSurname", "wrongSurname");
             return JspPath.REG_FORM;
         }
-        request.setAttribute("surname", userDTO.getSurname());
+        request.setAttribute("surname", userRegistrationDTO.getSurname());
 
 
-        if(userDTO.getPatronymic().equals("")){
+        if(userRegistrationDTO.getPatronymic().equals("")){
             request.setAttribute("wrongPatronymic", "wrongPatronymic");
             return JspPath.REG_FORM;
         }
-        request.setAttribute("patronymic", userDTO.getPatronymic());
+        request.setAttribute("patronymic", userRegistrationDTO.getPatronymic());
 
-        if(userDTO.getPassword().equals("")){
+        if(userRegistrationDTO.getPassword().equals("")){
             request.setAttribute("wrongPassword", "wrongPassword");
             return JspPath.REG_FORM;
         }
-        request.setAttribute("password", userDTO.getPassword());
+        request.setAttribute("password", userRegistrationDTO.getPassword());
 
         try {
-            userService.addNewUser(userDTO);
+            userService.addNewUser(userRegistrationDTO);
         } catch (NonUniqueEmailException e){
             request.setAttribute("wrongEmail", "email alredy exist");
             return JspPath.REG_FORM;

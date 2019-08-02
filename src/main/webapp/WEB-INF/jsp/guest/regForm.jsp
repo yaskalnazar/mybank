@@ -59,7 +59,7 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
                    Register
                 </button>
-                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/login_form" role="button">
+                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/login" role="button">
                     Login
                 </a>
             </form>

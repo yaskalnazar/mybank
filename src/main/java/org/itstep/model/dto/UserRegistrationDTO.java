@@ -2,17 +2,17 @@ package org.itstep.model.dto;
 
 
 
-public class UserDTO {
+public class UserRegistrationDTO {
     private String email;
     private String password;
     private String name;
     private String surname;
     private String patronymic;
 
-    public UserDTO() {
+    public UserRegistrationDTO() {
     }
 
-    public UserDTO(String email, String password, String name, String surname, String patronymic) {
+    public UserRegistrationDTO(String email, String password, String name, String surname, String patronymic) {
         this.email = email;
         this.password = password;
         this.name = name;

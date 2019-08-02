@@ -24,7 +24,7 @@ public class HomeCommand implements Command {
             case ADMIN:
                 return "redirect:/mybank/admin/home";
             default:
-                return "redirect:/mybank/guest/login_form";
+                return "redirect:/mybank/guest/login";
         }
     }
 }

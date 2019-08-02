@@ -3775,7 +3775,7 @@
 2019-08-02 19:56:38 DEBUG AuthFilter:40 - URI /mybank/guest/registration
 2019-08-02 19:56:38 DEBUG AuthFilter:42 - User 0has permission
 2019-08-02 19:56:38 DEBUG Servlet:76 - Servlet /mybank/guest/registration
-2019-08-02 19:56:38 WARN  RegistrationCommand:26 - org.itstep.model.dto.UserDTO@6cbcaca2
+2019-08-02 19:56:38 WARN  RegistrationCommand:26 - org.itstep.model.dto.UserRegistrationDTO@6cbcaca2
 2019-08-02 19:57:20 DEBUG AuthFilter:40 - URI /mybank/
 2019-08-02 19:57:20 DEBUG AuthFilter:42 - User 0has permission
 2019-08-02 19:57:21 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
@@ -4452,3 +4452,91 @@
 2019-08-02 21:07:55 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
 2019-08-02 21:07:55 ERROR JDBCUserDao:50 - Add user com.mysql.cj.jdbc.ClientPreparedStatement: insert into users ( user_email, user_name, user_surname, user_patronymic, user_role, user_password) values ('sdsd@dsd','sdsd','sds','sdsdsd','user','sdsd')
 2019-08-02 21:07:55 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 21:43:01 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 21:43:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:02 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=85DA0F23F78F08C6B8B5B827C5485D72
+2019-08-02 21:43:02 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 21:43:02 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 21:43:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:02 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 21:43:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:02 DEBUG Servlet:76 - Servlet /mybank/home
+2019-08-02 21:43:02 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 21:43:02 DEBUG Servlet:84 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 21:43:02 DEBUG AuthFilter:37 - URI /mybank/guest/login_form
+2019-08-02 21:43:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:02 DEBUG Servlet:76 - Servlet /mybank/guest/login_form
+2019-08-02 21:43:02 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 21:43:04 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 21:43:04 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:04 DEBUG Servlet:76 - Servlet /mybank/guest/registration
+2019-08-02 21:43:44 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 21:43:44 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:44 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=657CCF4CCD41B19077DF6339965E56A2
+2019-08-02 21:43:44 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 21:43:44 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 21:43:44 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:44 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 21:43:44 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:44 DEBUG Servlet:76 - Servlet /mybank/home
+2019-08-02 21:43:44 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 21:43:44 DEBUG Servlet:84 - Redirecting to redirect:/mybank/guest/login_form
+2019-08-02 21:43:44 DEBUG AuthFilter:37 - URI /mybank/guest/login_form
+2019-08-02 21:43:44 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:44 DEBUG Servlet:76 - Servlet /mybank/guest/login_form
+2019-08-02 21:43:44 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 21:43:46 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 21:43:46 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:46 DEBUG Servlet:76 - Servlet /mybank/guest/registration
+2019-08-02 21:43:46 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 21:43:49 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 21:43:49 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:49 DEBUG Servlet:76 - Servlet /mybank/guest/registration
+2019-08-02 21:43:49 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 21:43:53 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 21:43:53 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:43:53 DEBUG Servlet:76 - Servlet /mybank/guest/registration
+2019-08-02 21:43:53 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 21:44:06 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 21:44:06 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:44:06 DEBUG Servlet:76 - Servlet /mybank/guest/registration
+2019-08-02 21:44:06 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 21:44:06 ERROR JDBCUserDao:50 - Add user com.mysql.cj.jdbc.ClientPreparedStatement: insert into users ( user_email, user_name, user_surname, user_patronymic, user_role, user_password) values ('sdsd@sdsd','sdsd@sdsd','sdsd@sdsd','sdsd@sdsd','user','sdsd@sdsd')
+2019-08-02 21:44:06 ERROR JDBCUserDao:61 - User was not added: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'sdsd@sdsd' for key 'user_email_UNIQUE'
+2019-08-02 21:44:06 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 21:44:12 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 21:44:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:44:12 DEBUG Servlet:76 - Servlet /mybank/guest/registration
+2019-08-02 21:44:12 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-02 21:44:12 ERROR JDBCUserDao:50 - Add user com.mysql.cj.jdbc.ClientPreparedStatement: insert into users ( user_email, user_name, user_surname, user_patronymic, user_role, user_password) values ('sdsd@sdsd2','sdsd@sdsd','sdsd@sdsd','sdsd@sdsd','user','sdsd@sdsd')
+2019-08-02 21:44:12 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 21:45:34 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 21:45:34 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:35 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=0A2451E4797BDAC9665B503FD3C519F6
+2019-08-02 21:45:35 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 21:45:35 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 21:45:35 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:35 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 21:45:35 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:35 DEBUG Servlet:76 - Servlet /mybank/home
+2019-08-02 21:45:35 DEBUG HomeCommand:20 - User GUEST
+2019-08-02 21:45:35 DEBUG Servlet:84 - Redirecting to redirect:/mybank/guest/login
+2019-08-02 21:45:35 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 21:45:35 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:35 DEBUG Servlet:76 - Servlet /mybank/guest/login
+2019-08-02 21:45:35 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 21:45:37 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 21:45:37 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:37 DEBUG Servlet:76 - Servlet /mybank/guest/login
+2019-08-02 21:45:37 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 21:45:39 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 21:45:39 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:39 DEBUG Servlet:76 - Servlet /mybank/guest/registration
+2019-08-02 21:45:39 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 21:45:40 DEBUG AuthFilter:37 - URI /mybank/guest/login_form
+2019-08-02 21:45:40 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:40 DEBUG Servlet:76 - Servlet /mybank/guest/login_form
+2019-08-02 21:45:40 DEBUG Servlet:87 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 21:45:43 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 21:45:43 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 21:45:43 DEBUG Servlet:76 - Servlet /mybank/guest/login

@@ -65,4 +65,17 @@ public class JDBCUserDao implements UserDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public User getByEmail(String email) {
+        try (PreparedStatement getUserStatement = connection.prepareStatement(UserRequests.GET_USER_BY_EMAIL)) {
+            getUserStatement.setString(1, email);
+
+            ResultSet resultSet = getUserStatement.executeQuery();
+
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

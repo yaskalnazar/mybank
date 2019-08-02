@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
                    Login
                 </button>
-                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/reg_form" role="button">
+                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/registration" role="button">
                     Register
                 </a>
             </form>
