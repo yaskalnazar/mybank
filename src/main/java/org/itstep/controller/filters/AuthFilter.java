@@ -3,7 +3,6 @@ package org.itstep.controller.filters;
 import org.apache.log4j.Logger;
 import org.itstep.controller.configuration.AccessConfiquration;
 import org.itstep.model.entity.User;
-import org.itstep.model.service.RegistrationService;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.util.Optional;
-
-import static org.itstep.controller.JspPath.ACCESS_DENIED;
 
 public class AuthFilter implements Filter {
     private final static Logger logger = Logger.getLogger(AuthFilter.class);

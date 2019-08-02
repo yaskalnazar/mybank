@@ -4,15 +4,15 @@ import org.apache.log4j.Logger;
 import org.itstep.controller.JspPath;
 import org.itstep.controller.command.Command;
 import org.itstep.model.dto.UserDTO;
-import org.itstep.model.service.RegistrationService;
+import org.itstep.model.exptions.NonUniqueEmailException;
+import org.itstep.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
 
 public class RegistrationCommand implements Command {
-    private RegistrationService registrationService = new RegistrationService();
+    //private RegistrationService registrationService = new RegistrationService();
     private final static Logger logger = Logger.getLogger(RegistrationCommand.class);
-
+    private UserService userService = new UserService();
 
     //TODO regex check
     // @Override
@@ -57,10 +57,16 @@ public class RegistrationCommand implements Command {
         }
         request.setAttribute("password", userDTO.getPassword());
 
+        try {
+            userService.addNewUser(userDTO);
+        } catch (NonUniqueEmailException e){
+            request.setAttribute("wrongEmail", "email alredy exist");
+            return JspPath.REG_FORM;
+        }
 
-        registrationService.registerNewUser(userDTO);
+        request.setAttribute("regSuccessfully", "You successfully registered");
 
-        return JspPath.REG_FORM;
+        return JspPath.LOGIN_FORM;
     }
 
 

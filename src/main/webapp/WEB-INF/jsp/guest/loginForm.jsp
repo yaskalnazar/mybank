@@ -14,12 +14,17 @@
 <div class="container" style="margin-top: 60px">
     <div class="row" >
         <div class="col-md-8 col-md-offset-2">
+            <c:if test="${not empty regSuccessfully}" >
+            <div class="alert alert-primary" role="alert">
+                ${regSuccessfully}
+            </div>
+            </c:if>
             <h2 class="page-header">Login</h2>
             <form method="post" autocomplete="off" action="/mybank/guest/login">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" class="form-control"
-                           type="email" name="email" placeholder="Email">
+                           type="email" name="email" placeholder="Email" value="${email}">
 
                 </div>
                 <div class="form-group">
