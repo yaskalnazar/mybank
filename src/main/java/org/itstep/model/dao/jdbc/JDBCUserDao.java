@@ -2,6 +2,7 @@ package org.itstep.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
 import org.itstep.model.dao.UserDao;
+import org.itstep.model.dao.jdbc.sql.requests.UserRequests;
 import org.itstep.model.entity.User;
 
 import java.sql.Connection;
@@ -41,7 +42,7 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public boolean addNew(User item) {
-        try (PreparedStatement addUser = connection.prepareStatement("insert into users ( user_email, user_name, user_surname, user_patronymic, user_role, user_password) values (?,?,?,?,?,?)")){
+        try (PreparedStatement addUser = connection.prepareStatement(UserRequests.ADD_USER)){
             addUser.setString(1, item.getEmail());
             addUser.setString(2, item.getName());
             addUser.setString(3, item.getSurname());

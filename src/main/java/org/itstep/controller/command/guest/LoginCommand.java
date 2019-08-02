@@ -4,7 +4,7 @@ package org.itstep.controller.command.guest;
 import org.apache.log4j.Logger;
 import org.itstep.controller.command.Command;
 import org.itstep.model.entity.User;
-import org.itstep.model.entity.dto.UserDTO;
+import org.itstep.model.dto.UserDTO;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,8 +15,7 @@ public class LoginCommand implements Command {
     public String execute(HttpServletRequest request) {
 
 
-        UserDTO userDTO = new UserDTO(
-                request.getParameter("email"),request.getParameter("password"));
+        UserDTO userDTO = new UserDTO();
         User user = User.getBuilder()
                 .setEmail(userDTO.getEmail())
                 .setPassword(userDTO.getPassword())

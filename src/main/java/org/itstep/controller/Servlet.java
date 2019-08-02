@@ -33,7 +33,7 @@ public class Servlet extends HttpServlet {
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
-        User user = User.getBuilder()
+        /*User user = User.getBuilder()
                 .setUserRole(User.Role.ADMIN)
                 .setEmail("admin@a")
                 .setPassword("admin")
@@ -41,7 +41,7 @@ public class Servlet extends HttpServlet {
                 .setPatronymic("pan")
                 .setSurname("sfsf")
                 .build();
-        new JDBCDaoFactory().createUserDao().addNew(user);
+        new JDBCDaoFactory().createUserDao().addNew(user);*/
         commands.put("home" , new HomeCommand());
         commands.put("user/home" , new UserHome());
         commands.put("admin/home" , new AdminHome());

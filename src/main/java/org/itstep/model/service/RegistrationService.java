@@ -1,8 +1,7 @@
 package org.itstep.model.service;
 
-
+import org.itstep.model.dto.UserDTO;
 import org.itstep.model.entity.User;
-import org.itstep.model.entity.dto.UserDTO;
 import org.apache.log4j.Logger;
 
 

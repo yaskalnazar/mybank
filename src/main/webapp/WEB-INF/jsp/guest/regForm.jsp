@@ -19,16 +19,49 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" class="form-control"
-                           type="email" name="email" placeholder="Email">
+                           type="email" name="email" placeholder="Email" value="${email}">
+                    <p class="text-danger">
+                        ${wrongEmail}
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" class="form-control"
+                           type="text" name="name" placeholder="Name" value="${name}">
+                    <p class="text-danger">
+                        ${wrongName}
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input id="surname" class="form-control"
+                           type="text" name="surname" placeholder="Surname" value="${surname}">
+                    <p class="text-danger">
+                        ${wrongSurname}
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="patronymic">Patronymic</label>
+                    <input id="patronymic" class="form-control"
+                           type="text" name="patronymic" placeholder="Patronymic" value="${patronymic}">
+                    <p class="text-danger">
+                        ${wrongPatronymic}
+                    </p>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input id="password" class="form-control"
-                           type="password" name="password" placeholder="Password">
+                           type="password" name="password" placeholder="Password" value="${password}">
+                    <p class="text-danger">
+                        ${wrongPassword}
+                    </p>
                 </div>
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
                    Register
                 </button>
+                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/login_form" role="button">
+                    Login
+                </a>
             </form>
         </div>
     </div>

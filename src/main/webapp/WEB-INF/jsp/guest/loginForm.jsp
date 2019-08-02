@@ -20,6 +20,7 @@
                     <label for="email">Email</label>
                     <input id="email" class="form-control"
                            type="email" name="email" placeholder="Email">
+
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -29,6 +30,9 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
                    Login
                 </button>
+                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/reg_form" role="button">
+                    Register
+                </a>
             </form>
         </div>
     </div>
