@@ -3,7 +3,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>Servl</servlet-name>
-    <servlet-class>org.itstep.controller.Servlet</servlet-class>
+    <servlet-class>ua.yaskal.controller.Servlet</servlet-class>
     <!--<load-on-startup>1</load-on-startup>-->
   </servlet>
 
@@ -14,7 +14,7 @@
 
   <filter>
     <filter-name>EncodingFilter</filter-name>
-    <filter-class>org.itstep.controller.filters.EncodingFilter</filter-class>
+    <filter-class>ua.yaskal.controller.filters.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>EncodingFilter</filter-name>
@@ -23,7 +23,7 @@
 
     <filter>
         <filter-name>AuthFilter</filter-name>
-        <filter-class>org.itstep.controller.filters.AuthFilter</filter-class>
+        <filter-class>ua.yaskal.controller.filters.AuthFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
@@ -32,7 +32,7 @@
 
   <listener>
     <listener-class>
-      org.itstep.controller.listener.SessionListener
+        ua.yaskal.controller.listener.SessionListener
     </listener-class>
   </listener>
 

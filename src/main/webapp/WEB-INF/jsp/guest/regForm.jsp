@@ -25,6 +25,14 @@
                     </p>
                 </div>
                 <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" class="form-control"
+                           type="password" name="password" placeholder="Password" value="${password}">
+                    <p class="text-danger">
+                        ${wrongPassword}
+                    </p>
+                </div>
+                <div class="form-group">
                     <label for="name">Name</label>
                     <input id="name" class="form-control"
                            type="text" name="name" placeholder="Name" value="${name}">
@@ -46,14 +54,6 @@
                            type="text" name="patronymic" placeholder="Patronymic" value="${patronymic}">
                     <p class="text-danger">
                         ${wrongPatronymic}
-                    </p>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input id="password" class="form-control"
-                           type="password" name="password" placeholder="Password" value="${password}">
-                    <p class="text-danger">
-                        ${wrongPassword}
                     </p>
                 </div>
                 <button type="submit" class="btn btn-success" style="margin-top:30px">

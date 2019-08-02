@@ -12,12 +12,17 @@
 <jsp:include page="../parts/guestHeader.jsp"/>
 
 <div class="container" style="margin-top: 60px">
-    <div class="row" >
+    <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <c:if test="${not empty regSuccessfully}" >
-            <div class="alert alert-primary" role="alert">
-                ${regSuccessfully}
-            </div>
+            <c:if test="${not empty regSuccessfully}">
+                <div class="alert alert-primary" role="alert">
+                        ${regSuccessfully}
+                </div>
+            </c:if>
+            <c:if test="${not empty wrongInput}">
+                <div class="alert alert-danger" role="alert">
+                        Wrong Input please try again
+                </div>
             </c:if>
             <h2 class="page-header">Login</h2>
             <form method="post" autocomplete="off" action="/mybank/guest/login">
@@ -33,7 +38,7 @@
                            type="password" name="password" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
-                   Login
+                    Login
                 </button>
                 <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/registration" role="button">
                     Register
