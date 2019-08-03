@@ -32,10 +32,10 @@ public class AccessFilter implements Filter {
                 .orElse(User.getBuilder().setUserRole(User.Role.GUEST).build());
 
         if (AccessConfiquration.isAccessAllowed(Httprequest.getRequestURI(),user.getRole()) ){
-            logger.debug("User " + user.getId() + "has access to "+ Httprequest.getRequestURI());
+            logger.debug("User " + user.getId() + " has access to "+ Httprequest.getRequestURI());
             filterChain.doFilter(request, response);
         } else {
-            logger.warn("User " + user.getId() + "tries to access " + Httprequest.getRequestURI() +" without permission");
+            logger.warn("User " + user.getId() + " tries to access " + Httprequest.getRequestURI() +" without permission");
             throw new AccessDeniedException();
         }
 

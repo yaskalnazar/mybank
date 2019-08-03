@@ -2,7 +2,6 @@ package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.UserDao;
-import ua.yaskal.model.dao.jdbc.sql.requests.UserRequests;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dao.mappers.jdbc.JDBCMapperFactory;
 import ua.yaskal.model.entity.User;

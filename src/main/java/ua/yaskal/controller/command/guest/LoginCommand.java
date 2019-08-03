@@ -37,7 +37,7 @@ public class LoginCommand implements Command {
             request.setAttribute("wrongInput", "wrongInput");
             return JspPath.LOGIN_FORM;
         } catch (WrongPasswordException e){
-            logger.warn("Login attempt with wrong password "+ userLoginDTO.getEmail());
+            logger.warn("Login attempt with wrong password (email: "+ userLoginDTO.getEmail()+")");
             request.setAttribute("wrongInput", "wrongInput");
             return JspPath.LOGIN_FORM;
         }
