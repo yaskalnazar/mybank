@@ -2,7 +2,10 @@ package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.DaoFactory;
-import ua.yaskal.model.dao.UserDao;
+import ua.yaskal.model.dao.DepositDAO;
+import ua.yaskal.model.dao.UserDAO;
+import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.dao.mappers.jdbc.JDBCMapperFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,11 +15,17 @@ import java.util.ResourceBundle;
 public class JDBCDaoFactory extends DaoFactory {
     private final static Logger logger = Logger.getLogger(JDBCDaoFactory.class);
     private ResourceBundle databaseProperties = ResourceBundle.getBundle("database");
+    private ResourceBundle sqlRequestsBundle = ResourceBundle.getBundle("SQLRequests");
+    private MapperFactory mapperFactory = new JDBCMapperFactory();
+
 
     @Override
-    public UserDao createUserDao() {
-        return new JDBCUserDao(getConnection());
+    public UserDAO createUserDAO() {
+        return new JDBCUserDAO(getConnection(),sqlRequestsBundle, mapperFactory);
     }
+
+    @Override
+    public DepositDAO createDepositDAO() { return new JDBCDepositDAO(getConnection(),sqlRequestsBundle);}
 
     private Connection getConnection() {
         try {

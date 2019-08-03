@@ -5,7 +5,9 @@ import ua.yaskal.model.dao.jdbc.JDBCDaoFactory;
 public abstract class DaoFactory {
     private static DaoFactory daoFactory;
 
-    public abstract UserDao createUserDao();
+    public abstract UserDAO createUserDAO();
+
+    public abstract DepositDAO createDepositDAO();
 
     public static DaoFactory getInstance() {
         if (daoFactory == null) {

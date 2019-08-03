@@ -3,7 +3,7 @@ package ua.yaskal.model.service;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.DaoFactory;
-import ua.yaskal.model.dao.UserDao;
+import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dto.UserLoginDTO;
 import ua.yaskal.model.dto.UserRegistrationDTO;
 import ua.yaskal.model.entity.User;
@@ -17,7 +17,7 @@ public class UserService {
 
 
     public User addNewUser(UserRegistrationDTO userDTO){
-        UserDao userDao = DaoFactory.getInstance().createUserDao();
+        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
         User user = User.getBuilder()
                 .setEmail(userDTO.getEmail())
                 .setName(userDTO.getName())
@@ -33,7 +33,7 @@ public class UserService {
     }
 
     public User loginUser(UserLoginDTO userDTO){
-        UserDao userDao = DaoFactory.getInstance().createUserDao();
+        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
         User user = userDao.getByEmail(userDTO.getEmail());
 
         if (!DigestUtils.sha256Hex(userDTO.getPassword()).equals(user.getPassword())){
@@ -44,8 +44,9 @@ public class UserService {
     }
 
     public List<User> getAllUsers(){
-        UserDao userDao = DaoFactory.getInstance().createUserDao();
+        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
         return userDao.getAll();
     }
+
 
 }

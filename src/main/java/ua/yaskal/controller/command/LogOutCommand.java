@@ -18,8 +18,9 @@ public class LogOutCommand implements Command {
         logger.debug("User " + user.getId() + " logout");
 
         request.getSession().invalidate();
-        request.setAttribute("logoutSuccessfully", "You successfully logout");
-        return JspPath.LOGIN_FORM;
+        //request.setAttribute("logoutSuccessfully", "You successfully logout");
+        //return JspPath.LOGIN_FORM;
+        return "redirect:/mybank/guest/login";
 
     }
 }

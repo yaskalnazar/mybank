@@ -3,8 +3,11 @@ package ua.yaskal.controller.util;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class ValidationUtil{
+    private ResourceBundle sqlRequestsBundle = ResourceBundle.getBundle("regex");
+
 
     //TODO stream
     public boolean isСontain(HttpServletRequest request, List<String> params){
@@ -15,7 +18,7 @@ public class ValidationUtil{
         return true;
     }
 
-    public boolean isCorrect(String param){
-        return false;
+    public boolean isValid(String param, String paramName){
+        return param.matches(sqlRequestsBundle.getString("regex."+paramName));
     }
 }

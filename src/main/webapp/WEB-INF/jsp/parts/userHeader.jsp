@@ -12,13 +12,13 @@
                 <a class="nav-link" href="/mybank/user/home"><fmt:message key="page.message.home"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/all_accounts/"><fmt:message key="page.message.my.accounts"/></a>
+                <a class="nav-link" href="/mybank/user/account/all_accounts"><fmt:message key="page.message.my.accounts"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/deposit/open/"><fmt:message key="page.message.deposit.open"/></a>
+                <a class="nav-link" href="/mybank/user/account/deposit/open"><fmt:message key="page.message.deposit.open"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/credit/open/"><fmt:message key="page.message.credit.open"/></a>
+                <a class="nav-link" href="/mybank/user/account/credit/open"><fmt:message key="page.message.credit.open"/></a>
             </li>
         </ul>
     </div>

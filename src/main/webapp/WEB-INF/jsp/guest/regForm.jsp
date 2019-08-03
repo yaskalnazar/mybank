@@ -30,8 +30,7 @@
                 <div class="form-group">
                     <label for="password"><fmt:message key="page.message.password"/></label>
                     <input id="password" class="form-control"
-                           type="password" name="password" placeholder="<fmt:message key="page.message.password"/>"
-                           value="${password}">
+                           type="password" name="password" placeholder="<fmt:message key="page.message.password"/>">
                     <p class="text-danger">
                         ${wrongPassword}
                     </p>

@@ -69,7 +69,6 @@ public class RegistrationCommand implements Command {
             request.setAttribute("wrongPassword", "wrongPassword");
             return JspPath.REG_FORM;
         }
-        request.setAttribute("password", userRegistrationDTO.getPassword());
 
         try {
             userService.addNewUser(userRegistrationDTO);

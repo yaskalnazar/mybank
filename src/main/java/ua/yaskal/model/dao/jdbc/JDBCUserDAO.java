@@ -1,7 +1,7 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.model.dao.UserDao;
+import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dao.mappers.jdbc.JDBCMapperFactory;
 import ua.yaskal.model.entity.User;
@@ -13,15 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class JDBCUserDao implements UserDao {
+public class JDBCUserDAO implements UserDAO {
+    private final static Logger logger = Logger.getLogger(JDBCUserDAO.class);
     private Connection connection;
-    private final static Logger logger = Logger.getLogger(JDBCUserDao.class);
-    private MapperFactory mapperFactory = new JDBCMapperFactory();
-    private ResourceBundle sqlRequestsBundle = ResourceBundle.getBundle("SQLRequests");
+    private ResourceBundle sqlRequestsBundle;
+    private MapperFactory mapperFactory;
 
-
-    public JDBCUserDao(Connection connection) {
+    public JDBCUserDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
         this.connection = connection;
+        this.sqlRequestsBundle = sqlRequestsBundle;
+        this.mapperFactory = mapperFactory;
     }
 
     @Override
