@@ -8,13 +8,13 @@ public class DepositDTO {
     private BigDecimal depositAmount;
     private BigDecimal depositRate;
     private int monthsAmount;
-    private User owner;
+    private long ownerId;
 
-    public DepositDTO(BigDecimal depositAmount, BigDecimal depositRate, int monthsAmount, User owner) {
+    public DepositDTO(BigDecimal depositAmount, BigDecimal depositRate, int monthsAmount, long ownerId) {
         this.depositAmount = depositAmount;
         this.depositRate = depositRate;
         this.monthsAmount = monthsAmount;
-        this.owner = owner;
+        this.ownerId = ownerId;
     }
 
     public BigDecimal getDepositAmount() {
@@ -41,11 +41,11 @@ public class DepositDTO {
         this.monthsAmount = monthsAmount;
     }
 
-    public User getOwner() {
-        return owner;
+    public long getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
     }
 }

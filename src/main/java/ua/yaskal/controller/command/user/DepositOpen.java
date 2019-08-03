@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class DepositOpen implements Command {
     private final static Logger logger = Logger.getLogger(DepositOpen.class);
     private DepositService depositService = new DepositService();
-    ValidationUtil validationUtil = new ValidationUtil();
+    private ValidationUtil validationUtil = new ValidationUtil();
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -52,7 +52,7 @@ public class DepositOpen implements Command {
                 new BigDecimal(depositAmount),
                 new BigDecimal(depositRate),
                 Integer.parseInt(monthsAmount),
-                (User) request.getSession().getAttribute("user"));
+                (long) request.getSession().getAttribute("userId"));
 
         DepositAccount depositAccount;
         try {

@@ -14,9 +14,9 @@ public class DepositAccount extends Account {
         return AccountType.DEPOSIT;
     }
 
-    public DepositAccount(long id, BigDecimal balance, LocalDate closingDate, User owner, AccountStatus accountStatus,
+    public DepositAccount(long id, BigDecimal balance, LocalDate closingDate, long ownerId, AccountStatus accountStatus,
                           BigDecimal depositAmount, BigDecimal depositRate, LocalDate depositEndDate) {
-        super(id, balance, closingDate, owner, accountStatus);
+        super(id, balance, closingDate, ownerId, accountStatus);
         this.depositAmount = depositAmount;
         this.depositRate = depositRate;
         this.depositEndDate = depositEndDate;
@@ -54,7 +54,7 @@ public class DepositAccount extends Account {
         private long id;
         private BigDecimal balance;
         private LocalDate closingDate;
-        private User owner;
+        private long ownerId;
         private AccountStatus accountStatus;
         private BigDecimal depositAmount;
         private BigDecimal depositRate;
@@ -75,8 +75,8 @@ public class DepositAccount extends Account {
             return this;
         }
 
-        public DepositAccountBuilder setOwner(User owner) {
-            this.owner = owner;
+        public DepositAccountBuilder setOwnerId(long ownerId) {
+            this.ownerId = ownerId;
             return this;
         }
 
@@ -101,7 +101,7 @@ public class DepositAccount extends Account {
         }
 
         public DepositAccount build() {
-            return new DepositAccount(id, balance, closingDate, owner, accountStatus, depositAmount, depositRate, depositEndDate);
+            return new DepositAccount(id, balance, closingDate, ownerId, accountStatus, depositAmount, depositRate, depositEndDate);
         }
     }
 }

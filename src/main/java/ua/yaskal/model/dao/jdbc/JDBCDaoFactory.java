@@ -25,7 +25,7 @@ public class JDBCDaoFactory extends DaoFactory {
     }
 
     @Override
-    public DepositDAO createDepositDAO() { return new JDBCDepositDAO(getConnection(),sqlRequestsBundle);}
+    public DepositDAO createDepositDAO() { return new JDBCDepositDAO(getConnection(),sqlRequestsBundle, mapperFactory);}
 
     private Connection getConnection() {
         try {

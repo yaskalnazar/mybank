@@ -45,7 +45,7 @@ public class LoginCommand implements Command {
 
 
         request.getSession().setAttribute("user", user);
-        request.getSession().setAttribute("userid", user.getId());
+        request.getSession().setAttribute("userId", user.getId());
         logger.debug("User " + user.getId()+" successfully login");
         return "redirect:/mybank/home";
 

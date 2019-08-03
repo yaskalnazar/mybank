@@ -48,5 +48,8 @@ public class UserService {
         return userDao.getAll();
     }
 
-
+    public User getById(long id){
+        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
+        return userDao.getById(id);
+    }
 }

@@ -8,4 +8,5 @@ public interface JspPath {
     String ADMIN_HOME ="/WEB-INF/jsp/admin/adminHome.jsp";
     String ALL_USERS="/WEB-INF/jsp/admin/allUsers.jsp";
     String DEPOSIT_OPEN="/WEB-INF/jsp/user/depositOpen.jsp";
+    String ADMIN_ALL_DEPOSITS="/WEB-INF/jsp/admin/allDeposits.jsp";
 }

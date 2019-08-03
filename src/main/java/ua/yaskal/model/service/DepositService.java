@@ -8,6 +8,7 @@ import ua.yaskal.model.entity.DepositAccount;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 public class DepositService {
     private UserService userService = new UserService();
@@ -19,7 +20,7 @@ public class DepositService {
         DepositAccount depositAccount = DepositAccount.getBuilder()
                 .setBalance(new BigDecimal(0))
                 .setClosingDate(LocalDate.now().plusYears(5))
-                .setOwner(depositDTO.getOwner())
+                .setOwnerId(depositDTO.getOwnerId())
                 .setAccountStatus(Account.AccountStatus.ACTIVE)
                 .setDepositAmount(depositDTO.getDepositAmount())
                 .setDepositRate(depositDTO.getDepositRate())
@@ -29,5 +30,10 @@ public class DepositService {
         depositAccount.setId(depositDAO.addNew(depositAccount));
 
         return depositAccount;
+    }
+
+    public List<DepositAccount> getAll(){
+        DepositDAO depositDAO = DaoFactory.getInstance().createDepositDAO();
+        return depositDAO.getAll();
     }
 }

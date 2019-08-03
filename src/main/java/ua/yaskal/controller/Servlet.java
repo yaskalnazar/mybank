@@ -3,6 +3,7 @@ package ua.yaskal.controller;
 import org.apache.log4j.Logger;
 import ua.yaskal.controller.command.*;
 import ua.yaskal.controller.command.admin.AdminHomeCommand;
+import ua.yaskal.controller.command.admin.AllDepositsCommand;
 import ua.yaskal.controller.command.admin.AllUsersCommand;
 import ua.yaskal.controller.command.guest.LoginCommand;
 import ua.yaskal.controller.command.guest.RegistrationCommand;
@@ -44,6 +45,7 @@ public class Servlet extends HttpServlet {
         commands.put("guest/registration", new RegistrationCommand());
 
         commands.put("admin/all_users" , new AllUsersCommand());
+        commands.put("admin/account/all/deposits" , new AllDepositsCommand());
 
         commands.put("user/account/deposit/open", new DepositOpen());
     }

@@ -7,7 +7,7 @@ public abstract class Account {
     private long id;
     private BigDecimal balance;
     private LocalDate closingDate;
-    private User owner;
+    private long ownerId;
     private AccountStatus accountStatus;
 
     public abstract AccountType getAccountType();
@@ -24,11 +24,11 @@ public abstract class Account {
         DEPOSIT;
     }
 
-    public Account(long id, BigDecimal balance, LocalDate closingDate, User owner, AccountStatus accountStatus) {
+    public Account(long id, BigDecimal balance, LocalDate closingDate, long ownerId, AccountStatus accountStatus) {
         this.id = id;
         this.balance = balance;
         this.closingDate = closingDate;
-        this.owner = owner;
+        this.ownerId = ownerId;
         this.accountStatus = accountStatus;
     }
 
@@ -56,12 +56,12 @@ public abstract class Account {
         this.closingDate = closingDate;
     }
 
-    public User getOwner() {
-        return owner;
+    public long getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
     }
 
     public AccountStatus getAccountStatus() {

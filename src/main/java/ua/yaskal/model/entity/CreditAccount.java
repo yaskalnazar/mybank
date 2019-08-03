@@ -14,9 +14,9 @@ public class CreditAccount extends Account {
         return AccountType.CREDIT;
     }
 
-    public CreditAccount(long id, BigDecimal balance, LocalDate closingDate, User owner, AccountStatus accountStatus,
+    public CreditAccount(long id, BigDecimal balance, LocalDate closingDate, long ownerId, AccountStatus accountStatus,
                          BigDecimal creditRate, BigDecimal creditLimit, BigDecimal accruedInterest) {
-        super(id, balance, closingDate, owner, accountStatus);
+        super(id, balance, closingDate, ownerId, accountStatus);
         this.creditRate = creditRate;
         this.creditLimit = creditLimit;
         this.accruedInterest = accruedInterest;
@@ -54,7 +54,7 @@ public class CreditAccount extends Account {
         private long id;
         private BigDecimal balance;
         private LocalDate closingDate;
-        private User owner;
+        private long ownerId;
         private AccountStatus accountStatus;
         private BigDecimal creditRate;
         private BigDecimal creditLimit;
@@ -75,8 +75,8 @@ public class CreditAccount extends Account {
             return this;
         }
 
-        public CreditAccountBuilder setOwner(User owner) {
-            this.owner = owner;
+        public CreditAccountBuilder setOwnerId(long ownerId) {
+            this.ownerId = ownerId;
             return this;
         }
 
@@ -101,7 +101,7 @@ public class CreditAccount extends Account {
         }
 
         public CreditAccount build() {
-            return new CreditAccount(id, balance, closingDate, owner, accountStatus, creditRate, creditLimit, accruedInterest);
+            return new CreditAccount(id, balance, closingDate, ownerId, accountStatus, creditRate, creditLimit, accruedInterest);
         }
     }
 }

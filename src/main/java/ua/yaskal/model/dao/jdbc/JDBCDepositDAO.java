@@ -2,10 +2,11 @@ package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.DepositDAO;
+import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.DepositAccount;
-import ua.yaskal.model.exptions.NonUniqueEmailException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -13,10 +14,13 @@ public class JDBCDepositDAO implements DepositDAO {
     private final static Logger logger = Logger.getLogger(JDBCDepositDAO.class);
     private Connection connection;
     private ResourceBundle sqlRequestsBundle;
+    private MapperFactory mapperFactory;
 
-    public JDBCDepositDAO(Connection connection, ResourceBundle sqlRequestsBundle) {
+
+    public JDBCDepositDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
         this.connection = connection;
         this.sqlRequestsBundle = sqlRequestsBundle;
+        this.mapperFactory = mapperFactory;
     }
 
     @Override
@@ -26,7 +30,19 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public List<DepositAccount> getAll() {
-        return null;
+        List<DepositAccount> depositAccounts = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("deposit.select.all"))) {
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all deposits: " + e);
+            e.printStackTrace();
+        }
+        return depositAccounts;
     }
 
     @Override
@@ -41,22 +57,22 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public Long addNew(DepositAccount item) {
-        try (PreparedStatement addUserStatement = connection.prepareStatement(
+        try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.insert.new"), Statement.RETURN_GENERATED_KEYS)){
-            addUserStatement.setString(1, item.getAccountType().name());
-            addUserStatement.setString(2, item.getBalance().toString());
-            addUserStatement.setString(3, item.getClosingDate().toString());
-            addUserStatement.setString(4, item.getOwner().getId()+"");
-            addUserStatement.setString(5, item.getAccountStatus().name());
-            addUserStatement.setString(6, item.getDepositAmount().toString());
-            addUserStatement.setString(7, item.getDepositRate().toString());
-            addUserStatement.setString(8, item.getDepositEndDate().toString());
+            statement.setString(1, item.getAccountType().name());
+            statement.setString(2, item.getBalance().toString());
+            statement.setString(3, item.getClosingDate().toString());
+            statement.setString(4, item.getOwnerId()+"");
+            statement.setString(5, item.getAccountStatus().name());
+            statement.setString(6, item.getDepositAmount().toString());
+            statement.setString(7, item.getDepositRate().toString());
+            statement.setString(8, item.getDepositEndDate().toString());
 
 
-            logger.debug("Add new Deposit Account "+ addUserStatement);
-            addUserStatement.execute();
+            logger.debug("Add new Deposit Account "+ statement);
+            statement.execute();
 
-            ResultSet resultSet = addUserStatement.getGeneratedKeys();
+            ResultSet resultSet = statement.getGeneratedKeys();
 
             if (resultSet.next()) {
                 return resultSet.getLong(1);
