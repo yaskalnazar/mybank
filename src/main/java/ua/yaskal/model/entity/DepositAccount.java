@@ -22,6 +22,10 @@ public class DepositAccount extends Account {
         this.depositEndDate = depositEndDate;
     }
 
+    public static DepositAccountBuilder getBuilder(){
+        return new DepositAccountBuilder();
+    }
+
     public BigDecimal getDepositAmount() {
         return depositAmount;
     }

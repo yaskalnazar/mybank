@@ -22,6 +22,10 @@ public class CreditAccount extends Account {
         this.accruedInterest = accruedInterest;
     }
 
+    public static CreditAccountBuilder getBuilder(){
+        return new CreditAccountBuilder();
+    }
+
     public BigDecimal getCreditRate() {
         return creditRate;
     }
