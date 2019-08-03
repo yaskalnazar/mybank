@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>Registration</title>
+    <title><fmt:message key="page.message.login"/></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -19,6 +19,11 @@
 <div class="container" style="margin-top: 60px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <c:if test="${not empty logoutSuccessfully}">
+                <div class="alert alert-primary" role="alert">
+                        ${logoutSuccessfully}
+                </div>
+            </c:if>
             <c:if test="${not empty regSuccessfully}">
                 <div class="alert alert-primary" role="alert">
                         ${regSuccessfully}

@@ -9,6 +9,7 @@ import ua.yaskal.model.exptions.NoSuchUserException;
 import ua.yaskal.model.exptions.NonUniqueEmailException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -30,7 +31,20 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public List<User> getAll() {
-        return null;
+        List<User> users = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection
+                     .prepareStatement(sqlRequestsBundle.getString("user.select.all"))) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                users.add(mapperFactory.getUserMapper().mapToObject(resultSet));
+            }
+            return users;
+        } catch (SQLException e) {
+            logger.error("Can not get all users: " + e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

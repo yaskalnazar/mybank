@@ -2,7 +2,8 @@ package ua.yaskal.controller;
 
 import org.apache.log4j.Logger;
 import ua.yaskal.controller.command.*;
-import ua.yaskal.controller.command.admin.AdminHome;
+import ua.yaskal.controller.command.admin.AdminHomeCommand;
+import ua.yaskal.controller.command.admin.AllUsersCommand;
 import ua.yaskal.controller.command.guest.LoginCommand;
 import ua.yaskal.controller.command.guest.RegistrationCommand;
 import ua.yaskal.controller.command.user.UserHome;
@@ -28,17 +29,20 @@ public class Servlet extends HttpServlet {
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
-        commands.put("home" , new HomeCommand());
-        commands.put("user/home" , new UserHome());
-        commands.put("admin/home" , new AdminHome());
-        commands.put("exception" , new ExceptionCommand());
-        commands.put("user/logout",
-                new LogOutCommand());
-        commands.put("admin/logout",
-                new LogOutCommand());
-        commands.put("guest/login",
-                new LoginCommand());
-        commands.put("guest/registration" , new RegistrationCommand());
+
+        commands.put("home", new HomeCommand());
+        commands.put("user/home", new UserHome());
+        commands.put("admin/home", new AdminHomeCommand());
+
+        commands.put("user/logout", new LogOutCommand());
+        commands.put("admin/logout",new LogOutCommand());
+
+        commands.put("exception", new ExceptionCommand());
+
+        commands.put("guest/login", new LoginCommand());
+        commands.put("guest/registration", new RegistrationCommand());
+
+        commands.put("admin/all_users" , new AllUsersCommand());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

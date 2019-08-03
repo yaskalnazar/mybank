@@ -9,22 +9,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/home">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/mybank/user/home"><fmt:message key="page.message.home"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/all_accounts/">My Accounts</a>
+                <a class="nav-link" href="/mybank/user/account/all_accounts/"><fmt:message key="page.message.my.accounts"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/deposit/open/">Deposit Open</a>
+                <a class="nav-link" href="/mybank/user/account/deposit/open/"><fmt:message key="page.message.deposit.open"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/credit/open/">Credit open</a>
+                <a class="nav-link" href="/mybank/user/account/credit/open/"><fmt:message key="page.message.credit.open"/></a>
             </li>
         </ul>
     </div>
     <span style="float: right">
         <button class="btn btn-secondary mr-2" onclick="window.location.href = '/mybank/user/logout';">
-                    logout
+                    <fmt:message key="page.message.logout"/>
          </button>
          <fmt:message key="page.message.language"/>: <a href="?locale=en">Eng</a> | <a href="?locale=uk">Укр</a>
     </span>

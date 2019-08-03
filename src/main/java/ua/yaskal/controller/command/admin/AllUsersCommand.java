@@ -2,12 +2,15 @@ package ua.yaskal.controller.command.admin;
 
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
+import ua.yaskal.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class AdminHome implements Command {
+public class AllUsersCommand implements Command {
+    UserService userService = new UserService();
     @Override
     public String execute(HttpServletRequest request) {
-        return JspPath.ADMIN_HOME;
+        request.setAttribute("users", userService.getAllUsers());
+        return JspPath.ALL_USERS;
     }
 }

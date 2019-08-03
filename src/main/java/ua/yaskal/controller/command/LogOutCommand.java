@@ -1,6 +1,7 @@
 package ua.yaskal.controller.command;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.controller.JspPath;
 import ua.yaskal.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ public class LogOutCommand implements Command {
         logger.debug("User " + user.getId() + " logout");
 
         request.getSession().invalidate();
-        return "redirect:/mybank/guest/login";
+        request.setAttribute("logoutSuccessfully", "You successfully logout");
+        return JspPath.LOGIN_FORM;
+
     }
 }

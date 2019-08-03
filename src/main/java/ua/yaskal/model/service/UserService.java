@@ -10,6 +10,7 @@ import ua.yaskal.model.entity.User;
 import ua.yaskal.model.exptions.WrongPasswordException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserService {
     private final static Logger logger = Logger.getLogger(UserService.class);
@@ -40,6 +41,11 @@ public class UserService {
         } else {
             return user;
         }
+    }
+
+    public List<User> getAllUsers(){
+        UserDao userDao = DaoFactory.getInstance().createUserDao();
+        return userDao.getAll();
     }
 
 }
