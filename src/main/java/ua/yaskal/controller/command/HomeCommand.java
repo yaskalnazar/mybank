@@ -16,7 +16,7 @@ public class HomeCommand implements Command {
 
         User user = (User) Optional.ofNullable(session.getAttribute("user"))
                 .orElse(User.getBuilder().setUserRole(User.Role.GUEST).build());
-        logger.debug("User " + user.getRole());
+        logger.trace("User " + user.getId() + " with role "+ user.getRole() +" redirect to home page");
         switch (user.getRole()) {
             case USER:
                 return "redirect:/mybank/user/home";

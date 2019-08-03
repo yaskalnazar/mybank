@@ -5678,3 +5678,28 @@
 2019-08-03 13:03:25 DEBUG LanguageFilter:23 - Locale is uk
 2019-08-03 13:03:25 DEBUG Servlet:66 - Servlet /mybank/guest/login
 2019-08-03 13:03:25 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 14:07:33 DEBUG AccessFilter:35 - User 0has access to /mybank/
+2019-08-03 14:07:33 WARN  AccessFilter:38 - User 0tries to access /mybank/home;jsessionid=15B680CD61E0D874063284E792F2A4FC without permission
+2019-08-03 14:07:33 DEBUG AccessFilter:35 - User 0has access to /mybank/
+2019-08-03 14:07:33 DEBUG AccessFilter:35 - User 0has access to /mybank/home
+2019-08-03 14:07:33 DEBUG AccessFilter:35 - User 0has access to /mybank/guest/login
+2019-08-03 14:07:45 DEBUG AccessFilter:35 - User 0has access to /mybank/guest/login
+2019-08-03 14:08:35 DEBUG AccessFilter:35 - User 0has access to /mybank/
+2019-08-03 14:08:35 WARN  AccessFilter:38 - User 0tries to access /mybank/home;jsessionid=FD85C328F1FF8D9CC3D74A2023FC3A66 without permission
+2019-08-03 14:08:35 DEBUG AccessFilter:35 - User 0has access to /mybank/
+2019-08-03 14:08:35 DEBUG AccessFilter:35 - User 0has access to /mybank/home
+2019-08-03 14:08:35 DEBUG AccessFilter:35 - User 0has access to /mybank/guest/login
+2019-08-03 14:08:41 DEBUG AccessFilter:35 - User 0has access to /mybank/guest/login
+2019-08-03 14:08:41 WARN  JDBCDaoFactory:25 - ________________---------------------------__________________
+2019-08-03 14:08:41 WARN  JDBCDaoFactory:26 - com.mysql.cj.jdbc.Driver
+2019-08-03 14:08:41 DEBUG JDBCDaoFactory:28 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-03 14:08:41 WARN  LoginCommand:36 - Login attempt with nonexistent email ssdds@sdsd
+2019-08-03 14:12:31 DEBUG AccessFilter:35 - User 0has access to /mybank/
+2019-08-03 14:12:31 WARN  AccessFilter:38 - User 0tries to access /mybank/home;jsessionid=E5C89D02A121E698DE30D2A55D3378AF without permission
+2019-08-03 14:12:32 DEBUG AccessFilter:35 - User 0has access to /mybank/
+2019-08-03 14:12:32 DEBUG AccessFilter:35 - User 0has access to /mybank/home
+2019-08-03 14:12:32 DEBUG AccessFilter:35 - User 0has access to /mybank/guest/login
+2019-08-03 14:12:34 DEBUG AccessFilter:35 - User 0has access to /mybank/guest/login
+2019-08-03 14:12:37 DEBUG AccessFilter:35 - User 0has access to /mybank/guest/login
+2019-08-03 14:12:37 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-03 14:12:37 WARN  LoginCommand:36 - Login attempt with nonexistent email sdsd@sd

@@ -34,6 +34,7 @@ public class RegistrationCommand implements Command {
                 request.getParameter("patronymic"));
 
         if(userRegistrationDTO.getEmail().equals("")){
+            logger.warn("Registration attempt with incorrect email");
             request.setAttribute("wrongEmail", "wrongEmail");
             return JspPath.REG_FORM;
         }
@@ -41,6 +42,7 @@ public class RegistrationCommand implements Command {
 
 
         if(userRegistrationDTO.getName().equals("")){
+            logger.warn("Registration attempt with incorrect name");
             request.setAttribute("wrongName", "wrongName");
             return JspPath.REG_FORM;
         }
@@ -48,6 +50,7 @@ public class RegistrationCommand implements Command {
 
 
         if(userRegistrationDTO.getSurname().equals("")){
+            logger.warn("Registration attempt with incorrect surname");
             request.setAttribute("wrongSurname", "wrongSurname");
             return JspPath.REG_FORM;
         }
@@ -55,12 +58,14 @@ public class RegistrationCommand implements Command {
 
 
         if(userRegistrationDTO.getPatronymic().equals("")){
+            logger.warn("Registration attempt with incorrect patronymic");
             request.setAttribute("wrongPatronymic", "wrongPatronymic");
             return JspPath.REG_FORM;
         }
         request.setAttribute("patronymic", userRegistrationDTO.getPatronymic());
 
         if(userRegistrationDTO.getPassword().equals("")){
+            logger.warn("Registration attempt with incorrect password");
             request.setAttribute("wrongPassword", "wrongPassword");
             return JspPath.REG_FORM;
         }
@@ -69,12 +74,13 @@ public class RegistrationCommand implements Command {
         try {
             userService.addNewUser(userRegistrationDTO);
         } catch (NonUniqueEmailException e){
-            request.setAttribute("wrongEmail", "email alredy exist");
+            logger.warn("Registration attempt with existing email "+userRegistrationDTO.getEmail());
+            request.setAttribute("wrongEmail", "email already exist");
             return JspPath.REG_FORM;
         }
 
+        logger.debug("User "+userRegistrationDTO.getEmail()+" registered successfully");
         request.setAttribute("regSuccessfully", "You successfully registered");
-
         return JspPath.LOGIN_FORM;
     }
 

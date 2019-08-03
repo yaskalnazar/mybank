@@ -11,11 +11,14 @@ import ua.yaskal.model.exptions.NonUniqueEmailException;
 
 import java.sql.*;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class JDBCUserDao implements UserDao {
     private Connection connection;
     private final static Logger logger = Logger.getLogger(JDBCUserDao.class);
     private MapperFactory mapperFactory = new JDBCMapperFactory();
+    private ResourceBundle sqlRequestsBundle = ResourceBundle.getBundle("SQLRequests");
+
 
     public JDBCUserDao(Connection connection) {
         this.connection = connection;
@@ -43,14 +46,15 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public Long addNew(User item) throws NonUniqueEmailException {
-        try (PreparedStatement addUserStatement = connection.prepareStatement(UserRequests.ADD_USER, Statement.RETURN_GENERATED_KEYS)){
+        try (PreparedStatement addUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)){
             addUserStatement.setString(1, item.getEmail());
             addUserStatement.setString(2, item.getName());
             addUserStatement.setString(3, item.getSurname());
             addUserStatement.setString(4, item.getPatronymic());
             addUserStatement.setString(5, item.getRole().getStringRole());
             addUserStatement.setString(6, item.getPassword());
-            logger.error("Add user "+addUserStatement);
+
+            logger.debug("Add new user "+ addUserStatement);
             addUserStatement.execute();
 
             ResultSet resultSet = addUserStatement.getGeneratedKeys();
@@ -71,16 +75,19 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public User getByEmail(String email) {
-        try (PreparedStatement getUserStatement = connection.prepareStatement(UserRequests.GET_USER_BY_EMAIL)) {
+        try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.select.by.email"))) {
             getUserStatement.setString(1, email);
 
+            logger.debug("Select user "+ getUserStatement);
             ResultSet resultSet = getUserStatement.executeQuery();
             if (resultSet.next()) {
                 return mapperFactory.getUserMapper().mapToObject(resultSet);
             } else {
+                logger.debug("No user with email:"+ email);
                 throw new NoSuchUserException();
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

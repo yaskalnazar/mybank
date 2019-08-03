@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LanguageFilter implements Filter {
-    private final Logger logger = Logger.getLogger(LanguageFilter.class);
     @Override
     public void init(FilterConfig filterConfig) {
     }
@@ -20,7 +19,6 @@ public class LanguageFilter implements Filter {
         if (Objects.isNull(langParameter) || langParameter.isEmpty() ) {
             langParameter = (String) httpRequest.getSession().getAttribute("locale");
         }
-        logger.debug("Locale is " + langParameter);
         httpRequest.getSession().setAttribute("locale", langParameter);
         filterChain.doFilter(request, response);
     }

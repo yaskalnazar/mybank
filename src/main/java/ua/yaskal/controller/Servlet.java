@@ -26,15 +26,6 @@ public class Servlet extends HttpServlet {
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
-        /*User user = User.getBuilder()
-                .setUserRole(User.Role.ADMIN)
-                .setEmail("admin@a")
-                .setPassword("admin")
-                .setName("name")
-                .setPatronymic("pan")
-                .setSurname("sfsf")
-                .build();
-        new JDBCDaoFactory().createUserDao().addNew(user);*/
         commands.put("home" , new HomeCommand());
         commands.put("user/home" , new UserHome());
         commands.put("admin/home" , new AdminHome());
@@ -48,22 +39,18 @@ public class Servlet extends HttpServlet {
         commands.put("guest/registration" , new RegistrationCommand());
     }
 
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response)
-            throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
-        //response.getWriter().print("Hello from servlet");
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String path = request.getRequestURI();
-        logger.debug("Servlet " + path);
         path = path.replaceAll(".*/mybank/" , "");
         Command command = commands.getOrDefault(path ,
                 (r) -> "/WEB-INF/jsp/errors/404error.jsp");
@@ -71,10 +58,10 @@ public class Servlet extends HttpServlet {
         String page = command.execute(request);
 
         if (page.contains("redirect:")) {
-            logger.debug("Redirecting to " + page);
+            logger.trace("Redirecting to " + page);
             response.sendRedirect(page.replace("redirect:", ""));
         } else {
-            logger.debug("Forwarding to " + page);
+            logger.trace("Forwarding to " + page);
             request.getRequestDispatcher(page).forward(request,response);
         }
     }

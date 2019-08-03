@@ -23,7 +23,7 @@
 
     <filter>
         <filter-name>AuthFilter</filter-name>
-        <filter-class>ua.yaskal.controller.filters.AuthFilter</filter-class>
+        <filter-class>ua.yaskal.controller.filters.AccessFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>

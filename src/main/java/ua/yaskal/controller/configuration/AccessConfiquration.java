@@ -2,13 +2,10 @@ package ua.yaskal.controller.configuration;
 
 import ua.yaskal.model.entity.User;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 public class AccessConfiquration {
-    private static Map<User.Role, List<String>> accessPages = new HashMap<>();
+    /*private static Map<User.Role, List<String>> accessPages = new HashMap<>();
     static {
         init();
     }
@@ -33,7 +30,7 @@ public class AccessConfiquration {
                 "/mybank/logout",
                 "/mybank/exception"
         ));
-    }
+    }*/
 
     public static boolean isAccessAllowed(String url, User.Role role){
         return url.contains(role.getStringRole()) | url.equals("/mybank/")| url.equals("/mybank/home");

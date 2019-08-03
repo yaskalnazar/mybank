@@ -16,6 +16,7 @@ import java.util.Arrays;
 
 public class LoginCommand implements Command {
     private final static Logger logger = Logger.getLogger(LoginCommand.class);
+
     private ValidationUtil validationUtil = new ValidationUtil();
     private UserService userService = new UserService();
 
@@ -31,18 +32,21 @@ public class LoginCommand implements Command {
         User user;
         try {
              user = userService.loginUser(userLoginDTO);
-        } catch (NoSuchUserException | WrongPasswordException e){
+        } catch (NoSuchUserException e){
+            logger.warn("Login attempt with nonexistent email "+ userLoginDTO.getEmail());
+            request.setAttribute("wrongInput", "wrongInput");
+            return JspPath.LOGIN_FORM;
+        } catch (WrongPasswordException e){
+            logger.warn("Login attempt with wrong password "+ userLoginDTO.getEmail());
             request.setAttribute("wrongInput", "wrongInput");
             return JspPath.LOGIN_FORM;
         }
 
 
 
-
-
         request.getSession().setAttribute("user", user);
         request.getSession().setAttribute("userid", user.getId());
-        logger.debug("User " + user.getRole());
+        logger.debug("User " + user.getId()+" successfully login");
         return "redirect:/mybank/home";
 
 
