@@ -1,10 +1,7 @@
 package ua.yaskal.controller;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.controller.command.Command;
-import ua.yaskal.controller.command.ExceptionCommand;
-import ua.yaskal.controller.command.HomeCommand;
-import ua.yaskal.controller.command.LogOutCommand;
+import ua.yaskal.controller.command.*;
 import ua.yaskal.controller.command.admin.AdminHome;
 import ua.yaskal.controller.command.guest.LoginCommand;
 import ua.yaskal.controller.command.guest.RegistrationCommand;
@@ -49,7 +46,6 @@ public class Servlet extends HttpServlet {
         commands.put("guest/login",
                 new LoginCommand());
         commands.put("guest/registration" , new RegistrationCommand());
-
     }
 
     public void doGet(HttpServletRequest request,

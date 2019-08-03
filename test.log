@@ -4754,3 +4754,927 @@
 2019-08-02 23:08:09 DEBUG AuthFilter:39 - User 0has permission
 2019-08-02 23:08:09 DEBUG Servlet:70 - Servlet /mybank/guest/registration
 2019-08-02 23:08:09 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 23:36:18 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:36:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:36:18 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=AC2E153D7FB69A8C977C48871087EF7D
+2019-08-02 23:36:18 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 23:36:19 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:36:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:36:19 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 23:36:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:36:19 DEBUG Servlet:70 - Servlet /mybank/home
+2019-08-02 23:36:19 DEBUG HomeCommand:19 - User GUEST
+2019-08-02 23:36:19 DEBUG Servlet:78 - Redirecting to redirect:/mybank/guest/login
+2019-08-02 23:36:19 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:36:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:36:19 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:36:19 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:39:55 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:39:55 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:39:55 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:39:56 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=FE2354268890E51B48E1AE8959886079
+2019-08-02 23:39:56 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 23:39:56 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:39:56 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:39:56 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:39:56 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 23:39:56 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:39:56 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:39:56 DEBUG Servlet:70 - Servlet /mybank/home
+2019-08-02 23:39:56 DEBUG HomeCommand:19 - User GUEST
+2019-08-02 23:39:56 DEBUG Servlet:78 - Redirecting to redirect:/mybank/guest/login
+2019-08-02 23:39:56 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:39:56 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:39:56 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:39:56 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:39:56 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:39:59 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:39:59 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:39:59 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:39:59 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:39:59 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:40:00 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:40:00 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:40:00 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:40:00 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:40:00 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:40:01 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 23:40:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:40:01 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:40:01 DEBUG Servlet:70 - Servlet /mybank/guest/registration
+2019-08-02 23:40:01 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 23:40:03 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-02 23:40:03 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:40:03 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:40:03 DEBUG Servlet:70 - Servlet /mybank/guest/registration
+2019-08-02 23:40:03 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-02 23:40:04 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:40:04 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:40:04 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:40:04 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:40:04 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:42:12 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:42:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:42:12 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:42:12 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:42:12 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:44:25 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:44:25 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:44:25 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:44:26 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=5B81F04D49E6D76DBADEC8615CD09B85
+2019-08-02 23:44:26 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 23:44:26 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:44:26 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:44:26 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:44:26 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 23:44:26 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:44:26 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:44:26 DEBUG Servlet:70 - Servlet /mybank/home
+2019-08-02 23:44:26 DEBUG HomeCommand:19 - User GUEST
+2019-08-02 23:44:26 DEBUG Servlet:78 - Redirecting to redirect:/mybank/guest/login
+2019-08-02 23:44:26 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:44:26 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:44:26 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:44:26 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:44:26 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:45:12 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:45:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:45:12 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:45:12 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=52EF71BE0AF91631A14952611DDD9F86
+2019-08-02 23:45:12 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 23:45:12 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:45:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:45:12 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:45:12 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 23:45:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:45:12 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:45:12 DEBUG Servlet:70 - Servlet /mybank/home
+2019-08-02 23:45:12 DEBUG HomeCommand:19 - User GUEST
+2019-08-02 23:45:12 DEBUG Servlet:78 - Redirecting to redirect:/mybank/guest/login
+2019-08-02 23:45:12 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:45:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:45:12 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:45:12 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:45:12 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:52:57 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:52:57 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:52:57 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:52:58 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=567AB6EF26664C1B6A1B48243A0DD58B
+2019-08-02 23:52:58 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 23:52:58 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:52:58 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:52:58 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:52:58 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 23:52:58 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:52:58 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:52:58 DEBUG Servlet:70 - Servlet /mybank/home
+2019-08-02 23:52:58 DEBUG HomeCommand:19 - User GUEST
+2019-08-02 23:52:58 DEBUG Servlet:78 - Redirecting to redirect:/mybank/guest/login
+2019-08-02 23:52:58 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:52:58 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:52:58 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:52:58 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:52:58 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:01 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:01 DEBUG I18nFilter:32 - Locale is en
+2019-08-02 23:53:01 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:01 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:03 DEBUG AuthFilter:37 - URI /mybank/guest/locale=ua
+2019-08-02 23:53:03 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:03 DEBUG I18nFilter:32 - Locale is en
+2019-08-02 23:53:03 DEBUG Servlet:70 - Servlet /mybank/guest/locale=ua
+2019-08-02 23:53:03 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/errors/404error.jsp
+2019-08-02 23:53:27 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:53:27 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:27 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:53:27 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=487000BA9D4ADD8F0DE3FC9E14900751
+2019-08-02 23:53:27 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-02 23:53:28 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-02 23:53:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:28 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:53:28 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-02 23:53:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:28 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:53:28 DEBUG Servlet:70 - Servlet /mybank/home
+2019-08-02 23:53:28 DEBUG HomeCommand:19 - User GUEST
+2019-08-02 23:53:28 DEBUG Servlet:78 - Redirecting to redirect:/mybank/guest/login
+2019-08-02 23:53:28 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:28 DEBUG I18nFilter:32 - Locale is null
+2019-08-02 23:53:28 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:28 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:30 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:30 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:30 DEBUG I18nFilter:32 - Locale is en
+2019-08-02 23:53:30 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:30 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:31 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:31 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:31 DEBUG I18nFilter:32 - Locale is en
+2019-08-02 23:53:31 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:31 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:32 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:32 DEBUG I18nFilter:32 - Locale is ua
+2019-08-02 23:53:32 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:32 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:33 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:33 DEBUG I18nFilter:32 - Locale is ua
+2019-08-02 23:53:33 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:33 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:33 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:33 DEBUG I18nFilter:32 - Locale is ua
+2019-08-02 23:53:33 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:33 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:33 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:33 DEBUG I18nFilter:32 - Locale is ua
+2019-08-02 23:53:33 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:33 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-02 23:53:41 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-02 23:53:41 DEBUG AuthFilter:39 - User 0has permission
+2019-08-02 23:53:41 DEBUG I18nFilter:32 - Locale is us
+2019-08-02 23:53:41 DEBUG Servlet:70 - Servlet /mybank/guest/login
+2019-08-02 23:53:41 DEBUG Servlet:81 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:14:31 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:14:31 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:14:32 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=C6B8C892DB286E83C867224E9CE50F4E
+2019-08-03 12:14:32 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:14:32 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:14:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:14:32 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:14:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:14:32 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:14:32 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:14:32 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:14:32 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:14:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:14:32 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:14:32 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:14:37 DEBUG AuthFilter:37 - URI /mybank//changelanguage
+2019-08-03 12:14:37 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:17:51 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:17:51 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:51 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=7A454C1F58E9872E2614556376E69834
+2019-08-03 12:17:51 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:17:51 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:17:51 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:51 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:17:51 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:51 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:17:51 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:17:51 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:17:51 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:51 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:51 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:51 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:17:54 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:54 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:54 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:54 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:17:55 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:55 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:55 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:55 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:17:55 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:55 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:55 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:56 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:17:56 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:56 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:56 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:56 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:17:57 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:57 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:57 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:57 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:17:58 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:58 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:58 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:58 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:17:59 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:17:59 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:17:59 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:17:59 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:18:00 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:18:00 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:18:00 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:18:00 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:18:01 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:18:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:18:01 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:18:01 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:18:03 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:18:03 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:18:03 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:18:03 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:18:05 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:18:05 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:18:05 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:18:05 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:18:06 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:18:06 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:18:06 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:18:06 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:18:07 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:18:07 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:18:07 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:18:07 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:20:33 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:20:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:20:33 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=1F0BE3144458042883CA902B21E14040
+2019-08-03 12:20:33 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:20:33 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:20:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:20:33 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:20:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:20:33 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:20:33 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:20:33 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:20:33 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:20:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:20:33 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:20:33 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:20:35 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:20:35 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:20:35 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:20:35 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:20:37 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:20:37 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:20:37 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:20:37 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:20:37 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:20:37 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:20:37 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:20:37 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:21:27 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:21:27 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:27 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=A2E80CF68B65E68AD5ED69CD86F33645
+2019-08-03 12:21:27 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:21:28 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:21:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:28 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:21:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:28 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:21:28 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:21:28 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:21:28 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:21:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:28 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:21:28 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:21:31 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:21:31 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:31 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:21:31 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:21:32 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:21:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:32 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:21:32 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:21:33 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:21:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:33 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:21:33 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:21:34 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:21:34 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:34 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:21:34 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:21:34 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:21:34 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:34 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:21:34 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:21:35 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:21:35 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:21:35 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:21:35 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:22:02 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:22:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:02 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=8B7BBE3B07C185CD330DB6B0CBB5E57B
+2019-08-03 12:22:02 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:22:02 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:22:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:02 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:22:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:02 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:22:02 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:22:02 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:22:02 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:22:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:02 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:22:02 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:22:05 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:22:05 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:05 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:22:05 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:22:06 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:22:06 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:06 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:22:06 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:22:50 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:22:50 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:50 DEBUG LanguageFilter:31 - Locale is null
+2019-08-03 12:22:51 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=74E6BB2ADC14A35E33A14DE5EABAC1E7
+2019-08-03 12:22:51 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:22:51 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:22:51 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:51 DEBUG LanguageFilter:31 - Locale is null
+2019-08-03 12:22:51 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:22:51 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:51 DEBUG LanguageFilter:31 - Locale is null
+2019-08-03 12:22:51 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:22:51 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:22:51 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:22:51 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:22:51 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:51 DEBUG LanguageFilter:31 - Locale is null
+2019-08-03 12:22:51 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:22:51 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:22:53 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:22:53 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:53 DEBUG LanguageFilter:31 - Locale is ua
+2019-08-03 12:22:53 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:22:53 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:22:55 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:22:55 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:22:55 DEBUG LanguageFilter:31 - Locale is uk
+2019-08-03 12:22:55 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:22:55 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:34:44 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:34:44 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:34:44 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:34:45 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=3ADA0126ABE4753EB3B2BA2C2037D3C2
+2019-08-03 12:34:45 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:34:45 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:34:45 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:34:45 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:34:45 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:34:45 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:34:45 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:34:45 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:34:45 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:34:45 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:34:45 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:34:45 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:34:45 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:34:45 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:34:45 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:34:48 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:34:48 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:34:48 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:34:48 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:34:48 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:34:49 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:34:49 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:34:49 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:34:49 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:34:49 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:34:50 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:34:50 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:34:50 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:34:50 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:34:50 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:12 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:35:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:12 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:35:12 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=B8D72BAE9572E3E776AEE45303B7F79D
+2019-08-03 12:35:12 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:35:12 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:35:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:12 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:35:12 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:35:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:12 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:35:12 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:35:12 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:35:12 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:35:12 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:12 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:35:12 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:12 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:15 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:15 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:15 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:35:15 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:15 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:16 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:16 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:16 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:35:16 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:16 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:17 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:17 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:17 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:35:17 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:17 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:17 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:17 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:17 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:35:17 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:17 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:18 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:18 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:35:18 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:18 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:18 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:18 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:35:18 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:18 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:19 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:19 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:35:19 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:19 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:20 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:20 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:20 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:35:20 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:20 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:20 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:20 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:20 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:35:20 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:20 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:23 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:35:23 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:23 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:35:23 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:35:23 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:35:31 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:31 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:31 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:35:31 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:31 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:33 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:35:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:33 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:35:33 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:35:33 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:35:34 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:35:34 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:35:34 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:35:34 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:35:34 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:37:29 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:37:29 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:37:29 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:37:29 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=321D1F9E8B9C65CA52359AD3F627ADFC
+2019-08-03 12:37:29 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:37:29 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:37:29 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:37:29 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:37:29 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:37:29 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:37:29 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:37:29 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:37:29 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:37:29 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:37:29 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:37:29 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:37:29 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:37:29 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:37:29 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:37:31 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:37:31 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:37:31 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:37:31 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:37:31 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:37:33 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:37:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:37:33 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:37:33 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:37:33 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:38:13 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:38:13 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:13 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:14 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=D59AD920D34A3D663CF46164AB67228A
+2019-08-03 12:38:14 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:38:14 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:38:14 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:14 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:14 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:38:14 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:14 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:14 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:38:14 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:38:14 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:38:14 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:38:14 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:14 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:14 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:38:14 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:38:31 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:38:31 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:31 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:32 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=4B3E7E77DD5168FED05CC0E50FF792DC
+2019-08-03 12:38:32 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:38:32 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:38:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:32 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:32 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:38:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:32 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:32 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:38:32 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:38:32 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:38:32 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:38:32 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:32 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:32 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:38:32 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:38:36 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:38:36 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:36 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:38:36 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:38:36 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:38:37 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:38:37 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:38:37 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:38:37 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:38:37 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:39:19 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:39:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:19 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:19 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:39:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:19 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:19 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:39:19 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:39:19 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:39:19 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:39:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:19 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:19 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:39:19 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:39:30 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:39:30 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:30 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:30 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:39:30 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:39:33 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:39:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:33 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:33 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:39:33 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:39:36 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:39:36 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:36 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:36 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:39:36 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:39:39 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:39:39 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:39 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:39:39 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:39:39 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:39:45 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:39:46 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:46 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:46 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:39:46 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:46 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:46 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:39:46 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:39:46 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:39:46 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:39:46 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:39:46 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:39:46 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:39:46 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:40:18 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:40:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:18 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:40:18 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=64283B756482386E78634CC828ED0F58
+2019-08-03 12:40:18 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:40:18 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:40:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:18 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:40:18 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:40:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:18 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:40:18 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:40:18 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:40:18 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:40:18 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:40:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:18 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:40:18 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:40:18 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:40:21 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:40:21 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:21 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:40:21 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:40:21 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:40:22 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:40:22 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:22 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:40:22 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:40:22 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:40:23 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:40:23 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:23 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:40:23 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:40:23 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:40:24 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:40:24 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:24 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:40:24 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:40:24 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:40:27 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:40:27 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:27 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:40:27 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:40:27 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:40:28 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:40:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:28 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:40:28 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:40:28 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:40:29 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:40:29 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:29 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:40:29 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:40:29 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:40:30 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:40:30 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:40:30 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:40:30 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:40:30 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:41:02 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:41:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:02 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:41:02 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=85DD212560A0278FC135357D958C22BB
+2019-08-03 12:41:02 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:41:02 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:41:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:02 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:41:02 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:41:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:02 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:41:02 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:41:02 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:41:02 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:41:02 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:41:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:02 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:41:02 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:41:02 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:41:04 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:41:04 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:04 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:41:04 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:41:04 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:41:07 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:41:07 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:07 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:41:07 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:41:07 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:41:09 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:41:09 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:09 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:41:09 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:41:09 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:41:11 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:41:11 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:11 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:41:11 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:41:11 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:41:14 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:41:14 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:14 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:41:14 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:41:14 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:41:17 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:41:17 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:41:17 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:41:17 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:41:17 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:42:00 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:42:00 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:00 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:00 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=BFB86A21B79DC1C2258FF44193532AB9
+2019-08-03 12:42:00 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:42:01 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:42:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:01 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:01 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:42:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:01 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:01 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:42:01 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:42:01 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:42:01 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:42:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:01 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:01 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:42:01 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:42:25 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:42:25 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:25 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:25 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=D10C389DC7BC3105ACC176C6B4149B0E
+2019-08-03 12:42:25 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 12:42:25 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 12:42:25 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:25 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:25 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 12:42:25 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:25 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:25 DEBUG Servlet:69 - Servlet /mybank/home
+2019-08-03 12:42:25 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 12:42:26 DEBUG Servlet:77 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 12:42:26 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:42:26 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:26 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 12:42:26 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:42:26 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:42:28 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 12:42:28 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:28 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:42:28 DEBUG Servlet:69 - Servlet /mybank/guest/login
+2019-08-03 12:42:28 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 12:42:30 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:42:30 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:30 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 12:42:30 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:42:30 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 12:42:31 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 12:42:31 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 12:42:31 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 12:42:31 DEBUG Servlet:69 - Servlet /mybank/guest/registration
+2019-08-03 12:42:31 DEBUG Servlet:80 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:01:36 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 13:01:36 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:01:36 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:01:37 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=C615647A87FBFE4EFA278A08E2AE552F
+2019-08-03 13:01:37 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 13:01:37 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 13:01:37 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:01:37 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:01:37 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 13:01:37 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:01:37 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:01:37 DEBUG Servlet:66 - Servlet /mybank/home
+2019-08-03 13:01:37 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 13:01:37 DEBUG Servlet:74 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 13:01:37 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:01:37 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:01:37 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:01:37 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:01:37 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:01:40 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:01:40 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:01:40 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:01:40 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:01:40 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:01:42 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:01:42 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:01:42 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:01:42 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:01:42 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:02:19 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 13:02:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:19 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:02:19 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=9CC5947A08300ECD13ABB33BFC9D23A3
+2019-08-03 13:02:19 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 13:02:19 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 13:02:19 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:19 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:02:20 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 13:02:20 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:20 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:02:20 DEBUG Servlet:66 - Servlet /mybank/home
+2019-08-03 13:02:20 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 13:02:20 DEBUG Servlet:74 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 13:02:20 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:02:20 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:20 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:02:20 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:02:20 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:02:21 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:02:21 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:21 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:02:21 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:02:21 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:02:24 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:02:24 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:24 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:02:24 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:02:24 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:02:27 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:02:27 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:27 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:02:27 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:02:27 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:02:29 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:02:29 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:29 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:02:29 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:02:29 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:02:33 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:02:33 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:33 DEBUG LanguageFilter:23 - Locale is en
+2019-08-03 13:02:33 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:02:33 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:02:34 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:02:34 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:02:34 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:02:34 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:02:34 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:03:01 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 13:03:01 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:01 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:03:02 DEBUG AuthFilter:37 - URI /mybank/home;jsessionid=F41F279129A57FF7C350B5532B8460E7
+2019-08-03 13:03:02 DEBUG AuthFilter:42 - User 0does not have permission
+2019-08-03 13:03:02 DEBUG AuthFilter:37 - URI /mybank/
+2019-08-03 13:03:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:02 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:03:02 DEBUG AuthFilter:37 - URI /mybank/home
+2019-08-03 13:03:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:02 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:03:02 DEBUG Servlet:66 - Servlet /mybank/home
+2019-08-03 13:03:02 DEBUG HomeCommand:19 - User GUEST
+2019-08-03 13:03:02 DEBUG Servlet:74 - Redirecting to redirect:/mybank/guest/login
+2019-08-03 13:03:02 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:03:02 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:02 DEBUG LanguageFilter:23 - Locale is null
+2019-08-03 13:03:02 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:03:02 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:03:05 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:03:05 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:05 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:03:05 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:03:05 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:03:06 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:03:06 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:06 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:03:06 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:03:06 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:03:09 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:03:09 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:09 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:03:09 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:03:09 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:03:12 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:03:12 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:12 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:03:12 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:03:12 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:03:18 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:03:18 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:18 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:03:18 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:03:18 DEBUG JDBCDaoFactory:24 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-03 13:03:19 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp
+2019-08-03 13:03:23 DEBUG AuthFilter:37 - URI /mybank/guest/registration
+2019-08-03 13:03:23 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:23 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:03:23 DEBUG Servlet:66 - Servlet /mybank/guest/registration
+2019-08-03 13:03:23 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/regForm.jsp
+2019-08-03 13:03:25 DEBUG AuthFilter:37 - URI /mybank/guest/login
+2019-08-03 13:03:25 DEBUG AuthFilter:39 - User 0has permission
+2019-08-03 13:03:25 DEBUG LanguageFilter:23 - Locale is uk
+2019-08-03 13:03:25 DEBUG Servlet:66 - Servlet /mybank/guest/login
+2019-08-03 13:03:25 DEBUG Servlet:77 - Forwarding to /WEB-INF/jsp/guest/loginForm.jsp

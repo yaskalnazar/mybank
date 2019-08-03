@@ -1,7 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:setBundle basename="messages"/>
+
+
+
+
 <html>
 <head>
     <title>Registration</title>
@@ -24,24 +29,24 @@
                         Wrong Input please try again
                 </div>
             </c:if>
-            <h2 class="page-header">Login</h2>
+            <h2 class="page-header"><fmt:message key="page.message.login"/></h2>
             <form method="post" autocomplete="off" action="/mybank/guest/login">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email"><fmt:message key="page.message.email"/></label>
                     <input id="email" class="form-control"
-                           type="email" name="email" placeholder="Email" value="${email}">
+                           type="email" name="email" placeholder="<fmt:message key="page.message.email"/>" value="${email}">
 
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password"><fmt:message key="page.message.password"/></label>
                     <input id="password" class="form-control"
-                           type="password" name="password" placeholder="Password">
+                           type="password" name="password" placeholder="<fmt:message key="page.message.password"/>">
                 </div>
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
-                    Login
+                    <fmt:message key="page.message.login"/>
                 </button>
                 <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/registration" role="button">
-                    Register
+                    <fmt:message key="page.message.registration"/>
                 </a>
             </form>
         </div>
