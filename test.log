@@ -47,3 +47,42 @@
 2019-08-03 14:38:01 DEBUG JDBCDaoFactory:23 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
 2019-08-03 14:38:01 DEBUG JDBCUserDao:80 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test1@t'
 2019-08-03 14:38:01 WARN  LoginCommand:40 - Login attempt with wrong password (email: test1@t)
+2019-08-03 15:23:41 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-03 15:23:42 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=74A179AAE04F74352D4CD104EF25416E without permission
+2019-08-03 15:23:42 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-03 15:23:42 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-03 15:23:42 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-03 15:23:45 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-03 15:23:46 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-03 15:24:12 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-03 15:24:12 DEBUG JDBCDaoFactory:23 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-03 15:24:12 DEBUG JDBCUserDao:56 - Add new user com.mysql.cj.jdbc.ClientPreparedStatement: insert into users ( user_email, user_name, user_surname, user_patronymic, user_role, user_password) values ('eewrwt@sdfdf','eewrwt@sdfdf','eewrwt@sdfdf','eewrwt@sdfdf','user','eb06c783516ef6f84e22b3161980aa585364c4b64d3431cbef09dce64066dfed')
+2019-08-03 15:24:12 ERROR JDBCUserDao:67 - User was not added: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'user_password' at row 1
+2019-08-03 15:26:38 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-03 15:26:39 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=B212B260C2A4D68D6923E173121D260C without permission
+2019-08-03 15:26:39 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-03 15:26:39 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-03 15:26:39 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-03 15:26:40 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-03 15:26:47 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-03 15:26:47 DEBUG JDBCDaoFactory:23 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-03 15:26:47 DEBUG JDBCUserDao:56 - Add new user com.mysql.cj.jdbc.ClientPreparedStatement: insert into users ( user_email, user_name, user_surname, user_patronymic, user_role, user_password_hash) values ('password_hash@s','password_hash@s','password_hash@s','password_hash@s','user','c3bdd8a6ea21a3377a28d5864c7476f421c1c297f1b1d3ebc381f60af296c3a7')
+2019-08-03 15:26:47 DEBUG RegistrationCommand:82 - User password_hash@s registered successfully
+2019-08-03 15:26:59 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-03 15:26:59 DEBUG JDBCDaoFactory:23 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-03 15:26:59 DEBUG JDBCUserDao:80 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'password_hash@s'
+2019-08-03 15:26:59 WARN  LoginCommand:40 - Login attempt with wrong password (email: password_hash@s)
+2019-08-03 15:27:01 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-03 15:27:01 DEBUG JDBCDaoFactory:23 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-03 15:27:01 DEBUG JDBCUserDao:80 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'password_hash@s'
+2019-08-03 15:27:01 DEBUG LoginCommand:49 - User 49 successfully login
+2019-08-03 15:27:01 DEBUG AccessFilter:35 - User 49 has access to /mybank/home
+2019-08-03 15:27:01 DEBUG AccessFilter:35 - User 49 has access to /mybank/user/home
+2019-08-03 15:28:51 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-03 15:28:52 INFO  Servlet:25 - ----------------------------------------------------------
+2019-08-03 15:28:52 INFO  Servlet:26 - Starting project
+2019-08-03 15:28:52 INFO  Servlet:27 - ----------------------------------------------------------
+2019-08-03 15:28:52 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=DB323BCB11C181FDB904FACDB52CE6AF without permission
+2019-08-03 15:28:52 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-03 15:28:52 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-03 15:28:52 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login

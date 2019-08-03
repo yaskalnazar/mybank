@@ -1,5 +1,6 @@
 package ua.yaskal.model.service;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.DaoFactory;
 import ua.yaskal.model.dao.UserDao;
@@ -34,7 +35,7 @@ public class UserService {
         UserDao userDao = DaoFactory.getInstance().createUserDao();
         User user = userDao.getByEmail(userDTO.getEmail());
 
-        if (!userDTO.getPassword().equals(user.getPassword())){
+        if (!DigestUtils.sha256Hex(userDTO.getPassword()).equals(user.getPassword())){
             throw new WrongPasswordException();
         } else {
             return user;

@@ -1,5 +1,6 @@
 package ua.yaskal.controller.command.guest;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
@@ -25,10 +26,9 @@ public class RegistrationCommand implements Command {
             return JspPath.REG_FORM;
         }
 
-
         UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO(
                 request.getParameter("email"),
-                request.getParameter("password"),
+                DigestUtils.sha256Hex(request.getParameter("password")),
                 request.getParameter("name"),
                 request.getParameter("surname"),
                 request.getParameter("patronymic"));

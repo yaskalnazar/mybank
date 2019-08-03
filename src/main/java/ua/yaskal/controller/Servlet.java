@@ -22,7 +22,9 @@ public class Servlet extends HttpServlet {
     private Map<String, Command> commands = new HashMap<>();
 
     public void init(ServletConfig servletConfig){
-
+        logger.info("----------------------------------------------------------");
+        logger.info("Starting project");
+        logger.info("----------------------------------------------------------");
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());

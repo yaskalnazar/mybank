@@ -12,7 +12,7 @@ public class JDBCUserMapper implements Mapper<User> {
         return User.getBuilder()
                 .setId(resultSet.getLong("user_id"))
                 .setEmail(resultSet.getString("user_email"))
-                .setPassword(resultSet.getString("user_password"))
+                .setPassword(resultSet.getString("user_password_hash"))
                 .setUserRole(User.Role.valueOf(resultSet.getString("user_role").toUpperCase()))
                 .setName(resultSet.getString("user_name"))
                 .setSurname(resultSet.getString("user_surname"))
