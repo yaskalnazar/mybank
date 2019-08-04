@@ -3,6 +3,7 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.CreditRequestDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.exceptions.NoSuchUserException;
@@ -129,5 +130,23 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
             logger.error("Can not change status: " + e);
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<CreditRequest> getAllByApplicantId(long applicantId) {
+        List<CreditRequest> creditRequests = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id"))) {
+            statement.setString(1, applicantId+"");
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get user credit requests: " + e);
+            throw new RuntimeException(e);
+        }
+        return creditRequests;
     }
 }

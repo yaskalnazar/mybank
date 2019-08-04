@@ -67,7 +67,7 @@ public class JDBCCreditDAO implements CreditDAO {
             statement.setString(5, item.getAccountStatus().name());
             statement.setString(6, item.getCreditLimit().toString());
             statement.setString(7, item.getCreditRate().toString());
-            statement.setString(8, item.getCreditLimit().toString());
+            statement.setString(8, item.getAccruedInterest().toString());
 
 
             logger.debug("Add new Credit Account "+ statement);

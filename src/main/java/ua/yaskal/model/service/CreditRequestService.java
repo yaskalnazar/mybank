@@ -44,4 +44,9 @@ public class CreditRequestService {
     public void changeStatus(CreditRequest.CreditRequestStatus status, long id) {
         DaoFactory.getInstance().createCreditRequestDAO().changeStatus(status, id);
     }
+
+    public  List<CreditRequest> getAllByApplicantId(long applicantId){
+        return DaoFactory.getInstance().createCreditRequestDAO().getAllByApplicantId(applicantId);
+    }
+
 }

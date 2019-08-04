@@ -50,6 +50,14 @@ public class CreditAccount extends Account {
         this.accruedInterest = accruedInterest;
     }
 
+    public AccountStatus getAccountStatus() {
+        return super.getAccountStatus();
+    }
+
+    public void setAccountStatus(AccountStatus accountStatus) {
+        super.setAccountStatus(accountStatus);
+    }
+
     public static class CreditAccountBuilder {
         private long id;
         private BigDecimal balance;
