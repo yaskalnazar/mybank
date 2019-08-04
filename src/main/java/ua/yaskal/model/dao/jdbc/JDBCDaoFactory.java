@@ -1,6 +1,7 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.DaoFactory;
 import ua.yaskal.model.dao.DepositDAO;
 import ua.yaskal.model.dao.UserDAO;
@@ -26,6 +27,11 @@ public class JDBCDaoFactory extends DaoFactory {
 
     @Override
     public DepositDAO createDepositDAO() { return new JDBCDepositDAO(getConnection(),sqlRequestsBundle, mapperFactory);}
+
+    @Override
+    public CreditDAO createCreditDAO() {
+        return new JDBCCreditDAO(getConnection(),sqlRequestsBundle, mapperFactory);
+    }
 
     private Connection getConnection() {
         try {

@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class DepositService {
-    private UserService userService = new UserService();
 
 
 
@@ -35,5 +34,10 @@ public class DepositService {
     public List<DepositAccount> getAll(){
         DepositDAO depositDAO = DaoFactory.getInstance().createDepositDAO();
         return depositDAO.getAll();
+    }
+
+    public List<DepositAccount> getAllByOwnerId(long ownerId){
+        DepositDAO depositDAO = DaoFactory.getInstance().createDepositDAO();
+        return depositDAO.getAllByOwnerId(ownerId);
     }
 }

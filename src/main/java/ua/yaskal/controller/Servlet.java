@@ -5,6 +5,7 @@ import ua.yaskal.controller.command.*;
 import ua.yaskal.controller.command.admin.AdminHomeCommand;
 import ua.yaskal.controller.command.admin.AllDepositsCommand;
 import ua.yaskal.controller.command.admin.AllUsersCommand;
+import ua.yaskal.controller.command.guest.AllUsersAccountsCommand;
 import ua.yaskal.controller.command.guest.LoginCommand;
 import ua.yaskal.controller.command.guest.RegistrationCommand;
 import ua.yaskal.controller.command.user.DepositOpen;
@@ -48,6 +49,8 @@ public class Servlet extends HttpServlet {
         commands.put("admin/account/all/deposits" , new AllDepositsCommand());
 
         commands.put("user/account/deposit/open", new DepositOpen());
+        commands.put("user/account/all", new AllUsersAccountsCommand());
+
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

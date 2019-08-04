@@ -15,7 +15,7 @@
                 <a class="nav-link" href="/mybank/admin/all_users"><fmt:message key="page.message.all.users"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/admin/account/all/deposits"><fmt:message key="page.message.all.deposites"/></a>
+                <a class="nav-link" href="/mybank/admin/account/all/deposits"><fmt:message key="page.message.all.deposits"/></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mybank/admin/credit_requests/pending"><fmt:message key="page.message.credit.requests"/></a>
