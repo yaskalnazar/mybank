@@ -15,13 +15,9 @@
 <div class="container" style="margin-top: 60px">
     <div class="d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
-            <c:if test="${not empty creditRequest}">
                 <jsp:include page="../parts/creditRequestMainInfo.jsp"/>
-            </c:if>
-            <c:if test="${not empty applicant}">
                 <c:set var="user" value="${applicant}" scope="request"/>
                 <jsp:include page="../parts/userMainInfo.jsp"/>
-            </c:if>
 
 
         </div>
@@ -35,7 +31,8 @@
                     <fmt:message key="page.message.${answer}"/>
                 </div>
             </c:if>
-            <c:if test="${empty answer}">
+            <c:if test="${empty answer and
+                creditRequest.getCreditRequestStatus().toString().equals('PENDING')}">
                 <form method="post" style="margin-bottom: 30px" name="form" autocomplete="off">
                     <button name="answer" value="approved" type="submit" class="btn btn-success"
                             style="margin-top:30px">
