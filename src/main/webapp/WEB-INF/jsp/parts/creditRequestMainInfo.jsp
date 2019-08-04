@@ -4,12 +4,12 @@
 <fmt:setBundle basename="messages"/>
 
 <div>
-    <h3><fmt:message key="page.message.main.info"/>:</h3>
+    <h3><fmt:message key="page.message.credit.request.info"/>:</h3>
     <table class="table table-bordered ">
         <tbody>
         <tr>
             <th style="width: 30%"><fmt:message key="page.message.id"/>:</th>
-            <td>$${creditRequest.getId()}</td>
+            <td>${creditRequest.getId()}</td>
         </tr>
         <tr>
             <th><fmt:message key="page.message.applicant.id"/>:</th>

@@ -26,7 +26,21 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public User getById(long id) {
-        return null;
+        try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.select.by.id"))) {
+            getUserStatement.setString(1, id+"");
+
+            logger.debug("Select user "+ getUserStatement);
+            ResultSet resultSet = getUserStatement.executeQuery();
+            if (resultSet.next()) {
+                return mapperFactory.getUserMapper().mapToObject(resultSet);
+            } else {
+                logger.debug("No user with id:"+ id);
+                throw new NoSuchUserException();
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

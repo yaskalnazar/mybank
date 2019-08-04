@@ -22,6 +22,7 @@ public class LoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         if (!validationUtil.isСontain(request, Arrays.asList("email", "password"))){
             return JspPath.LOGIN_FORM;
         }

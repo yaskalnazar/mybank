@@ -16,6 +16,13 @@
     <div class="d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
             <jsp:include page="../parts/creditRequestMainInfo.jsp"/>
+            <c:set var="user" value="${applicant}" scope="request"/>
+            <jsp:include page="../parts/userMainInfo.jsp"/>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <h3><fmt:message key="page.message.applicant.credit.history"/>:</h3>
+            <jsp:include page="../parts/creditesTable.jsp"/>
+
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
 <fmt:setBundle basename="messages"/>
 
 <div>
-    <h3><fmt:message key="page.message.main.info"/>:</h3>
+    <h3><fmt:message key="page.message.user.main.info"/>:</h3>
     <table class="table table-bordered ">
         <tbody>
         <tr>
