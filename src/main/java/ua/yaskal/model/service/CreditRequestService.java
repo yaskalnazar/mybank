@@ -35,4 +35,9 @@ public class CreditRequestService {
         CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
         return creditRequestDAO.getAllByStatus(status);
     }
+
+    public CreditRequest getById(long id){
+        CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
+        return creditRequestDAO.getById(id);
+    }
 }

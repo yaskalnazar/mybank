@@ -34,7 +34,7 @@
                 </div>
             </c:if>
             <h2 class="page-header"><fmt:message key="page.message.login"/></h2>
-            <form method="post" autocomplete="off" action="/mybank/guest/login">
+            <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/guest/login">
                 <div class="form-group">
                     <label for="email"><fmt:message key="page.message.email"/></label>
                     <input id="email" class="form-control"
@@ -49,7 +49,7 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
                     <fmt:message key="page.message.login"/>
                 </button>
-                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/registration" role="button">
+                <a class="btn btn-secondary" style="margin-top:30px" href="${pageContext.request.contextPath}/guest/registration" role="button">
                     <fmt:message key="page.message.registration"/>
                 </a>
             </form>

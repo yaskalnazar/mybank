@@ -5,6 +5,7 @@ import ua.yaskal.model.dao.CreditRequestDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.DepositAccount;
+import ua.yaskal.model.exceptions.NoSuchUserException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +26,21 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
     @Override
     public CreditRequest getById(long id) {
-        return null;
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.select.by.id"))) {
+            statement.setString(1, id+"");
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return mapperFactory.getCreditRequestMapper().mapToObject(resultSet);
+            } else {
+                logger.warn("No credit request with id:"+ id);
+                throw new NoSuchUserException();
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get credit request: " + e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

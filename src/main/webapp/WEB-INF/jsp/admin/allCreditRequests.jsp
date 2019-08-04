@@ -49,7 +49,8 @@
             <tbody>
             <c:forEach items="${creditRequests}" var="creditRequest">
                 <tr>
-                    <td>${creditRequest.getId()}</td>
+                    <td><a href="${pageContext.request.contextPath}/admin/credit_request?id=${creditRequest.getId()}">
+                            ${creditRequest.getId()}</a></td>
                     <td>${creditRequest.getApplicantId()}</td>
                     <td>${creditRequest.getCreditRate()}</td>
                     <td>${creditRequest.getCreditLimit()}</td>

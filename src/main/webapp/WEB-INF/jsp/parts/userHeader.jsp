@@ -4,21 +4,21 @@
 <fmt:setBundle basename="messages"/>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/mybank">mybank</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}">mybank</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/home"><fmt:message key="page.message.home"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/home"><fmt:message key="page.message.home"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/all"><fmt:message key="page.message.my.accounts"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/account/all"><fmt:message key="page.message.my.accounts"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/deposit/open"><fmt:message key="page.message.deposit.open"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/account/deposit/open"><fmt:message key="page.message.deposit.open"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mybank/user/account/credit/open"><fmt:message key="page.message.credit.open"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/account/credit/open"><fmt:message key="page.message.credit.open"/></a>
             </li>
         </ul>
     </div>

@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h2 class="page-header"><fmt:message key="page.message.registration"/></h2>
-            <form method="post" autocomplete="off" action="/mybank/guest/registration">
+            <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/guest/registration">
                 <div class="form-group">
                     <label for="email"><fmt:message key="page.message.email"/></label>
                     <input id="email" class="form-control"
@@ -64,7 +64,7 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
                     <fmt:message key="page.message.registration"/>
                 </button>
-                <a class="btn btn-secondary" style="margin-top:30px" href="/mybank/guest/login" role="button">
+                <a class="btn btn-secondary" style="margin-top:30px" href="${pageContext.request.contextPath}/guest/login" role="button">
                     <fmt:message key="page.message.login"/>
                 </a>
             </form>

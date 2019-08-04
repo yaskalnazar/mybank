@@ -10,8 +10,8 @@ import ua.yaskal.model.service.CreditRequestService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
-public class GetCreditRequestCommand implements Command {
-    private final static Logger logger = Logger.getLogger(GetCreditRequestCommand.class);
+public class GetCreditRequestsCommand implements Command {
+    private final static Logger logger = Logger.getLogger(GetCreditRequestsCommand.class);
     CreditRequestService creditRequestService = new CreditRequestService();
     private ValidationUtil validationUtil = new ValidationUtil();
 

@@ -5,7 +5,7 @@
 <fmt:setBundle basename="messages"/>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/mybank">mybank</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}">mybank</a>
     <span style="float: right">
          <fmt:message key="page.message.language"/>: <a href="?locale=en">Eng</a> | <a href="?locale=uk">Укр</a>
     </span>

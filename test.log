@@ -2024,3 +2024,189 @@
 2019-08-04 15:59:19 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
 2019-08-04 15:59:19 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
 2019-08-04 15:59:19 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 16:47:58 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 16:47:59 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 16:47:59 INFO  Servlet:21 - Starting project
+2019-08-04 16:47:59 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 16:47:59 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=E845712F3FB5F9922BC269EC448752C5 without permission
+2019-08-04 16:47:59 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 16:47:59 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 16:47:59 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 16:58:18 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 16:58:18 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 16:58:18 INFO  Servlet:21 - Starting project
+2019-08-04 16:58:18 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 16:58:18 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=377365412A3451ECE17921F9006D99D6 without permission
+2019-08-04 16:58:18 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 16:58:18 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 16:58:18 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 16:58:26 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 16:58:26 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 16:58:26 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 16:58:26 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 16:58:26 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 16:58:26 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 16:58:28 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 16:58:28 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 16:58:29 DEBUG AccessFilter:35 - User 51 has access to /mybank/
+2019-08-04 16:58:29 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 16:58:29 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 16:58:39 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 16:58:39 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=CD46660E6358042FF875BBA86DDA8DCE without permission
+2019-08-04 16:59:04 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 16:59:04 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 16:59:04 INFO  Servlet:21 - Starting project
+2019-08-04 16:59:04 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 16:59:04 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=89AB073685E545EC229E2B80E6CD5916 without permission
+2019-08-04 16:59:05 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 16:59:05 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 16:59:05 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 16:59:25 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 16:59:25 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 16:59:25 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 16:59:25 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 16:59:25 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 16:59:25 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 16:59:27 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 16:59:27 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:00:15 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:00:15 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:01:14 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:01:15 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 17:01:15 INFO  Servlet:21 - Starting project
+2019-08-04 17:01:15 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 17:01:15 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=C293A837AE780A28D41382A0AA1DF0EC without permission
+2019-08-04 17:01:15 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:01:15 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 17:01:15 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:01:21 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:01:21 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:01:21 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 17:01:21 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 17:01:21 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 17:01:21 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:01:23 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:01:23 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/all_users
+2019-08-04 17:01:23 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:01:25 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/account/all/deposits
+2019-08-04 17:01:25 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:01:26 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:01:26 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:01:27 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:01:27 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:01:29 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:01:29 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:01:30 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:01:30 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:35:08 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:35:08 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 17:35:08 INFO  Servlet:21 - Starting project
+2019-08-04 17:35:08 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 17:35:08 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=D8C285322FD3B428666D419273DA6B33 without permission
+2019-08-04 17:35:09 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:35:09 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 17:35:09 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:35:15 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:35:15 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:35:15 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 17:35:15 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 17:35:15 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 17:35:15 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:35:17 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:35:17 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:35:18 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request
+2019-08-04 17:36:08 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:36:08 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 17:36:08 INFO  Servlet:21 - Starting project
+2019-08-04 17:36:08 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 17:36:08 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=7DE2582E850AC7EBE0A29DC20DDF6ED7 without permission
+2019-08-04 17:36:09 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:36:09 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 17:36:09 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:36:16 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:36:16 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:36:17 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 17:36:17 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 17:36:17 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 17:36:17 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:36:18 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:36:18 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:36:20 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request
+2019-08-04 17:37:10 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:37:11 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 17:37:11 INFO  Servlet:21 - Starting project
+2019-08-04 17:37:11 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 17:37:11 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=C2AAD14C9D637F1C106DFD0E084AFB13 without permission
+2019-08-04 17:37:11 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:37:11 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 17:37:11 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:37:17 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:37:17 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:37:17 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 17:37:17 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 17:37:17 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 17:37:17 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:37:19 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:37:19 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:37:20 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request
+2019-08-04 17:37:20 WARN  CreditRequestCommand:25 - 4
+2019-08-04 17:38:03 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:38:03 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 17:38:03 INFO  Servlet:21 - Starting project
+2019-08-04 17:38:03 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 17:38:03 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=AAD6B4C3F38C7A108580455FCAF62E91 without permission
+2019-08-04 17:38:03 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:38:03 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 17:38:03 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:38:09 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:38:09 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:38:09 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 17:38:09 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 17:38:09 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 17:38:09 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:38:10 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:38:10 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:38:13 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request
+2019-08-04 17:38:13 WARN  CreditRequestCommand:25 - 1
+2019-08-04 17:38:13 WARN  CreditRequestCommand:32 - [Ljava.lang.StackTraceElement;@3bf85dd6
+2019-08-04 17:39:44 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:39:44 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 17:39:44 INFO  Servlet:21 - Starting project
+2019-08-04 17:39:44 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 17:39:44 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=FBD9C50227B54ABB01B023976FD288C5 without permission
+2019-08-04 17:39:45 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:39:45 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 17:39:45 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:39:53 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:39:53 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:39:53 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 17:39:53 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 17:39:53 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 17:39:53 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:39:56 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:39:56 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:39:57 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request
+2019-08-04 17:39:57 WARN  CreditRequestCommand:25 - 1
+2019-08-04 17:39:57 WARN  CreditRequestCommand:33 - 
+2019-08-04 17:41:06 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:41:06 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-04 17:41:06 INFO  Servlet:21 - Starting project
+2019-08-04 17:41:06 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-04 17:41:06 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=E3AD53B610292C7A0F0B23BB84B7BB79 without permission
+2019-08-04 17:41:07 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 17:41:07 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 17:41:07 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:41:15 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 17:41:15 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:41:15 DEBUG JDBCUserDAO:94 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'admin@a'
+2019-08-04 17:41:15 DEBUG LoginCommand:49 - User 51 successfully login
+2019-08-04 17:41:15 DEBUG AccessFilter:35 - User 51 has access to /mybank/home
+2019-08-04 17:41:15 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/home
+2019-08-04 17:41:16 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request/all
+2019-08-04 17:41:16 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:41:19 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request
+2019-08-04 17:41:19 WARN  CreditRequestCommand:25 - 1
+2019-08-04 17:41:19 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 17:41:24 DEBUG AccessFilter:35 - User 51 has access to /mybank/admin/credit_request
+2019-08-04 17:41:24 WARN  CreditRequestCommand:25 - 4
+2019-08-04 17:41:24 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
