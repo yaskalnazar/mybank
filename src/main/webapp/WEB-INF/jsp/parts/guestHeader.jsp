@@ -7,7 +7,8 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="${pageContext.request.contextPath}">mybank</a>
     <span style="float: right">
-         <fmt:message key="page.message.language"/>: <a href="?locale=en&${pageContext.request.queryString}">Eng</a> | <a href="?locale=uk&${pageContext.request.queryString}">Укр</a>
+         <fmt:message key="page.message.language"/>: <a href="?locale=en&${pageContext.request.queryString}">Eng</a> |
+        <a href="?locale=uk&${pageContext.request.queryString}">Укр</a>
     </span>
 </nav>
 

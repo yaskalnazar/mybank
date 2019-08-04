@@ -113,4 +113,21 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         }
         return creditRequests;
     }
+
+    @Override
+    public boolean changeStatus(CreditRequest.CreditRequestStatus status, long id) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.change.status"))) {
+            statement.setString(1, status.name());
+            statement.setString(2, id+"");
+
+            logger.debug("Change credit request (id="+ id+") status to "+status.name());
+            statement.execute();
+
+            return true;
+        } catch (SQLException e) {
+            logger.error("Can not change status: " + e);
+            throw new RuntimeException(e);
+        }
+    }
 }

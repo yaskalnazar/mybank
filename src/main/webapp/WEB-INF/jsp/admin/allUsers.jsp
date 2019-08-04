@@ -12,7 +12,7 @@
 </head>
 <body>
 <jsp:include page="../parts/adminHeader.jsp"/>
-<div class="mr-5">
+<div class="mx-1">
     <c:if test="${not empty users}">
         <h1><fmt:message key="page.message.all.users"/>:</h1>
         <table class="table">

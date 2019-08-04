@@ -6,6 +6,7 @@ import ua.yaskal.model.dao.DaoFactory;
 import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dto.UserLoginDTO;
 import ua.yaskal.model.dto.UserRegistrationDTO;
+import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.exceptions.WrongPasswordException;
 
@@ -52,4 +53,6 @@ public class UserService {
         UserDAO userDao = DaoFactory.getInstance().createUserDAO();
         return userDao.getById(id);
     }
+
+
 }

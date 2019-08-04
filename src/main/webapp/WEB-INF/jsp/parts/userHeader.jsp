@@ -26,7 +26,8 @@
         <button class="btn btn-secondary mr-2" onclick="window.location.href = '/mybank/user/logout';">
                     <fmt:message key="page.message.logout"/>
          </button>
-         <fmt:message key="page.message.language"/>: <a href="?locale=en&${pageContext.request.queryString}">Eng</a> | <a href="?locale=uk&${pageContext.request.queryString}">Укр</a>
+         <fmt:message key="page.message.language"/>: <a href="?locale=en&${pageContext.request.queryString}">Eng</a> |
+        <a href="?locale=uk&${pageContext.request.queryString}">Укр</a>
     </span>
 </nav>
 

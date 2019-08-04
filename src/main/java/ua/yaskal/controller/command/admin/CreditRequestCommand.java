@@ -53,11 +53,19 @@ public class CreditRequestCommand implements Command {
         String answer = request.getParameter("answer");
 
         if (answer.equals("approved")) {
-            CreditAccount creditAccount = creditService.addNew(creditRequest);
+            creditRequestService.changeStatus(CreditRequest.CreditRequestStatus.APPROVED,
+                    creditRequest.getId());
+
             creditRequest.setCreditRequestStatus(CreditRequest.CreditRequestStatus.APPROVED);
+
+            CreditAccount creditAccount = creditService.addNew(creditRequest);
+
             logger.debug("Credit account " + creditAccount.getId() + " open");
             request.setAttribute("answer", "approved");
         } else if (answer.equals("rejected")) {
+            creditRequestService.changeStatus(CreditRequest.CreditRequestStatus.REJECTED,
+                    creditRequest.getId());
+
             creditRequest.setCreditRequestStatus(CreditRequest.CreditRequestStatus.REJECTED);
             request.setAttribute("answer", "rejected");
 

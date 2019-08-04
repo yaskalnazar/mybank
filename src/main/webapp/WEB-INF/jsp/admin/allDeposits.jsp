@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="../parts/adminHeader.jsp"/>
 
-<div class="mr-5">
+<div class="mx-1">
     <c:if test="${deposits!=null}">
         <h3><fmt:message key="page.message.all.deposits"/>:</h3>
         <jsp:include page="../parts/depositsTable.jsp"/>

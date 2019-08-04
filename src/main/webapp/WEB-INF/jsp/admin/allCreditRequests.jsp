@@ -33,7 +33,7 @@
     </div>
 </nav>
 
-<div class="mr-5">
+<div class="mx-1">
     <c:if test="${not empty creditRequests}">
         <table class="table">
             <thead>

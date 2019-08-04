@@ -11,7 +11,7 @@ import java.util.List;
 public class CreditRequestService {
     private final static Logger logger = Logger.getLogger(CreditRequestService.class);
 
-    public CreditRequest createNew(CreditRequestDTO creditRequestDTO){
+    public CreditRequest createNew(CreditRequestDTO creditRequestDTO) {
         CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
         CreditRequest creditRequest = CreditRequest.getBuilder()
                 .setApplicantId(creditRequestDTO.getApplicantId())
@@ -25,19 +25,23 @@ public class CreditRequestService {
         return creditRequest;
     }
 
-    public List<CreditRequest> getAll(){
+    public List<CreditRequest> getAll() {
         CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
         return creditRequestDAO.getAll();
     }
 
 
-    public List<CreditRequest> getAllByStatus(CreditRequest.CreditRequestStatus status){
+    public List<CreditRequest> getAllByStatus(CreditRequest.CreditRequestStatus status) {
         CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
         return creditRequestDAO.getAllByStatus(status);
     }
 
-    public CreditRequest getById(long id){
+    public CreditRequest getById(long id) {
         CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
         return creditRequestDAO.getById(id);
+    }
+
+    public void changeStatus(CreditRequest.CreditRequestStatus status, long id) {
+        DaoFactory.getInstance().createCreditRequestDAO().changeStatus(status, id);
     }
 }
