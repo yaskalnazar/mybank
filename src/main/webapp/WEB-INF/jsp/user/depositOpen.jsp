@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title><fmt:message key="page.message.home"/></title>
+    <title><fmt:message key="page.message.deposit.open"/></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script>
@@ -28,7 +28,7 @@
             </c:if>
             <c:if test="${not empty depositError}">
                 <div class="alert alert-warning" role="alert">
-                    <fmt:message key="page.message.deposit.open.error"/>
+                    <fmt:message key="page.message.open.error"/>
                 </div>
             </c:if>
             <c:if test="${not empty wrongInput}">

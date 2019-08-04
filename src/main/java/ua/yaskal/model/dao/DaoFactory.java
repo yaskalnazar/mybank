@@ -11,6 +11,7 @@ public abstract class DaoFactory {
 
     public abstract CreditDAO createCreditDAO();
 
+    public abstract CreditRequestDAO createCreditRequestDAO();
 
     public static DaoFactory getInstance() {
         if (daoFactory == null) {

@@ -7,6 +7,7 @@ public interface JspPath {
 
     String USER_HOME = "/WEB-INF/jsp/user/userHome.jsp";
     String DEPOSIT_OPEN="/WEB-INF/jsp/user/depositOpen.jsp";
+    String CREDIT_OPEN="/WEB-INF/jsp/user/newCreditRequest.jsp";
     String USER_ALL_ACCOUNTS="/WEB-INF/jsp/user/allAccounts.jsp";
 
     String ADMIN_HOME ="/WEB-INF/jsp/admin/adminHome.jsp";

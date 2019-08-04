@@ -757,3 +757,166 @@
 2019-08-04 10:49:38 DEBUG DepositOpen:66 - Deposit open successfully (id:3)
 2019-08-04 10:49:40 DEBUG AccessFilter:35 - User 50 has access to /mybank/user/account/all
 2019-08-04 10:49:40 DEBUG JDBCDaoFactory:32 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 11:19:55 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 11:19:55 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 11:19:55 INFO  Servlet:31 - Starting project
+2019-08-04 11:19:55 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 11:19:55 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=B502478C98A75769A5B72B10BB1174EC without permission
+2019-08-04 11:19:56 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 11:19:56 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 11:19:56 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 11:20:02 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 11:20:02 DEBUG JDBCDaoFactory:38 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 11:20:03 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 11:20:03 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 11:20:03 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 11:20:03 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 11:20:04 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 11:20:08 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:22:47 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:22:48 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:22:48 INFO  Servlet:31 - Starting project
+2019-08-04 12:22:48 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:22:48 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=6E467F3785C2E76B48B4EE24F73B872F without permission
+2019-08-04 12:22:48 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:22:48 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:22:48 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:22:57 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:22:57 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:22:57 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 12:22:57 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 12:22:57 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 12:22:57 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:22:59 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:23:00 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:23:13 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:23:13 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:23:13 WARN  NewCreditRequestCommand:52 - Credit request errorjava.lang.NullPointerException
+2019-08-04 12:25:40 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:25:40 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:25:40 INFO  Servlet:31 - Starting project
+2019-08-04 12:25:40 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:25:40 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=8ECDCBF5E747D2B004AB1213854AD901 without permission
+2019-08-04 12:25:41 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:25:41 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:25:41 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:25:46 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:25:46 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:25:46 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 12:25:46 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 12:25:46 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 12:25:46 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:25:49 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:25:57 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:25:57 WARN  CreditRequestService:13 - i em here
+2019-08-04 12:25:57 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:25:57 WARN  NewCreditRequestCommand:52 - Credit request errorjava.lang.NullPointerException
+2019-08-04 12:28:07 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:28:08 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:28:08 INFO  Servlet:31 - Starting project
+2019-08-04 12:28:08 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:28:08 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=6477B5F3153DCC5AA31821B2B7888DDD without permission
+2019-08-04 12:28:08 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:28:08 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:28:08 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:28:20 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:28:24 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:28:24 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:28:24 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 12:28:24 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 12:28:24 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 12:28:24 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:28:26 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:28:29 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:28:29 WARN  NewCreditRequestCommand:47 - i em here
+2019-08-04 12:28:29 WARN  NewCreditRequestCommand:48 - ua.yaskal.model.service.CreditRequestService@41cbd0c9
+2019-08-04 12:28:29 WARN  NewCreditRequestCommand:49 - ua.yaskal.model.dto.CreditRequestDTO@4f2c40dc
+2019-08-04 12:28:29 WARN  CreditRequestService:13 - i em here
+2019-08-04 12:28:29 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:28:29 WARN  NewCreditRequestCommand:55 - Credit request errorjava.lang.NullPointerException
+2019-08-04 12:29:16 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:29:16 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:29:16 INFO  Servlet:31 - Starting project
+2019-08-04 12:29:16 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:29:16 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=297DE4AFF3E9030F8C5AD03D0AF62E00 without permission
+2019-08-04 12:29:16 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:29:16 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:29:16 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:30:21 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:30:21 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:30:21 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 12:30:21 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 12:30:21 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 12:30:21 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:30:26 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:30:30 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:30:30 WARN  CreditRequestService:13 - i em here
+2019-08-04 12:30:30 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:30:30 WARN  NewCreditRequestCommand:53 - Credit request errorjava.lang.NullPointerException
+2019-08-04 12:32:14 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:32:14 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:32:14 INFO  Servlet:31 - Starting project
+2019-08-04 12:32:14 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:32:14 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=CA63AE439D240E31720344963BD9A58F without permission
+2019-08-04 12:32:14 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:32:14 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:32:14 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:32:20 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:32:20 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:32:20 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 12:32:20 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 12:32:20 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 12:32:20 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:32:22 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:32:34 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:32:34 WARN  CreditRequestService:13 - i em here
+2019-08-04 12:32:34 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:32:34 WARN  NewCreditRequestCommand:53 - Credit request errorjava.lang.NullPointerException
+2019-08-04 12:33:59 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:33:59 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:33:59 INFO  Servlet:31 - Starting project
+2019-08-04 12:33:59 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:33:59 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=057BD57B553229C9B7F5A4B1B49E968B without permission
+2019-08-04 12:34:00 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:34:00 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:34:00 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:34:17 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:34:18 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:34:18 INFO  Servlet:31 - Starting project
+2019-08-04 12:34:18 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:34:18 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=E110DC16C343035D2A222514149C54E0 without permission
+2019-08-04 12:34:18 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:34:18 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:34:18 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:34:23 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:34:23 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:34:24 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 12:34:24 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 12:34:24 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 12:34:24 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:34:25 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:34:29 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:34:29 WARN  CreditRequestService:13 - i em here
+2019-08-04 12:34:29 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:34:29 WARN  NewCreditRequestCommand:54 - Credit request error[Ljava.lang.StackTraceElement;@5004c363
+2019-08-04 12:35:35 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:35:35 INFO  Servlet:30 - ----------------------------------------------------------
+2019-08-04 12:35:35 INFO  Servlet:31 - Starting project
+2019-08-04 12:35:35 INFO  Servlet:32 - ----------------------------------------------------------
+2019-08-04 12:35:35 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=B53A21113793E995FD0C87B773B646B3 without permission
+2019-08-04 12:35:35 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-04 12:35:35 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-04 12:35:35 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:35:40 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-04 12:35:40 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:35:40 DEBUG JDBCUserDAO:95 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = 'test@t'
+2019-08-04 12:35:40 DEBUG LoginCommand:49 - User 52 successfully login
+2019-08-04 12:35:40 DEBUG AccessFilter:35 - User 52 has access to /mybank/home
+2019-08-04 12:35:40 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/home
+2019-08-04 12:35:42 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:35:48 DEBUG AccessFilter:35 - User 52 has access to /mybank/user/account/credit/open
+2019-08-04 12:35:48 WARN  CreditRequestService:13 - i em here
+2019-08-04 12:35:48 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-04 12:35:48 DEBUG JDBCCreditRequestDAO:54 - Add new credit request com.mysql.cj.jdbc.ClientPreparedStatement: insert into credit_requests ( credit_limit, credit_rate, creation_date, credit_request_status, applicant_user_id) values ('34700','0.03','2019-08-04','PENDING','52')
+2019-08-04 12:35:48 WARN  CreditRequestService:24 - i em here
+2019-08-04 12:35:48 DEBUG NewCreditRequestCommand:59 - Credit request successfully (id:1)

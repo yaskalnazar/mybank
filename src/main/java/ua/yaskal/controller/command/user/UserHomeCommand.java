@@ -5,7 +5,7 @@ import ua.yaskal.controller.command.Command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class UserHome implements Command {
+public class UserHomeCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         return JspPath.USER_HOME;

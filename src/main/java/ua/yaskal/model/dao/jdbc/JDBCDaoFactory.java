@@ -1,10 +1,7 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.model.dao.CreditDAO;
-import ua.yaskal.model.dao.DaoFactory;
-import ua.yaskal.model.dao.DepositDAO;
-import ua.yaskal.model.dao.UserDAO;
+import ua.yaskal.model.dao.*;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dao.mappers.jdbc.JDBCMapperFactory;
 
@@ -26,11 +23,17 @@ public class JDBCDaoFactory extends DaoFactory {
     }
 
     @Override
-    public DepositDAO createDepositDAO() { return new JDBCDepositDAO(getConnection(),sqlRequestsBundle, mapperFactory);}
+    public DepositDAO createDepositDAO() {
+        return new JDBCDepositDAO(getConnection(),sqlRequestsBundle, mapperFactory);}
 
     @Override
     public CreditDAO createCreditDAO() {
         return new JDBCCreditDAO(getConnection(),sqlRequestsBundle, mapperFactory);
+    }
+
+    @Override
+    public CreditRequestDAO createCreditRequestDAO() {
+        return new JDBCCreditRequestDAO(getConnection(),sqlRequestsBundle, mapperFactory);
     }
 
     private Connection getConnection() {
@@ -52,7 +55,7 @@ public class JDBCDaoFactory extends DaoFactory {
             logger.error("Cannot get connection to db");
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
-            logger.error("Missing sql driver");
+            logger.error("Not found class for sql driver");
             throw new RuntimeException(e);
         }
     }

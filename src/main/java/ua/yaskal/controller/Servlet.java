@@ -8,8 +8,9 @@ import ua.yaskal.controller.command.admin.AllUsersCommand;
 import ua.yaskal.controller.command.guest.AllUsersAccountsCommand;
 import ua.yaskal.controller.command.guest.LoginCommand;
 import ua.yaskal.controller.command.guest.RegistrationCommand;
-import ua.yaskal.controller.command.user.DepositOpen;
-import ua.yaskal.controller.command.user.UserHome;
+import ua.yaskal.controller.command.user.NewCreditRequestCommand;
+import ua.yaskal.controller.command.user.DepositOpenCommand;
+import ua.yaskal.controller.command.user.UserHomeCommand;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -34,7 +35,7 @@ public class Servlet extends HttpServlet {
                 .setAttribute("loggedUsers", new HashSet<String>());
 
         commands.put("home", new HomeCommand());
-        commands.put("user/home", new UserHome());
+        commands.put("user/home", new UserHomeCommand());
         commands.put("admin/home", new AdminHomeCommand());
 
         commands.put("user/logout", new LogOutCommand());
@@ -48,8 +49,10 @@ public class Servlet extends HttpServlet {
         commands.put("admin/all_users" , new AllUsersCommand());
         commands.put("admin/account/all/deposits" , new AllDepositsCommand());
 
-        commands.put("user/account/deposit/open", new DepositOpen());
+        commands.put("user/account/deposit/open", new DepositOpenCommand());
+        commands.put("user/account/credit/open", new NewCreditRequestCommand());
         commands.put("user/account/all", new AllUsersAccountsCommand());
+
 
     }
 

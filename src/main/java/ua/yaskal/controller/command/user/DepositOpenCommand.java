@@ -6,15 +6,14 @@ import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dto.DepositDTO;
 import ua.yaskal.model.entity.DepositAccount;
-import ua.yaskal.model.entity.User;
 import ua.yaskal.model.service.DepositService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-public class DepositOpen implements Command {
-    private final static Logger logger = Logger.getLogger(DepositOpen.class);
+public class DepositOpenCommand implements Command {
+    private final static Logger logger = Logger.getLogger(DepositOpenCommand.class);
     private DepositService depositService = new DepositService();
     private ValidationUtil validationUtil = new ValidationUtil();
 
@@ -30,7 +29,6 @@ public class DepositOpen implements Command {
             request.setAttribute("wrongInput", "wrongDepositAmount");
             return JspPath.DEPOSIT_OPEN;
         }
-        request.setAttribute("depositAmount", depositAmount);
 
         String depositRate = request.getParameter("depositRate");
         if(!validationUtil.isValid(depositRate, "depositRate")){
@@ -38,7 +36,6 @@ public class DepositOpen implements Command {
             request.setAttribute("wrongInput", "wrongDepositRate");
             return JspPath.DEPOSIT_OPEN;
         }
-        request.setAttribute("depositRate", depositRate);
 
         String monthsAmount = request.getParameter("monthsAmount");
         if(!validationUtil.isValid(monthsAmount, "monthsAmount")){
@@ -46,7 +43,6 @@ public class DepositOpen implements Command {
             request.setAttribute("wrongInput", "wrongMonthsAmount");
             return JspPath.DEPOSIT_OPEN;
         }
-        request.setAttribute("monthsAmount", monthsAmount);
 
         DepositDTO depositDTO = new DepositDTO(
                 new BigDecimal(depositAmount),
@@ -58,7 +54,7 @@ public class DepositOpen implements Command {
         try {
             depositAccount = depositService.openNewDeposit(depositDTO);
         } catch (Exception e){
-            logger.warn("Deposit open attempt with incorrect months amount"+monthsAmount);
+            logger.warn("Deposit open error"+e);
             request.setAttribute("depositError", e);
             return JspPath.DEPOSIT_OPEN;
         }
