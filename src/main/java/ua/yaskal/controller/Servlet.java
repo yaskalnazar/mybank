@@ -2,25 +2,15 @@ package ua.yaskal.controller;
 
 import org.apache.log4j.Logger;
 import ua.yaskal.controller.command.*;
-import ua.yaskal.controller.command.admin.AdminHomeCommand;
-import ua.yaskal.controller.command.admin.AllDepositsCommand;
-import ua.yaskal.controller.command.admin.AllUsersCommand;
-import ua.yaskal.controller.command.guest.AllUsersAccountsCommand;
-import ua.yaskal.controller.command.guest.LoginCommand;
-import ua.yaskal.controller.command.guest.RegistrationCommand;
-import ua.yaskal.controller.command.user.NewCreditRequestCommand;
-import ua.yaskal.controller.command.user.DepositOpenCommand;
-import ua.yaskal.controller.command.user.UserHomeCommand;
+import ua.yaskal.controller.command.admin.*;
+import ua.yaskal.controller.command.guest.*;
+import ua.yaskal.controller.command.user.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class Servlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(Servlet.class);
@@ -48,6 +38,7 @@ public class Servlet extends HttpServlet {
 
         commands.put("admin/all_users" , new AllUsersCommand());
         commands.put("admin/account/all/deposits" , new AllDepositsCommand());
+        commands.put("admin/credit_request/all" , new GetCreditRequestCommand());
 
         commands.put("user/account/deposit/open", new DepositOpenCommand());
         commands.put("user/account/credit/open", new NewCreditRequestCommand());

@@ -4,8 +4,10 @@ import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.CreditRequestDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.CreditRequest;
+import ua.yaskal.model.entity.DepositAccount;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -28,7 +30,19 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
     @Override
     public List<CreditRequest> getAll() {
-        return null;
+        List<CreditRequest> creditRequests = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.select.all"))) {
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all credit requests: " + e);
+            throw new RuntimeException(e);
+        }
+        return creditRequests;
     }
 
     @Override
@@ -65,5 +79,23 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
             logger.error("Credit request was not added: " + e);
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<CreditRequest> getAllByStatus(CreditRequest.CreditRequestStatus status) {
+        List<CreditRequest> creditRequests = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.select.all.where.status"))) {
+            statement.setString(1, status.name());
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all credit requests: " + e);
+            throw new RuntimeException(e);
+        }
+        return creditRequests;
     }
 }
