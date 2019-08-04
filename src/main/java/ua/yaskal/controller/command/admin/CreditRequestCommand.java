@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
+import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.service.CreditRequestService;
@@ -23,12 +24,16 @@ public class CreditRequestCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        logger.warn("_________---------------------------------------");
-        logger.warn(request.getPathInfo());
-        if (!validationUtil.isСontain(request, Arrays.asList("id"))) {
-            logger.warn("No id in request");
-            request.setAttribute("error", "page.message.no.id");
-            return JspPath.ADMIN_CREDIT_REQUEST;
+
+        String requestId = request.getParameter("id");
+        if (!validationUtil.isСontain(request, Arrays.asList("id")) ||
+                !validationUtil.isValid(requestId, "id")) {
+            logger.warn("Incorrect id");
+            throw new RuntimeException("Incorrect id " + request.getRequestURI());
+        }
+
+        if (validationUtil.isСontain(request, Arrays.asList("answer"))) {
+            processAnswer(request);
         }
 
         CreditRequest creditRequest = creditRequestService.getById(
@@ -39,6 +44,23 @@ public class CreditRequestCommand implements Command {
         request.setAttribute("credits", creditService.getAllByOwnerId(applicant.getId()));
 
         return JspPath.ADMIN_CREDIT_REQUEST;
+    }
 
+    private void processAnswer(HttpServletRequest request) {
+        CreditRequest creditRequest = creditRequestService.getById(
+                Long.parseLong(request.getParameter("id")));
+
+        String answer = request.getParameter("answer");
+
+        if (answer.equals("approved")) {
+            CreditAccount creditAccount = creditService.addNew(creditRequest);
+            creditRequest.setCreditRequestStatus(CreditRequest.CreditRequestStatus.APPROVED);
+            logger.debug("Credit account " + creditAccount.getId() + " open");
+            request.setAttribute("answer", "approved");
+        } else if (answer.equals("rejected")) {
+            creditRequest.setCreditRequestStatus(CreditRequest.CreditRequestStatus.REJECTED);
+            request.setAttribute("answer", "rejected");
+
+        }
     }
 }

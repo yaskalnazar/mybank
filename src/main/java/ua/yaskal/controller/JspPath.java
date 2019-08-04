@@ -14,6 +14,7 @@ public interface JspPath {
     String ADMIN_HOME ="/WEB-INF/jsp/admin/adminHome.jsp";
     String ALL_USERS="/WEB-INF/jsp/admin/allUsers.jsp";
     String ADMIN_ALL_DEPOSITS="/WEB-INF/jsp/admin/allDeposits.jsp";
+    String ADMIN_ALL_CREDITS="/WEB-INF/jsp/admin/allCredits.jsp";
     String ALL_CREDIT_REQUESTS="/WEB-INF/jsp/admin/allCreditRequests.jsp";
     String ADMIN_CREDIT_REQUEST="/WEB-INF/jsp/admin/creditRequestPage.jsp";
 

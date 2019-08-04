@@ -18,6 +18,9 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/admin/account/all/deposits"><fmt:message key="page.message.all.deposits"/></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/account/all/credits"><fmt:message key="page.message.all.credits"/></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/admin/credit_request/all"><fmt:message key="page.message.credit.requests"/></a>
             </li>
         </ul>

@@ -14,42 +14,9 @@
 <jsp:include page="../parts/adminHeader.jsp"/>
 
 <div class="mr-5">
-    <c:if test="${not empty deposits}">
-        <h1><fmt:message key="page.message.all.deposits"/>:</h1>
-        <table class="table">
-            <thead>
-            <tr>
-                <td><fmt:message key="page.message.id"/></td>
-                <td><fmt:message key="page.message.balance"/></td>
-                <td><fmt:message key="page.message.closing.date"/></td>
-                <td><fmt:message key="page.message.owner.id"/></td>
-                <td><fmt:message key="page.message.account.status"/></td>
-                <td><fmt:message key="page.message.deposit.amount"/></td>
-                <td><fmt:message key="page.message.deposit.rate"/></td>
-                <td><fmt:message key="page.message.deposit.end.data"/></td>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${deposits}" var="deposit">
-                <tr>
-                    <td>${deposit.getId()}</td>
-                    <td>${deposit.getBalance()}</td>
-                    <td>${deposit.getClosingDate()}</td>
-                    <td>${deposit.getOwnerId()}</td>
-                    <td>${deposit.getAccountStatus()}</td>
-                    <td>${deposit.getDepositAmount()}</td>
-                    <td>${deposit.getDepositRate()}</td>
-                    <td>${deposit.getDepositEndDate()}</td>
-                </tr>
-            </c:forEach>
-
-            </tbody>
-        </table>
-    </c:if>
-    <c:if test="${empty deposits}">
-        <div class="alert alert-warning" role="alert">
-            <fmt:message key="page.message.no.deposit"/>
-        </div>
+    <c:if test="${deposits!=null}">
+        <h3><fmt:message key="page.message.all.deposits"/>:</h3>
+        <jsp:include page="../parts/depositsTable.jsp"/>
     </c:if>
 </div>
 </body>

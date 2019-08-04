@@ -4,9 +4,8 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages"/>
 
-<div class="mr-5">
+<div>
     <c:if test="${not empty credits}">
-        <h1><fmt:message key="page.message.all.deposits"/>:</h1>
         <table class="table">
             <thead>
             <tr>
