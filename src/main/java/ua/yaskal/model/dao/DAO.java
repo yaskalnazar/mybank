@@ -1,7 +1,5 @@
 package ua.yaskal.model.dao;
 
-import ua.yaskal.model.exptions.NonUniqueEmailException;
-
 import java.util.List;
 
 public interface DAO<T>{

@@ -70,7 +70,7 @@ public class Servlet extends HttpServlet {
         String path = request.getRequestURI();
         path = path.replaceAll(".*/mybank/" , "");
         Command command = commands.getOrDefault(path ,
-                (r) -> "/WEB-INF/jsp/errors/404error.jsp");
+                (r) -> JspPath.ERROR404);
         System.out.println(command.getClass().getName());
         String page = command.execute(request);
 

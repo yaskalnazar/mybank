@@ -7,7 +7,7 @@ import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dto.UserLoginDTO;
 import ua.yaskal.model.dto.UserRegistrationDTO;
 import ua.yaskal.model.entity.User;
-import ua.yaskal.model.exptions.WrongPasswordException;
+import ua.yaskal.model.exceptions.WrongPasswordException;
 
 import java.util.ArrayList;
 import java.util.List;

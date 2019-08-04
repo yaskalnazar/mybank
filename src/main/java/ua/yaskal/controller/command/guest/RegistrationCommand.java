@@ -6,7 +6,7 @@ import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dto.UserRegistrationDTO;
-import ua.yaskal.model.exptions.NonUniqueEmailException;
+import ua.yaskal.model.exceptions.NonUniqueEmailException;
 import ua.yaskal.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;

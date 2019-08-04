@@ -1,4 +1,4 @@
-package ua.yaskal.model.exptions;
+package ua.yaskal.model.exceptions;
 
 public class AccessDeniedException extends RuntimeException {
 }

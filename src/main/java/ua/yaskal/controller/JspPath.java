@@ -4,6 +4,7 @@ public interface JspPath {
     String REG_FORM = "/WEB-INF/jsp/guest/regForm.jsp";
     String LOGIN_FORM = "/WEB-INF/jsp/guest/loginForm.jsp";
     String ACCESS_DENIED = "/WEB-INF/jsp/accessDenied.jsp";
+    String ERROR404="/WEB-INF/jsp/errors/404error.jsp";
 
     String USER_HOME = "/WEB-INF/jsp/user/userHome.jsp";
     String DEPOSIT_OPEN="/WEB-INF/jsp/user/depositOpen.jsp";
