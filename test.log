@@ -4565,3 +4565,80 @@
 2019-08-05 17:14:52 WARN  NewCreditRequestCommand:97 - Credit open attempt with activeCreditRequests userId(52)
 2019-08-05 17:14:52 WARN  NewCreditRequestCommand:99 - 1 fuck
 2019-08-05 17:14:52 WARN  NewCreditRequestCommand:99 - 6 fuck
+2019-08-05 17:58:44 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 17:58:44 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-05 17:58:44 INFO  Servlet:21 - Starting project
+2019-08-05 17:58:44 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-05 17:58:44 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=423E46510A54432349F064C45F97DF80 without permission
+2019-08-05 17:58:44 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 17:58:45 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-05 17:58:45 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 17:59:04 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 17:59:32 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 17:59:32 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-05 17:59:32 INFO  Servlet:21 - Starting project
+2019-08-05 17:59:32 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-05 17:59:32 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=8BDD635A4574809432E376D166932FED without permission
+2019-08-05 17:59:33 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 17:59:33 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-05 17:59:33 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 17:59:33 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-05 17:59:33 DEBUG JDBCUserDAO:108 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = null
+2019-08-05 17:59:33 DEBUG JDBCUserDAO:113 - No user with email:null
+2019-08-05 17:59:33 WARN  LoginCommand:36 - Login attempt with nonexistent email null
+2019-08-05 17:59:41 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 17:59:41 DEBUG JDBCDaoFactory:41 - Getting connection to DB URL:{jdbc:mysql://localhost:3306/mybankdb?serverTimezone=UTC} Password:{root} User:{root}
+2019-08-05 17:59:41 DEBUG JDBCUserDAO:108 - Select user com.mysql.cj.jdbc.ClientPreparedStatement: select * from users where user_email = null
+2019-08-05 17:59:41 DEBUG JDBCUserDAO:113 - No user with email:null
+2019-08-05 17:59:41 WARN  LoginCommand:36 - Login attempt with nonexistent email null
+2019-08-05 18:00:00 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:00:01 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-05 18:00:01 INFO  Servlet:21 - Starting project
+2019-08-05 18:00:01 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-05 18:00:01 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=DA7F21F08530F371906B2803D9E7FCD1 without permission
+2019-08-05 18:00:01 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:00:01 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-05 18:00:01 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 18:00:01 WARN  ValidationUtil:20 - Null or empty parameter: email
+2019-08-05 18:00:04 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 18:00:04 WARN  ValidationUtil:20 - Null or empty parameter: email
+2019-08-05 18:00:05 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-05 18:00:05 WARN  ValidationUtil:20 - Null or empty parameter: email
+2019-08-05 18:00:10 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-05 18:00:10 WARN  ValidationUtil:20 - Null or empty parameter: password
+2019-08-05 18:00:16 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-05 18:00:16 WARN  ValidationUtil:20 - Null or empty parameter: patronymic
+2019-08-05 18:00:24 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/registration
+2019-08-05 18:00:24 WARN  ValidationUtil:20 - Null or empty parameter: password
+2019-08-05 18:02:01 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:02:02 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-05 18:02:02 INFO  Servlet:21 - Starting project
+2019-08-05 18:02:02 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-05 18:02:02 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=EB520130D3377AB6A248B646F9625CD4 without permission
+2019-08-05 18:02:02 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:02:02 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-05 18:02:02 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 18:02:52 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 18:02:54 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:02:54 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-05 18:02:54 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 18:03:59 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:04:00 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-05 18:04:00 INFO  Servlet:21 - Starting project
+2019-08-05 18:04:00 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-05 18:04:00 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=4A8DD864C57B27EED2810B4E47568986 without permission
+2019-08-05 18:04:00 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:04:00 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-05 18:04:00 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 18:04:00 WARN  ValidationUtil:24 - org.apache.catalina.connector.RequestFacade@571f1c47
+2019-08-05 18:04:00 WARN  ValidationUtil:25 - [email, password]
+2019-08-05 18:12:27 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:12:27 INFO  Servlet:20 - ----------------------------------------------------------
+2019-08-05 18:12:27 INFO  Servlet:21 - Starting project
+2019-08-05 18:12:27 INFO  Servlet:22 - ----------------------------------------------------------
+2019-08-05 18:12:27 WARN  AccessFilter:38 - User 0 tries to access /mybank/home;jsessionid=6D31C2D8A8CC85B644C89665C7F0508D without permission
+2019-08-05 18:12:28 DEBUG AccessFilter:35 - User 0 has access to /mybank/
+2019-08-05 18:12:28 DEBUG AccessFilter:35 - User 0 has access to /mybank/home
+2019-08-05 18:12:28 DEBUG AccessFilter:35 - User 0 has access to /mybank/guest/login
+2019-08-05 18:12:28 WARN  ValidationUtil:24 - org.apache.catalina.connector.RequestFacade@61389366
+2019-08-05 18:12:28 WARN  ValidationUtil:25 - [email, password]
