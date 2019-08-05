@@ -36,12 +36,19 @@
 
             <c:if test="${not empty activeCreditAccounts}">
                 <div class="alert alert-warning" role="alert">
-                    <fmt:message key="page.message.already.have.active.credits"/>:
+                    <h2><fmt:message key="page.message.already.have.active.credits"/>:</h2>
+                    <c:set var="credits" value="${activeCreditAccounts}" scope="request"/>
+                    <jsp:include page="../parts/creditsTable.jsp"/>
                 </div>
             </c:if>
             <c:if test="${not empty activeCreditRequests}">
                 <div class="alert alert-warning" role="alert">
-                    <fmt:message key="page.message.already.have.active.credit.requests"/>:
+                    <h2><fmt:message key="page.message.already.have.active.credit.requests"/>:</h2><br>
+                    <c:forEach items="${activeCreditRequests}" var="creditRequest" >
+                        <h4><fmt:message key="page.message.credit.request.info"/>:</h4>
+                        <c:set var="creditRequest" value="${creditRequest}" scope="request"/>
+                        <jsp:include page="../parts/creditRequestMainInfo.jsp"/>
+                    </c:forEach>
                 </div>
             </c:if>
 

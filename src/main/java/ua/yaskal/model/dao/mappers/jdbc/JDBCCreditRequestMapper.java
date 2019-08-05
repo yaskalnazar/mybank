@@ -3,6 +3,7 @@ package ua.yaskal.model.dao.mappers.jdbc;
 import ua.yaskal.model.dao.mappers.Mapper;
 import ua.yaskal.model.entity.CreditRequest;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -12,7 +13,7 @@ public class JDBCCreditRequestMapper implements Mapper<CreditRequest> {
         return CreditRequest.getBuilder()
                 .setId(resultSet.getLong("request_id"))
                 .setCreationDate(resultSet.getDate("creation_date").toLocalDate())
-                .setCreditLimit(resultSet.getBigDecimal("credit_limit"))
+                .setCreditLimit(resultSet.getBigDecimal("credit_limit").setScale(2, BigDecimal.ROUND_HALF_DOWN))
                 .setCreditRate(resultSet.getBigDecimal("credit_rate"))
                 .setCreditRequestStatus(CreditRequest.CreditRequestStatus.valueOf(
                         resultSet.getString("credit_request_status")))

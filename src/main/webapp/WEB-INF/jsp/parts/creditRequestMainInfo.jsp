@@ -4,7 +4,6 @@
 <fmt:setBundle basename="messages"/>
 
 <div>
-    <h3><fmt:message key="page.message.credit.request.info"/>:</h3>
     <table class="table table-bordered ">
         <tbody>
         <tr>
@@ -17,6 +16,10 @@
         </tr>
         <tr>
             <th><fmt:message key="page.message.credit.limit"/>:</th>
+            <td>${creditRequest.getCreditLimit()}</td>
+        </tr>
+        <tr>
+            <th><fmt:message key="page.message.credit.rate"/>:</th>
             <td>${creditRequest.getCreditRate()}</td>
         </tr>
         <tr>

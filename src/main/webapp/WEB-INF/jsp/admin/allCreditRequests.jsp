@@ -11,29 +11,30 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<jsp:include page="../parts/adminHeader.jsp"/>
-<h3><fmt:message key="page.message.${status}"/> <fmt:message key="page.message.credit.requests.lower"/>:</h3>
+<div class="mx-3">
+    <jsp:include page="../parts/adminHeader.jsp"/>
+    <br><h3><fmt:message key="page.message.${status}"/> <fmt:message key="page.message.credit.requests.lower"/>:</h3>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="?requestStatus=pending"><fmt:message key="page.message.pending"/></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?requestStatus=rejected"><fmt:message key="page.message.rejected"/></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?requestStatus=approved"><fmt:message key="page.message.approved"/></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?requestStatus=all"><fmt:message key="page.message.all"/></a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="?requestStatus=pending"><fmt:message key="page.message.pending"/></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?requestStatus=rejected"><fmt:message key="page.message.rejected"/></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?requestStatus=approved"><fmt:message key="page.message.approved"/></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?requestStatus=all"><fmt:message key="page.message.all"/></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<div class="mx-1">
+
     <c:if test="${not empty creditRequests}">
         <table class="table">
             <thead>

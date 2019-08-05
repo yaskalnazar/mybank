@@ -15,7 +15,8 @@
 <div class="container" style="margin-top: 60px">
     <div class="d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
-                <jsp:include page="../parts/creditRequestMainInfo.jsp"/>
+            <h3><fmt:message key="page.message.credit.request.info"/>:</h3>
+            <jsp:include page="../parts/creditRequestMainInfo.jsp"/>
                 <c:set var="user" value="${applicant}" scope="request"/>
                 <jsp:include page="../parts/userMainInfo.jsp"/>
 

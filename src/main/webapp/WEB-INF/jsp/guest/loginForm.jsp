@@ -23,17 +23,17 @@
         <div class="col-md-8 col-md-offset-2">
             <c:if test="${not empty logoutSuccessfully}">
                 <div class="alert alert-primary" role="alert">
-                        ${logoutSuccessfully}
+                    <fmt:message key="page.message.logout.successfully"/>
                 </div>
             </c:if>
             <c:if test="${not empty regSuccessfully}">
                 <div class="alert alert-primary" role="alert">
-                        ${regSuccessfully}
+                    <fmt:message key="page.message.registered.successfully"/>
                 </div>
             </c:if>
             <c:if test="${not empty wrongInput}">
                 <div class="alert alert-danger" role="alert">
-                        Wrong Input please try again
+                    <fmt:message key="page.message.wrong.input"/>
                 </div>
             </c:if>
             <h2 class="page-header"><fmt:message key="page.message.login"/></h2>

@@ -55,6 +55,8 @@ public class NewCreditRequestCommand implements Command {
 
         if(!activeCreditRequests.isEmpty()){
             logger.warn("Credit open attempt with activeCreditRequests userId("+userId+")");
+            for(CreditRequest i:activeCreditRequests)
+                logger.warn(i.getId()+" fuck");
             request.setAttribute("activeCreditRequests", activeCreditRequests);
             return JspPath.CREDIT_OPEN;
         }
