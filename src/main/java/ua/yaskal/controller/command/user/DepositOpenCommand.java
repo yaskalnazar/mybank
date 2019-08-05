@@ -19,26 +19,26 @@ public class DepositOpenCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        if (!validationUtil.isСontain(request, Arrays.asList("depositAmount","depositRate", "monthsAmount"))){
+        if (!validationUtil.isContains(request, Arrays.asList("depositAmount","depositRate", "monthsAmount"))){
             return JspPath.DEPOSIT_OPEN;
         }
 
         String depositAmount = request.getParameter("depositAmount");
-        if(!validationUtil.isValid(depositAmount,"depositAmount")){
+        if(!validationUtil.isParamValid(depositAmount,"depositAmount")){
             logger.warn("Deposit open attempt with incorrect deposit amount"+depositAmount);
             request.setAttribute("wrongInput", "wrongDepositAmount");
             return JspPath.DEPOSIT_OPEN;
         }
 
         String depositRate = request.getParameter("depositRate");
-        if(!validationUtil.isValid(depositRate, "depositRate")){
+        if(!validationUtil.isParamValid(depositRate, "depositRate")){
             logger.warn("Deposit open attempt with incorrect deposit rate"+depositRate);
             request.setAttribute("wrongInput", "wrongDepositRate");
             return JspPath.DEPOSIT_OPEN;
         }
 
         String monthsAmount = request.getParameter("monthsAmount");
-        if(!validationUtil.isValid(monthsAmount, "monthsAmount")){
+        if(!validationUtil.isParamValid(monthsAmount, "monthsAmount")){
             logger.warn("Deposit open attempt with incorrect months amount"+monthsAmount);
             request.setAttribute("wrongInput", "wrongMonthsAmount");
             return JspPath.DEPOSIT_OPEN;

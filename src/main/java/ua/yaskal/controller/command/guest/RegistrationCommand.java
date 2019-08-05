@@ -22,7 +22,7 @@ public class RegistrationCommand implements Command {
     //TODO regex check
     // @Override
     public String execute(HttpServletRequest request) {
-        if (!validationUtil.isСontain(request, Arrays.asList("email", "password","name","surname","patronymic"))){
+        if (!validationUtil.isContains(request, Arrays.asList("email", "password","name","surname","patronymic"))){
             return JspPath.REG_FORM;
         }
 

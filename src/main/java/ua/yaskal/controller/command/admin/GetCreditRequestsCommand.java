@@ -18,7 +18,7 @@ public class GetCreditRequestsCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        if (!validationUtil.isСontain(request, Arrays.asList("requestStatus"))) {
+        if (!validationUtil.isContains(request, Arrays.asList("requestStatus"))) {
             request.setAttribute("creditRequests",
                     creditRequestService.getAllByStatus(CreditRequest.CreditRequestStatus.PENDING));
             request.setAttribute("status", "pending");

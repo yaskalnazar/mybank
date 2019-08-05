@@ -26,13 +26,13 @@ public class CreditRequestCommand implements Command {
     public String execute(HttpServletRequest request) {
 
         String requestId = request.getParameter("id");
-        if (!validationUtil.isСontain(request, Arrays.asList("id")) ||
-                !validationUtil.isValid(requestId, "id")) {
+        if (!validationUtil.isContains(request, Arrays.asList("id")) ||
+                !validationUtil.isParamValid(requestId, "id")) {
             logger.warn("Incorrect id");
             throw new RuntimeException("Incorrect id " + request.getRequestURI());
         }
 
-        if (validationUtil.isСontain(request, Arrays.asList("answer"))) {
+        if (validationUtil.isContains(request, Arrays.asList("answer"))) {
             processAnswer(request);
         }
 
