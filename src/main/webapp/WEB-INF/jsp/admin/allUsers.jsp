@@ -29,7 +29,11 @@
             <tbody>
             <c:forEach items="${users}" var="user">
                 <tr>
-                    <td>${user.getId()}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/admin/user_page?id=${user.getId()}">
+                            ${user.getId()}
+                        </a>
+                    </td>
                     <td>${user.getEmail()}</td>
                     <td>${user.getName()}</td>
                     <td>${user.getSurname()}</td>

@@ -25,7 +25,11 @@
                     <td>${deposit.getId()}</td>
                     <td>${deposit.getBalance()}</td>
                     <td>${deposit.getClosingDate()}</td>
-                    <td>${deposit.getOwnerId()}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/admin/user_page?id=${deposit.getOwnerId()}">
+                                ${deposit.getOwnerId()}
+                        </a>
+                    </td>
                     <td>${deposit.getAccountStatus()}</td>
                     <td>${deposit.getDepositAmount()}</td>
                     <td>${deposit.getDepositRate()}</td>

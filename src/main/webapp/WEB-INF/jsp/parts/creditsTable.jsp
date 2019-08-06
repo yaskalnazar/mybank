@@ -23,10 +23,16 @@
             <tbody>
             <c:forEach items="${credits}" var="credit">
                 <tr>
-                    <td>${credit.getId()}</td>
+                    <td>
+                            ${credit.getId()}
+                    </td>
                     <td>${credit.getBalance()}</td>
                     <td>${credit.getClosingDate()}</td>
-                    <td>${credit.getOwnerId()}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/admin/user_page?id=${credit.getOwnerId()}">
+                                ${credit.getOwnerId()}
+                        </a>
+                    </td>
                     <td>${credit.getAccountStatus()}</td>
                     <td>${credit.getCreditLimit()}</td>
                     <td>${credit.getCreditRate()}</td>

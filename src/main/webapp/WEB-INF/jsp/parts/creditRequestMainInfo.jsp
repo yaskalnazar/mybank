@@ -12,7 +12,11 @@
         </tr>
         <tr>
             <th><fmt:message key="page.message.applicant.id"/>:</th>
-            <td>${creditRequest.getApplicantId()}</td>
+            <td>
+                <a href="${pageContext.request.contextPath}/admin/user_page?id=${creditRequest.getApplicantId()}">
+                    ${creditRequest.getApplicantId()}
+                </a>
+            </td>
         </tr>
         <tr>
             <th><fmt:message key="page.message.credit.limit"/>:</th>
