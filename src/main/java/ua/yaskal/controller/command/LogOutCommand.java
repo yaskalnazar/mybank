@@ -17,7 +17,10 @@ public class LogOutCommand implements Command {
         User user = (User) session.getAttribute("user");
         logger.debug("User " + user.getId() + " logout");
 
+
+        String locale = (String) request.getSession().getAttribute("locale");
         request.getSession().invalidate();
+        request.getSession().setAttribute("locale", locale);
         //request.setAttribute("logoutSuccessfully", "You successfully logout");
         //return JspPath.LOGIN_FORM;
         return "redirect:/mybank/guest/login";
