@@ -13,7 +13,8 @@
 <body>
 <div class="mx-3">
     <jsp:include page="../parts/adminHeader.jsp"/>
-    <br><h3><fmt:message key="page.message.${status}"/> <fmt:message key="page.message.credit.requests.lower"/>:</h3>
+    <br>
+    <h3><fmt:message key="page.message.${status}"/> <fmt:message key="page.message.credit.requests.lower"/>:</h3>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -50,9 +51,15 @@
             <tbody>
             <c:forEach items="${creditRequests}" var="creditRequest">
                 <tr>
-                    <td><a href="${pageContext.request.contextPath}/admin/credit_request?id=${creditRequest.getId()}">
-                            ${creditRequest.getId()}</a></td>
-                    <td>${creditRequest.getApplicantId()}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/admin/credit_request?id=${creditRequest.getId()}">
+                                ${creditRequest.getId()}
+                        </a>
+                    </td>
+                    <td><a href="${pageContext.request.contextPath}/admin/user_page?id=${creditRequest.getApplicantId()}">
+                            ${creditRequest.getApplicantId()}
+                        </a>
+                    </td>
                     <td>${creditRequest.getCreditRate()}</td>
                     <td>${creditRequest.getCreditLimit()}</td>
                     <td>${creditRequest.getCreationDate()}</td>

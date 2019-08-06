@@ -41,6 +41,7 @@ public class Servlet extends HttpServlet {
         commands.put("admin/account/all/credits" , new AllCreditsCommand());
         commands.put("admin/credit_request/all" , new GetCreditRequestsCommand());
         commands.put("admin/credit_request" , new CreditRequestCommand());
+        commands.put("admin/user_page" , new GetUserPageCommand());
 
 
         commands.put("user/account/deposit/open", new DepositOpenCommand());
