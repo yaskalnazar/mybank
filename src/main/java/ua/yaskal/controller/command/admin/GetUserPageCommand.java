@@ -5,7 +5,7 @@ import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.entity.User;
-import ua.yaskal.model.exceptions.NoSuchUserException;
+import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 import ua.yaskal.model.service.CreditService;
 import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.UserService;
@@ -34,6 +34,7 @@ public class GetUserPageCommand implements Command {
             requestUser = userService.getById(Long.parseLong(request.getParameter("id")));
         } catch (NoSuchUserException e){
             logger.warn("NoSuchUserException id: "+request.getParameter("id"));
+            request.setAttribute("messageKey", e.getMessageKey());
             return JspPath.RESOURCE_NOT_EXIST;
         }
         request.setAttribute("requestUser", requestUser);

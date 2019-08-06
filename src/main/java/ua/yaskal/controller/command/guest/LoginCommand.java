@@ -7,7 +7,7 @@ import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dto.UserLoginDTO;
 import ua.yaskal.model.entity.User;
-import ua.yaskal.model.exceptions.NoSuchUserException;
+import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 import ua.yaskal.model.exceptions.WrongPasswordException;
 import ua.yaskal.model.service.UserService;
 

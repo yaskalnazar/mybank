@@ -18,16 +18,17 @@
     <c:when test="${sessionScope.get('user').getRole() == 'USER'}">
         <jsp:include page="../parts/userHeader.jsp"/>
     </c:when>
-    <c:when test="${sessionScope.get('user').getRole() == 'GUEST'}">
+    <c:otherwise>
         <jsp:include page="../parts/guestHeader.jsp"/>
-    </c:when>
+    </c:otherwise>
 </c:choose>
 
 <div class="container" style="margin-top: 60px">
     <div class="d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
             <div class="alert alert-danger" role="alert">
-                <fmt:message key="page.message.resource.does.not.exist"/>
+                <fmt:message key="page.message.error"/>:
+                <fmt:message key="${messageKey}"/>
             </div>
         </div>
     </div>
