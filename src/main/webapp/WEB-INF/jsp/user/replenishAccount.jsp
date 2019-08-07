@@ -16,19 +16,9 @@
 <div class="container" style="margin-top: 60px">
     <div class="d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
-            <c:if test="${not empty depositSuccess}">
+            <c:if test="${not empty replenishSuccess}">
                 <div class="alert alert-success" role="alert">
-                    <fmt:message key="page.message.deposit.open.success"/>
-                </div>
-            </c:if>
-            <c:if test="${not empty depositError}">
-                <div class="alert alert-warning" role="alert">
-                    <fmt:message key="page.message.open.error"/>
-                </div>
-            </c:if>
-            <c:if test="${not empty wrongInput}">
-                <div class="alert alert-warning" role="alert">
-                        ${wrongInput}
+                    <fmt:message key="page.message.replenish.success"/>
                 </div>
             </c:if>
 

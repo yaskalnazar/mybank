@@ -6,6 +6,7 @@ import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.Transaction;
+import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.service.CreditService;
 import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.TransactionService;
@@ -34,14 +35,19 @@ public class ReplenishAccountCommand implements Command {
 
         request.setAttribute("activeUserAccounts", activeUserAccounts);
 
-        if (validationUtil.isContains(request, Arrays.asList("accountId","amount"))){
-            transactionService.makeNewTransaction(Transaction.getBuilder()
+        if (validationUtil.isContains(request, Arrays.asList("accountId", "amount")) &&
+                validationUtil.isRequestValid(request, Arrays.asList("accountId", "amount"))) {
+
+            Transaction transaction = Transaction.getBuilder()
                     .setReceiverAccount(Long.parseLong(request.getParameter("accountId")))
                     .setTransactionAmount(new BigDecimal(request.getParameter("amount")))
                     .setSenderAccount(12)
                     .setDate(LocalDate.now())
-                    .build());
-            return JspPath.DEPOSIT_OPEN;
+                    .build();
+
+            transactionService.makeNewTransaction(transaction);
+            request.setAttribute("replenishSuccess", true);
+            return JspPath.REPLENISH_ACCOUNT;
         }
 
 

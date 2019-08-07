@@ -29,9 +29,15 @@
                     <td>${credit.getBalance()}</td>
                     <td>${credit.getClosingDate()}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/user_page?id=${credit.getOwnerId()}">
-                                ${credit.getOwnerId()}
-                        </a>
+                        <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
+                            <a href="${pageContext.request.contextPath}/admin/user_page?id=${credit.getOwnerId()}">
+                                    ${credit.getOwnerId()}
+                            </a>
+                        </c:if>
+                        <c:if test="${sessionScope.get('user').getRole() != 'ADMIN'}">
+                            ${credit.getOwnerId()}
+                        </c:if>
+
                     </td>
                     <td>${credit.getAccountStatus()}</td>
                     <td>${credit.getCreditLimit()}</td>

@@ -26,9 +26,14 @@
                     <td>${deposit.getBalance()}</td>
                     <td>${deposit.getClosingDate()}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/user_page?id=${deposit.getOwnerId()}">
-                                ${deposit.getOwnerId()}
-                        </a>
+                        <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
+                            <a href="${pageContext.request.contextPath}/admin/user_page?id=${deposit.getOwnerId()}">
+                                    ${deposit.getOwnerId()}
+                            </a>
+                        </c:if>
+                        <c:if test="${sessionScope.get('user').getRole() != 'ADMIN'}">
+                            ${deposit.getOwnerId()}
+                        </c:if>
                     </td>
                     <td>${deposit.getAccountStatus()}</td>
                     <td>${deposit.getDepositAmount()}</td>
