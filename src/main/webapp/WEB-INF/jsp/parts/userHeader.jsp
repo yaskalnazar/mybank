@@ -20,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/user/account/credit/open"><fmt:message key="page.message.credit.open"/></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/account/replenish"><fmt:message key="page.message.replenish.account"/></a>
+            </li>
         </ul>
     </div>
     <span style="float: right">

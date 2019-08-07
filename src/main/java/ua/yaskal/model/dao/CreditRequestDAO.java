@@ -9,4 +9,5 @@ public interface CreditRequestDAO extends DAO<CreditRequest> {
     boolean changeStatus(CreditRequest.CreditRequestStatus status, long id);
     List<CreditRequest> getAllByApplicantId(long applicantId);
 
+    List<CreditRequest> getAllByApplicantIdAndStatus(long applicantId, CreditRequest.CreditRequestStatus status);
 }

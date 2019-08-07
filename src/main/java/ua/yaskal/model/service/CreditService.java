@@ -38,4 +38,9 @@ public class CreditService {
         return creditAccount;
 
     }
+
+    public List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
+        CreditDAO creditDAO = DaoFactory.getInstance().createCreditDAO();
+        return creditDAO.getAllByOwnerIdAndStatus(ownerId, status);
+    }
 }

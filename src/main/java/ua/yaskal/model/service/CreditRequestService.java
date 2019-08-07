@@ -49,4 +49,8 @@ public class CreditRequestService {
         return DaoFactory.getInstance().createCreditRequestDAO().getAllByApplicantId(applicantId);
     }
 
+    public  List<CreditRequest> getAllByApplicantIdAndStatus(long applicantId, CreditRequest.CreditRequestStatus status){
+        return DaoFactory.getInstance().createCreditRequestDAO().getAllByApplicantIdAndStatus(applicantId, status);
+    }
+
 }

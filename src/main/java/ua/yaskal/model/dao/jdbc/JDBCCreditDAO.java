@@ -3,6 +3,7 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.DepositAccount;
 
@@ -98,7 +99,26 @@ public class JDBCCreditDAO implements CreditDAO {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all users credits: " + e);
+            logger.error("Can not get all user credits: " + e);
+            throw new RuntimeException(e);
+        }
+        return creditAccounts;
+    }
+
+    @Override
+    public List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
+        List<CreditAccount> creditAccounts = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.select.all.by.owner.id.and.status"))) {
+            statement.setString(1, ownerId+"");
+            statement.setString(2, status.name());
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all user credits: " + e);
             throw new RuntimeException(e);
         }
         return creditAccounts;

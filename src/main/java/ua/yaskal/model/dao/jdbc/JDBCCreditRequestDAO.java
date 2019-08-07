@@ -147,4 +147,24 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         }
         return creditRequests;
     }
+
+    @Override
+    public List<CreditRequest> getAllByApplicantIdAndStatus(long applicantId, CreditRequest.CreditRequestStatus status) {
+        List<CreditRequest> creditRequests = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id.and.status"))) {
+            statement.setString(1, applicantId+"");
+            statement.setString(2, status.name());
+
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get user credit requests: " + e);
+            throw new RuntimeException(e);
+        }
+        return creditRequests;
+    }
 }

@@ -32,12 +32,14 @@ public class DepositService {
     }
 
     public List<DepositAccount> getAll(){
-        DepositDAO depositDAO = DaoFactory.getInstance().createDepositDAO();
-        return depositDAO.getAll();
+        return DaoFactory.getInstance().createDepositDAO().getAll();
     }
 
     public List<DepositAccount> getAllByOwnerId(long ownerId){
-        DepositDAO depositDAO = DaoFactory.getInstance().createDepositDAO();
-        return depositDAO.getAllByOwnerId(ownerId);
+        return DaoFactory.getInstance().createDepositDAO().getAllByOwnerId(ownerId);
+    }
+
+    public List<DepositAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
+        return DaoFactory.getInstance().createDepositDAO().getAllByOwnerIdAndStatus(ownerId, status);
     }
 }

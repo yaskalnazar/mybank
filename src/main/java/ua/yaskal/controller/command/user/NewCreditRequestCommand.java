@@ -55,17 +55,15 @@ public class NewCreditRequestCommand implements Command {
         return JspPath.CREDIT_OPEN;
     }
 
-    public boolean isUserCanRequestCredit(HttpServletRequest request){
+    private boolean isUserCanRequestCredit(HttpServletRequest request){
         long userId = (long) request.getSession().getAttribute("userId");
 
         return (isUserDontHaveActiveCredit(request, userId)
                 && isUserDontHaveActiveRequests(request, userId));
     }
 
-    public boolean isUserDontHaveActiveCredit(HttpServletRequest request, long userId){
-        List<CreditAccount> activeCreditAccounts = creditService.getAllByOwnerId(userId).stream()
-                .filter((s) -> s.getAccountStatus().equals(Account.AccountStatus.ACTIVE))
-                .collect(Collectors.toList());
+    private boolean isUserDontHaveActiveCredit(HttpServletRequest request, long userId){
+        List<CreditAccount> activeCreditAccounts = creditService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE);
 
         if(!activeCreditAccounts.isEmpty()){
             logger.warn("Credit open attempt with activeCreditAccounts userId("+userId+")");
@@ -76,16 +74,12 @@ public class NewCreditRequestCommand implements Command {
         return true;
     }
 
-    public boolean isUserDontHaveActiveRequests(HttpServletRequest request, long userId){
-        List<CreditRequest> activeCreditRequests = creditRequestService.getAllByApplicantId(userId).stream()
-                .filter((s) -> s.getCreditRequestStatus().equals(CreditRequest.CreditRequestStatus.PENDING))
-                .collect(Collectors.toList());
-
+    private boolean isUserDontHaveActiveRequests(HttpServletRequest request, long userId){
+        List<CreditRequest> activeCreditRequests = creditRequestService.getAllByApplicantIdAndStatus(
+                userId, CreditRequest.CreditRequestStatus.PENDING);
 
         if(!activeCreditRequests.isEmpty()){
             logger.warn("Credit open attempt with activeCreditRequests userId("+userId+")");
-            for(CreditRequest i:activeCreditRequests)
-                logger.warn(i.getId()+" fuck");
             request.setAttribute("activeCreditRequests", activeCreditRequests);
             return false;
         }
