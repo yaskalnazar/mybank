@@ -27,18 +27,18 @@ public class JDBCUserDAO implements UserDAO {
     @Override
     public User getById(long id) {
         try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.select.by.id"))) {
-            getUserStatement.setString(1, id+"");
+            getUserStatement.setString(1, id + "");
 
-            logger.debug("Select user "+ getUserStatement);
+            logger.debug("Select user " + getUserStatement);
             ResultSet resultSet = getUserStatement.executeQuery();
             if (resultSet.next()) {
                 return mapperFactory.getUserMapper().mapToObject(resultSet);
             } else {
-                logger.debug("No user with id:"+ id);
+                logger.debug("No user with id:" + id);
                 throw new NoSuchUserException();
             }
         } catch (SQLException e) {
-            logger.error(e);
+            logger.error("Can not get user", e);
             throw new RuntimeException(e);
         }
     }
@@ -47,7 +47,7 @@ public class JDBCUserDAO implements UserDAO {
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection
-                     .prepareStatement(sqlRequestsBundle.getString("user.select.all"))) {
+                .prepareStatement(sqlRequestsBundle.getString("user.select.all"))) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -56,7 +56,7 @@ public class JDBCUserDAO implements UserDAO {
             }
             return users;
         } catch (SQLException e) {
-            logger.error("Can not get all users: " + e);
+            logger.error("Can not get all users", e);
             throw new RuntimeException(e);
         }
     }
@@ -73,7 +73,7 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public Long addNew(User item) throws NonUniqueEmailException {
-        try (PreparedStatement addUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)){
+        try (PreparedStatement addUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             addUserStatement.setString(1, item.getEmail());
             addUserStatement.setString(2, item.getName());
             addUserStatement.setString(3, item.getSurname());
@@ -81,7 +81,7 @@ public class JDBCUserDAO implements UserDAO {
             addUserStatement.setString(5, item.getRole().getStringRole());
             addUserStatement.setString(6, item.getPassword());
 
-            logger.debug("Add new user "+ addUserStatement);
+            logger.debug("Add new user " + addUserStatement);
             addUserStatement.execute();
 
             ResultSet resultSet = addUserStatement.getGeneratedKeys();
@@ -92,8 +92,8 @@ public class JDBCUserDAO implements UserDAO {
                 throw new SQLException();
             }
         } catch (SQLException e) {
-            logger.error("User was not added: " + e);
-            if (e.getErrorCode() == 1062){
+            logger.error("User was not added", e);
+            if (e.getErrorCode() == 1062) {
                 throw new NonUniqueEmailException();
             }
             throw new RuntimeException(e);
@@ -105,16 +105,16 @@ public class JDBCUserDAO implements UserDAO {
         try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.select.by.email"))) {
             getUserStatement.setString(1, email);
 
-            logger.debug("Select user "+ getUserStatement);
+            logger.debug("Select user " + getUserStatement);
             ResultSet resultSet = getUserStatement.executeQuery();
             if (resultSet.next()) {
                 return mapperFactory.getUserMapper().mapToObject(resultSet);
             } else {
-                logger.debug("No user with email:"+ email);
+                logger.debug("No user with email:" + email);
                 throw new NoSuchUserException();
             }
         } catch (SQLException e) {
-            logger.error(e);
+            logger.error("Can not get user", e);
             throw new RuntimeException(e);
         }
     }

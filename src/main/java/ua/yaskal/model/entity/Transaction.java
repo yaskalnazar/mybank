@@ -5,15 +5,15 @@ import java.time.LocalDate;
 
 public class Transaction {
     private long id;
-    private Account senderAccount;
-    private Account receiverAccount;
+    private long senderAccountId;
+    private long receiverAccountId;
     private BigDecimal transactionAmount;
     private LocalDate date;
 
-    public Transaction(long id, Account senderAccount, Account receiverAccount, BigDecimal transactionAmount, LocalDate date) {
+    public Transaction(long id, long senderAccountId, long receiverAccountId, BigDecimal transactionAmount, LocalDate date) {
         this.id = id;
-        this.senderAccount = senderAccount;
-        this.receiverAccount = receiverAccount;
+        this.senderAccountId = senderAccountId;
+        this.receiverAccountId = receiverAccountId;
         this.transactionAmount = transactionAmount;
         this.date = date;
     }
@@ -24,8 +24,8 @@ public class Transaction {
 
     public static class TransactionBuilder{
         private long id;
-        private Account senderAccount;
-        private Account receiverAccount;
+        private long senderAccountId;
+        private long receiverAccountId;
         private BigDecimal transactionAmount;
         private LocalDate date;
 
@@ -34,13 +34,13 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder setSenderAccount(Account senderAccount) {
-            this.senderAccount = senderAccount;
+        public TransactionBuilder setSenderAccount(long senderAccountId) {
+            this.senderAccountId = senderAccountId;
             return this;
         }
 
-        public TransactionBuilder setReceiverAccount(Account receiverAccount) {
-            this.receiverAccount = receiverAccount;
+        public TransactionBuilder setReceiverAccount(long receiverAccountId) {
+            this.receiverAccountId = receiverAccountId;
             return this;
         }
 
@@ -55,7 +55,7 @@ public class Transaction {
         }
 
         public Transaction build() {
-            return new Transaction(id, senderAccount, receiverAccount, transactionAmount, date);
+            return new Transaction(id, senderAccountId, receiverAccountId, transactionAmount, date);
         }
 
     }
@@ -68,20 +68,20 @@ public class Transaction {
         this.id = id;
     }
 
-    public Account getSenderAccount() {
-        return senderAccount;
+    public long getSenderAccountId() {
+        return senderAccountId;
     }
 
-    public void setSenderAccount(Account senderAccount) {
-        this.senderAccount = senderAccount;
+    public void setSenderAccountId(long senderAccountId) {
+        this.senderAccountId = senderAccountId;
     }
 
-    public Account getReceiverAccount() {
-        return receiverAccount;
+    public long getReceiverAccountId() {
+        return receiverAccountId;
     }
 
-    public void setReceiverAccount(Account receiverAccount) {
-        this.receiverAccount = receiverAccount;
+    public void setReceiverAccountId(long receiverAccountId) {
+        this.receiverAccountId = receiverAccountId;
     }
 
     public BigDecimal getTransactionAmount() {

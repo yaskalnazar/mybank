@@ -19,26 +19,27 @@ public class JDBCDaoFactory extends DaoFactory {
 
     @Override
     public UserDAO createUserDAO() {
-        return new JDBCUserDAO(getConnection(),sqlRequestsBundle, mapperFactory);
+        return new JDBCUserDAO(getConnection(), sqlRequestsBundle, mapperFactory);
     }
 
     @Override
     public DepositDAO createDepositDAO() {
-        return new JDBCDepositDAO(getConnection(),sqlRequestsBundle, mapperFactory);}
+        return new JDBCDepositDAO(getConnection(), sqlRequestsBundle, mapperFactory);
+    }
 
     @Override
     public CreditDAO createCreditDAO() {
-        return new JDBCCreditDAO(getConnection(),sqlRequestsBundle, mapperFactory);
+        return new JDBCCreditDAO(getConnection(), sqlRequestsBundle, mapperFactory);
     }
 
     @Override
     public CreditRequestDAO createCreditRequestDAO() {
-        return new JDBCCreditRequestDAO(getConnection(),sqlRequestsBundle, mapperFactory);
+        return new JDBCCreditRequestDAO(getConnection(), sqlRequestsBundle, mapperFactory);
     }
 
     @Override
     public TransactionDAO createTransactionDAO() {
-        return new JDBCTransactionDAO(getConnection(),sqlRequestsBundle, mapperFactory);
+        return new JDBCTransactionDAO(getConnection(), sqlRequestsBundle, mapperFactory);
     }
 
     private Connection getConnection() {
@@ -48,19 +49,18 @@ public class JDBCDaoFactory extends DaoFactory {
                     + "} Password:{"
                     + databaseProperties.getString("db.connection.password")
                     + "} User:{"
-                    + databaseProperties.getString("db.connection.user")  + "}");
+                    + databaseProperties.getString("db.connection.user") + "}");
 
             Class.forName(databaseProperties.getString("db.connection.driver"));
             return DriverManager.getConnection(
                     databaseProperties.getString("db.connection.datasource.url"),
-                    databaseProperties.getString("db.connection.password") ,
+                    databaseProperties.getString("db.connection.password"),
                     databaseProperties.getString("db.connection.user"));
-        } catch (
-                SQLException e) {
-            logger.error("Cannot get connection to db");
+        } catch (SQLException e) {
+            logger.error("Cannot get connection to db", e);
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
-            logger.error("Not found class for sql driver");
+            logger.error("Not found class for sql driver", e);
             throw new RuntimeException(e);
         }
     }

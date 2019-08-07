@@ -27,17 +27,17 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     public CreditRequest getById(long id) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.by.id"))) {
-            statement.setString(1, id+"");
+            statement.setString(1, id + "");
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return mapperFactory.getCreditRequestMapper().mapToObject(resultSet);
             } else {
-                logger.warn("No credit request with id:"+ id);
+                logger.warn("No credit request with id:" + id);
                 throw new NoSuchUserException();
             }
         } catch (SQLException e) {
-            logger.error("Can not get credit request: " + e);
+            logger.error("Can not get credit request", e);
             throw new RuntimeException(e);
         }
     }
@@ -53,7 +53,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all credit requests: " + e);
+            logger.error("Can not get all credit requests",e);
             throw new RuntimeException(e);
         }
         return creditRequests;
@@ -72,14 +72,14 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     @Override
     public Long addNew(CreditRequest item) {
         try (PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.request.insert.new"), Statement.RETURN_GENERATED_KEYS)){
+                sqlRequestsBundle.getString("credit.request.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getCreditLimit().toString());
             statement.setString(2, item.getCreditRate().toString());
             statement.setString(3, item.getCreationDate().toString());
             statement.setString(4, item.getCreditRequestStatus().name());
-            statement.setString(5, item.getApplicantId()+"");
+            statement.setString(5, item.getApplicantId() + "");
 
-            logger.debug("Add new credit request "+ statement);
+            logger.debug("Add new credit request " + statement);
             statement.execute();
 
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -90,7 +90,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 throw new SQLException();
             }
         } catch (SQLException e) {
-            logger.error("Credit request was not added: " + e);
+            logger.error("Credit request was not added",e);
             throw new RuntimeException(e);
         }
     }
@@ -107,7 +107,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all credit requests: " + e);
+            logger.error("Can not get all credit requests", e);
             throw new RuntimeException(e);
         }
         return creditRequests;
@@ -118,14 +118,14 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.change.status"))) {
             statement.setString(1, status.name());
-            statement.setString(2, id+"");
+            statement.setString(2, id + "");
 
-            logger.debug("Change credit request (id="+ id+") status to "+status.name());
+            logger.debug("Change credit request (id=" + id + ") status to " + status.name());
             statement.execute();
 
             return true;
         } catch (SQLException e) {
-            logger.error("Can not change status: " + e);
+            logger.error("Can not change status",e);
             throw new RuntimeException(e);
         }
     }
@@ -135,14 +135,14 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         List<CreditRequest> creditRequests = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id"))) {
-            statement.setString(1, applicantId+"");
+            statement.setString(1, applicantId + "");
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get user credit requests: " + e);
+            logger.error("Can not get user credit requests" , e);
             throw new RuntimeException(e);
         }
         return creditRequests;
@@ -153,7 +153,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         List<CreditRequest> creditRequests = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id.and.status"))) {
-            statement.setString(1, applicantId+"");
+            statement.setString(1, applicantId + "");
             statement.setString(2, status.name());
 
 
@@ -162,7 +162,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get user credit requests: " + e);
+            logger.error("Can not get user credit requests", e);
             throw new RuntimeException(e);
         }
         return creditRequests;

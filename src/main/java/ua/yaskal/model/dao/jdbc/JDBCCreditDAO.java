@@ -41,7 +41,7 @@ public class JDBCCreditDAO implements CreditDAO {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all credits: " + e);
+            logger.error("Can not get all credits",e);
             throw new RuntimeException(e);
         }
         return creditAccounts;
@@ -60,18 +60,18 @@ public class JDBCCreditDAO implements CreditDAO {
     @Override
     public Long addNew(CreditAccount item) {
         try (PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.insert.new"), Statement.RETURN_GENERATED_KEYS)){
+                sqlRequestsBundle.getString("credit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setString(2, item.getBalance().toString());
             statement.setString(3, item.getClosingDate().toString());
-            statement.setString(4, item.getOwnerId()+"");
+            statement.setString(4, item.getOwnerId() + "");
             statement.setString(5, item.getAccountStatus().name());
             statement.setString(6, item.getCreditLimit().toString());
             statement.setString(7, item.getCreditRate().toString());
             statement.setString(8, item.getAccruedInterest().toString());
 
 
-            logger.debug("Add new Credit Account "+ statement);
+            logger.debug("Add new Credit Account " + statement);
             statement.execute();
 
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -82,7 +82,7 @@ public class JDBCCreditDAO implements CreditDAO {
                 throw new SQLException();
             }
         } catch (SQLException e) {
-            logger.error("Credit Account was not added: " + e);
+            logger.error("Credit Account was not added: ", e);
             throw new RuntimeException(e);
         }
     }
@@ -92,14 +92,14 @@ public class JDBCCreditDAO implements CreditDAO {
         List<CreditAccount> creditAccounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all.by.owner.id"))) {
-            statement.setString(1, ownerId+"");
+            statement.setString(1, ownerId + "");
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all user credits: " + e);
+            logger.error("Can not get all user credits", e);
             throw new RuntimeException(e);
         }
         return creditAccounts;
@@ -110,7 +110,7 @@ public class JDBCCreditDAO implements CreditDAO {
         List<CreditAccount> creditAccounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all.by.owner.id.and.status"))) {
-            statement.setString(1, ownerId+"");
+            statement.setString(1, ownerId + "");
             statement.setString(2, status.name());
 
             ResultSet resultSet = statement.executeQuery();
@@ -118,7 +118,7 @@ public class JDBCCreditDAO implements CreditDAO {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all user credits: " + e);
+            logger.error("Can not get all user credits", e);
             throw new RuntimeException(e);
         }
         return creditAccounts;
