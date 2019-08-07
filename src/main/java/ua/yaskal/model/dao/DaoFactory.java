@@ -13,6 +13,8 @@ public abstract class DaoFactory {
 
     public abstract CreditRequestDAO createCreditRequestDAO();
 
+    public abstract TransactionDAO createTransactionDAO();
+
     public static DaoFactory getInstance() {
         if (daoFactory == null) {
             synchronized (DaoFactory.class) {

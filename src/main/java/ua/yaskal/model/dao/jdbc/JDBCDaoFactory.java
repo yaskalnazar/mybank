@@ -36,6 +36,11 @@ public class JDBCDaoFactory extends DaoFactory {
         return new JDBCCreditRequestDAO(getConnection(),sqlRequestsBundle, mapperFactory);
     }
 
+    @Override
+    public TransactionDAO createTransactionDAO() {
+        return new JDBCTransactionDAO(getConnection(),sqlRequestsBundle, mapperFactory);
+    }
+
     private Connection getConnection() {
         try {
             logger.debug("Getting connection to DB URL:{"
