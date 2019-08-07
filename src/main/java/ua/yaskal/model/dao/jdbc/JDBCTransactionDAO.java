@@ -15,6 +15,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     private Connection connection;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
+    private final static String ACCOUNTS_TRIGGER_SQLSTATE="12001";
 
     public JDBCTransactionDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
         this.connection = connection;
@@ -51,37 +52,35 @@ public class JDBCTransactionDAO implements TransactionDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        try (
-                PreparedStatement reduceBalance = connection.prepareStatement(
-                        sqlRequestsBundle.getString("account.reduce.balance"));
-                PreparedStatement increaseBalance = connection.prepareStatement(
-                        sqlRequestsBundle.getString("account.increase.balance"));
-                PreparedStatement insertTransaction = connection.prepareStatement(
-                sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)){
+
+        try (PreparedStatement reduceBalance = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.reduce.balance"));
+             PreparedStatement increaseBalance = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.increase.balance"));
+             PreparedStatement insertTransaction = connection.prepareStatement(
+                     sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+
             reduceBalance.setString(1, item.getTransactionAmount().toString());
-            reduceBalance.setString(2, item.getSenderAccountId()+"");
-
-
+            reduceBalance.setString(2, item.getSenderAccountId() + "");
 
             increaseBalance.setString(1, item.getTransactionAmount().toString());
-            increaseBalance.setString(2, item.getReceiverAccountId()+"");
+            increaseBalance.setString(2, item.getReceiverAccountId() + "");
 
 
             insertTransaction.setString(1, item.getDate().toString());
             insertTransaction.setString(2, item.getTransactionAmount().toString());
-            insertTransaction.setString(3, item.getReceiverAccountId()+"");
-            insertTransaction.setString(4, item.getSenderAccountId()+"");
+            insertTransaction.setString(3, item.getReceiverAccountId() + "");
+            insertTransaction.setString(4, item.getSenderAccountId() + "");
 
 
-            logger.debug("Add new Transaction"+ insertTransaction);
+            logger.debug("Try add new Transaction" + insertTransaction);
             reduceBalance.execute();
             increaseBalance.execute();
             insertTransaction.execute();
+
             connection.commit();
 
             ResultSet resultSet = insertTransaction.getGeneratedKeys();
-
-
 
             if (resultSet.next()) {
                 return resultSet.getLong(1);
@@ -89,7 +88,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
                 throw new SQLException();
             }
         } catch (SQLException e) {
-            if(e.getSQLState().equals("12001")){
+            if (e.getSQLState().equals(ACCOUNTS_TRIGGER_SQLSTATE)) {
                 logger.warn("NotEnoughMoneyException");
                 throw new NotEnoughMoneyException();
             }
