@@ -22,7 +22,16 @@
             <tbody>
             <c:forEach items="${deposits}" var="deposit">
                 <tr>
-                    <td>${deposit.getId()}</td>
+                    <td><c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
+                        <a href="${pageContext.request.contextPath}/admin/account/deposit_page?id=${deposit.getId()}">
+                                ${deposit.getId()}
+                        </a>
+                    </c:if>
+                        <c:if test="${sessionScope.get('user').getRole() == 'USER'}">
+                            <a href="${pageContext.request.contextPath}/user/account/deposit_page?id=${deposit.getId()}">
+                                    ${deposit.getId()}
+                            </a>
+                        </c:if></td>
                     <td>${deposit.getBalance()}</td>
                     <td>${deposit.getClosingDate()}</td>
                     <td>

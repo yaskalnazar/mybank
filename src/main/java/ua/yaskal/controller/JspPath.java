@@ -27,5 +27,7 @@ public interface JspPath {
 
 
     String USER_CREDIT_PAGE="/WEB-INF/jsp/user/userCreditPage.jsp";
+    String USER_DEPOSIT_PAGE="/WEB-INF/jsp/user/userDepositPage.jsp";
+
 
 }

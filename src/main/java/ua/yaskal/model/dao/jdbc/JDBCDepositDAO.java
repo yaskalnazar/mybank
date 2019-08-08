@@ -5,6 +5,7 @@ import ua.yaskal.model.dao.DepositDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.DepositAccount;
+import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -26,7 +27,21 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public DepositAccount getById(long id) {
-        return null;
+        try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("deposit.select.by.id"))) {
+            getUserStatement.setString(1, id + "");
+
+            logger.debug("Select deposit " + getUserStatement);
+            ResultSet resultSet = getUserStatement.executeQuery();
+            if (resultSet.next()) {
+                return mapperFactory.getDepositMapper().mapToObject(resultSet);
+            } else {
+                logger.debug("No deposit with id:" + id);
+                throw new NoSuchAccountException();
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get deposit", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
