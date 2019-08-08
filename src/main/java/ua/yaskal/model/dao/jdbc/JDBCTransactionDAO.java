@@ -5,6 +5,7 @@ import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
+import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 
 import java.sql.*;
 import java.util.List;
@@ -15,7 +16,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     private Connection connection;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
-    private final static String ACCOUNTS_TRIGGER_SQLSTATE="12001";
+    private final static String ACCOUNTS_TRIGGER_SQLSTATE = "12001";
 
     public JDBCTransactionDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
         this.connection = connection;
@@ -48,8 +49,8 @@ public class JDBCTransactionDAO implements TransactionDAO {
         try {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             connection.setAutoCommit(false);
-
         } catch (SQLException e) {
+            logger.error("Can not prepare connection", e);
             throw new RuntimeException(e);
         }
 
@@ -89,8 +90,12 @@ public class JDBCTransactionDAO implements TransactionDAO {
             }
         } catch (SQLException e) {
             if (e.getSQLState().equals(ACCOUNTS_TRIGGER_SQLSTATE)) {
-                logger.warn("NotEnoughMoneyException");
+                logger.warn("NotEnoughMoneyException", e);
                 throw new NotEnoughMoneyException();
+            }
+            if (e.getErrorCode() == 1452) {
+                logger.warn("NoSuchActiveAccountException", e);
+                throw new NoSuchActiveAccountException();
             }
             logger.error("Transaction was not added", e);
             throw new RuntimeException(e);

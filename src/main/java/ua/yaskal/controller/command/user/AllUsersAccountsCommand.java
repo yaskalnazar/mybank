@@ -1,4 +1,4 @@
-package ua.yaskal.controller.command.guest;
+package ua.yaskal.controller.command.user;
 
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;

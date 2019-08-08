@@ -4,9 +4,11 @@ import org.apache.log4j.Logger;
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
+import ua.yaskal.model.dao.AccountDAO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
+import ua.yaskal.model.service.AccountService;
 import ua.yaskal.model.service.CreditService;
 import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.TransactionService;
@@ -19,21 +21,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ReplenishAccountCommand implements Command {
-    private final static Logger logger = Logger.getLogger(ReplenishAccountCommand.class);
     private ValidationUtil validationUtil = new ValidationUtil();
-    private CreditService creditService = new CreditService();
-    private DepositService depositService = new DepositService();
+    private AccountService accountService = new AccountService();
     private TransactionService transactionService = new TransactionService();
+    private final static long WORKAROUND_ACCOUNT_ID = 12;
 
     @Override
     public String execute(HttpServletRequest request) {
         long userId = (long) request.getSession().getAttribute("userId");
-
-        List<Account> activeUserAccounts = new ArrayList<>();
-        activeUserAccounts.addAll(creditService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
-        activeUserAccounts.addAll(depositService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
-
-        request.setAttribute("activeUserAccounts", activeUserAccounts);
 
         if (validationUtil.isContains(request, Arrays.asList("accountId", "amount")) &&
                 validationUtil.isRequestValid(request, Arrays.asList("accountId", "amount"))) {
@@ -41,16 +36,15 @@ public class ReplenishAccountCommand implements Command {
             Transaction transaction = Transaction.getBuilder()
                     .setReceiverAccount(Long.parseLong(request.getParameter("accountId")))
                     .setTransactionAmount(new BigDecimal(request.getParameter("amount")))
-                    .setSenderAccount(12)
+                    .setSenderAccount(WORKAROUND_ACCOUNT_ID)
                     .setDate(LocalDate.now())
                     .build();
 
             transactionService.makeNewTransaction(transaction);
             request.setAttribute("replenishSuccess", true);
-            return JspPath.REPLENISH_ACCOUNT;
         }
 
-
+        request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
         return JspPath.REPLENISH_ACCOUNT;
     }
 }

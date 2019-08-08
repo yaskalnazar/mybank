@@ -12,6 +12,8 @@ public interface JspPath {
     String CREDIT_OPEN="/WEB-INF/jsp/user/newCreditRequest.jsp";
     String USER_ALL_ACCOUNTS="/WEB-INF/jsp/user/allAccounts.jsp";
     String REPLENISH_ACCOUNT = "/WEB-INF/jsp/user/replenishAccount.jsp";
+    String MAKE_TRANSACTION = "/WEB-INF/jsp/user/makeTransaction.jsp";
+
 
 
 

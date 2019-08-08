@@ -22,25 +22,32 @@
                 </div>
             </c:if>
 
+            <c:if test="${not empty activeUserAccounts}">
+                <form method="post" name="form" autocomplete="off">
+                    <fmt:message key="page.message.account.id"/>:
+                    <select class="custom-select mb-3" name="accountId">
+                        <c:forEach items="${activeUserAccounts}" var="account">
+                            <option value="${account.getId()}"><fmt:message key="page.message.id"/>: ${account.getId()} &nbsp;
+                                [<fmt:message key="page.message.balance"/>: ${account.getBalance()}]
+                            </option>
+                        </c:forEach>
+                    </select>
+                    <label for="amount"><fmt:message key="page.message.amount"/>:</label>
+                    <div class="form-inline">
+                        <input class="form-control" type="number" min="0"
+                               name="amount" id="amount">
 
-            <form method="post" name="form" autocomplete="off">
-                <fmt:message key="page.message.account.id"/>:
-                <select class="custom-select mb-3" name="accountId">
-                    <c:forEach items="${activeUserAccounts}" var="account">
-                        <option value="${account.getId()}">${account.getId()}</option>
-                    </c:forEach>
-                </select>
-                <label for="amount"><fmt:message key="page.message.amount"/>:</label>
-                <div class="form-inline">
-                    <input class="form-control" type="number" min="0"
-                           name="amount" id="amount">
-
-                    <button type="submit" class="btn btn-success ml-2">
-                        <fmt:message key="page.message.submit"/>
-                    </button>
+                        <button type="submit" class="btn btn-success ml-2">
+                            <fmt:message key="page.message.submit"/>
+                        </button>
+                    </div>
+                </form>
+            </c:if>
+            <c:if test="${empty activeUserAccounts}">
+                <div class="alert alert-warning" role="alert">
+                    <fmt:message key="page.message.no.active.accounts"/>
                 </div>
-            </form>
-
+            </c:if>
         </div>
     </div>
 </div>

@@ -2,10 +2,7 @@ package ua.yaskal.model.dao.mappers.jdbc;
 
 import ua.yaskal.model.dao.mappers.Mapper;
 import ua.yaskal.model.dao.mappers.MapperFactory;
-import ua.yaskal.model.entity.CreditAccount;
-import ua.yaskal.model.entity.CreditRequest;
-import ua.yaskal.model.entity.DepositAccount;
-import ua.yaskal.model.entity.User;
+import ua.yaskal.model.entity.*;
 
 public class JDBCMapperFactory implements MapperFactory {
     @Override
@@ -26,5 +23,10 @@ public class JDBCMapperFactory implements MapperFactory {
     @Override
     public Mapper<CreditRequest> getCreditRequestMapper() {
         return new JDBCCreditRequestMapper();
+    }
+
+    @Override
+    public Mapper<Account> getAccountMapper() {
+        return new JDBCAccountMapper();
     }
 }
