@@ -22,6 +22,11 @@
                     <fmt:message key="page.message.transaction.success"/>
                 </div>
             </c:if>
+            <c:if test="${not empty transactionError}">
+                <div class="alert alert-danger" role="alert">
+                    <fmt:message key="${transactionError}"/>
+                </div>
+            </c:if>
 
 
             <c:if test="${not empty activeUserAccounts}">

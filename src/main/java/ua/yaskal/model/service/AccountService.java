@@ -17,4 +17,8 @@ public class AccountService {
     public List<Account> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
         return DaoFactory.getInstance().createAccountDAO().getAllByOwnerIdAndStatus(ownerId, status);
     }
+
+    public Account getById(long id){
+        return DaoFactory.getInstance().createAccountDAO().getById(id);
+    }
 }

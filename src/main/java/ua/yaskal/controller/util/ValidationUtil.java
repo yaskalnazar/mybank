@@ -16,7 +16,7 @@ public class ValidationUtil {
     public boolean isContains(HttpServletRequest request, List<String> params) {
         for (String param : params) {
             if (Objects.isNull(request.getParameter(param)) || request.getParameter(param).isEmpty()) {
-                logger.warn("Null or empty parameter: " + param);
+                logger.debug("Null or empty parameter: " + param);
                 return false;
             }
         }

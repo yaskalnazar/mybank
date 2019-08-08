@@ -49,55 +49,59 @@ public class JDBCTransactionDAO implements TransactionDAO {
         try {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             connection.setAutoCommit(false);
+
+
+
+            try (PreparedStatement reduceBalance = connection.prepareStatement(
+                    sqlRequestsBundle.getString("account.reduce.balance"));
+                 PreparedStatement increaseBalance = connection.prepareStatement(
+                         sqlRequestsBundle.getString("account.increase.balance"));
+                 PreparedStatement insertTransaction = connection.prepareStatement(
+                         sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+
+                reduceBalance.setString(1, item.getTransactionAmount().toString());
+                reduceBalance.setString(2, item.getSenderAccountId() + "");
+
+                increaseBalance.setString(1, item.getTransactionAmount().toString());
+                increaseBalance.setString(2, item.getReceiverAccountId() + "");
+
+
+                insertTransaction.setString(1, item.getDate().toString());
+                insertTransaction.setString(2, item.getTransactionAmount().toString());
+                insertTransaction.setString(3, item.getReceiverAccountId() + "");
+                insertTransaction.setString(4, item.getSenderAccountId() + "");
+
+
+                logger.debug("Try add new Transaction" + insertTransaction);
+                reduceBalance.execute();
+                increaseBalance.execute();
+                insertTransaction.execute();
+
+                connection.commit();
+
+                ResultSet resultSet = insertTransaction.getGeneratedKeys();
+
+                if (resultSet.next()) {
+                    return resultSet.getLong(1);
+                } else {
+                    throw new SQLException();
+                }
+            } catch (SQLException e) {
+                connection.rollback();
+                if (e.getSQLState().equals(ACCOUNTS_TRIGGER_SQLSTATE)) {
+                    logger.warn("NotEnoughMoneyException", e);
+                    throw new NotEnoughMoneyException();
+                }
+                if (e.getErrorCode() == 1452) {
+                    logger.warn("NoSuchActiveAccountException", e);
+                    throw new NoSuchActiveAccountException();
+                }
+                logger.error("Transaction was not added", e);
+                throw new RuntimeException(e);
+            }
+
         } catch (SQLException e) {
-            logger.error("Can not prepare connection", e);
-            throw new RuntimeException(e);
-        }
-
-        try (PreparedStatement reduceBalance = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.reduce.balance"));
-             PreparedStatement increaseBalance = connection.prepareStatement(
-                     sqlRequestsBundle.getString("account.increase.balance"));
-             PreparedStatement insertTransaction = connection.prepareStatement(
-                     sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
-
-            reduceBalance.setString(1, item.getTransactionAmount().toString());
-            reduceBalance.setString(2, item.getSenderAccountId() + "");
-
-            increaseBalance.setString(1, item.getTransactionAmount().toString());
-            increaseBalance.setString(2, item.getReceiverAccountId() + "");
-
-
-            insertTransaction.setString(1, item.getDate().toString());
-            insertTransaction.setString(2, item.getTransactionAmount().toString());
-            insertTransaction.setString(3, item.getReceiverAccountId() + "");
-            insertTransaction.setString(4, item.getSenderAccountId() + "");
-
-
-            logger.debug("Try add new Transaction" + insertTransaction);
-            reduceBalance.execute();
-            increaseBalance.execute();
-            insertTransaction.execute();
-
-            connection.commit();
-
-            ResultSet resultSet = insertTransaction.getGeneratedKeys();
-
-            if (resultSet.next()) {
-                return resultSet.getLong(1);
-            } else {
-                throw new SQLException();
-            }
-        } catch (SQLException e) {
-            if (e.getSQLState().equals(ACCOUNTS_TRIGGER_SQLSTATE)) {
-                logger.warn("NotEnoughMoneyException", e);
-                throw new NotEnoughMoneyException();
-            }
-            if (e.getErrorCode() == 1452) {
-                logger.warn("NoSuchActiveAccountException", e);
-                throw new NoSuchActiveAccountException();
-            }
-            logger.error("Transaction was not added", e);
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

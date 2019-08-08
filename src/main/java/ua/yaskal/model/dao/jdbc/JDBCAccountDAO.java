@@ -6,6 +6,8 @@ import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.exceptions.WrongAccountTypeException;
+import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,7 +31,21 @@ public class JDBCAccountDAO implements AccountDAO {
 
     @Override
     public Account getById(long id) {
-        return null;
+        try (PreparedStatement statement = connection.prepareStatement(sqlRequestsBundle.getString("account.select.by.id"))) {
+            statement.setString(1, id + "");
+
+            logger.debug("Select account " + statement);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return mapperFactory.getAccountMapper().mapToObject(resultSet);
+            } else {
+                logger.debug("No account with id:" + id);
+                throw new NoSuchAccountException();
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get account", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
