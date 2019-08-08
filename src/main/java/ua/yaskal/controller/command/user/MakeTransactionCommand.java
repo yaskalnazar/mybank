@@ -10,16 +10,12 @@ import ua.yaskal.model.exceptions.AccessDeniedException;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.service.AccountService;
-import ua.yaskal.model.service.CreditService;
-import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.List;
 
 public class MakeTransactionCommand implements Command {
     private final static Logger logger = Logger.getLogger(MakeTransactionCommand.class);
@@ -46,7 +42,7 @@ public class MakeTransactionCommand implements Command {
                     .setReceiverAccount(Long.parseLong(request.getParameter("receiverAccountId")))
                     .setTransactionAmount(new BigDecimal(request.getParameter("amount")))
                     .setSenderAccount(senderAccountId)
-                    .setDate(LocalDate.now())
+                    .setDate(LocalDateTime.now())
                     .build();
 
             try {

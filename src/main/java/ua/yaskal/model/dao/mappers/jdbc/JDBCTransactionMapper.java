@@ -6,13 +6,14 @@ import ua.yaskal.model.entity.Transaction;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 public class JDBCTransactionMapper implements Mapper<Transaction> {
     @Override
     public Transaction mapToObject(ResultSet resultSet) throws SQLException {
         return Transaction.getBuilder()
                 .setId(resultSet.getLong("transaction_id"))
-                .setDate(resultSet.getDate("date").toLocalDate())
+                .setDate(resultSet.getObject("date", LocalDateTime.class))
                 .setTransactionAmount(resultSet.getBigDecimal("transaction_amount").setScale(2, BigDecimal.ROUND_HALF_DOWN))
                 .setReceiverAccount(resultSet.getLong("receiver_account_account_id"))
                 .setSenderAccount(resultSet.getLong("sender_account_account_id"))

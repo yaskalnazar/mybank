@@ -3,7 +3,6 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
-import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;

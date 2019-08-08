@@ -5,12 +5,14 @@ import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.command.admin.GetUserPageCommand;
 import ua.yaskal.controller.util.ValidationUtil;
+import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.AccessDeniedException;
 import ua.yaskal.model.service.CreditService;
 import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.List;
 
 public class UserCreditPageCommand implements Command {
     private ValidationUtil validationUtil = new ValidationUtil();
@@ -36,10 +38,16 @@ public class UserCreditPageCommand implements Command {
             throw new AccessDeniedException();
         }
 
+        List<Transaction> transactions = transactionService.getAllByAccountId(creditId);
+        transactions.stream().forEachOrdered(x -> {
+            if (x.getSenderAccountId() == creditId){
+                x.setTransactionAmount(x.getTransactionAmount().negate());
+            }
+        });
+
+
         request.setAttribute("credit", creditService.getById(Long.parseLong(request.getParameter("id"))));
-        request.setAttribute("accountTransactions", transactionService.getAllByAccountId(creditId));
-        /*request.setAttribute("receivedTransaction", transactionService.getAllByReceiverId(creditId));
-        request.setAttribute("sentTransaction", transactionService.getAllBySenderId(creditId));*/
+        request.setAttribute("accountTransactions", transactions);
 
 
         return JspPath.USER_CREDIT_PAGE;

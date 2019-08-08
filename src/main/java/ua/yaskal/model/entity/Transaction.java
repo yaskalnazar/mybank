@@ -1,16 +1,16 @@
 package ua.yaskal.model.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Transaction {
     private long id;
     private long senderAccountId;
     private long receiverAccountId;
     private BigDecimal transactionAmount;
-    private LocalDate date;
+    private LocalDateTime date;
 
-    public Transaction(long id, long senderAccountId, long receiverAccountId, BigDecimal transactionAmount, LocalDate date) {
+    public Transaction(long id, long senderAccountId, long receiverAccountId, BigDecimal transactionAmount, LocalDateTime date) {
         this.id = id;
         this.senderAccountId = senderAccountId;
         this.receiverAccountId = receiverAccountId;
@@ -27,7 +27,7 @@ public class Transaction {
         private long senderAccountId;
         private long receiverAccountId;
         private BigDecimal transactionAmount;
-        private LocalDate date;
+        private LocalDateTime date;
 
         public TransactionBuilder setId(long id) {
             this.id = id;
@@ -49,7 +49,7 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder setDate(LocalDate date) {
+        public TransactionBuilder setDate(LocalDateTime date) {
             this.date = date;
             return this;
         }
@@ -92,11 +92,11 @@ public class Transaction {
         this.transactionAmount = transactionAmount;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

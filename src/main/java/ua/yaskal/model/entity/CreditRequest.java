@@ -1,14 +1,14 @@
 package ua.yaskal.model.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CreditRequest {
     private long id;
     private long applicantId;
     private BigDecimal creditRate;
     private BigDecimal creditLimit;
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     private CreditRequestStatus creditRequestStatus;
 
     public enum CreditRequestStatus {
@@ -18,7 +18,7 @@ public class CreditRequest {
     }
 
     public CreditRequest(long id, long applicantId, BigDecimal creditRate, BigDecimal creditLimit,
-                         LocalDate creationDate, CreditRequestStatus creditRequestStatus) {
+                         LocalDateTime creationDate, CreditRequestStatus creditRequestStatus) {
         this.id = id;
         this.applicantId = applicantId;
         this.creditRate = creditRate;
@@ -36,7 +36,7 @@ public class CreditRequest {
         private long applicantId;
         private BigDecimal creditRate;
         private BigDecimal creditLimit;
-        private LocalDate creationDate;
+        private LocalDateTime creationDate;
         private CreditRequestStatus creditRequestStatus;
 
         public CreditRequestBuilder setId(long id) {
@@ -59,7 +59,7 @@ public class CreditRequest {
             return this;
         }
 
-        public CreditRequestBuilder setCreationDate(LocalDate creationDate) {
+        public CreditRequestBuilder setCreationDate(LocalDateTime creationDate) {
             this.creationDate = creationDate;
             return this;
         }
@@ -106,11 +106,11 @@ public class CreditRequest {
         this.creditLimit = creditLimit;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 

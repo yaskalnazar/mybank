@@ -13,10 +13,9 @@ import ua.yaskal.model.service.CreditService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class NewCreditRequestCommand implements Command {
     private final static Logger logger = Logger.getLogger(NewCreditRequestCommand.class);
@@ -45,7 +44,7 @@ public class NewCreditRequestCommand implements Command {
                 (long) request.getSession().getAttribute("userId"),
                 new BigDecimal(request.getParameter("creditRate")),
                 new BigDecimal(request.getParameter("creditLimit")),
-                LocalDate.now()
+                LocalDateTime.now()
         );
 
         CreditRequest creditRequest = creditRequestService.createNew(creditRequestDTO);

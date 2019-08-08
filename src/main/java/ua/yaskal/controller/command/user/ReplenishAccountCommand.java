@@ -1,24 +1,17 @@
 package ua.yaskal.controller.command.user;
 
-import org.apache.log4j.Logger;
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
-import ua.yaskal.model.dao.AccountDAO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.Transaction;
-import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.service.AccountService;
-import ua.yaskal.model.service.CreditService;
-import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.List;
 
 public class ReplenishAccountCommand implements Command {
     private ValidationUtil validationUtil = new ValidationUtil();
@@ -37,7 +30,7 @@ public class ReplenishAccountCommand implements Command {
                     .setReceiverAccount(Long.parseLong(request.getParameter("accountId")))
                     .setTransactionAmount(new BigDecimal(request.getParameter("amount")))
                     .setSenderAccount(WORKAROUND_ACCOUNT_ID)
-                    .setDate(LocalDate.now())
+                    .setDate(LocalDateTime.now())
                     .build();
 
             transactionService.makeNewTransaction(transaction);

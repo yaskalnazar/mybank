@@ -1,15 +1,15 @@
 package ua.yaskal.model.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CreditRequestDTO {
     private long applicantId;
     private BigDecimal creditRate;
     private BigDecimal creditLimit;
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
 
-    public CreditRequestDTO(long applicantId, BigDecimal creditRate, BigDecimal creditLimit, LocalDate creationDate) {
+    public CreditRequestDTO(long applicantId, BigDecimal creditRate, BigDecimal creditLimit, LocalDateTime creationDate) {
         this.applicantId = applicantId;
         this.creditRate = creditRate;
         this.creditLimit = creditLimit;
@@ -40,11 +40,11 @@ public class CreditRequestDTO {
         this.creditLimit = creditLimit;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 }

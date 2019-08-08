@@ -1,14 +1,14 @@
 package ua.yaskal.model.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Payment {
     private long id;
     private Account requesterAccount;
     private Account payerAccount;
     private BigDecimal amount;
-    private LocalDate date;
+    private LocalDateTime date;
     private PaymentStatus paymentStatus;
 
     public enum PaymentStatus {
@@ -17,7 +17,7 @@ public class Payment {
         REJECTED;
     }
 
-    public Payment(long id, Account requesterAccount, Account payerAccount, BigDecimal amount, LocalDate date, PaymentStatus paymentStatus) {
+    public Payment(long id, Account requesterAccount, Account payerAccount, BigDecimal amount, LocalDateTime date, PaymentStatus paymentStatus) {
         this.id = id;
         this.requesterAccount = requesterAccount;
         this.payerAccount = payerAccount;
@@ -31,7 +31,7 @@ public class Payment {
         private Account requesterAccount;
         private Account payerAccount;
         private BigDecimal amount;
-        private LocalDate date;
+        private LocalDateTime date;
         private PaymentStatus paymentStatus;
 
         public PaymentBuilder setId(long id) {
@@ -54,7 +54,7 @@ public class Payment {
             return this;
         }
 
-        public PaymentBuilder setDate(LocalDate date) {
+        public PaymentBuilder setDate(LocalDateTime date) {
             this.date = date;
             return this;
         }
@@ -101,11 +101,11 @@ public class Payment {
         this.amount = amount;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
