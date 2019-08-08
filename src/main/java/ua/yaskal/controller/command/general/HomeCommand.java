@@ -1,6 +1,7 @@
-package ua.yaskal.controller.command;
+package ua.yaskal.controller.command.general;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.controller.command.Command;
 import ua.yaskal.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;

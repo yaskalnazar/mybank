@@ -34,7 +34,7 @@
                     </select>
                     <label for="amount"><fmt:message key="page.message.amount"/>:</label>
                     <div class="form-inline">
-                        <input class="form-control" type="number" min="0"
+                        <input class="form-control" type="number"  step="0.01" min="0"
                                name="amount" id="amount">
 
                         <button type="submit" class="btn btn-success ml-2">

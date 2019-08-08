@@ -1,7 +1,7 @@
-package ua.yaskal.controller.command;
+package ua.yaskal.controller.command.general;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.controller.JspPath;
+import ua.yaskal.controller.command.Command;
 import ua.yaskal.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +21,6 @@ public class LogOutCommand implements Command {
         String locale = (String) request.getSession().getAttribute("locale");
         request.getSession().invalidate();
         request.getSession().setAttribute("locale", locale);
-        //request.setAttribute("logoutSuccessfully", "You successfully logout");
-        //return JspPath.LOGIN_FORM;
         return "redirect:/mybank/guest/login";
 
     }

@@ -3,6 +3,8 @@ package ua.yaskal.controller;
 import org.apache.log4j.Logger;
 import ua.yaskal.controller.command.*;
 import ua.yaskal.controller.command.admin.*;
+import ua.yaskal.controller.command.general.HomeCommand;
+import ua.yaskal.controller.command.general.LogOutCommand;
 import ua.yaskal.controller.command.guest.*;
 import ua.yaskal.controller.command.user.*;
 
@@ -31,7 +33,6 @@ public class Servlet extends HttpServlet {
         commands.put("user/logout", new LogOutCommand());
         commands.put("admin/logout",new LogOutCommand());
 
-        commands.put("exception", new ExceptionCommand());
 
         commands.put("guest/login", new LoginCommand());
         commands.put("guest/registration", new RegistrationCommand());
@@ -49,6 +50,8 @@ public class Servlet extends HttpServlet {
         commands.put("user/account/all", new AllUsersAccountsCommand());
         commands.put("user/account/replenish", new ReplenishAccountCommand());
         commands.put("user/account/make_transaction", new MakeTransactionCommand());
+        commands.put("user/account/credit_page", new UserCreditPageCommand());
+
 
     }
 

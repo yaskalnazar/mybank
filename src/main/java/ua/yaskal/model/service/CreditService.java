@@ -13,13 +13,11 @@ import java.util.List;
 public class CreditService {
 
     public List<CreditAccount> getAll(){
-        CreditDAO creditDAO = DaoFactory.getInstance().createCreditDAO();
-        return creditDAO.getAll();
+        return DaoFactory.getInstance().createCreditDAO().getAll();
     }
 
     public List<CreditAccount> getAllByOwnerId(long ownerId){
-        CreditDAO creditDAO = DaoFactory.getInstance().createCreditDAO();
-        return creditDAO.getAllByOwnerId(ownerId);
+        return DaoFactory.getInstance().createCreditDAO().getAllByOwnerId(ownerId);
     }
 
     public CreditAccount addNew(CreditRequest creditRequest){
@@ -40,7 +38,10 @@ public class CreditService {
     }
 
     public List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
-        CreditDAO creditDAO = DaoFactory.getInstance().createCreditDAO();
-        return creditDAO.getAllByOwnerIdAndStatus(ownerId, status);
+        return DaoFactory.getInstance().createCreditDAO().getAllByOwnerIdAndStatus(ownerId, status);
+    }
+
+    public CreditAccount getById(long id){
+        return DaoFactory.getInstance().createCreditDAO().getById(id);
     }
 }

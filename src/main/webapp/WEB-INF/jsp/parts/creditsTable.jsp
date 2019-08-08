@@ -24,7 +24,16 @@
             <c:forEach items="${credits}" var="credit">
                 <tr>
                     <td>
-                            ${credit.getId()}
+                        <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
+                            <a href="${pageContext.request.contextPath}/admin/account/credit_page?id=${credit.getId()}">
+                                    ${credit.getId()}
+                            </a>
+                        </c:if>
+                        <c:if test="${sessionScope.get('user').getRole() == 'USER'}">
+                            <a href="${pageContext.request.contextPath}/user/account/credit_page?id=${credit.getId()}">
+                                    ${credit.getId()}
+                            </a>
+                        </c:if>
                     </td>
                     <td>${credit.getBalance()}</td>
                     <td>${credit.getClosingDate()}</td>

@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="amount"><fmt:message key="page.message.amount"/>:</label>
 
-                        <input class="form-control" type="number" min="0"
+                        <input class="form-control" type="number" step="0.01" min="0"
                                name="amount" id="amount">
                     </div>
                     <div class="form-group">

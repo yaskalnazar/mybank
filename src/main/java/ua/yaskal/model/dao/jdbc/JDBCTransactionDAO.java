@@ -3,11 +3,13 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -104,5 +106,60 @@ public class JDBCTransactionDAO implements TransactionDAO {
             logger.error(e);
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<Transaction> getAllByReceiverId(long id) {
+        List<Transaction> transactions = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("transaction.select.all.by.receiver.id"))) {
+            statement.setString(1,id+"");
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all user transaction", e);
+            throw new RuntimeException(e);
+        }
+        return transactions;
+    }
+
+    @Override
+    public List<Transaction> getAllBySenderId(long id) {
+        List<Transaction> transactions = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("transaction.select.all.by.sender.id"))) {
+            statement.setString(1,id+"");
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all user transaction", e);
+            throw new RuntimeException(e);
+        }
+        return transactions;
+    }
+
+    @Override
+    public List<Transaction> getAllByAccountId(long id) {
+        List<Transaction> transactions = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("transaction.select.all.by.account.id"))) {
+            statement.setString(1,id+"");
+            statement.setString(2,id+"");
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all user transaction", e);
+            throw new RuntimeException(e);
+        }
+        return transactions;
     }
 }

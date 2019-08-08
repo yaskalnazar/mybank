@@ -25,4 +25,7 @@ public interface JspPath {
     String ADMIN_CREDIT_REQUEST="/WEB-INF/jsp/admin/creditRequestPage.jsp";
     String USER_PAGE="/WEB-INF/jsp/admin/userPage.jsp";
 
+
+    String USER_CREDIT_PAGE="/WEB-INF/jsp/user/userCreditPage.jsp";
+
 }
