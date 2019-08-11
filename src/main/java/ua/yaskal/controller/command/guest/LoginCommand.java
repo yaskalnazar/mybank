@@ -16,13 +16,17 @@ import java.util.Arrays;
 
 public class LoginCommand implements Command {
     private final static Logger logger = Logger.getLogger(LoginCommand.class);
+    private ValidationUtil validationUtil;
+    private UserService userService;
 
-    private ValidationUtil validationUtil = new ValidationUtil();
-    private UserService userService = new UserService();
+    public LoginCommand(ValidationUtil validationUtil, UserService userService) {
+        this.validationUtil = validationUtil;
+        this.userService = userService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
-        if (!validationUtil.isContains(request, Arrays.asList("email", "password"))){
+        if (!validationUtil.isContains(request, Arrays.asList("email", "password"))) {
             return JspPath.LOGIN_FORM;
         }
 
@@ -31,26 +35,30 @@ public class LoginCommand implements Command {
                 request.getParameter("password"));
         User user;
         try {
-             user = userService.loginUser(userLoginDTO);
-        } catch (NoSuchUserException e){
-            logger.warn("Login attempt with nonexistent email "+ userLoginDTO.getEmail());
+            user = userService.loginUser(userLoginDTO);
+        } catch (NoSuchUserException e) {
+            logger.warn("Login attempt with nonexistent email " + userLoginDTO.getEmail());
             request.setAttribute("wrongInput", "wrongInput");
             return JspPath.LOGIN_FORM;
-        } catch (WrongPasswordException e){
-            logger.warn("Login attempt with wrong password (email: "+ userLoginDTO.getEmail()+")");
+        } catch (WrongPasswordException e) {
+            logger.warn("Login attempt with wrong password (email: " + userLoginDTO.getEmail() + ")");
             request.setAttribute("wrongInput", "wrongInput");
             return JspPath.LOGIN_FORM;
         }
 
 
-
         request.getSession().setAttribute("user", user);
         request.getSession().setAttribute("userId", user.getId());
-        logger.debug("User " + user.getId()+" successfully login");
+        logger.debug("User " + user.getId() + " successfully login");
         return "redirect:/mybank/home";
-
 
     }
 
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
 
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }

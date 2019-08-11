@@ -56,4 +56,16 @@ public class MakePaymentCommand implements Command {
         request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
         return JspPath.MAKE_PAYMENT;
     }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
 }

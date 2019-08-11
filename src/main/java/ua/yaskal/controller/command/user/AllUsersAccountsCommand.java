@@ -8,8 +8,13 @@ import ua.yaskal.model.service.DepositService;
 import javax.servlet.http.HttpServletRequest;
 
 public class AllUsersAccountsCommand implements Command {
-    private DepositService depositService = new DepositService();
-    private CreditService creditService = new CreditService();
+    private DepositService depositService;
+    private CreditService creditService;
+
+    public AllUsersAccountsCommand(DepositService depositService, CreditService creditService) {
+        this.depositService = depositService;
+        this.creditService = creditService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -18,5 +23,13 @@ public class AllUsersAccountsCommand implements Command {
         request.setAttribute("credits", creditService.getAllByOwnerId(
                 (long)request.getSession().getAttribute("userId")));
         return JspPath.USER_ALL_ACCOUNTS;
+    }
+
+    public void setDepositService(DepositService depositService) {
+        this.depositService = depositService;
+    }
+
+    public void setCreditService(CreditService creditService) {
+        this.creditService = creditService;
     }
 }

@@ -8,11 +8,19 @@ import ua.yaskal.model.service.DepositService;
 import javax.servlet.http.HttpServletRequest;
 
 public class AllCreditsCommand implements Command {
-    private CreditService creditService = new CreditService();
+    private CreditService creditService;
+
+    public AllCreditsCommand(CreditService creditService) {
+        this.creditService = creditService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
         request.setAttribute("credits", creditService.getAll());
         return JspPath.ADMIN_ALL_CREDITS;
+    }
+
+    public void setCreditService(CreditService creditService) {
+        this.creditService = creditService;
     }
 }

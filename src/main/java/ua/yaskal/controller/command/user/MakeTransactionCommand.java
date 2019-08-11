@@ -19,9 +19,15 @@ import java.util.Arrays;
 
 public class MakeTransactionCommand implements Command {
     private final static Logger logger = Logger.getLogger(MakeTransactionCommand.class);
-    private ValidationUtil validationUtil = new ValidationUtil();
-    private AccountService accountService = new AccountService();
-    private TransactionService transactionService = new TransactionService();
+    private ValidationUtil validationUtil;
+    private AccountService accountService;
+    private TransactionService transactionService;
+
+    public MakeTransactionCommand(ValidationUtil validationUtil, AccountService accountService, TransactionService transactionService) {
+        this.validationUtil = validationUtil;
+        this.accountService = accountService;
+        this.transactionService = transactionService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -59,5 +65,17 @@ public class MakeTransactionCommand implements Command {
         request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
         return JspPath.MAKE_TRANSACTION;
 
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    public void setTransactionService(TransactionService transactionService) {
+        this.transactionService = transactionService;
     }
 }

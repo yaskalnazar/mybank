@@ -14,10 +14,13 @@ import java.util.Arrays;
 
 public class RegistrationCommand implements Command {
     private final static Logger logger = Logger.getLogger(RegistrationCommand.class);
-    private UserService userService = new UserService();
-    private ValidationUtil validationUtil = new ValidationUtil();
+    private ValidationUtil validationUtil;
+    private UserService userService;
 
-
+    public RegistrationCommand(ValidationUtil validationUtil, UserService userService) {
+        this.validationUtil = validationUtil;
+        this.userService = userService;
+    }
 
     //TODO regex check
     // @Override
@@ -83,6 +86,11 @@ public class RegistrationCommand implements Command {
         return JspPath.LOGIN_FORM;
     }
 
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
 
-
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }

@@ -19,23 +19,29 @@ import java.util.List;
 
 public class NewCreditRequestCommand implements Command {
     private final static Logger logger = Logger.getLogger(NewCreditRequestCommand.class);
-    private ValidationUtil validationUtil = new ValidationUtil();
-    private CreditRequestService creditRequestService = new CreditRequestService();
-    private CreditService creditService = new CreditService();
+    private ValidationUtil validationUtil;
+    private CreditRequestService creditRequestService;
+    private CreditService creditService;
+
+    public NewCreditRequestCommand(ValidationUtil validationUtil, CreditRequestService creditRequestService, CreditService creditService) {
+        this.validationUtil = validationUtil;
+        this.creditRequestService = creditRequestService;
+        this.creditService = creditService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
 
-        if(!isUserCanRequestCredit(request)){
+        if (!isUserCanRequestCredit(request)) {
             return JspPath.CREDIT_OPEN;
         }
 
-        if (!validationUtil.isContains(request, Arrays.asList("creditLimit","creditRate"))){
+        if (!validationUtil.isContains(request, Arrays.asList("creditLimit", "creditRate"))) {
             return JspPath.CREDIT_OPEN;
         }
 
-        if (!validationUtil.isRequestValid(request, Arrays.asList("creditLimit","creditRate"))){
-            logger.warn("Credit open attempt with incorrect input"+request);
+        if (!validationUtil.isRequestValid(request, Arrays.asList("creditLimit", "creditRate"))) {
+            logger.warn("Credit open attempt with incorrect input" + request);
             request.setAttribute("wrongInput", "wrongInput");
             return JspPath.CREDIT_OPEN;
         }
@@ -44,44 +50,52 @@ public class NewCreditRequestCommand implements Command {
                 (long) request.getSession().getAttribute("userId"),
                 new BigDecimal(request.getParameter("creditRate")),
                 new BigDecimal(request.getParameter("creditLimit")),
-                LocalDateTime.now()
-        );
+                LocalDateTime.now());
 
         CreditRequest creditRequest = creditRequestService.createNew(creditRequestDTO);
 
-        logger.debug("Credit request successfully (id:"+creditRequest.getId()+")");
+        logger.debug("Credit request successfully (id:" + creditRequest.getId() + ")");
         request.setAttribute("creditRequestSuccess", creditRequest);
         return JspPath.CREDIT_OPEN;
     }
 
-    private boolean isUserCanRequestCredit(HttpServletRequest request){
+    private boolean isUserCanRequestCredit(HttpServletRequest request) {
         long userId = (long) request.getSession().getAttribute("userId");
 
         return (isUserDontHaveActiveCredit(request, userId)
                 && isUserDontHaveActiveRequests(request, userId));
     }
 
-    private boolean isUserDontHaveActiveCredit(HttpServletRequest request, long userId){
+    private boolean isUserDontHaveActiveCredit(HttpServletRequest request, long userId) {
         List<CreditAccount> activeCreditAccounts = creditService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE);
-
-        if(!activeCreditAccounts.isEmpty()){
-            logger.warn("Credit open attempt with activeCreditAccounts userId("+userId+")");
+        if (!activeCreditAccounts.isEmpty()) {
+            logger.warn("Credit open attempt with activeCreditAccounts userId(" + userId + ")");
             request.setAttribute("activeCreditAccounts", activeCreditAccounts);
             return false;
         }
-
         return true;
     }
 
-    private boolean isUserDontHaveActiveRequests(HttpServletRequest request, long userId){
+    private boolean isUserDontHaveActiveRequests(HttpServletRequest request, long userId) {
         List<CreditRequest> activeCreditRequests = creditRequestService.getAllByApplicantIdAndStatus(
                 userId, CreditRequest.CreditRequestStatus.PENDING);
-
-        if(!activeCreditRequests.isEmpty()){
-            logger.warn("Credit open attempt with activeCreditRequests userId("+userId+")");
+        if (!activeCreditRequests.isEmpty()) {
+            logger.warn("Credit open attempt with activeCreditRequests userId(" + userId + ")");
             request.setAttribute("activeCreditRequests", activeCreditRequests);
             return false;
         }
-        return  true;
+        return true;
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setCreditRequestService(CreditRequestService creditRequestService) {
+        this.creditRequestService = creditRequestService;
+    }
+
+    public void setCreditService(CreditService creditService) {
+        this.creditService = creditService;
     }
 }

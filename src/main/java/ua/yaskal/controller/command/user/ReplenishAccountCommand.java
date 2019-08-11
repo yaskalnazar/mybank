@@ -14,10 +14,16 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class ReplenishAccountCommand implements Command {
-    private ValidationUtil validationUtil = new ValidationUtil();
-    private AccountService accountService = new AccountService();
-    private TransactionService transactionService = new TransactionService();
+    private ValidationUtil validationUtil;
+    private AccountService accountService;
+    private TransactionService transactionService;
     private final static long WORKAROUND_ACCOUNT_ID = 12;
+
+    public ReplenishAccountCommand(ValidationUtil validationUtil, AccountService accountService, TransactionService transactionService) {
+        this.validationUtil = validationUtil;
+        this.accountService = accountService;
+        this.transactionService = transactionService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -39,5 +45,17 @@ public class ReplenishAccountCommand implements Command {
 
         request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
         return JspPath.REPLENISH_ACCOUNT;
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    public void setTransactionService(TransactionService transactionService) {
+        this.transactionService = transactionService;
     }
 }

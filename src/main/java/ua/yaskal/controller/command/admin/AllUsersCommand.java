@@ -7,10 +7,19 @@ import ua.yaskal.model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 
 public class AllUsersCommand implements Command {
-    UserService userService = new UserService();
+    UserService userService;
+
+    public AllUsersCommand(UserService userService) {
+        this.userService = userService;
+    }
+
     @Override
     public String execute(HttpServletRequest request) {
         request.setAttribute("users", userService.getAllUsers());
         return JspPath.ALL_USERS;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

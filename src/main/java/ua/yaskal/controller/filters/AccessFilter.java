@@ -1,7 +1,7 @@
 package ua.yaskal.controller.filters;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.controller.configuration.AccessConfiquration;
+import ua.yaskal.controller.configuration.AccessConfiguration;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.exceptions.AccessDeniedException;
 
@@ -31,7 +31,7 @@ public class AccessFilter implements Filter {
         User user = (User) Optional.ofNullable(session.getAttribute("user"))
                 .orElse(User.getBuilder().setUserRole(User.Role.GUEST).build());
 
-        if (AccessConfiquration.isAccessAllowed(Httprequest.getRequestURI(),user.getRole()) ){
+        if (AccessConfiguration.isAccessAllowed(Httprequest.getRequestURI(),user.getRole()) ){
             logger.debug("User " + user.getId() + " has access to "+ Httprequest.getRequestURI());
             filterChain.doFilter(request, response);
         } else {

@@ -9,10 +9,7 @@ import ua.yaskal.controller.command.guest.*;
 import ua.yaskal.controller.command.user.*;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dao.DAOFactory;
-import ua.yaskal.model.service.AccountService;
-import ua.yaskal.model.service.PaymentService;
-import ua.yaskal.model.service.ScheduledService;
-import ua.yaskal.model.service.TransactionService;
+import ua.yaskal.model.service.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -30,13 +27,15 @@ public class Servlet extends HttpServlet {
     private PaymentService paymentService;
     private AccountService accountService;
     private TransactionService transactionService;
+    private CreditService creditService;
+    private DepositService depositService;
+    private UserService userService;
+    private CreditRequestService creditRequestService;
     private Map<String, Command> commands = new HashMap<>();
-    private ScheduledThreadPoolExecutor  scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
+    private ScheduledThreadPoolExecutor scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
 
 
-
-
-    public void init(ServletConfig servletConfig){
+    public void init(ServletConfig servletConfig) {
         logger.info("----------------------------------------------------------");
         logger.info("Starting project");
         logger.info("----------------------------------------------------------");
@@ -46,7 +45,10 @@ public class Servlet extends HttpServlet {
         paymentService = new PaymentService(daoFactory);
         accountService = new AccountService();
         transactionService = new TransactionService();
-
+        creditService = new CreditService();
+        depositService = new DepositService();
+        userService = new UserService();
+        creditRequestService = new CreditRequestService();
 
 
         scheduledExecutorService.setRemoveOnCancelPolicy(true);
@@ -62,27 +64,27 @@ public class Servlet extends HttpServlet {
         commands.put("admin/home", new AdminHomeCommand());
 
         commands.put("user/logout", new LogOutCommand());
-        commands.put("admin/logout",new LogOutCommand());
+        commands.put("admin/logout", new LogOutCommand());
 
 
-        commands.put("guest/login", new LoginCommand());
-        commands.put("guest/registration", new RegistrationCommand());
+        commands.put("guest/login", new LoginCommand(validationUtil, userService));
+        commands.put("guest/registration", new RegistrationCommand(validationUtil, userService));
 
-        commands.put("admin/all_users" , new AllUsersCommand());
-        commands.put("admin/account/all/deposits" , new AllDepositsCommand());
-        commands.put("admin/account/all/credits" , new AllCreditsCommand());
-        commands.put("admin/credit_request/all" , new GetCreditRequestsCommand());
-        commands.put("admin/credit_request" , new CreditRequestCommand());
-        commands.put("admin/user_page" , new GetUserPageCommand());
+        commands.put("admin/all_users", new AllUsersCommand(userService));
+        commands.put("admin/account/all/deposits", new AllDepositsCommand(depositService));
+        commands.put("admin/account/all/credits", new AllCreditsCommand(creditService));
+        commands.put("admin/credit_request", new CreditRequestCommand(validationUtil, creditRequestService, userService, creditService));
+        commands.put("admin/credit_request/all", new GetCreditRequestsCommand(validationUtil, creditRequestService));
+        commands.put("admin/user_page", new GetUserPageCommand(validationUtil, userService, creditService, depositService));
 
 
-        commands.put("user/account/deposit/open", new DepositOpenCommand());
-        commands.put("user/account/credit/open", new NewCreditRequestCommand());
-        commands.put("user/account/all", new AllUsersAccountsCommand());
-        commands.put("user/account/replenish", new ReplenishAccountCommand());
-        commands.put("user/account/make_transaction", new MakeTransactionCommand());
-        commands.put("user/account/credit_page", new UserCreditPageCommand());
-        commands.put("user/account/deposit_page", new UserDepositPageCommand());
+        commands.put("user/account/all", new AllUsersAccountsCommand(depositService, creditService));
+        commands.put("user/account/deposit/open", new DepositOpenCommand(validationUtil, depositService));
+        commands.put("user/account/credit/open", new NewCreditRequestCommand(validationUtil, creditRequestService, creditService));
+        commands.put("user/account/replenish", new ReplenishAccountCommand(validationUtil, accountService, transactionService));
+        commands.put("user/account/make_transaction", new MakeTransactionCommand(validationUtil, accountService, transactionService));
+        commands.put("user/account/credit_page", new UserCreditPageCommand(validationUtil, creditService, transactionService));
+        commands.put("user/account/deposit_page", new UserDepositPageCommand(validationUtil, depositService, transactionService));
         commands.put("user/payment/make_new", new MakePaymentCommand(validationUtil, paymentService, accountService));
         commands.put("user/payment/all", new AllUsersPayment(validationUtil, paymentService, accountService, transactionService));
 
@@ -104,8 +106,8 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        path = path.replaceAll(".*/mybank/" , "");
-        Command command = commands.getOrDefault(path ,
+        path = path.replaceAll(".*/mybank/", "");
+        Command command = commands.getOrDefault(path,
                 (r) -> JspPath.ERROR404);
         System.out.println(command.getClass().getName());
         String page = command.execute(request);
@@ -115,7 +117,7 @@ public class Servlet extends HttpServlet {
             response.sendRedirect(page.replace("redirect:", ""));
         } else {
             logger.trace("Forwarding to " + page);
-            request.getRequestDispatcher(page).forward(request,response);
+            request.getRequestDispatcher(page).forward(request, response);
         }
     }
 }

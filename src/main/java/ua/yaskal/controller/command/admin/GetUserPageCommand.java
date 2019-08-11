@@ -15,11 +15,18 @@ import java.util.Arrays;
 
 public class GetUserPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
-    private ValidationUtil validationUtil = new ValidationUtil();
-    private UserService userService = new UserService();
-    private CreditService creditService = new CreditService();
-    private DepositService depositService = new DepositService();
+    private ValidationUtil validationUtil;
+    private UserService userService;
+    private CreditService creditService;
+    private DepositService depositService;
 
+    public GetUserPageCommand(ValidationUtil validationUtil, UserService userService,
+                              CreditService creditService, DepositService depositService) {
+        this.validationUtil = validationUtil;
+        this.userService = userService;
+        this.creditService = creditService;
+        this.depositService = depositService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -32,8 +39,8 @@ public class GetUserPageCommand implements Command {
         User requestUser;
         try {
             requestUser = userService.getById(Long.parseLong(request.getParameter("id")));
-        } catch (NoSuchUserException e){
-            logger.warn("NoSuchUserException id: "+request.getParameter("id"));
+        } catch (NoSuchUserException e) {
+            logger.warn("NoSuchUserException id: " + request.getParameter("id"));
             request.setAttribute("messageKey", e.getMessageKey());
             return JspPath.RESOURCE_NOT_EXIST;
         }
@@ -42,5 +49,21 @@ public class GetUserPageCommand implements Command {
         request.setAttribute("deposits", depositService.getAllByOwnerId(requestUser.getId()));
 
         return JspPath.USER_PAGE;
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public void setCreditService(CreditService creditService) {
+        this.creditService = creditService;
+    }
+
+    public void setDepositService(DepositService depositService) {
+        this.depositService = depositService;
     }
 }

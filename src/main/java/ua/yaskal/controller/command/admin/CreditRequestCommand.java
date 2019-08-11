@@ -16,11 +16,17 @@ import java.util.Arrays;
 
 public class CreditRequestCommand implements Command {
     private final static Logger logger = Logger.getLogger(CreditRequestCommand.class);
-    private CreditRequestService creditRequestService = new CreditRequestService();
-    private ValidationUtil validationUtil = new ValidationUtil();
-    private UserService userService = new UserService();
-    private CreditService creditService = new CreditService();
+    private ValidationUtil validationUtil;
+    private CreditRequestService creditRequestService;
+    private UserService userService;
+    private CreditService creditService;
 
+    public CreditRequestCommand(ValidationUtil validationUtil, CreditRequestService creditRequestService, UserService userService, CreditService creditService) {
+        this.validationUtil = validationUtil;
+        this.creditRequestService = creditRequestService;
+        this.userService = userService;
+        this.creditService = creditService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -70,5 +76,21 @@ public class CreditRequestCommand implements Command {
             request.setAttribute("answer", "rejected");
 
         }
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setCreditRequestService(CreditRequestService creditRequestService) {
+        this.creditRequestService = creditRequestService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public void setCreditService(CreditService creditService) {
+        this.creditService = creditService;
     }
 }

@@ -15,19 +15,25 @@ import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class UserCreditPageCommand implements Command {
-    private ValidationUtil validationUtil = new ValidationUtil();
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
-    private CreditService creditService = new CreditService();
-    private TransactionService transactionService = new TransactionService();
+    private ValidationUtil validationUtil;
+    private CreditService creditService;
+    private TransactionService transactionService;
 
+    public UserCreditPageCommand(ValidationUtil validationUtil, CreditService creditService, TransactionService transactionService) {
+        this.validationUtil = validationUtil;
+        this.creditService = creditService;
+        this.transactionService = transactionService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
 
-        if (!validationUtil.isContains(request, Arrays.asList("id")) ||
+        if (!validationUtil.isContains(request, Collections.singletonList("id")) ||
                 !validationUtil.isParamValid(request.getParameter("id"), "id")) {
             logger.warn("Incorrect id");
             throw new RuntimeException("Incorrect id " + request.getRequestURI());
@@ -58,7 +64,18 @@ public class UserCreditPageCommand implements Command {
         request.setAttribute("credit",creditAccount);
         request.setAttribute("accountTransactions", transactions);
 
-
         return JspPath.USER_CREDIT_PAGE;
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setCreditService(CreditService creditService) {
+        this.creditService = creditService;
+    }
+
+    public void setTransactionService(TransactionService transactionService) {
+        this.transactionService = transactionService;
     }
 }

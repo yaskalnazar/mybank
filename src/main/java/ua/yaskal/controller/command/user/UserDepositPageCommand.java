@@ -18,12 +18,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class UserDepositPageCommand implements Command {
-    private ValidationUtil validationUtil = new ValidationUtil();
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
-    private DepositService depositService = new DepositService();
-    private TransactionService transactionService = new TransactionService();
+    private ValidationUtil validationUtil;
+    private DepositService depositService;
+    private TransactionService transactionService;
 
-
+    public UserDepositPageCommand(ValidationUtil validationUtil, DepositService depositService, TransactionService transactionService) {
+        this.validationUtil = validationUtil;
+        this.depositService = depositService;
+        this.transactionService = transactionService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -61,5 +65,17 @@ public class UserDepositPageCommand implements Command {
 
 
         return JspPath.USER_DEPOSIT_PAGE;
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setDepositService(DepositService depositService) {
+        this.depositService = depositService;
+    }
+
+    public void setTransactionService(TransactionService transactionService) {
+        this.transactionService = transactionService;
     }
 }

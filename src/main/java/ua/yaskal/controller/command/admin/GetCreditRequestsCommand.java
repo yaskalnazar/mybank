@@ -12,9 +12,13 @@ import java.util.Arrays;
 
 public class GetCreditRequestsCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetCreditRequestsCommand.class);
-    CreditRequestService creditRequestService = new CreditRequestService();
-    private ValidationUtil validationUtil = new ValidationUtil();
+    private ValidationUtil validationUtil;
+    private CreditRequestService creditRequestService;
 
+    public GetCreditRequestsCommand(ValidationUtil validationUtil, CreditRequestService creditRequestService) {
+        this.validationUtil = validationUtil;
+        this.creditRequestService = creditRequestService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -46,8 +50,15 @@ public class GetCreditRequestsCommand implements Command {
                 request.setAttribute("status", "pending");
         }
 
-
         return JspPath.ALL_CREDIT_REQUESTS;
 
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setCreditRequestService(CreditRequestService creditRequestService) {
+        this.creditRequestService = creditRequestService;
     }
 }

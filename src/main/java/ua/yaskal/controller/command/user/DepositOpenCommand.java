@@ -14,8 +14,13 @@ import java.util.Arrays;
 
 public class DepositOpenCommand implements Command {
     private final static Logger logger = Logger.getLogger(DepositOpenCommand.class);
-    private DepositService depositService = new DepositService();
-    private ValidationUtil validationUtil = new ValidationUtil();
+    private ValidationUtil validationUtil;
+    private DepositService depositService;
+
+    public DepositOpenCommand(ValidationUtil validationUtil, DepositService depositService) {
+        this.validationUtil = validationUtil;
+        this.depositService = depositService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -62,5 +67,13 @@ public class DepositOpenCommand implements Command {
         logger.debug("Deposit open successfully (id:"+depositAccount.getId()+")");
         request.setAttribute("depositSuccess", depositAccount);
         return JspPath.DEPOSIT_OPEN;
+    }
+
+    public void setValidationUtil(ValidationUtil validationUtil) {
+        this.validationUtil = validationUtil;
+    }
+
+    public void setDepositService(DepositService depositService) {
+        this.depositService = depositService;
     }
 }
