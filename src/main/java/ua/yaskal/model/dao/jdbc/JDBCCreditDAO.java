@@ -29,7 +29,7 @@ public class JDBCCreditDAO implements CreditDAO {
     @Override
     public CreditAccount getById(long id) {
         try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("credit.select.by.id"))) {
-            getUserStatement.setString(1, id + "");
+            getUserStatement.setLong(1, id);
 
             logger.debug("Select credit " + getUserStatement);
             ResultSet resultSet = getUserStatement.executeQuery();
@@ -69,14 +69,14 @@ public class JDBCCreditDAO implements CreditDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
-            statement.setString(2, item.getBalance().toString());
-            statement.setString(3, item.getClosingDate().toString());
-            statement.setString(4, item.getOwnerId() + "");
+            statement.setBigDecimal(2, item.getBalance());
+            statement.setObject(3, item.getClosingDate());
+            statement.setLong(4, item.getOwnerId());
             statement.setString(5, item.getAccountStatus().name());
-            statement.setString(6, item.getCreditLimit().toString());
-            statement.setString(7, item.getCreditRate().toString());
-            statement.setString(8, item.getAccruedInterest().toString());
-            statement.setString(9, item.getId()+"");
+            statement.setBigDecimal(6, item.getCreditLimit());
+            statement.setBigDecimal(7, item.getCreditRate());
+            statement.setBigDecimal(8, item.getAccruedInterest());
+            statement.setLong(9, item.getId());
 
             logger.debug("Trying update credit"+statement);
             statement.executeUpdate();
@@ -96,13 +96,13 @@ public class JDBCCreditDAO implements CreditDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
-            statement.setString(2, item.getBalance().toString());
-            statement.setString(3, item.getClosingDate().toString());
-            statement.setString(4, item.getOwnerId() + "");
+            statement.setBigDecimal(2, item.getBalance());
+            statement.setObject(3, item.getClosingDate());
+            statement.setLong(4, item.getOwnerId());
             statement.setString(5, item.getAccountStatus().name());
-            statement.setString(6, item.getCreditLimit().toString());
-            statement.setString(7, item.getCreditRate().toString());
-            statement.setString(8, item.getAccruedInterest().toString());
+            statement.setBigDecimal(6, item.getCreditLimit());
+            statement.setBigDecimal(7, item.getCreditRate());
+            statement.setBigDecimal(8, item.getAccruedInterest());
 
 
             logger.debug("Add new Credit Account " + statement);
@@ -126,7 +126,7 @@ public class JDBCCreditDAO implements CreditDAO {
         List<CreditAccount> creditAccounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all.by.owner.id"))) {
-            statement.setString(1, ownerId + "");
+            statement.setLong(1, ownerId);
 
 
             logger.debug("Getting all user credits"+statement);
@@ -146,7 +146,7 @@ public class JDBCCreditDAO implements CreditDAO {
         List<CreditAccount> creditAccounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all.by.owner.id.and.status"))) {
-            statement.setString(1, ownerId + "");
+            statement.setLong(1, ownerId);
             statement.setString(2, status.name());
 
 
@@ -166,8 +166,8 @@ public class JDBCCreditDAO implements CreditDAO {
     public void increaseAccruedInterestById(long id, BigDecimal accruedInterest) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.add.increase.interest.by.id"))) {
-            statement.setString(1, accruedInterest.toString());
-            statement.setString(2, id+"");
+            statement.setBigDecimal(1, accruedInterest);
+            statement.setLong(2, id);
 
             logger.debug("Trying increase accrued interest"+statement);
             statement.executeUpdate();
