@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.CreditRequestDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.CreditRequest;
+import ua.yaskal.model.exceptions.no.such.NoSuchCreditRequestException;
 import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
 import java.sql.*;
@@ -34,7 +35,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 return mapperFactory.getCreditRequestMapper().mapToObject(resultSet);
             } else {
                 logger.warn("No credit request with id:" + id);
-                throw new NoSuchUserException();
+                throw new NoSuchCreditRequestException();
             }
         } catch (SQLException e) {
             logger.error("Can not get credit request", e);
@@ -114,7 +115,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     }
 
     @Override
-    public boolean changeStatus(CreditRequest.CreditRequestStatus status, long id) {
+    public boolean updateStatusById(CreditRequest.CreditRequestStatus status, long id) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.change.status"))) {
             statement.setString(1, status.name());

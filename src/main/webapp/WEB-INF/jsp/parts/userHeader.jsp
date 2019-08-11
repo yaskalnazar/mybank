@@ -26,6 +26,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/user/account/make_transaction"><fmt:message key="page.message.make.transaction"/></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/payment/make_new"><fmt:message key="page.message.make.payment"/></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/user/payment/all"><fmt:message key="page.message.payments"/></a>
+            </li>
+
         </ul>
     </div>
     <span style="float: right">

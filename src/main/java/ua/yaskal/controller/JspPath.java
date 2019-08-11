@@ -13,7 +13,8 @@ public interface JspPath {
     String USER_ALL_ACCOUNTS="/WEB-INF/jsp/user/allAccounts.jsp";
     String REPLENISH_ACCOUNT = "/WEB-INF/jsp/user/replenishAccount.jsp";
     String MAKE_TRANSACTION = "/WEB-INF/jsp/user/makeTransaction.jsp";
-
+    String MAKE_PAYMENT="/WEB-INF/jsp/user/makePayment.jsp";
+    String ALL_USER_PAYMENTS="/WEB-INF/jsp/user/allPayments.jsp";
 
 
 
@@ -24,6 +25,7 @@ public interface JspPath {
     String ALL_CREDIT_REQUESTS="/WEB-INF/jsp/admin/allCreditRequests.jsp";
     String ADMIN_CREDIT_REQUEST="/WEB-INF/jsp/admin/creditRequestPage.jsp";
     String USER_PAGE="/WEB-INF/jsp/admin/userPage.jsp";
+
 
 
     String USER_CREDIT_PAGE="/WEB-INF/jsp/user/userCreditPage.jsp";

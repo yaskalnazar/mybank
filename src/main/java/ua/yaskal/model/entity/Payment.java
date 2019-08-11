@@ -28,6 +28,10 @@ public class Payment {
         this.message = message;
     }
 
+    public static PaymentBuilder getBuilder(){
+        return new PaymentBuilder();
+    }
+
     public static class PaymentBuilder {
         private long id;
         private long requesterAccountId;

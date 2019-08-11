@@ -7,8 +7,12 @@ import ua.yaskal.controller.command.general.HomeCommand;
 import ua.yaskal.controller.command.general.LogOutCommand;
 import ua.yaskal.controller.command.guest.*;
 import ua.yaskal.controller.command.user.*;
+import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dao.DAOFactory;
+import ua.yaskal.model.service.AccountService;
+import ua.yaskal.model.service.PaymentService;
 import ua.yaskal.model.service.ScheduledService;
+import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -21,14 +25,28 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 //TODO ioc&di
 public class Servlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(Servlet.class);
+    private DAOFactory daoFactory;
+    private ValidationUtil validationUtil;
+    private PaymentService paymentService;
+    private AccountService accountService;
+    private TransactionService transactionService;
     private Map<String, Command> commands = new HashMap<>();
-    //private ScheduledThreadPoolExecutor  scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
-    private ScheduledThreadPoolExecutor  scheduledExecutorService = new ScheduledThreadPoolExecutor(5);
+    private ScheduledThreadPoolExecutor  scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
+
+
+
 
     public void init(ServletConfig servletConfig){
         logger.info("----------------------------------------------------------");
         logger.info("Starting project");
         logger.info("----------------------------------------------------------");
+
+        daoFactory = DAOFactory.getInstance();
+        validationUtil = new ValidationUtil();
+        paymentService = new PaymentService(daoFactory);
+        accountService = new AccountService();
+        transactionService = new TransactionService();
+
 
 
         scheduledExecutorService.setRemoveOnCancelPolicy(true);
@@ -65,7 +83,11 @@ public class Servlet extends HttpServlet {
         commands.put("user/account/make_transaction", new MakeTransactionCommand());
         commands.put("user/account/credit_page", new UserCreditPageCommand());
         commands.put("user/account/deposit_page", new UserDepositPageCommand());
-       // new ScheduledService(new ScheduledThreadPoolExecutor(50), DaoFactory.getInstance());
+        commands.put("user/payment/make_new", new MakePaymentCommand(validationUtil, paymentService, accountService));
+        commands.put("user/payment/all", new AllUsersPayment(validationUtil, paymentService, accountService, transactionService));
+
+
+        // new ScheduledService(new ScheduledThreadPoolExecutor(50), DaoFactory.getInstance());
 
 
     }

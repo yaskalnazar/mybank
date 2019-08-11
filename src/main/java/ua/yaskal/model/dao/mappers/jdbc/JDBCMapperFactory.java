@@ -34,4 +34,9 @@ public class JDBCMapperFactory implements MapperFactory {
     public Mapper<Transaction> getTransactionMapper() {
         return new JDBCTransactionMapper();
     }
+
+    @Override
+    public Mapper<Payment> getPaymentMapper() {
+        return new JDBCPaymentMapper();
+    }
 }

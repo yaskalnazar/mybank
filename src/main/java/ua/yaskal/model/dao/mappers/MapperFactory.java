@@ -9,5 +9,6 @@ public interface MapperFactory {
     Mapper<CreditRequest> getCreditRequestMapper();
     Mapper<Account> getAccountMapper();
     Mapper<Transaction> getTransactionMapper();
+    Mapper<Payment> getPaymentMapper();
 
 }
