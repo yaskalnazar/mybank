@@ -27,7 +27,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     public CreditRequest getById(long id) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.by.id"))) {
-            statement.setString(1, id + "");
+            statement.setLong(1, id);
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -63,9 +63,9 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     public void update(CreditRequest item) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.update.by.id"))) {
-            statement.setString(1, item.getCreditLimit().toString());
-            statement.setString(2, item.getCreditRate().toString());
-            statement.setString(3, item.getCreationDate().toString());
+            statement.setBigDecimal(1, item.getCreditLimit());
+            statement.setBigDecimal(2, item.getCreditRate());
+            statement.setObject(3, item.getCreationDate());
             statement.setString(4, item.getCreditRequestStatus().name());
             statement.setLong(5, item.getApplicantId());
             statement.setLong(6, item.getId());
@@ -78,20 +78,31 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         }
     }
 
+    //TODO cheak
     @Override
     public boolean delete(long id) {
-        throw new UnsupportedOperationException();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.delete.by.id"))) {
+            statement.setLong(1, id);
+
+            logger.debug("Trying delete credit request " + statement);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            logger.error("Credit request was not deleted", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public long addNew(CreditRequest item) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
-            statement.setString(1, item.getCreditLimit().toString());
-            statement.setString(2, item.getCreditRate().toString());
-            statement.setString(3, item.getCreationDate().toString());
+            statement.setBigDecimal(1, item.getCreditLimit());
+            statement.setBigDecimal(2, item.getCreditRate());
+            statement.setObject(3, item.getCreationDate());
             statement.setString(4, item.getCreditRequestStatus().name());
-            statement.setString(5, item.getApplicantId() + "");
+            statement.setLong(5, item.getApplicantId());
 
             logger.debug("Add new credit request " + statement);
             statement.execute();
@@ -132,7 +143,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.change.status"))) {
             statement.setString(1, status.name());
-            statement.setString(2, id + "");
+            statement.setLong(2, id);
 
             logger.debug("Change credit request (id=" + id + ") status to " + status.name());
             statement.executeUpdate();
@@ -149,7 +160,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         List<CreditRequest> creditRequests = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id"))) {
-            statement.setString(1, applicantId + "");
+            statement.setLong(1, applicantId);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -167,7 +178,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
         List<CreditRequest> creditRequests = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id.and.status"))) {
-            statement.setString(1, applicantId + "");
+            statement.setLong(1, applicantId);
             statement.setString(2, status.name());
 
 
