@@ -88,7 +88,7 @@ public class JDBCCreditDAO implements CreditDAO {
 
     @Override
     public boolean delete(long id) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
