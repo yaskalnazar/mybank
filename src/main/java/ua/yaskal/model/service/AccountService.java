@@ -1,24 +1,21 @@
 package ua.yaskal.model.service;
 
-import ua.yaskal.model.dao.AccountDAO;
-import ua.yaskal.model.dao.CreditDAO;
-import ua.yaskal.model.dao.DaoFactory;
+import ua.yaskal.model.dao.DAOFactory;
 import ua.yaskal.model.entity.Account;
-import ua.yaskal.model.entity.DepositAccount;
 
 import java.util.List;
 
 public class AccountService {
 
     public List<Account> getAllByOwnerId(long ownerId){
-        return DaoFactory.getInstance().createAccountDAO().getAllByOwnerId(ownerId);
+        return DAOFactory.getInstance().createAccountDAO().getAllByOwnerId(ownerId);
     }
 
     public List<Account> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
-        return DaoFactory.getInstance().createAccountDAO().getAllByOwnerIdAndStatus(ownerId, status);
+        return DAOFactory.getInstance().createAccountDAO().getAllByOwnerIdAndStatus(ownerId, status);
     }
 
     public Account getById(long id){
-        return DaoFactory.getInstance().createAccountDAO().getById(id);
+        return DAOFactory.getInstance().createAccountDAO().getById(id);
     }
 }

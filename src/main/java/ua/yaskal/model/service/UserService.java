@@ -2,11 +2,10 @@ package ua.yaskal.model.service;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
-import ua.yaskal.model.dao.DaoFactory;
+import ua.yaskal.model.dao.DAOFactory;
 import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dto.UserLoginDTO;
 import ua.yaskal.model.dto.UserRegistrationDTO;
-import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.exceptions.WrongPasswordException;
 
@@ -18,7 +17,7 @@ public class UserService {
 
 
     public User addNewUser(UserRegistrationDTO userDTO){
-        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
+        UserDAO userDao = DAOFactory.getInstance().createUserDAO();
         User user = User.getBuilder()
                 .setEmail(userDTO.getEmail())
                 .setName(userDTO.getName())
@@ -34,7 +33,7 @@ public class UserService {
     }
 
     public User loginUser(UserLoginDTO userDTO){
-        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
+        UserDAO userDao = DAOFactory.getInstance().createUserDAO();
         User user = userDao.getByEmail(userDTO.getEmail());
 
         if (!DigestUtils.sha256Hex(userDTO.getPassword()).equals(user.getPassword())){
@@ -45,12 +44,12 @@ public class UserService {
     }
 
     public List<User> getAllUsers(){
-        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
+        UserDAO userDao = DAOFactory.getInstance().createUserDAO();
         return userDao.getAll();
     }
 
     public User getById(long id){
-        UserDAO userDao = DaoFactory.getInstance().createUserDAO();
+        UserDAO userDao = DAOFactory.getInstance().createUserDAO();
         return userDao.getById(id);
     }
 

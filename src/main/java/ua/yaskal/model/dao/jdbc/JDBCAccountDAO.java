@@ -113,4 +113,42 @@ public class JDBCAccountDAO implements AccountDAO {
         }
         return accounts;
     }
+
+    @Override
+    public List<Account> getAllByStatus(Account.AccountStatus status) {
+        List<Account> accounts = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.select.all.by.status"))) {
+            statement.setString(1, status.name());
+
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                try {
+                    accounts.add(mapperFactory.getAccountMapper().mapToObject(resultSet));
+                } catch (WrongAccountTypeException e){
+                    logger.warn("Can not map account id:" + e.getAccountId());
+                    continue;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all accounts", e);
+            throw new RuntimeException(e);
+        }
+        return accounts;
+    }
+
+    @Override
+    public void updateAccountStatus(long id, Account.AccountStatus status) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.update.status.by.id"))) {
+            statement.setString(1, status.name());
+            statement.setString(2, id+"");
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Can not update account status "+id+status, e);
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -7,6 +7,7 @@ import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,8 @@ public class JDBCDepositDAO implements DepositDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all"))) {
 
+
+            logger.debug("Getting all deposits"+statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
@@ -63,7 +66,24 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void update(DepositAccount item) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("deposit.update.by.id"))) {
+            statement.setString(1, item.getAccountType().name());
+            statement.setString(2, item.getBalance().toString());
+            statement.setString(3, item.getClosingDate().toString());
+            statement.setString(4, item.getOwnerId() + "");
+            statement.setString(5, item.getAccountStatus().name());
+            statement.setString(6, item.getDepositAmount().toString());
+            statement.setString(7, item.getDepositRate().toString());
+            statement.setString(8, item.getDepositEndDate().toString());
+            statement.setString(9, item.getId()+"");
 
+            logger.debug("Trying update deposit"+statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Deposit was not updated: ", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -108,6 +128,7 @@ public class JDBCDepositDAO implements DepositDAO {
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id"))) {
             statement.setString(1, ownerId + "");
 
+            logger.debug("Getting all user deposits"+statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
@@ -127,7 +148,7 @@ public class JDBCDepositDAO implements DepositDAO {
             statement.setString(1, ownerId + "");
             statement.setString(2, status.name());
 
-
+            logger.debug("Getting all user deposits"+statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
@@ -137,5 +158,35 @@ public class JDBCDepositDAO implements DepositDAO {
             throw new RuntimeException(e);
         }
         return depositAccounts;
+    }
+
+    @Override
+    public void updateDepositAmount(long id, BigDecimal amount) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("deposit.update.amount.by.id"))) {
+            statement.setString(1, amount.toString());
+            statement.setString(2, id+"");
+
+
+            logger.debug("Updating deposit amount"+statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Can not update deposit amount", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateDepositRate(long id, BigDecimal rate) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("deposit.update.rate.by.id"))) {
+            statement.setString(1, rate.toString());
+            statement.setString(2, id+"");
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Can not update deposit rate", e);
+            throw new RuntimeException(e);
+        }
     }
 }

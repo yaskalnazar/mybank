@@ -1,7 +1,7 @@
 package ua.yaskal.model.service;
 
 import ua.yaskal.model.dao.CreditDAO;
-import ua.yaskal.model.dao.DaoFactory;
+import ua.yaskal.model.dao.DAOFactory;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.CreditRequest;
@@ -13,15 +13,15 @@ import java.util.List;
 public class CreditService {
 
     public List<CreditAccount> getAll(){
-        return DaoFactory.getInstance().createCreditDAO().getAll();
+        return DAOFactory.getInstance().createCreditDAO().getAll();
     }
 
     public List<CreditAccount> getAllByOwnerId(long ownerId){
-        return DaoFactory.getInstance().createCreditDAO().getAllByOwnerId(ownerId);
+        return DAOFactory.getInstance().createCreditDAO().getAllByOwnerId(ownerId);
     }
 
     public CreditAccount addNew(CreditRequest creditRequest){
-        CreditDAO creditDAO = DaoFactory.getInstance().createCreditDAO();
+        CreditDAO creditDAO = DAOFactory.getInstance().createCreditDAO();
         CreditAccount creditAccount = CreditAccount.getBuilder()
                 .setBalance(new BigDecimal(0))
                 .setClosingDate(LocalDate.now().plusYears(5))
@@ -38,10 +38,10 @@ public class CreditService {
     }
 
     public List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
-        return DaoFactory.getInstance().createCreditDAO().getAllByOwnerIdAndStatus(ownerId, status);
+        return DAOFactory.getInstance().createCreditDAO().getAllByOwnerIdAndStatus(ownerId, status);
     }
 
     public CreditAccount getById(long id){
-        return DaoFactory.getInstance().createCreditDAO().getById(id);
+        return DAOFactory.getInstance().createCreditDAO().getById(id);
     }
 }

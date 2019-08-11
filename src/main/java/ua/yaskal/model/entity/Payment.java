@@ -5,11 +5,12 @@ import java.time.LocalDateTime;
 
 public class Payment {
     private long id;
-    private Account requesterAccount;
-    private Account payerAccount;
+    private long requesterAccountId;
+    private long payerAccountId;
     private BigDecimal amount;
     private LocalDateTime date;
     private PaymentStatus paymentStatus;
+    private String message;
 
     public enum PaymentStatus {
         PENDING,
@@ -17,35 +18,38 @@ public class Payment {
         REJECTED;
     }
 
-    public Payment(long id, Account requesterAccount, Account payerAccount, BigDecimal amount, LocalDateTime date, PaymentStatus paymentStatus) {
+    public Payment(long id, long requesterAccountId, long payerAccountId, BigDecimal amount, LocalDateTime date, PaymentStatus paymentStatus, String message) {
         this.id = id;
-        this.requesterAccount = requesterAccount;
-        this.payerAccount = payerAccount;
+        this.requesterAccountId = requesterAccountId;
+        this.payerAccountId = payerAccountId;
         this.amount = amount;
         this.date = date;
         this.paymentStatus = paymentStatus;
+        this.message = message;
     }
 
     public static class PaymentBuilder {
         private long id;
-        private Account requesterAccount;
-        private Account payerAccount;
+        private long requesterAccountId;
+        private long payerAccountId;
         private BigDecimal amount;
         private LocalDateTime date;
         private PaymentStatus paymentStatus;
+        private String message;
+
 
         public PaymentBuilder setId(long id) {
             this.id = id;
             return this;
         }
 
-        public PaymentBuilder setRequesterAccount(Account requesterAccount) {
-            this.requesterAccount = requesterAccount;
+        public PaymentBuilder setRequesterAccountId(long requesterAccountId) {
+            this.requesterAccountId = requesterAccountId;
             return this;
         }
 
-        public PaymentBuilder setPayerAccount(Account payerAccount) {
-            this.payerAccount = payerAccount;
+        public PaymentBuilder setPayerAccountId(long payerAccountId) {
+            this.payerAccountId = payerAccountId;
             return this;
         }
 
@@ -64,8 +68,14 @@ public class Payment {
             return this;
         }
 
+        public PaymentBuilder setMessage(String message) {
+            this.message = message;
+            return this;
+        }
+
+
         public Payment build() {
-            return new Payment(id, requesterAccount, payerAccount, amount, date, paymentStatus);
+            return new Payment(id, requesterAccountId, payerAccountId, amount, date, paymentStatus, message);
         }
     }
 
@@ -77,20 +87,20 @@ public class Payment {
         this.id = id;
     }
 
-    public Account getRequesterAccount() {
-        return requesterAccount;
+    public long getRequesterAccountId() {
+        return requesterAccountId;
     }
 
-    public void setRequesterAccount(Account requesterAccount) {
-        this.requesterAccount = requesterAccount;
+    public void setRequesterAccountId(long requesterAccountId) {
+        this.requesterAccountId = requesterAccountId;
     }
 
-    public Account getPayerAccount() {
-        return payerAccount;
+    public long getPayerAccountId() {
+        return payerAccountId;
     }
 
-    public void setPayerAccount(Account payerAccount) {
-        this.payerAccount = payerAccount;
+    public void setPayerAccountId(long payerAccountId) {
+        this.payerAccountId = payerAccountId;
     }
 
     public BigDecimal getAmount() {
@@ -115,5 +125,13 @@ public class Payment {
 
     public void setPaymentStatus(PaymentStatus paymentStatus) {
         this.paymentStatus = paymentStatus;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

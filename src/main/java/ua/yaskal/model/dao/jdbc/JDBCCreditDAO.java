@@ -9,6 +9,7 @@ import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
 import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,8 @@ public class JDBCCreditDAO implements CreditDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all"))) {
 
+
+            logger.debug("Getting all credits"+statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
@@ -65,7 +68,24 @@ public class JDBCCreditDAO implements CreditDAO {
 
     @Override
     public void update(CreditAccount item) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.update.by.id"))) {
+            statement.setString(1, item.getAccountType().name());
+            statement.setString(2, item.getBalance().toString());
+            statement.setString(3, item.getClosingDate().toString());
+            statement.setString(4, item.getOwnerId() + "");
+            statement.setString(5, item.getAccountStatus().name());
+            statement.setString(6, item.getCreditLimit().toString());
+            statement.setString(7, item.getCreditRate().toString());
+            statement.setString(8, item.getAccruedInterest().toString());
+            statement.setString(9, item.getId()+"");
 
+            logger.debug("Trying update credit"+statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Credit Account was not updated: ", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -110,6 +130,8 @@ public class JDBCCreditDAO implements CreditDAO {
                 sqlRequestsBundle.getString("credit.select.all.by.owner.id"))) {
             statement.setString(1, ownerId + "");
 
+
+            logger.debug("Getting all user credits"+statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
@@ -129,6 +151,8 @@ public class JDBCCreditDAO implements CreditDAO {
             statement.setString(1, ownerId + "");
             statement.setString(2, status.name());
 
+
+            logger.debug("Getting all user credits"+statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
@@ -138,5 +162,20 @@ public class JDBCCreditDAO implements CreditDAO {
             throw new RuntimeException(e);
         }
         return creditAccounts;
+    }
+
+    @Override
+    public void increaseAccruedInterestById(long id, BigDecimal accruedInterest) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.add.increase.interest.by.id"))) {
+            statement.setString(1, accruedInterest.toString());
+            statement.setString(2, id+"");
+
+            logger.debug("Trying increase accrued interest"+statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Can not increase credit accruedInterest", e);
+            throw new RuntimeException(e);
+        }
     }
 }

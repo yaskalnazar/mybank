@@ -121,7 +121,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
             statement.setString(2, id + "");
 
             logger.debug("Change credit request (id=" + id + ") status to " + status.name());
-            statement.execute();
+            statement.executeUpdate();
 
             return true;
         } catch (SQLException e) {

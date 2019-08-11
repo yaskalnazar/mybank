@@ -2,7 +2,7 @@ package ua.yaskal.model.service;
 
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.CreditRequestDAO;
-import ua.yaskal.model.dao.DaoFactory;
+import ua.yaskal.model.dao.DAOFactory;
 import ua.yaskal.model.dto.CreditRequestDTO;
 import ua.yaskal.model.entity.CreditRequest;
 
@@ -12,7 +12,7 @@ public class CreditRequestService {
     private final static Logger logger = Logger.getLogger(CreditRequestService.class);
 
     public CreditRequest createNew(CreditRequestDTO creditRequestDTO) {
-        CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
+        CreditRequestDAO creditRequestDAO = DAOFactory.getInstance().createCreditRequestDAO();
         CreditRequest creditRequest = CreditRequest.getBuilder()
                 .setApplicantId(creditRequestDTO.getApplicantId())
                 .setCreditRate(creditRequestDTO.getCreditRate())
@@ -26,31 +26,31 @@ public class CreditRequestService {
     }
 
     public List<CreditRequest> getAll() {
-        CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
+        CreditRequestDAO creditRequestDAO = DAOFactory.getInstance().createCreditRequestDAO();
         return creditRequestDAO.getAll();
     }
 
 
     public List<CreditRequest> getAllByStatus(CreditRequest.CreditRequestStatus status) {
-        CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
+        CreditRequestDAO creditRequestDAO = DAOFactory.getInstance().createCreditRequestDAO();
         return creditRequestDAO.getAllByStatus(status);
     }
 
     public CreditRequest getById(long id) {
-        CreditRequestDAO creditRequestDAO = DaoFactory.getInstance().createCreditRequestDAO();
+        CreditRequestDAO creditRequestDAO = DAOFactory.getInstance().createCreditRequestDAO();
         return creditRequestDAO.getById(id);
     }
 
     public void changeStatus(CreditRequest.CreditRequestStatus status, long id) {
-        DaoFactory.getInstance().createCreditRequestDAO().changeStatus(status, id);
+        DAOFactory.getInstance().createCreditRequestDAO().changeStatus(status, id);
     }
 
     public  List<CreditRequest> getAllByApplicantId(long applicantId){
-        return DaoFactory.getInstance().createCreditRequestDAO().getAllByApplicantId(applicantId);
+        return DAOFactory.getInstance().createCreditRequestDAO().getAllByApplicantId(applicantId);
     }
 
     public  List<CreditRequest> getAllByApplicantIdAndStatus(long applicantId, CreditRequest.CreditRequestStatus status){
-        return DaoFactory.getInstance().createCreditRequestDAO().getAllByApplicantIdAndStatus(applicantId, status);
+        return DAOFactory.getInstance().createCreditRequestDAO().getAllByApplicantIdAndStatus(applicantId, status);
     }
 
 }

@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class JDBCDaoFactory extends DaoFactory {
+public class JDBCDaoFactory extends DAOFactory {
     private final static Logger logger = Logger.getLogger(JDBCDaoFactory.class);
     private ResourceBundle databaseProperties = ResourceBundle.getBundle("database");
     private ResourceBundle sqlRequestsBundle = ResourceBundle.getBundle("SQLRequests");
@@ -45,6 +45,11 @@ public class JDBCDaoFactory extends DaoFactory {
     @Override
     public AccountDAO createAccountDAO() {
         return new JDBCAccountDAO(getConnection(), sqlRequestsBundle, mapperFactory);
+    }
+
+    @Override
+    public PaymentDAO createPaymentDAO() {
+        return new JDBCPaymentDAO(getConnection(), sqlRequestsBundle, mapperFactory);
     }
 
     private Connection getConnection() {

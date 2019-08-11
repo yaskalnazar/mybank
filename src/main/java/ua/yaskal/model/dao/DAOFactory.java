@@ -2,8 +2,8 @@ package ua.yaskal.model.dao;
 
 import ua.yaskal.model.dao.jdbc.JDBCDaoFactory;
 
-public abstract class DaoFactory {
-    private static DaoFactory daoFactory;
+public abstract class DAOFactory {
+    private static DAOFactory daoFactory;
 
     public abstract UserDAO createUserDAO();
 
@@ -17,10 +17,12 @@ public abstract class DaoFactory {
 
     public abstract AccountDAO createAccountDAO();
 
+    public abstract PaymentDAO createPaymentDAO();
 
-    public static DaoFactory getInstance() {
+
+    public static DAOFactory getInstance() {
         if (daoFactory == null) {
-            synchronized (DaoFactory.class) {
+            synchronized (DAOFactory.class) {
                 if (daoFactory == null) {
                     daoFactory = new JDBCDaoFactory();
                 }

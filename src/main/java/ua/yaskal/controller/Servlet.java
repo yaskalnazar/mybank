@@ -7,21 +7,34 @@ import ua.yaskal.controller.command.general.HomeCommand;
 import ua.yaskal.controller.command.general.LogOutCommand;
 import ua.yaskal.controller.command.guest.*;
 import ua.yaskal.controller.command.user.*;
+import ua.yaskal.model.dao.DAOFactory;
+import ua.yaskal.model.service.ScheduledService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
+//TODO ioc&di
 public class Servlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(Servlet.class);
     private Map<String, Command> commands = new HashMap<>();
+    //private ScheduledThreadPoolExecutor  scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
+    private ScheduledThreadPoolExecutor  scheduledExecutorService = new ScheduledThreadPoolExecutor(5);
 
     public void init(ServletConfig servletConfig){
         logger.info("----------------------------------------------------------");
         logger.info("Starting project");
         logger.info("----------------------------------------------------------");
+
+
+        scheduledExecutorService.setRemoveOnCancelPolicy(true);
+        scheduledExecutorService.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
+        scheduledExecutorService.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
+        new ScheduledService(scheduledExecutorService, DAOFactory.getInstance());
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
@@ -52,7 +65,7 @@ public class Servlet extends HttpServlet {
         commands.put("user/account/make_transaction", new MakeTransactionCommand());
         commands.put("user/account/credit_page", new UserCreditPageCommand());
         commands.put("user/account/deposit_page", new UserDepositPageCommand());
-
+       // new ScheduledService(new ScheduledThreadPoolExecutor(50), DaoFactory.getInstance());
 
 
     }

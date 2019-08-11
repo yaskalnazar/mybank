@@ -5,6 +5,7 @@ import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
+import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 
 import java.sql.*;
@@ -53,12 +54,23 @@ public class JDBCTransactionDAO implements TransactionDAO {
 
 
 
-            try (PreparedStatement reduceBalance = connection.prepareStatement(
+            try (PreparedStatement getActiveAccount = connection.prepareStatement(
+                    sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
+                    PreparedStatement reduceBalance = connection.prepareStatement(
                     sqlRequestsBundle.getString("account.reduce.balance"));
                  PreparedStatement increaseBalance = connection.prepareStatement(
                          sqlRequestsBundle.getString("account.increase.balance"));
                  PreparedStatement insertTransaction = connection.prepareStatement(
                          sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+
+
+                getActiveAccount.setString(1, item.getReceiverAccountId() + "");
+                logger.debug("Select receiver account " + getActiveAccount);
+                ResultSet resultSet = getActiveAccount.executeQuery();
+                if (!resultSet.next()) {
+                    logger.debug("No active account with id:" + item.getReceiverAccountId());
+                    throw new NoSuchActiveAccountException();
+                }
 
                 reduceBalance.setString(1, item.getTransactionAmount().toString());
                 reduceBalance.setString(2, item.getSenderAccountId() + "");
@@ -73,6 +85,8 @@ public class JDBCTransactionDAO implements TransactionDAO {
                 insertTransaction.setString(4, item.getSenderAccountId() + "");
 
 
+                logger.debug("Try reduce balance" + reduceBalance);
+                logger.debug("Try increase balance" + increaseBalance);
                 logger.debug("Try add new Transaction" + insertTransaction);
                 reduceBalance.execute();
                 increaseBalance.execute();
@@ -80,7 +94,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
 
                 connection.commit();
 
-                ResultSet resultSet = insertTransaction.getGeneratedKeys();
+                resultSet = insertTransaction.getGeneratedKeys();
 
                 if (resultSet.next()) {
                     return resultSet.getLong(1);
