@@ -24,9 +24,10 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-//TODO ioc&di
+
 public class Servlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(Servlet.class);
+    private Map<String, Command> commands = new HashMap<>();
     private DAOFactory daoFactory;
     private ValidationUtil validationUtil;
     private PaymentService paymentService;
@@ -36,8 +37,7 @@ public class Servlet extends HttpServlet {
     private DepositService depositService;
     private UserService userService;
     private CreditRequestService creditRequestService;
-    private Map<String, Command> commands = new HashMap<>();
-    private ScheduledThreadPoolExecutor scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
+    private ScheduledService scheduledService;
 
 
     public void init(ServletConfig servletConfig) {
@@ -55,11 +55,11 @@ public class Servlet extends HttpServlet {
         userService = new UserService(daoFactory);
         creditRequestService = new CreditRequestService(daoFactory);
 
-
+        ScheduledThreadPoolExecutor scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
         scheduledExecutorService.setRemoveOnCancelPolicy(true);
         scheduledExecutorService.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
         scheduledExecutorService.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
-        new ScheduledService(scheduledExecutorService, daoFactory);
+        scheduledService = new ScheduledService(scheduledExecutorService, daoFactory);
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
@@ -93,8 +93,6 @@ public class Servlet extends HttpServlet {
         commands.put("user/payment/make_new", new MakePaymentCommand(validationUtil, paymentService, accountService));
         commands.put("user/payment/all", new AllUsersPayment(validationUtil, paymentService, accountService, transactionService));
 
-
-        // new ScheduledService(new ScheduledThreadPoolExecutor(50), DaoFactory.getInstance());
 
 
     }

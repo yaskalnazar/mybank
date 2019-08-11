@@ -70,7 +70,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     }
 
     @Override
-    public Long addNew(CreditRequest item) {
+    public long addNew(CreditRequest item) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.request.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getCreditLimit().toString());

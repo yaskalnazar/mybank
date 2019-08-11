@@ -92,7 +92,7 @@ public class JDBCDepositDAO implements DepositDAO {
     }
 
     @Override
-    public Long addNew(DepositAccount item) {
+    public long addNew(DepositAccount item) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());

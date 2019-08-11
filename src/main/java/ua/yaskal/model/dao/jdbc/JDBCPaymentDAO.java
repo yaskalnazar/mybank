@@ -59,7 +59,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     }
 
     @Override
-    public Long addNew(Payment item) {
+    public long addNew(Payment item) {
         try (PreparedStatement getActiveAccount = connection.prepareStatement(
                 sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
                 PreparedStatement statement = connection.prepareStatement(

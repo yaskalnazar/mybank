@@ -92,7 +92,7 @@ public class JDBCCreditDAO implements CreditDAO {
     }
 
     @Override
-    public Long addNew(CreditAccount item) {
+    public long addNew(CreditAccount item) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());

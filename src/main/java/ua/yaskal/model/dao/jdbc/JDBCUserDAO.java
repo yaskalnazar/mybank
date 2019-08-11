@@ -72,7 +72,7 @@ public class JDBCUserDAO implements UserDAO {
     }
 
     @Override
-    public Long addNew(User item) throws NonUniqueEmailException {
+    public long addNew(User item) throws NonUniqueEmailException {
         try (PreparedStatement addUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             addUserStatement.setString(1, item.getEmail());
             addUserStatement.setString(2, item.getName());

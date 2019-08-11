@@ -7,10 +7,7 @@ import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.exceptions.WrongAccountTypeException;
 import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -48,22 +45,74 @@ public class JDBCAccountDAO implements AccountDAO {
 
     @Override
     public List<Account> getAll() {
-        return null;
+        List<Account> accounts = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.select.all"))) {
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                try {
+                    accounts.add(mapperFactory.getAccountMapper().mapToObject(resultSet));
+                } catch (WrongAccountTypeException e){
+                    logger.warn("Can not map account id:" + e.getAccountId());
+                }
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all accounts: ", e);
+            throw new RuntimeException(e);
+        }
+        return accounts;
     }
 
     @Override
     public void update(Account item) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.update.by.id"))) {
+            statement.setString(1, item.getAccountType().name());
+            statement.setString(2, item.getBalance().toString());
+            statement.setString(3, item.getClosingDate().toString());
+            statement.setString(4, item.getOwnerId() + "");
+            statement.setString(5, item.getAccountStatus().name());
+            statement.setString(9, item.getId()+"");
 
+            logger.debug("Trying update account "+statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Account was not updated: ", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public boolean delete(long id) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public Long addNew(Account item) {
-        return null;
+    public long addNew(Account item) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, item.getAccountType().name());
+            statement.setString(2, item.getBalance().toString());
+            statement.setString(3, item.getClosingDate().toString());
+            statement.setString(4, item.getOwnerId() + "");
+            statement.setString(5, item.getAccountStatus().name());
+
+
+            logger.debug("Add new account " + statement);
+            statement.execute();
+
+            ResultSet resultSet = statement.getGeneratedKeys();
+
+            if (resultSet.next()) {
+                return resultSet.getLong(1);
+            } else {
+                throw new SQLException();
+            }
+        } catch (SQLException e) {
+            logger.error("Account was not added: ", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -126,7 +175,6 @@ public class JDBCAccountDAO implements AccountDAO {
                     accounts.add(mapperFactory.getAccountMapper().mapToObject(resultSet));
                 } catch (WrongAccountTypeException e){
                     logger.warn("Can not map account id:" + e.getAccountId());
-                    continue;
                 }
             }
         } catch (SQLException e) {

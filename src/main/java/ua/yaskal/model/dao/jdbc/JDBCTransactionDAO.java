@@ -46,7 +46,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     }
 
     @Override
-    public Long addNew(Transaction item) {
+    public long addNew(Transaction item) {
         try {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             connection.setAutoCommit(false);
