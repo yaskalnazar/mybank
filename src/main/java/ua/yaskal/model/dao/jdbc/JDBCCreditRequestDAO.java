@@ -53,7 +53,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all credit requests",e);
+            logger.error("Can not get all credit requests", e);
             throw new RuntimeException(e);
         }
         return creditRequests;
@@ -61,12 +61,26 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
     @Override
     public void update(CreditRequest item) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.request.update.by.id"))) {
+            statement.setString(1, item.getCreditLimit().toString());
+            statement.setString(2, item.getCreditRate().toString());
+            statement.setString(3, item.getCreationDate().toString());
+            statement.setString(4, item.getCreditRequestStatus().name());
+            statement.setLong(5, item.getApplicantId());
+            statement.setLong(6, item.getId());
 
+            logger.debug("Trying update credit" + statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Credit request was not added", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public boolean delete(long id) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -90,7 +104,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 throw new SQLException();
             }
         } catch (SQLException e) {
-            logger.error("Credit request was not added",e);
+            logger.error("Credit request was not added", e);
             throw new RuntimeException(e);
         }
     }
@@ -125,7 +139,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
             return true;
         } catch (SQLException e) {
-            logger.error("Can not change status",e);
+            logger.error("Can not change status", e);
             throw new RuntimeException(e);
         }
     }
@@ -142,7 +156,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
                 creditRequests.add(mapperFactory.getCreditRequestMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get user credit requests" , e);
+            logger.error("Can not get user credit requests", e);
             throw new RuntimeException(e);
         }
         return creditRequests;

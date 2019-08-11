@@ -8,6 +8,7 @@ import ua.yaskal.model.exceptions.WrongAccountTypeException;
 import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,7 +28,7 @@ public class JDBCAccountDAO implements AccountDAO {
     @Override
     public Account getById(long id) {
         try (PreparedStatement statement = connection.prepareStatement(sqlRequestsBundle.getString("account.select.by.id"))) {
-            statement.setString(1, id + "");
+            statement.setLong(1, id);
 
             logger.debug("Select account " + statement);
             ResultSet resultSet = statement.executeQuery();
@@ -69,11 +70,11 @@ public class JDBCAccountDAO implements AccountDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("account.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
-            statement.setString(2, item.getBalance().toString());
-            statement.setString(3, item.getClosingDate().toString());
-            statement.setString(4, item.getOwnerId() + "");
+            statement.setBigDecimal(2, item.getBalance());
+            statement.setObject(3, item.getClosingDate());
+            statement.setLong(4, item.getOwnerId());
             statement.setString(5, item.getAccountStatus().name());
-            statement.setString(9, item.getId()+"");
+            statement.setLong(9, item.getId());
 
             logger.debug("Trying update account "+statement);
             statement.executeUpdate();
@@ -93,9 +94,9 @@ public class JDBCAccountDAO implements AccountDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("account.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
-            statement.setString(2, item.getBalance().toString());
-            statement.setString(3, item.getClosingDate().toString());
-            statement.setString(4, item.getOwnerId() + "");
+            statement.setBigDecimal(2, item.getBalance());
+            statement.setObject(3, item.getClosingDate());
+            statement.setLong(4, item.getOwnerId());
             statement.setString(5, item.getAccountStatus().name());
 
 
@@ -120,7 +121,7 @@ public class JDBCAccountDAO implements AccountDAO {
         List<Account> accounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("account.select.all.by.owner.id"))) {
-            statement.setString(1, ownerId + "");
+            statement.setLong(1, ownerId);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -142,7 +143,7 @@ public class JDBCAccountDAO implements AccountDAO {
         List<Account> accounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("account.select.all.by.owner.id.and.status"))) {
-            statement.setString(1, ownerId + "");
+            statement.setLong(1, ownerId);
             statement.setString(2, status.name());
 
 
@@ -189,7 +190,7 @@ public class JDBCAccountDAO implements AccountDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("account.update.status.by.id"))) {
             statement.setString(1, status.name());
-            statement.setString(2, id+"");
+            statement.setLong(2, id);
 
             statement.executeUpdate();
         } catch (SQLException e) {

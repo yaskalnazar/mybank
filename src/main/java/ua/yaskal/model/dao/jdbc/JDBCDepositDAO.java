@@ -96,13 +96,13 @@ public class JDBCDepositDAO implements DepositDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
-            statement.setString(2, item.getBalance().toString());
-            statement.setString(3, item.getClosingDate().toString());
-            statement.setString(4, item.getOwnerId() + "");
+            statement.setBigDecimal(2, item.getBalance());
+            statement.setObject(3, item.getClosingDate());
+            statement.setLong(4, item.getOwnerId());
             statement.setString(5, item.getAccountStatus().name());
-            statement.setString(6, item.getDepositAmount().toString());
-            statement.setString(7, item.getDepositRate().toString());
-            statement.setString(8, item.getDepositEndDate().toString());
+            statement.setBigDecimal(6, item.getDepositAmount());
+            statement.setBigDecimal(7, item.getDepositRate());
+            statement.setObject(8, item.getDepositEndDate());
 
 
             logger.debug("Add new Deposit Account " + statement);
