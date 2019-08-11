@@ -29,7 +29,7 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public DepositAccount getById(long id) {
         try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("deposit.select.by.id"))) {
-            getUserStatement.setString(1, id + "");
+            getUserStatement.setLong(1, id);
 
             logger.debug("Select deposit " + getUserStatement);
             ResultSet resultSet = getUserStatement.executeQuery();
@@ -69,14 +69,14 @@ public class JDBCDepositDAO implements DepositDAO {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
-            statement.setString(2, item.getBalance().toString());
-            statement.setString(3, item.getClosingDate().toString());
-            statement.setString(4, item.getOwnerId() + "");
+            statement.setBigDecimal(2, item.getBalance());
+            statement.setObject(3, item.getClosingDate());
+            statement.setLong(4, item.getOwnerId());
             statement.setString(5, item.getAccountStatus().name());
-            statement.setString(6, item.getDepositAmount().toString());
-            statement.setString(7, item.getDepositRate().toString());
-            statement.setString(8, item.getDepositEndDate().toString());
-            statement.setString(9, item.getId()+"");
+            statement.setBigDecimal(6, item.getDepositAmount());
+            statement.setBigDecimal(7, item.getDepositRate());
+            statement.setObject(8, item.getDepositEndDate());
+            statement.setLong(9, item.getId());
 
             logger.debug("Trying update deposit"+statement);
             statement.executeUpdate();
@@ -88,7 +88,7 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public boolean delete(long id) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -126,7 +126,7 @@ public class JDBCDepositDAO implements DepositDAO {
         List<DepositAccount> depositAccounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id"))) {
-            statement.setString(1, ownerId + "");
+            statement.setLong(1, ownerId);
 
             logger.debug("Getting all user deposits"+statement);
             ResultSet resultSet = statement.executeQuery();
@@ -145,7 +145,7 @@ public class JDBCDepositDAO implements DepositDAO {
         List<DepositAccount> depositAccounts = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id.and.status"))) {
-            statement.setString(1, ownerId + "");
+            statement.setLong(1, ownerId);
             statement.setString(2, status.name());
 
             logger.debug("Getting all user deposits"+statement);
@@ -164,8 +164,8 @@ public class JDBCDepositDAO implements DepositDAO {
     public void updateDepositAmount(long id, BigDecimal amount) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.amount.by.id"))) {
-            statement.setString(1, amount.toString());
-            statement.setString(2, id+"");
+            statement.setBigDecimal(1, amount);
+            statement.setLong(2, id);
 
 
             logger.debug("Updating deposit amount"+statement);
@@ -180,8 +180,8 @@ public class JDBCDepositDAO implements DepositDAO {
     public void updateDepositRate(long id, BigDecimal rate) {
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.rate.by.id"))) {
-            statement.setString(1, rate.toString());
-            statement.setString(2, id+"");
+            statement.setBigDecimal(1, rate);
+            statement.setLong(2, id);
 
             statement.executeUpdate();
         } catch (SQLException e) {
