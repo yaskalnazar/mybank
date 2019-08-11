@@ -5,9 +5,7 @@ import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
-import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
-import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
 import java.math.BigDecimal;
 import java.sql.*;

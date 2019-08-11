@@ -4,18 +4,15 @@ import org.apache.log4j.Logger;
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
-import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.Payment;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.AccessDeniedException;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
-import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.service.AccountService;
 import ua.yaskal.model.service.PaymentService;
 import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 

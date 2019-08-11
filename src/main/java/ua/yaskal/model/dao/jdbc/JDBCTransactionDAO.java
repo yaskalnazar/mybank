@@ -5,7 +5,6 @@ import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
-import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 
 import java.sql.*;

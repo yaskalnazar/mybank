@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.User;
-import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 import ua.yaskal.model.exceptions.NonUniqueEmailException;
+import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
 import java.sql.*;
 import java.util.ArrayList;

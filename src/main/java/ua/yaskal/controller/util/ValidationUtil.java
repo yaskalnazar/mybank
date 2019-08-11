@@ -1,7 +1,6 @@
 package ua.yaskal.controller.util;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.controller.command.user.NewCreditRequestCommand;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

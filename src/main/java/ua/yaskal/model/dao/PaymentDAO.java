@@ -1,6 +1,5 @@
 package ua.yaskal.model.dao;
 
-import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.Payment;
 
 import java.util.List;

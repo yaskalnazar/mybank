@@ -4,7 +4,6 @@ import ua.yaskal.model.dao.mappers.Mapper;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.DepositAccount;
 
-
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;

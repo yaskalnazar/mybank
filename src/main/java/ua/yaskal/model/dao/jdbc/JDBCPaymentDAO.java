@@ -6,7 +6,6 @@ import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Payment;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.exceptions.no.such.NoSuchPaymentException;
-import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
 import java.sql.*;
 import java.util.ArrayList;

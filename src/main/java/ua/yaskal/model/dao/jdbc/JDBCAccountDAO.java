@@ -4,10 +4,8 @@ import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.AccountDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Account;
-import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.exceptions.WrongAccountTypeException;
 import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
-import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

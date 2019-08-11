@@ -1,11 +1,12 @@
 package ua.yaskal.controller;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.controller.command.*;
+import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.command.admin.*;
 import ua.yaskal.controller.command.general.HomeCommand;
 import ua.yaskal.controller.command.general.LogOutCommand;
-import ua.yaskal.controller.command.guest.*;
+import ua.yaskal.controller.command.guest.LoginCommand;
+import ua.yaskal.controller.command.guest.RegistrationCommand;
 import ua.yaskal.controller.command.user.*;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dao.DAOFactory;
@@ -13,9 +14,13 @@ import ua.yaskal.model.service.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
@@ -43,18 +48,18 @@ public class Servlet extends HttpServlet {
         daoFactory = DAOFactory.getInstance();
         validationUtil = new ValidationUtil();
         paymentService = new PaymentService(daoFactory);
-        accountService = new AccountService();
-        transactionService = new TransactionService();
-        creditService = new CreditService();
-        depositService = new DepositService();
-        userService = new UserService();
-        creditRequestService = new CreditRequestService();
+        accountService = new AccountService(daoFactory);
+        transactionService = new TransactionService(daoFactory);
+        creditService = new CreditService(daoFactory);
+        depositService = new DepositService(daoFactory);
+        userService = new UserService(daoFactory);
+        creditRequestService = new CreditRequestService(daoFactory);
 
 
         scheduledExecutorService.setRemoveOnCancelPolicy(true);
         scheduledExecutorService.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
         scheduledExecutorService.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
-        new ScheduledService(scheduledExecutorService, DAOFactory.getInstance());
+        new ScheduledService(scheduledExecutorService, daoFactory);
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());

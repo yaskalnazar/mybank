@@ -2,9 +2,7 @@ package ua.yaskal.model.dao.mappers.jdbc;
 
 import ua.yaskal.model.dao.mappers.Mapper;
 import ua.yaskal.model.entity.Payment;
-import ua.yaskal.model.entity.Transaction;
 
-import javax.swing.text.html.Option;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;

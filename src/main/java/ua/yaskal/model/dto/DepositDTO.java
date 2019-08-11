@@ -1,7 +1,5 @@
 package ua.yaskal.model.dto;
 
-import ua.yaskal.model.entity.User;
-
 import java.math.BigDecimal;
 
 public class DepositDTO {

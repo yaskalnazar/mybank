@@ -5,8 +5,6 @@ import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.Payment;
-import ua.yaskal.model.entity.Transaction;
-import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.service.AccountService;
 import ua.yaskal.model.service.PaymentService;

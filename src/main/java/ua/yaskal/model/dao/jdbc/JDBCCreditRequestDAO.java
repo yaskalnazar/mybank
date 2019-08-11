@@ -5,7 +5,6 @@ import ua.yaskal.model.dao.CreditRequestDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.exceptions.no.such.NoSuchCreditRequestException;
-import ua.yaskal.model.exceptions.no.such.NoSuchUserException;
 
 import java.sql.*;
 import java.util.ArrayList;

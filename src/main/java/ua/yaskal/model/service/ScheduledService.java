@@ -2,7 +2,6 @@ package ua.yaskal.model.service;
 
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.DAOFactory;
-import ua.yaskal.model.dao.jdbc.JDBCPaymentDAO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.DepositAccount;

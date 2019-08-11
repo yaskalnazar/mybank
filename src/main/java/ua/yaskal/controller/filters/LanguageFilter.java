@@ -1,7 +1,5 @@
 package ua.yaskal.controller.filters;
 
-import org.apache.log4j.Logger;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
