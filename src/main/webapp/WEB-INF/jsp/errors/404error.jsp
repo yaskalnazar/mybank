@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title><fmt:message key="page.no.such"/></title>
+    <title><fmt:message key="page.message.error"/></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -27,7 +27,7 @@
     <div class="d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
             <div class="alert alert-danger" role="alert">
-                <h1>404</h1>
+                <fmt:message key="page.message.error.404"/>
             </div>
         </div>
     </div>
