@@ -109,6 +109,8 @@ public class Servlet extends HttpServlet {
                 new MakePaymentCommand(validationUtil, paymentService, accountService));
         commands.put("user/payment/all",
                 new AllUsersPayment(validationUtil, paymentService, accountService, transactionService));
+        commands.put("user/credit_request/close",
+                new DeleteCreditRequestCommand(validationUtil, creditRequestService));
 
 
     }

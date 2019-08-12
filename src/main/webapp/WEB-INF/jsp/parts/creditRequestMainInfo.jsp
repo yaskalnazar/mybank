@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <fmt:setLocale value="${locale}"/>
@@ -13,9 +14,14 @@
         <tr>
             <th><fmt:message key="page.message.applicant.id"/>:</th>
             <td>
+                <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
                 <a href="${pageContext.request.contextPath}/admin/user_page?id=${creditRequest.getApplicantId()}">
                     ${creditRequest.getApplicantId()}
                 </a>
+                </c:if>
+                <c:if test="${sessionScope.get('user').getRole() == 'USER'}">
+                    ${creditRequest.getApplicantId()}
+                </c:if>
             </td>
         </tr>
         <tr>

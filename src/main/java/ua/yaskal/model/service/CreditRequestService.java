@@ -51,6 +51,10 @@ public class CreditRequestService {
         return daoFactory.createCreditRequestDAO().getAllByApplicantIdAndStatus(applicantId, status);
     }
 
+    public boolean delete(long id){
+        return daoFactory.createCreditRequestDAO().delete(id);
+    }
+
 
     public void setDaoFactory(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
