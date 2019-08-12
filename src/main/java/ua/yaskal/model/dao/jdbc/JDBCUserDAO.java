@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-//TODO finish
 public class JDBCUserDAO implements UserDAO {
     private final static Logger logger = Logger.getLogger(JDBCUserDAO.class);
     private Connection connection;
@@ -28,7 +27,7 @@ public class JDBCUserDAO implements UserDAO {
     @Override
     public User getById(long id) {
         try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.select.by.id"))) {
-            getUserStatement.setString(1, id + "");
+            getUserStatement.setLong(1, id);
 
             logger.debug("Select user " + getUserStatement);
             ResultSet resultSet = getUserStatement.executeQuery();
@@ -64,12 +63,28 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public void update(User item) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("user.update.by.id"))) {
+            statement.setString(1, item.getEmail());
+            statement.setString(2, item.getName());
+            statement.setString(3, item.getSurname());
+            statement.setString(4, item.getPatronymic());
+            statement.setString(5, item.getRole().getStringRole());
+            statement.setString(6, item.getPassword());
+            statement.setLong(7, item.getId());
 
+
+            logger.debug("Trying update user" + statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("User was not updated", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public boolean delete(long id) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
