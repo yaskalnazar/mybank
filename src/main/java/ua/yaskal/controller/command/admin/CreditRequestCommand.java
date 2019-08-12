@@ -9,10 +9,12 @@ import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.service.CreditRequestService;
 import ua.yaskal.model.service.CreditService;
+import ua.yaskal.model.service.ScheduledService;
 import ua.yaskal.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class CreditRequestCommand implements Command {
     private final static Logger logger = Logger.getLogger(CreditRequestCommand.class);
@@ -20,25 +22,28 @@ public class CreditRequestCommand implements Command {
     private CreditRequestService creditRequestService;
     private UserService userService;
     private CreditService creditService;
+    private ScheduledService scheduledService;
 
-    public CreditRequestCommand(ValidationUtil validationUtil, CreditRequestService creditRequestService, UserService userService, CreditService creditService) {
+    public CreditRequestCommand(ValidationUtil validationUtil, CreditRequestService creditRequestService,
+                                UserService userService, CreditService creditService, ScheduledService scheduledService) {
         this.validationUtil = validationUtil;
         this.creditRequestService = creditRequestService;
         this.userService = userService;
         this.creditService = creditService;
+        this.scheduledService = scheduledService;
     }
 
     @Override
     public String execute(HttpServletRequest request) {
 
         String requestId = request.getParameter("id");
-        if (!validationUtil.isContains(request, Arrays.asList("id")) ||
+        if (!validationUtil.isContains(request, Collections.singletonList("id")) ||
                 !validationUtil.isParamValid(requestId, "id")) {
             logger.warn("Incorrect id");
             throw new RuntimeException("Incorrect id " + request.getRequestURI());
         }
 
-        if (validationUtil.isContains(request, Arrays.asList("answer"))) {
+        if (validationUtil.isContains(request, Collections.singletonList("answer"))) {
             processAnswer(request);
         }
 
@@ -65,6 +70,7 @@ public class CreditRequestCommand implements Command {
             creditRequest.setCreditRequestStatus(CreditRequest.CreditRequestStatus.APPROVED);
 
             CreditAccount creditAccount = creditService.addNew(creditRequest);
+            scheduledService.scheduleAccounts(Collections.singletonList(creditAccount));
 
             logger.debug("Credit account " + creditAccount.getId() + " open");
             request.setAttribute("answer", "approved");
@@ -92,5 +98,9 @@ public class CreditRequestCommand implements Command {
 
     public void setCreditService(CreditService creditService) {
         this.creditService = creditService;
+    }
+
+    public void setScheduledService(ScheduledService scheduledService) {
+        this.scheduledService = scheduledService;
     }
 }

@@ -27,11 +27,10 @@ public class ScheduledService {
         this.scheduledExecutorService = scheduledExecutorService;
         this.daoFactory = daoFactory;
 
-        scheduleActiveAccounts();
+        scheduleAccounts(daoFactory.createAccountDAO().getAllByStatus(Account.AccountStatus.ACTIVE));
     }
 
-    private void scheduleActiveAccounts() {
-        List<Account> accounts = daoFactory.createAccountDAO().getAllByStatus(Account.AccountStatus.ACTIVE);
+    public void scheduleAccounts(List<Account> accounts) {
         for (Account i : accounts) {
             if (i instanceof DepositAccount)
                 setDepositEnd((DepositAccount) i);

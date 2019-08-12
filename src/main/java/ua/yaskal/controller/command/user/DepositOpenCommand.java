@@ -7,19 +7,23 @@ import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dto.DepositDTO;
 import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.service.DepositService;
+import ua.yaskal.model.service.ScheduledService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class DepositOpenCommand implements Command {
     private final static Logger logger = Logger.getLogger(DepositOpenCommand.class);
     private ValidationUtil validationUtil;
     private DepositService depositService;
+    private ScheduledService scheduledService;
 
-    public DepositOpenCommand(ValidationUtil validationUtil, DepositService depositService) {
+    public DepositOpenCommand(ValidationUtil validationUtil, DepositService depositService, ScheduledService scheduledService) {
         this.validationUtil = validationUtil;
         this.depositService = depositService;
+        this.scheduledService = scheduledService;
     }
 
     @Override
@@ -58,6 +62,8 @@ public class DepositOpenCommand implements Command {
         DepositAccount depositAccount;
         try {
             depositAccount = depositService.openNewDeposit(depositDTO);
+            scheduledService.scheduleAccounts(Collections.singletonList(depositAccount));
+
         } catch (Exception e){
             logger.warn("Deposit open error"+e);
             request.setAttribute("depositError", e);
@@ -75,5 +81,9 @@ public class DepositOpenCommand implements Command {
 
     public void setDepositService(DepositService depositService) {
         this.depositService = depositService;
+    }
+
+    public void setScheduledService(ScheduledService scheduledService) {
+        this.scheduledService = scheduledService;
     }
 }

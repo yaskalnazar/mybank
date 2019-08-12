@@ -72,27 +72,43 @@ public class Servlet extends HttpServlet {
         commands.put("admin/logout", new LogOutCommand());
 
 
-        commands.put("guest/login", new LoginCommand(validationUtil, userService));
-        commands.put("guest/registration", new RegistrationCommand(validationUtil, userService));
+        commands.put("guest/login",
+                new LoginCommand(validationUtil, userService));
+        commands.put("guest/registration",
+                new RegistrationCommand(validationUtil, userService));
 
-        commands.put("admin/all_users", new AllUsersCommand(userService));
-        commands.put("admin/account/all/deposits", new AllDepositsCommand(depositService));
-        commands.put("admin/account/all/credits", new AllCreditsCommand(creditService));
-        commands.put("admin/credit_request", new CreditRequestCommand(validationUtil, creditRequestService, userService, creditService));
-        commands.put("admin/credit_request/all", new GetCreditRequestsCommand(validationUtil, creditRequestService));
-        commands.put("admin/user_page", new GetUserPageCommand(validationUtil, userService, creditService, depositService));
+        commands.put("admin/all_users",
+                new AllUsersCommand(userService));
+        commands.put("admin/account/all/deposits",
+                new AllDepositsCommand(depositService));
+        commands.put("admin/account/all/credits",
+                new AllCreditsCommand(creditService));
+        commands.put("admin/credit_request",
+                new CreditRequestCommand(validationUtil, creditRequestService, userService, creditService, scheduledService));
+        commands.put("admin/credit_request/all",
+                new GetCreditRequestsCommand(validationUtil, creditRequestService));
+        commands.put("admin/user_page",
+                new GetUserPageCommand(validationUtil, userService, creditService, depositService));
 
 
-        commands.put("user/account/all", new AllUsersAccountsCommand(depositService, creditService));
-        commands.put("user/account/deposit/open", new DepositOpenCommand(validationUtil, depositService));
-        commands.put("user/account/credit/open", new NewCreditRequestCommand(validationUtil, creditRequestService, creditService));
-        commands.put("user/account/replenish", new ReplenishAccountCommand(validationUtil, accountService, transactionService));
-        commands.put("user/account/make_transaction", new MakeTransactionCommand(validationUtil, accountService, transactionService));
-        commands.put("user/account/credit_page", new UserCreditPageCommand(validationUtil, creditService, transactionService));
-        commands.put("user/account/deposit_page", new UserDepositPageCommand(validationUtil, depositService, transactionService));
-        commands.put("user/payment/make_new", new MakePaymentCommand(validationUtil, paymentService, accountService));
-        commands.put("user/payment/all", new AllUsersPayment(validationUtil, paymentService, accountService, transactionService));
-
+        commands.put("user/account/all",
+                new AllUsersAccountsCommand(depositService, creditService));
+        commands.put("user/account/deposit/open",
+                new DepositOpenCommand(validationUtil, depositService, scheduledService));
+        commands.put("user/account/credit/open",
+                new NewCreditRequestCommand(validationUtil, creditRequestService, creditService));
+        commands.put("user/account/replenish",
+                new ReplenishAccountCommand(validationUtil, accountService, transactionService));
+        commands.put("user/account/make_transaction",
+                new MakeTransactionCommand(validationUtil, accountService, transactionService));
+        commands.put("user/account/credit_page",
+                new UserCreditPageCommand(validationUtil, creditService, transactionService));
+        commands.put("user/account/deposit_page",
+                new UserDepositPageCommand(validationUtil, depositService, transactionService));
+        commands.put("user/payment/make_new",
+                new MakePaymentCommand(validationUtil, paymentService, accountService));
+        commands.put("user/payment/all",
+                new AllUsersPayment(validationUtil, paymentService, accountService, transactionService));
 
 
     }
