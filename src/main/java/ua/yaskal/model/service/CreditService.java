@@ -1,6 +1,7 @@
 package ua.yaskal.model.service;
 
 import ua.yaskal.model.dao.DAOFactory;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.CreditRequest;
@@ -59,4 +60,10 @@ public class CreditService {
     public void reduceAccruedInterestById(long id, BigDecimal accruedInterest) {
         daoFactory.createCreditDAO().reduceAccruedInterestById(id, accruedInterest);
     }
+
+    public PaginationDTO<CreditAccount> getAllPage(long itemsPerPage, long currentPage) {
+        return daoFactory.createCreditDAO().getAllPage(itemsPerPage,currentPage);
+    }
+
+
 }

@@ -14,10 +14,31 @@
 <jsp:include page="../parts/adminHeader.jsp"/>
 
 <div class="mx-1">
-    <c:if test="${credits!=null}">
+    <c:set var="credits" value="${page.getItems()}" scope="request"/>
         <h3><fmt:message key="page.message.all.credits"/>:</h3>
         <jsp:include page="../parts/creditsTable.jsp"/>
-    </c:if>
+    <nav aria-label="pagination">
+        <ul class="pagination justify-content-center">
+            <li class="page-item ${page.getCurrentPage() == 1 ? 'disabled' : ''}">
+                <a class="page-link"
+                   href="${pageContext.request.contextPath}/admin/account/all/credits?currentPage=${page.getCurrentPage() - 1}">
+                    <span>&laquo;</span>
+                </a>
+            </li>
+            <c:forEach var="i" begin="1" end="${page.getPagesNumber()}">
+                <li class="page-item ${page.getCurrentPage() eq i ? 'active' : ''}">
+                    <a class="page-link"
+                       href="${pageContext.request.contextPath}/admin/account/all/credits?currentPage=${i}">${i}</a>
+                </li>
+            </c:forEach>
+            <li class="page-item ${page.getCurrentPage() == page.getPagesNumber() ? 'disabled' : ''}">
+                <a class="page-link"
+                   href="${pageContext.request.contextPath}/admin/account/all/credits?currentPage=${page.getCurrentPage() + 1}">
+                    <span>&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </body>
 </html>

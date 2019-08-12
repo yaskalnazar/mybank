@@ -3,13 +3,17 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.DepositDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
+import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -186,6 +190,79 @@ public class JDBCDepositDAO implements DepositDAO {
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Can not update deposit rate", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public PaginationDTO<DepositAccount> getAllPage(long itemsPerPage, long currentPage) {
+        PaginationDTO<DepositAccount> paginationDTO = new PaginationDTO<>();
+        try {
+            connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement countDeposits = connection.prepareStatement(
+                    sqlRequestsBundle.getString("deposit.count.all"));
+                 PreparedStatement getDeposits = connection.prepareStatement(
+                         sqlRequestsBundle.getString("deposit.get.page.all"))) {
+
+                long depositsNumber;
+                ResultSet resultSet = countDeposits.executeQuery();
+                if (resultSet.next()) {
+                    depositsNumber = resultSet.getInt("credits_number");
+                } else {
+                    throw new SQLException();
+                }
+
+                long pagesNumber = depositsNumber % itemsPerPage == 0 ? depositsNumber / itemsPerPage : (depositsNumber / itemsPerPage) + 1;
+
+
+                if (pagesNumber == 0) {
+                    paginationDTO.setPagesNumber(1);
+                    paginationDTO.setCurrentPage(1);
+                    paginationDTO.setItemsPerPage(itemsPerPage);
+                    paginationDTO.setItems(Collections.emptyList());
+
+                    connection.commit();
+
+                    return paginationDTO;
+                }
+
+                if (currentPage > pagesNumber) {
+                    throw new NoSuchPageException();
+                }
+
+                long offset = (currentPage - 1) * itemsPerPage;
+
+                getDeposits.setLong(1, itemsPerPage);
+                getDeposits.setLong(2, offset);
+
+                logger.debug("Trying increase get credits page "+getDeposits);
+                resultSet = getDeposits.executeQuery();
+
+                List<DepositAccount> depositAccounts = new ArrayList<>();
+                while (resultSet.next()) {
+                    depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
+                }
+
+                paginationDTO.setPagesNumber(pagesNumber);
+                paginationDTO.setCurrentPage(currentPage);
+                paginationDTO.setItemsPerPage(itemsPerPage);
+                paginationDTO.setItems(depositAccounts);
+
+                connection.commit();
+
+                return paginationDTO;
+
+            } catch (SQLException e) {
+                connection.rollback();
+
+                logger.error(e);
+                throw new RuntimeException(e);
+            }
+
+        } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

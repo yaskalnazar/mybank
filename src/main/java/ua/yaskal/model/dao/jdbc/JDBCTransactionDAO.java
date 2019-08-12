@@ -251,6 +251,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
                 getTransactions.setLong(3, itemsPerPage);
                 getTransactions.setLong(4, offset);
 
+                logger.debug("Trying increase get transactions page "+getTransactions);
                 resultSet = getTransactions.executeQuery();
 
                 List<Transaction> transactions = new ArrayList<>();

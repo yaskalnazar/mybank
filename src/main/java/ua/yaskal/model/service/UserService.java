@@ -24,7 +24,7 @@ public class UserService {
                 .setSurname(userDTO.getSurname())
                 .setPatronymic(userDTO.getPatronymic())
                 .setPassword(userDTO.getPassword())
-                .setUserRole(User.Role.ADMIN)
+                .setUserRole(User.Role.USER)
                 .setAccounts(new ArrayList<>())
                 .build();
         user.setId(daoFactory.createUserDAO().addNew(user));

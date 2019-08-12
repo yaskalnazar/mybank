@@ -80,9 +80,9 @@ public class Servlet extends HttpServlet {
         commands.put("admin/all_users",
                 new AllUsersCommand(userService));
         commands.put("admin/account/all/deposits",
-                new AllDepositsCommand(depositService));
+                new AllDepositsCommand(validationUtil, depositService));
         commands.put("admin/account/all/credits",
-                new AllCreditsCommand(creditService));
+                new AllCreditsCommand(validationUtil, creditService));
         commands.put("admin/credit_request",
                 new CreditRequestCommand(validationUtil, creditRequestService, userService, creditService, scheduledService));
         commands.put("admin/credit_request/all",

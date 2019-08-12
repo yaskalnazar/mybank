@@ -3,13 +3,17 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
+import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -184,10 +188,82 @@ public class JDBCCreditDAO implements CreditDAO {
             statement.setBigDecimal(1, accruedInterest);
             statement.setLong(2, id);
 
-            logger.debug("Trying increase accrued interest"+statement);
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Can not increase credit accruedInterest", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public PaginationDTO<CreditAccount> getAllPage(long itemsPerPage, long currentPage) {
+        PaginationDTO<CreditAccount> paginationDTO = new PaginationDTO<>();
+        try {
+            connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement countCredits = connection.prepareStatement(
+                    sqlRequestsBundle.getString("credit.count.all"));
+                 PreparedStatement getCredits = connection.prepareStatement(
+                         sqlRequestsBundle.getString("credit.get.page.all"))) {
+
+                long creditsNumber;
+                ResultSet resultSet = countCredits.executeQuery();
+                if (resultSet.next()) {
+                    creditsNumber = resultSet.getInt("credits_number");
+                } else {
+                    throw new SQLException();
+                }
+
+                long pagesNumber = creditsNumber % itemsPerPage == 0 ? creditsNumber / itemsPerPage : (creditsNumber / itemsPerPage) + 1;
+
+
+                if (pagesNumber == 0) {
+                    paginationDTO.setPagesNumber(1);
+                    paginationDTO.setCurrentPage(1);
+                    paginationDTO.setItemsPerPage(itemsPerPage);
+                    paginationDTO.setItems(Collections.emptyList());
+
+                    connection.commit();
+
+                    return paginationDTO;
+                }
+
+                if (currentPage > pagesNumber) {
+                    throw new NoSuchPageException();
+                }
+
+                long offset = (currentPage - 1) * itemsPerPage;
+
+                getCredits.setLong(1, itemsPerPage);
+                getCredits.setLong(2, offset);
+
+                logger.debug("Trying increase get credits page "+getCredits);
+                resultSet = getCredits.executeQuery();
+
+                List<CreditAccount> creditAccounts = new ArrayList<>();
+                while (resultSet.next()) {
+                    creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
+                }
+
+                paginationDTO.setPagesNumber(pagesNumber);
+                paginationDTO.setCurrentPage(currentPage);
+                paginationDTO.setItemsPerPage(itemsPerPage);
+                paginationDTO.setItems(creditAccounts);
+
+                connection.commit();
+
+                return paginationDTO;
+
+            } catch (SQLException e) {
+                connection.rollback();
+
+                logger.error(e);
+                throw new RuntimeException(e);
+            }
+
+        } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
