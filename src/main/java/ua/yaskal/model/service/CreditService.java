@@ -16,15 +16,15 @@ public class CreditService {
         this.daoFactory = daoFactory;
     }
 
-    public List<CreditAccount> getAll(){
+    public List<CreditAccount> getAll() {
         return daoFactory.createCreditDAO().getAll();
     }
 
-    public List<CreditAccount> getAllByOwnerId(long ownerId){
+    public List<CreditAccount> getAllByOwnerId(long ownerId) {
         return daoFactory.createCreditDAO().getAllByOwnerId(ownerId);
     }
 
-    public CreditAccount addNew(CreditRequest creditRequest){
+    public CreditAccount addNew(CreditRequest creditRequest) {
         CreditAccount creditAccount = CreditAccount.getBuilder()
                 .setBalance(new BigDecimal(0))
                 .setClosingDate(LocalDate.now().plusYears(5))
@@ -40,15 +40,23 @@ public class CreditService {
 
     }
 
-    public List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
+    public List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
         return daoFactory.createCreditDAO().getAllByOwnerIdAndStatus(ownerId, status);
     }
 
-    public CreditAccount getById(long id){
+    public CreditAccount getById(long id) {
         return daoFactory.createCreditDAO().getById(id);
     }
 
     public void setDaoFactory(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
+    }
+
+    public void increaseAccruedInterestById(long id, BigDecimal accruedInterest) {
+        daoFactory.createCreditDAO().reduceAccruedInterestById(id, accruedInterest);
+    }
+
+    public void reduceAccruedInterestById(long id, BigDecimal accruedInterest) {
+        daoFactory.createCreditDAO().reduceAccruedInterestById(id, accruedInterest);
     }
 }

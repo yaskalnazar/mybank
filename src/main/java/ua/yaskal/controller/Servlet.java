@@ -106,7 +106,7 @@ public class Servlet extends HttpServlet {
         commands.put("user/account/make_transaction",
                 new MakeTransactionCommand(validationUtil, accountService, transactionService));
         commands.put("user/account/credit_page",
-                new UserCreditPageCommand(validationUtil, creditService, transactionService));
+                new UserCreditPageCommand(validationUtil, creditService, transactionService, accountService));
         commands.put("user/account/deposit_page",
                 new UserDepositPageCommand(validationUtil, depositService, transactionService));
         commands.put("user/payment/make_new",
@@ -115,6 +115,9 @@ public class Servlet extends HttpServlet {
                 new AllUsersPayment(validationUtil, paymentService, accountService, transactionService));
         commands.put("user/credit_request/close",
                 new DeleteCreditRequestCommand(validationUtil, creditRequestService));
+        commands.put("user/account/credit/pay_accrued_interest",
+                new PayAccruedInterestCommand(validationUtil, accountService,transactionService,creditService));
+
 
 
     }

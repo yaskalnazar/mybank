@@ -12,4 +12,6 @@ public interface CreditDAO extends DAO<CreditAccount> {
     List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status);
 
     void increaseAccruedInterestById(long id, BigDecimal accruedInterest);
+    void reduceAccruedInterestById(long id, BigDecimal accruedInterest);
+
 }

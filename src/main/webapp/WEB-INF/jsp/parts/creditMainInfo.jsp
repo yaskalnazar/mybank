@@ -23,10 +23,10 @@
             <th><fmt:message key="page.message.owner.id"/>:</th>
             <td>
                 <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                <a href="${pageContext.request.contextPath}/admin/user_page?id=${credit.getOwnerId()}">
-                        ${credit.getOwnerId()}
-                </a>
-                     </c:if>
+                    <a href="${pageContext.request.contextPath}/admin/user_page?id=${credit.getOwnerId()}">
+                            ${credit.getOwnerId()}
+                    </a>
+                </c:if>
                 <c:if test="${sessionScope.get('user').getRole() != 'ADMIN'}">
                     ${credit.getOwnerId()}
                 </c:if>
@@ -46,7 +46,17 @@
         </tr>
         <tr>
             <th><fmt:message key="page.message.accrued.interest"/>:</th>
-            <td>${credit.getAccruedInterest()}</td>
+            <td>
+                <div class="form-inline">${credit.getAccruedInterest()}
+                    <c:if test="${sessionScope.get('user').getRole() == 'USER' and
+                    credit.getAccruedInterest() > 0 }">
+                        <button type="button" class="btn btn-success ml-3" id="myBtn2">
+                            <fmt:message key="page.message.pay"/>
+                        </button>
+                        <jsp:include page="../popUp/payAccruedInterest.jsp"/>
+                    </c:if>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>

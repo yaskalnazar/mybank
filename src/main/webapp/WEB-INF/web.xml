@@ -55,6 +55,11 @@
   </error-page>
 
   <error-page>
+    <exception-type>ua.yaskal.model.exceptions.no.such.NoSuchException</exception-type>
+    <location>/WEB-INF/jsp/errors/resourceNotExist.jsp</location>
+  </error-page>
+
+  <error-page>
     <exception-type>ua.yaskal.model.exceptions.AccessDeniedException</exception-type>
     <location>/WEB-INF/jsp/errors/accessDenied.jsp</location>
   </error-page>

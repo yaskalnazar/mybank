@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages"/>
+<%@ page language="java" isErrorPage="true"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <html>
 <head>
@@ -28,7 +28,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="alert alert-danger" role="alert">
                 <fmt:message key="page.message.error"/>:
-                <fmt:message key="${messageKey}"/>
+                <fmt:message key="<%= exception.getMessage() %>"/>
             </div>
         </div>
     </div>

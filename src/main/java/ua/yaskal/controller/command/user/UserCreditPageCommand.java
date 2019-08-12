@@ -5,10 +5,12 @@ import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.command.admin.GetUserPageCommand;
 import ua.yaskal.controller.util.ValidationUtil;
+import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.AccessDeniedException;
 import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
+import ua.yaskal.model.service.AccountService;
 import ua.yaskal.model.service.CreditService;
 import ua.yaskal.model.service.TransactionService;
 
@@ -21,11 +23,14 @@ public class UserCreditPageCommand implements Command {
     private ValidationUtil validationUtil;
     private CreditService creditService;
     private TransactionService transactionService;
+    private AccountService accountService;
 
-    public UserCreditPageCommand(ValidationUtil validationUtil, CreditService creditService, TransactionService transactionService) {
+    public UserCreditPageCommand(ValidationUtil validationUtil, CreditService creditService,
+                                 TransactionService transactionService, AccountService accountService) {
         this.validationUtil = validationUtil;
         this.creditService = creditService;
         this.transactionService = transactionService;
+        this.accountService = accountService;
     }
 
     @Override
@@ -61,7 +66,7 @@ public class UserCreditPageCommand implements Command {
 
         request.setAttribute("credit",creditAccount);
         request.setAttribute("accountTransactions", transactions);
-
+        request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
         return JspPath.USER_CREDIT_PAGE;
     }
 
@@ -75,5 +80,9 @@ public class UserCreditPageCommand implements Command {
 
     public void setTransactionService(TransactionService transactionService) {
         this.transactionService = transactionService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
     }
 }

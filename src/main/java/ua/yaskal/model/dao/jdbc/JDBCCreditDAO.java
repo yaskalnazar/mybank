@@ -176,4 +176,19 @@ public class JDBCCreditDAO implements CreditDAO {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void reduceAccruedInterestById(long id, BigDecimal accruedInterest) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.add.reduce.interest.by.id"))) {
+            statement.setBigDecimal(1, accruedInterest);
+            statement.setLong(2, id);
+
+            logger.debug("Trying increase accrued interest"+statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Can not increase credit accruedInterest", e);
+            throw new RuntimeException(e);
+        }
+    }
 }

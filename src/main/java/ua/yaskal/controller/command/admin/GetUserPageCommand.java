@@ -36,14 +36,8 @@ public class GetUserPageCommand implements Command {
             throw new RuntimeException("Incorrect id " + request.getRequestURI());
         }
 
-        User requestUser;
-        try {
-            requestUser = userService.getById(Long.parseLong(request.getParameter("id")));
-        } catch (NoSuchUserException e) {
-            logger.warn("NoSuchUserException id: " + request.getParameter("id"));
-            request.setAttribute("messageKey", e.getMessageKey());
-            return JspPath.RESOURCE_NOT_EXIST;
-        }
+        User requestUser = userService.getById(Long.parseLong(request.getParameter("id")));
+
         request.setAttribute("requestUser", requestUser);
         request.setAttribute("credits", creditService.getAllByOwnerId(requestUser.getId()));
         request.setAttribute("deposits", depositService.getAllByOwnerId(requestUser.getId()));

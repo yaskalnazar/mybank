@@ -46,12 +46,8 @@ public class AdminCreditPageCommand implements Command {
 
         long creditId = Long.parseLong(request.getParameter("id"));
 
-        CreditAccount creditAccount;
-        try {
-            creditAccount = creditService.getById(creditId);
-        } catch (NoSuchAccountException e){
-            throw new AccessDeniedException();
-        }
+        CreditAccount creditAccount = creditService.getById(creditId);
+
 
         List<Transaction> transactions = transactionService.getAllByAccountId(creditId);
         transactions.stream().forEachOrdered(x -> {

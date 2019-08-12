@@ -48,12 +48,8 @@ public class AdminDepositPageCommand implements Command {
 
         long depositId = Long.parseLong(request.getParameter("id"));
 
-        DepositAccount depositAccount;
-        try {
-            depositAccount = depositService.getById(depositId);
-        } catch (NoSuchAccountException e) {
-            throw new AccessDeniedException();
-        }
+        DepositAccount depositAccount = depositService.getById(depositId);
+
 
         List<Transaction> transactions = transactionService.getAllByAccountId(depositId);
         transactions.stream().forEachOrdered(x -> {
