@@ -44,8 +44,28 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
             <h3><fmt:message key="page.message.transactions"/>:</h3>
-            <c:set var="transactions" value="${accountTransactions}" scope="request"/>
+            <c:set var="transactions" value="${page.getItems()}" scope="request"/>
             <jsp:include page="../parts/transactionsTable.jsp"/>
+
+            <nav aria-label="pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ${page.getCurrentPage() == 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="${pageContext.request.contextPath}/admin/account/deposit_page?currentPage=${page.getCurrentPage() - 1}&id=${deposit.getId()}">
+                            <span>&laquo;</span>
+                        </a>
+                    </li>
+                    <c:forEach var="i" begin="1" end="${page.getPagesNumber()}">
+                        <li class="page-item ${page.getCurrentPage() eq i ? 'active' : ''}">
+                            <a class="page-link" href="${pageContext.request.contextPath}/admin/account/deposit_page?currentPage=${i}&id=${deposit.getId()}">${i}</a>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item ${page.getCurrentPage() == page.getPagesNumber() ? 'disabled' : ''}">
+                        <a class="page-link" href="${pageContext.request.contextPath}/admin/account/deposit_page?currentPage=${page.getCurrentPage() + 1}&id=${deposit.getId()}">
+                            <span>&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
     </div>

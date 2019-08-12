@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.Transaction;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class AdminCreditPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
+    private static final long ITEMS_PER_PAGE = 10;
     private ValidationUtil validationUtil;
     private CreditService creditService;
     private TransactionService transactionService;
@@ -47,18 +49,26 @@ public class AdminCreditPageCommand implements Command {
 
         CreditAccount creditAccount = creditService.getById(creditId);
 
+        request.setAttribute("page", getPage(request, creditId));
+        request.setAttribute("credit",creditAccount);
 
-        List<Transaction> transactions = transactionService.getAllByAccountId(creditId);
+        return JspPath.ADMIN_CREDIT_PAGE;
+    }
+
+    private PaginationDTO<Transaction> getPage(HttpServletRequest request, long creditId) {
+        long currentPage = validationUtil.isContains(request, Collections.singletonList("currentPage"))
+                ? Long.parseLong(request.getParameter("currentPage")) : 1;
+
+        PaginationDTO<Transaction> page = transactionService.getPageByAccountId(creditId, ITEMS_PER_PAGE, currentPage);
+
+        List<Transaction> transactions = page.getItems();
         transactions.stream().forEachOrdered(x -> {
-            if (x.getSenderAccountId() == creditId){
+            if (x.getSenderAccountId() == creditId) {
                 x.setTransactionAmount(x.getTransactionAmount().negate());
             }
         });
-
-        request.setAttribute("credit",creditAccount);
-        request.setAttribute("accountTransactions", transactions);
-
-        return JspPath.ADMIN_CREDIT_PAGE;
+        page.setItems(transactions);
+        return page;
     }
 
     private void processAnswer(HttpServletRequest request){

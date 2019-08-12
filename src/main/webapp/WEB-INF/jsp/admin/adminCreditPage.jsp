@@ -26,7 +26,7 @@
                 <form method="post" style="margin-bottom: 30px" name="form" autocomplete="off">
                     <input type="hidden" name="id" value="${credit.getId()}">
                     <label for="blockingReason"><fmt:message key="page.message.blocking.reason"/>:</label>
-                    <input class="form-control" type="text" required="required"  pattern=".{5,80}"
+                    <input class="form-control" type="text" required="required" pattern=".{5,80}"
                            name="blockingReason" id="blockingReason">
                     <button name="answer" value="block" type="submit" class="btn btn-danger" style="margin-top:30px">
                         <fmt:message key="page.message.block"/>
@@ -44,8 +44,31 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
             <h3><fmt:message key="page.message.transactions"/>:</h3>
-            <c:set var="transactions" value="${accountTransactions}" scope="request"/>
+            <c:set var="transactions" value="${page.getItems()}" scope="request"/>
             <jsp:include page="../parts/transactionsTable.jsp"/>
+
+            <nav aria-label="pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ${page.getCurrentPage() == 1 ? 'disabled' : ''}">
+                        <a class="page-link"
+                           href="${pageContext.request.contextPath}/admin/account/credit_page?currentPage=${page.getCurrentPage() - 1}&id=${credit.getId()}">
+                            <span>&laquo;</span>
+                        </a>
+                    </li>
+                    <c:forEach var="i" begin="1" end="${page.getPagesNumber()}">
+                        <li class="page-item ${page.getCurrentPage() eq i ? 'active' : ''}">
+                            <a class="page-link"
+                               href="${pageContext.request.contextPath}/admin/account/credit_page?currentPage=${i}&id=${credit.getId()}">${i}</a>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item ${page.getCurrentPage() == page.getPagesNumber() ? 'disabled' : ''}">
+                        <a class="page-link"
+                           href="${pageContext.request.contextPath}/admin/account/credit_page?currentPage=${page.getCurrentPage() + 1}&id=${credit.getId()}">
+                            <span>&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
     </div>

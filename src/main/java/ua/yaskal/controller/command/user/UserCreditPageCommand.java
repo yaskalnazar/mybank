@@ -21,7 +21,7 @@ import java.util.List;
 
 public class UserCreditPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
-    private static final long ITEMS_PER_PAGE=10;
+    private static final long ITEMS_PER_PAGE = 10;
     private ValidationUtil validationUtil;
     private CreditService creditService;
     private TransactionService transactionService;
@@ -50,7 +50,7 @@ public class UserCreditPageCommand implements Command {
         CreditAccount creditAccount;
         try {
             creditAccount = creditService.getById(creditId);
-        } catch (NoSuchAccountException e){
+        } catch (NoSuchAccountException e) {
             throw new AccessDeniedException();
         }
 
@@ -59,27 +59,27 @@ public class UserCreditPageCommand implements Command {
             throw new AccessDeniedException();
         }
 
+        request.setAttribute("page", getPage(request, creditId));
+        request.setAttribute("credit", creditAccount);
+        request.setAttribute("activeUserAccounts",
+                accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
+        return JspPath.USER_CREDIT_PAGE;
+    }
+
+    private PaginationDTO<Transaction> getPage(HttpServletRequest request, long creditId) {
         long currentPage = validationUtil.isContains(request, Collections.singletonList("currentPage"))
                 ? Long.parseLong(request.getParameter("currentPage")) : 1;
 
-
         PaginationDTO<Transaction> page = transactionService.getPageByAccountId(creditId, ITEMS_PER_PAGE, currentPage);
-
-
 
         List<Transaction> transactions = page.getItems();
         transactions.stream().forEachOrdered(x -> {
-            if (x.getSenderAccountId() == creditId){
+            if (x.getSenderAccountId() == creditId) {
                 x.setTransactionAmount(x.getTransactionAmount().negate());
             }
         });
         page.setItems(transactions);
-
-        request.setAttribute("credit",creditAccount);
-        request.setAttribute("page", page);
-        request.setAttribute("activeUserAccounts",
-                accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
-        return JspPath.USER_CREDIT_PAGE;
+        return page;
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {
