@@ -6,13 +6,15 @@ import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
+import ua.yaskal.model.exceptions.no.such.NoSuchPaymentException;
+import ua.yaskal.model.exceptions.no.such.NoSuchTransactionException;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-//TODO finish
+
 public class JDBCTransactionDAO implements TransactionDAO {
     private final static Logger logger = Logger.getLogger(JDBCTransactionDAO.class);
     private Connection connection;
@@ -28,22 +30,48 @@ public class JDBCTransactionDAO implements TransactionDAO {
 
     @Override
     public Transaction getById(long id) {
-        return null;
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("transaction.select.by.id"))) {
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return mapperFactory.getTransactionMapper().mapToObject(resultSet);
+            } else {
+                logger.warn("No transaction with id:" + id);
+                throw new NoSuchTransactionException();
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get transaction", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public List<Transaction> getAll() {
-        return null;
+        List<Transaction> transactions = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("transaction.select.all"))) {
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error("Can not get all transactions", e);
+            throw new RuntimeException(e);
+        }
+        return transactions;
     }
 
     @Override
     public void update(Transaction item) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean delete(long id) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -52,19 +80,17 @@ public class JDBCTransactionDAO implements TransactionDAO {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             connection.setAutoCommit(false);
 
-
-
             try (PreparedStatement getActiveAccount = connection.prepareStatement(
                     sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
-                    PreparedStatement reduceBalance = connection.prepareStatement(
-                    sqlRequestsBundle.getString("account.reduce.balance"));
+                 PreparedStatement reduceBalance = connection.prepareStatement(
+                         sqlRequestsBundle.getString("account.reduce.balance"));
                  PreparedStatement increaseBalance = connection.prepareStatement(
                          sqlRequestsBundle.getString("account.increase.balance"));
                  PreparedStatement insertTransaction = connection.prepareStatement(
                          sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
 
 
-                getActiveAccount.setString(1, item.getReceiverAccountId() + "");
+                getActiveAccount.setLong(1, item.getReceiverAccountId());
                 logger.debug("Select receiver account " + getActiveAccount);
                 ResultSet resultSet = getActiveAccount.executeQuery();
                 if (!resultSet.next()) {
@@ -72,17 +98,17 @@ public class JDBCTransactionDAO implements TransactionDAO {
                     throw new NoSuchActiveAccountException();
                 }
 
-                reduceBalance.setString(1, item.getTransactionAmount().toString());
-                reduceBalance.setString(2, item.getSenderAccountId() + "");
+                reduceBalance.setBigDecimal(1, item.getTransactionAmount());
+                reduceBalance.setLong(2, item.getSenderAccountId());
 
-                increaseBalance.setString(1, item.getTransactionAmount().toString());
-                increaseBalance.setString(2, item.getReceiverAccountId() + "");
+                increaseBalance.setBigDecimal(1, item.getTransactionAmount());
+                increaseBalance.setLong(2, item.getReceiverAccountId());
 
 
-                insertTransaction.setString(1, item.getDate().toString());
-                insertTransaction.setString(2, item.getTransactionAmount().toString());
-                insertTransaction.setString(3, item.getReceiverAccountId() + "");
-                insertTransaction.setString(4, item.getSenderAccountId() + "");
+                insertTransaction.setObject(1, item.getDate());
+                insertTransaction.setBigDecimal(2, item.getTransactionAmount());
+                insertTransaction.setLong(3, item.getReceiverAccountId());
+                insertTransaction.setLong(4, item.getSenderAccountId());
 
 
                 logger.debug("Try reduce balance" + reduceBalance);
@@ -126,14 +152,14 @@ public class JDBCTransactionDAO implements TransactionDAO {
         List<Transaction> transactions = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.receiver.id"))) {
-            statement.setString(1,id+"");
+            statement.setLong(1, id);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all user transaction", e);
+            logger.error("Can not get all receiver transactions", e);
             throw new RuntimeException(e);
         }
         return transactions;
@@ -144,14 +170,14 @@ public class JDBCTransactionDAO implements TransactionDAO {
         List<Transaction> transactions = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.sender.id"))) {
-            statement.setString(1,id+"");
+            statement.setLong(1, id);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all user transaction", e);
+            logger.error("Can not get all sender transactions", e);
             throw new RuntimeException(e);
         }
         return transactions;
@@ -162,15 +188,15 @@ public class JDBCTransactionDAO implements TransactionDAO {
         List<Transaction> transactions = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.account.id"))) {
-            statement.setString(1,id+"");
-            statement.setString(2,id+"");
+            statement.setLong(1, id);
+            statement.setLong(2, id);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all user transaction", e);
+            logger.error("Can not get all account transactions", e);
             throw new RuntimeException(e);
         }
         return transactions;
