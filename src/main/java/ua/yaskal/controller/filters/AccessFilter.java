@@ -3,7 +3,7 @@ package ua.yaskal.controller.filters;
 import org.apache.log4j.Logger;
 import ua.yaskal.controller.configuration.AccessConfiguration;
 import ua.yaskal.model.entity.User;
-import ua.yaskal.model.exceptions.AccessDeniedException;
+import ua.yaskal.model.exceptions.message.key.AccessDeniedException;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

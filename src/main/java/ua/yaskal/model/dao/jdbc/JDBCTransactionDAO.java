@@ -5,10 +5,10 @@ import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Transaction;
-import ua.yaskal.model.exceptions.NotEnoughMoneyException;
-import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
-import ua.yaskal.model.exceptions.no.such.NoSuchPageException;
-import ua.yaskal.model.exceptions.no.such.NoSuchTransactionException;
+import ua.yaskal.model.exceptions.message.key.NotEnoughMoneyException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchTransactionException;
 
 import java.sql.*;
 import java.util.ArrayList;

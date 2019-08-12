@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.CreditRequestDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.CreditRequest;
-import ua.yaskal.model.exceptions.no.such.NoSuchCreditRequestException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchCreditRequestException;
 
 import java.sql.*;
 import java.util.ArrayList;

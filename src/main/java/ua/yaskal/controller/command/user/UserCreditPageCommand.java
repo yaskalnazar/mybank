@@ -9,8 +9,8 @@ import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.Transaction;
-import ua.yaskal.model.exceptions.AccessDeniedException;
-import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.message.key.AccessDeniedException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
 import ua.yaskal.model.service.AccountService;
 import ua.yaskal.model.service.CreditService;
 import ua.yaskal.model.service.TransactionService;
@@ -18,7 +18,6 @@ import ua.yaskal.model.service.TransactionService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class UserCreditPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
@@ -64,18 +63,22 @@ public class UserCreditPageCommand implements Command {
                 ? Long.parseLong(request.getParameter("currentPage")) : 1;
 
 
-        request.setAttribute("page", transactionService.getPageByAccountId(creditId, ITEMS_PER_PAGE, currentPage));
+        PaginationDTO<Transaction> page = transactionService.getPageByAccountId(creditId, ITEMS_PER_PAGE, currentPage);
 
 
-        List<Transaction> transactions = transactionService.getAllByAccountId(creditId);
+
+        List<Transaction> transactions = page.getItems();
         transactions.stream().forEachOrdered(x -> {
             if (x.getSenderAccountId() == creditId){
                 x.setTransactionAmount(x.getTransactionAmount().negate());
             }
         });
+        page.setItems(transactions);
 
         request.setAttribute("credit",creditAccount);
-        request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
+        request.setAttribute("page", page);
+        request.setAttribute("activeUserAccounts",
+                accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
         return JspPath.USER_CREDIT_PAGE;
     }
 

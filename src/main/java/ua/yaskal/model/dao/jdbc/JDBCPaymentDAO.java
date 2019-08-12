@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.PaymentDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.Payment;
-import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
-import ua.yaskal.model.exceptions.no.such.NoSuchPaymentException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPaymentException;
 
 import java.sql.*;
 import java.util.ArrayList;

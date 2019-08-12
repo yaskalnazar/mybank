@@ -23,7 +23,7 @@
             <c:set var="transactions" value="${page.getItems()}" scope="request"/>
             <jsp:include page="../parts/transactionsTable.jsp"/>
 
-            <nav aria-label="page">
+            <nav aria-label="pagination">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ${page.getCurrentPage() == 1 ? 'disabled' : ''}">
                         <a class="page-link" href="${pageContext.request.contextPath}/user/account/credit_page?currentPage=${page.getCurrentPage() - 1}&id=${credit.getId()}">
@@ -42,6 +42,7 @@
                     </li>
                 </ul>
             </nav>
+
         </div>
     </div>
 </div>

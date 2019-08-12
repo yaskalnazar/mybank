@@ -7,8 +7,8 @@ import ua.yaskal.controller.command.admin.GetUserPageCommand;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.entity.Transaction;
-import ua.yaskal.model.exceptions.AccessDeniedException;
-import ua.yaskal.model.exceptions.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.message.key.AccessDeniedException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
 import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.TransactionService;
 

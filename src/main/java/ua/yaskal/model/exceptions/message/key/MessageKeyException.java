@@ -1,6 +1,6 @@
-package ua.yaskal.model.exceptions.no.such;
+package ua.yaskal.model.exceptions.message.key;
 
-public abstract class NoSuchException extends RuntimeException {
+public abstract class MessageKeyException extends RuntimeException{
     public abstract String getMessageKey();
 
     @Override
