@@ -26,7 +26,7 @@ public class GetCreditRequestsCommand implements Command {
             request.setAttribute("creditRequests",
                     creditRequestService.getAllByStatus(CreditRequest.CreditRequestStatus.PENDING));
             request.setAttribute("status", "pending");
-            return JspPath.ALL_CREDIT_REQUESTS;
+            return JspPath.ADMIN_ALL_CREDIT_REQUESTS;
         }
 
         switch (request.getParameter("requestStatus")) {
@@ -50,7 +50,7 @@ public class GetCreditRequestsCommand implements Command {
                 request.setAttribute("status", "pending");
         }
 
-        return JspPath.ALL_CREDIT_REQUESTS;
+        return JspPath.ADMIN_ALL_CREDIT_REQUESTS;
 
     }
 

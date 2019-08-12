@@ -6,7 +6,6 @@ import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.service.CreditRequestService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class DeleteCreditRequestCommand implements Command {

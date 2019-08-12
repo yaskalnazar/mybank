@@ -33,17 +33,17 @@ public class NewCreditRequestCommand implements Command {
     public String execute(HttpServletRequest request) {
 
         if (!isUserCanRequestCredit(request)) {
-            return JspPath.CREDIT_OPEN;
+            return JspPath.USER_CREDIT_OPEN;
         }
 
         if (!validationUtil.isContains(request, Arrays.asList("creditLimit", "creditRate"))) {
-            return JspPath.CREDIT_OPEN;
+            return JspPath.USER_CREDIT_OPEN;
         }
 
         if (!validationUtil.isRequestValid(request, Arrays.asList("creditLimit", "creditRate"))) {
             logger.warn("Credit open attempt with incorrect input" + request);
             request.setAttribute("wrongInput", "wrongInput");
-            return JspPath.CREDIT_OPEN;
+            return JspPath.USER_CREDIT_OPEN;
         }
 
         CreditRequestDTO creditRequestDTO = new CreditRequestDTO(
@@ -56,7 +56,7 @@ public class NewCreditRequestCommand implements Command {
 
         logger.debug("Credit request successfully (id:" + creditRequest.getId() + ")");
         request.setAttribute("creditRequestSuccess", creditRequest);
-        return JspPath.CREDIT_OPEN;
+        return JspPath.USER_CREDIT_OPEN;
     }
 
     private boolean isUserCanRequestCredit(HttpServletRequest request) {

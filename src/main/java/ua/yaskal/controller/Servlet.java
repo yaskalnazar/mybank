@@ -89,6 +89,10 @@ public class Servlet extends HttpServlet {
                 new GetCreditRequestsCommand(validationUtil, creditRequestService));
         commands.put("admin/user_page",
                 new GetUserPageCommand(validationUtil, userService, creditService, depositService));
+        commands.put("admin/account/credit_page",
+                new AdminCreditPageCommand(validationUtil, creditService, transactionService, accountService));
+        commands.put("admin/account/deposit_page",
+                new AdminDepositPageCommand(validationUtil, depositService, transactionService, accountService));
 
 
         commands.put("user/account/all",

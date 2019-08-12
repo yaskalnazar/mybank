@@ -42,7 +42,7 @@ public class AllUsersPayment implements Command {
             request.setAttribute("payments",
                    paymentService.getAllByPayerId(userId));
             request.setAttribute("user_status", "received");
-            return JspPath.ALL_USER_PAYMENTS;
+            return JspPath.USER_ALL_PAYMENTS;
         }
 
         switch (request.getParameter("user_status")) {
@@ -58,7 +58,7 @@ public class AllUsersPayment implements Command {
         }
 
 
-        return JspPath.ALL_USER_PAYMENTS;
+        return JspPath.USER_ALL_PAYMENTS;
     }
 
     private void processAnswer(HttpServletRequest request) {

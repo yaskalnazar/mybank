@@ -12,15 +12,20 @@ public class AccountService {
         this.daoFactory = daoFactory;
     }
 
-    public List<Account> getAllByOwnerId(long ownerId){
+    public void updateAccountStatus(long id, Account.AccountStatus status) {
+        daoFactory.createAccountDAO().updateAccountStatus(id, status);
+    }
+
+
+    public List<Account> getAllByOwnerId(long ownerId) {
         return daoFactory.createAccountDAO().getAllByOwnerId(ownerId);
     }
 
-    public List<Account> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status){
+    public List<Account> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
         return daoFactory.createAccountDAO().getAllByOwnerIdAndStatus(ownerId, status);
     }
 
-    public Account getById(long id){
+    public Account getById(long id) {
         return daoFactory.createAccountDAO().getById(id);
     }
 

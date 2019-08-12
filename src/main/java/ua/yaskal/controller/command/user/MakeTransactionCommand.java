@@ -63,7 +63,7 @@ public class MakeTransactionCommand implements Command {
 
 
         request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
-        return JspPath.MAKE_TRANSACTION;
+        return JspPath.USER_MAKE_TRANSACTION;
 
     }
 

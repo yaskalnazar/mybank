@@ -52,7 +52,7 @@ public class MakePaymentCommand implements Command {
         }
 
         request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
-        return JspPath.MAKE_PAYMENT;
+        return JspPath.USER_MAKE_PAYMENT;
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

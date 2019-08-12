@@ -29,28 +29,28 @@ public class DepositOpenCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         if (!validationUtil.isContains(request, Arrays.asList("depositAmount","depositRate", "monthsAmount"))){
-            return JspPath.DEPOSIT_OPEN;
+            return JspPath.USER_DEPOSIT_OPEN;
         }
 
         String depositAmount = request.getParameter("depositAmount");
         if(!validationUtil.isParamValid(depositAmount,"depositAmount")){
             logger.warn("Deposit open attempt with incorrect deposit amount"+depositAmount);
             request.setAttribute("wrongInput", "wrongDepositAmount");
-            return JspPath.DEPOSIT_OPEN;
+            return JspPath.USER_DEPOSIT_OPEN;
         }
 
         String depositRate = request.getParameter("depositRate");
         if(!validationUtil.isParamValid(depositRate, "depositRate")){
             logger.warn("Deposit open attempt with incorrect deposit rate"+depositRate);
             request.setAttribute("wrongInput", "wrongDepositRate");
-            return JspPath.DEPOSIT_OPEN;
+            return JspPath.USER_DEPOSIT_OPEN;
         }
 
         String monthsAmount = request.getParameter("monthsAmount");
         if(!validationUtil.isParamValid(monthsAmount, "monthsAmount")){
             logger.warn("Deposit open attempt with incorrect months amount"+monthsAmount);
             request.setAttribute("wrongInput", "wrongMonthsAmount");
-            return JspPath.DEPOSIT_OPEN;
+            return JspPath.USER_DEPOSIT_OPEN;
         }
 
         DepositDTO depositDTO = new DepositDTO(
@@ -67,12 +67,12 @@ public class DepositOpenCommand implements Command {
         } catch (Exception e){
             logger.warn("Deposit open error"+e);
             request.setAttribute("depositError", e);
-            return JspPath.DEPOSIT_OPEN;
+            return JspPath.USER_DEPOSIT_OPEN;
         }
 
         logger.debug("Deposit open successfully (id:"+depositAccount.getId()+")");
         request.setAttribute("depositSuccess", depositAccount);
-        return JspPath.DEPOSIT_OPEN;
+        return JspPath.USER_DEPOSIT_OPEN;
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

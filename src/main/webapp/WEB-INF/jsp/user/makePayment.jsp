@@ -32,7 +32,7 @@
                 <form method="post" name="form" autocomplete="off">
                     <div class="form-group">
                         <label for="payerAccountId"><fmt:message key="page.message.to.the.account"/>:</label>
-                        <input class="form-control" type="number" min="0"
+                        <input class="form-control" type="number" min="0" required="required"
                                name="payerAccountId" id="payerAccountId">
                     </div>
                     <div class="form-group">
@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="amount"><fmt:message key="page.message.amount"/>:</label>
 
-                        <input class="form-control" type="number" step="0.01" min="0"
+                        <input class="form-control" type="number" step="0.01" min="0" required="required"
                                name="amount" id="amount">
                     </div>
                     <div class="form-group">

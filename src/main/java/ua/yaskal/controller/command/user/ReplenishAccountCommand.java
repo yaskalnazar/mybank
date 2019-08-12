@@ -44,7 +44,7 @@ public class ReplenishAccountCommand implements Command {
         }
 
         request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
-        return JspPath.REPLENISH_ACCOUNT;
+        return JspPath.USER_REPLENISH_ACCOUNT;
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

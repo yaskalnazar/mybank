@@ -16,7 +16,7 @@ public class AllUsersCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         request.setAttribute("users", userService.getAllUsers());
-        return JspPath.ALL_USERS;
+        return JspPath.ADMIN_ALL_USERS;
     }
 
     public void setUserService(UserService userService) {

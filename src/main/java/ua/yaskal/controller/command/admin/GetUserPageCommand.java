@@ -48,7 +48,7 @@ public class GetUserPageCommand implements Command {
         request.setAttribute("credits", creditService.getAllByOwnerId(requestUser.getId()));
         request.setAttribute("deposits", depositService.getAllByOwnerId(requestUser.getId()));
 
-        return JspPath.USER_PAGE;
+        return JspPath.ADMIN_USER_PAGE;
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {
