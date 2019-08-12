@@ -210,7 +210,7 @@ public class JDBCCreditDAO implements CreditDAO {
                 long creditsNumber;
                 ResultSet resultSet = countCredits.executeQuery();
                 if (resultSet.next()) {
-                    creditsNumber = resultSet.getInt("credits_number");
+                    creditsNumber = resultSet.getInt("number");
                 } else {
                     throw new SQLException();
                 }

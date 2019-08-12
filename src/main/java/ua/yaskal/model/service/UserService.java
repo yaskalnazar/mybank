@@ -2,6 +2,7 @@ package ua.yaskal.model.service;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import ua.yaskal.model.dao.DAOFactory;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.dto.UserLoginDTO;
 import ua.yaskal.model.dto.UserRegistrationDTO;
 import ua.yaskal.model.entity.User;
@@ -53,4 +54,9 @@ public class UserService {
     public void setDaoFactory(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
+
+    public PaginationDTO<User> getAllPage(long itemsPerPage, long currentPage){
+        return daoFactory.createUserDAO().getAllPage(itemsPerPage,currentPage);
+    }
+
 }

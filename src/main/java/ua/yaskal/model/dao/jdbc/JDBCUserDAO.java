@@ -3,12 +3,16 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.dto.PaginationDTO;
+import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.exceptions.NonUniqueEmailException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchUserException;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -131,6 +135,79 @@ public class JDBCUserDAO implements UserDAO {
             }
         } catch (SQLException e) {
             logger.error("Can not get user", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public PaginationDTO<User> getAllPage(long itemsPerPage, long currentPage) {
+        PaginationDTO<User> paginationDTO = new PaginationDTO<>();
+        try {
+            connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement countDeposits = connection.prepareStatement(
+                    sqlRequestsBundle.getString("user.count.all"));
+                 PreparedStatement getDeposits = connection.prepareStatement(
+                         sqlRequestsBundle.getString("user.get.page.all"))) {
+
+                long depositsNumber;
+                ResultSet resultSet = countDeposits.executeQuery();
+                if (resultSet.next()) {
+                    depositsNumber = resultSet.getInt("number");
+                } else {
+                    throw new SQLException();
+                }
+
+                long pagesNumber = depositsNumber % itemsPerPage == 0 ? depositsNumber / itemsPerPage : (depositsNumber / itemsPerPage) + 1;
+
+
+                if (pagesNumber == 0) {
+                    paginationDTO.setPagesNumber(1);
+                    paginationDTO.setCurrentPage(1);
+                    paginationDTO.setItemsPerPage(itemsPerPage);
+                    paginationDTO.setItems(Collections.emptyList());
+
+                    connection.commit();
+
+                    return paginationDTO;
+                }
+
+                if (currentPage > pagesNumber) {
+                    throw new NoSuchPageException();
+                }
+
+                long offset = (currentPage - 1) * itemsPerPage;
+
+                getDeposits.setLong(1, itemsPerPage);
+                getDeposits.setLong(2, offset);
+
+                logger.debug("Trying increase get users page "+getDeposits);
+                resultSet = getDeposits.executeQuery();
+
+                List<User> users = new ArrayList<>();
+                while (resultSet.next()) {
+                    users.add(mapperFactory.getUserMapper().mapToObject(resultSet));
+                }
+
+                paginationDTO.setPagesNumber(pagesNumber);
+                paginationDTO.setCurrentPage(currentPage);
+                paginationDTO.setItemsPerPage(itemsPerPage);
+                paginationDTO.setItems(users);
+
+                connection.commit();
+
+                return paginationDTO;
+
+            } catch (SQLException e) {
+                connection.rollback();
+
+                logger.error(e);
+                throw new RuntimeException(e);
+            }
+
+        } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

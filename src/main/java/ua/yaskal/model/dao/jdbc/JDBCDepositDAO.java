@@ -209,7 +209,7 @@ public class JDBCDepositDAO implements DepositDAO {
                 long depositsNumber;
                 ResultSet resultSet = countDeposits.executeQuery();
                 if (resultSet.next()) {
-                    depositsNumber = resultSet.getInt("credits_number");
+                    depositsNumber = resultSet.getInt("number");
                 } else {
                     throw new SQLException();
                 }
@@ -237,7 +237,7 @@ public class JDBCDepositDAO implements DepositDAO {
                 getDeposits.setLong(1, itemsPerPage);
                 getDeposits.setLong(2, offset);
 
-                logger.debug("Trying increase get credits page "+getDeposits);
+                logger.debug("Trying increase get deposits page "+getDeposits);
                 resultSet = getDeposits.executeQuery();
 
                 List<DepositAccount> depositAccounts = new ArrayList<>();

@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="../parts/adminHeader.jsp"/>
 <div class="mx-1">
-    <c:if test="${not empty users}">
+    <c:if test="${not empty page.getItems()}">
         <h1><fmt:message key="page.message.all.users"/>:</h1>
         <table class="table">
             <thead>
@@ -27,7 +27,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${users}" var="user">
+            <c:forEach items="${page.getItems()}" var="user">
                 <tr>
                     <td>
                         <a href="${pageContext.request.contextPath}/admin/user_page?id=${user.getId()}">
@@ -44,8 +44,30 @@
 
             </tbody>
         </table>
+        <nav aria-label="pagination">
+            <ul class="pagination justify-content-center">
+                <li class="page-item ${page.getCurrentPage() == 1 ? 'disabled' : ''}">
+                    <a class="page-link"
+                       href="${pageContext.request.contextPath}/admin/all_users?currentPage=${page.getCurrentPage() - 1}">
+                        <span>&laquo;</span>
+                    </a>
+                </li>
+                <c:forEach var="i" begin="1" end="${page.getPagesNumber()}">
+                    <li class="page-item ${page.getCurrentPage() eq i ? 'active' : ''}">
+                        <a class="page-link"
+                           href="${pageContext.request.contextPath}/admin/all_users?currentPage=${i}">${i}</a>
+                    </li>
+                </c:forEach>
+                <li class="page-item ${page.getCurrentPage() == page.getPagesNumber() ? 'disabled' : ''}">
+                    <a class="page-link"
+                       href="${pageContext.request.contextPath}/admin/all_users?currentPage=${page.getCurrentPage() + 1}">
+                        <span>&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </c:if>
-    <c:if test="${empty users}">
+    <c:if test="${empty page.getItems()}">
         <div class="alert alert-warning" role="alert">
             <fmt:message key="page.message.failed.get.users"/>
         </div>

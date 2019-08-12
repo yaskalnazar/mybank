@@ -221,7 +221,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
                 long transactionsNumber;
                 ResultSet resultSet = countTransactions.executeQuery();
                 if (resultSet.next()) {
-                    transactionsNumber = resultSet.getInt("transactions_number");
+                    transactionsNumber = resultSet.getInt("number");
                 } else {
                     throw new SQLException();
                 }
