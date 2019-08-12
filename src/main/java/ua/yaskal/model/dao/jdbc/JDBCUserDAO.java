@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+//TODO finish
 public class JDBCUserDAO implements UserDAO {
     private final static Logger logger = Logger.getLogger(JDBCUserDAO.class);
     private Connection connection;

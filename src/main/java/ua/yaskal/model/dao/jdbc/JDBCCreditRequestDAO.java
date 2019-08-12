@@ -73,12 +73,12 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
             logger.debug("Trying update credit" + statement);
             statement.executeUpdate();
         } catch (SQLException e) {
-            logger.error("Credit request was not added", e);
+            logger.error("Credit request was not updated", e);
             throw new RuntimeException(e);
         }
     }
 
-    //TODO cheak
+
     @Override
     public boolean delete(long id) {
         try (PreparedStatement statement = connection.prepareStatement(
