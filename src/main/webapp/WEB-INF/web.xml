@@ -4,7 +4,6 @@
   <servlet>
     <servlet-name>Servl</servlet-name>
     <servlet-class>ua.yaskal.controller.Servlet</servlet-class>
-    <!--<load-on-startup>1</load-on-startup>-->
   </servlet>
 
   <servlet-mapping>

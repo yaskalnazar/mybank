@@ -12,6 +12,9 @@
     <title><fmt:message key="page.message.login"/></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <jsp:include page="../parts/guestHeader.jsp"/>
@@ -40,13 +43,14 @@
             <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/guest/login">
                 <div class="form-group">
                     <label for="email"><fmt:message key="page.message.email"/></label>
-                    <input id="email" class="form-control"
-                           type="email" name="email" placeholder="<fmt:message key="page.message.email"/>" value="${email}">
+                    <input id="email" class="form-control" required="required"
+                           type="text" name="email" pattern="^[\w\.]{3,32}@[a-z]{3,10}\.[a-z]{2,4}$"
+                           placeholder="<fmt:message key="page.message.email"/>" value="${email}">
 
                 </div>
                 <div class="form-group">
                     <label for="password"><fmt:message key="page.message.password"/></label>
-                    <input id="password" class="form-control"
+                    <input id="password" class="form-control" required="required" pattern=".{5,40}"
                            type="password" name="password" placeholder="<fmt:message key="page.message.password"/>">
                 </div>
                 <button type="submit" class="btn btn-success" style="margin-top:30px">

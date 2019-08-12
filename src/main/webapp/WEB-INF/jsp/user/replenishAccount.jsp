@@ -34,12 +34,13 @@
                     </select>
                     <label for="amount"><fmt:message key="page.message.amount"/>:</label>
                     <div class="form-inline">
-                        <input class="form-control" type="number"  step="0.01" min="0"
+                        <input class="form-control" type="number" required="required"
+                               step="0.01" min="0"
                                name="amount" id="amount">
-
-                        <button type="submit" class="btn btn-success ml-2">
+                        <button type="button" class="btn btn-success ml-2" id="myBtn2">
                             <fmt:message key="page.message.submit"/>
                         </button>
+                        <jsp:include page="../popUp/replenish.jsp"/>
                     </div>
                 </form>
             </c:if>

@@ -20,8 +20,9 @@
             <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/guest/registration">
                 <div class="form-group">
                     <label for="email"><fmt:message key="page.message.email"/></label>
-                    <input id="email" class="form-control"
-                           type="email" name="email" placeholder="<fmt:message key="page.message.email"/>"
+                    <input id="email" class="form-control" required="required"
+                           pattern="^[\w\.]{3,32}@[a-z]{3,10}\.[a-z]{2,4}$"
+                           type="text" name="email" placeholder="<fmt:message key="page.message.email"/>  |  pattern=^[\w\.]{3,32}@[a-z]{3,10}\.[a-z]{2,4}$"
                            value="${email}">
                     <c:if test="${not empty wrongEmail}">
                         <p class="text-danger">
@@ -31,8 +32,9 @@
                 </div>
                 <div class="form-group">
                     <label for="password"><fmt:message key="page.message.password"/></label>
-                    <input id="password" class="form-control"
-                           type="password" name="password" placeholder="<fmt:message key="page.message.password"/>">
+                    <input id="password" class="form-control"  required="required"
+                           pattern=".{5,40}"
+                           type="password" name="password" placeholder="<fmt:message key="page.message.password"/> |  pattern=.{5,40}">
                     <c:if test="${not empty wrongPassword}">
                         <p class="text-danger">
                             <fmt:message key="info.exception.${wrongPassword}"/>
@@ -42,7 +44,9 @@
                 <div class="form-group">
                     <label for="name"><fmt:message key="page.message.name"/></label>
                     <input id="name" class="form-control"
-                           type="text" name="name" placeholder="<fmt:message key="page.message.name"/>" value="${name}">
+                           type="text" name="name"  required="required"
+                           pattern="^[A-Z]{1}[a-z]{0,32}$"
+                           placeholder="<fmt:message key="page.message.name"/>" value="${name}">
 
                     <c:if test="${not empty wrongName}">
                         <p class="text-danger">
@@ -53,7 +57,9 @@
                 <div class="form-group">
                     <label for="surname"><fmt:message key="page.message.surname"/></label>
                     <input id="surname" class="form-control"
-                           type="text" name="surname" placeholder="<fmt:message key="page.message.surname"/>"
+                           type="text" name="surname"  required="required"
+                           pattern="^[A-Z]{1}[a-z]{0,32}$"
+                           placeholder="<fmt:message key="page.message.surname"/>"
                            value="${surname}">
                     <c:if test="${not empty wrongSurname}">
                         <p class="text-danger">
@@ -64,7 +70,9 @@
                 <div class="form-group">
                     <label for="patronymic"><fmt:message key="page.message.patronymic"/></label>
                     <input id="patronymic" class="form-control"
-                           type="text" name="patronymic" placeholder="<fmt:message key="page.message.patronymic"/>"
+                           type="text" name="patronymic"  required="required"
+                           pattern="^[A-Z]{1}[a-z]{0,32}$"
+                           placeholder="<fmt:message key="page.message.patronymic"/>"
                            value="${patronymic}">
                     <c:if test="${not empty wrongPatronymic}">
                         <p class="text-danger">

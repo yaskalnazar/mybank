@@ -42,8 +42,8 @@
                 <div class="form-group">
                     <p>
                         <label><fmt:message key="page.message.deposit.amount"/>:
-                            <input class="form-control" type="number" min="1000"
-                                   name="depositAmount" required></label>
+                            <input class="form-control" type="number" min="1000" required="required"
+                                   name="depositAmount"></label>
                     </p>
                     <label><fmt:message key="page.message.deposit.rate"/>
                         <input class="form-control" id="depositRate" type="number" name="depositRate" min="0"
@@ -58,9 +58,10 @@
                         </select>
                     </label>
                 </div>
-                <button type="submit" class="btn btn-success" style="margin-top:30px">
+                <button type="button" id="myBtn2" class="btn btn-success" style="margin-top:30px">
                     <fmt:message key="page.message.submit"/>
                 </button>
+                <jsp:include page="../popUp/replenish.jsp"/>
             </form>
 
         </div>
