@@ -3,14 +3,16 @@ package ua.yaskal.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.no.such.NoSuchActiveAccountException;
-import ua.yaskal.model.exceptions.no.such.NoSuchPaymentException;
+import ua.yaskal.model.exceptions.no.such.NoSuchPageException;
 import ua.yaskal.model.exceptions.no.such.NoSuchTransactionException;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -200,5 +202,81 @@ public class JDBCTransactionDAO implements TransactionDAO {
             throw new RuntimeException(e);
         }
         return transactions;
+    }
+
+    @Override
+    public PaginationDTO<Transaction> getPageByAccountId(long id, long itemsPerPage, long currentPage) {
+        PaginationDTO<Transaction> paginationDTO = new PaginationDTO<>();
+        try {
+            connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement countTransactions = connection.prepareStatement(
+                    sqlRequestsBundle.getString("transaction.count.by.account.id"));
+                 PreparedStatement getTransactions = connection.prepareStatement(
+                         sqlRequestsBundle.getString("transaction.get.page.by.account.id"))) {
+                countTransactions.setLong(1, id);
+                countTransactions.setLong(2, id);
+
+                long transactionsNumber;
+                ResultSet resultSet = countTransactions.executeQuery();
+                if (resultSet.next()) {
+                    transactionsNumber = resultSet.getInt("transactions_number");
+                } else {
+                    throw new SQLException();
+                }
+
+                long pagesNumber = transactionsNumber % itemsPerPage == 0 ? transactionsNumber / itemsPerPage : (transactionsNumber / itemsPerPage) + 1;
+
+
+                if (pagesNumber == 0) {
+                    paginationDTO.setPagesNumber(1);
+                    paginationDTO.setCurrentPage(1);
+                    paginationDTO.setItemsPerPage(itemsPerPage);
+                    paginationDTO.setItems(Collections.emptyList());
+
+                    connection.commit();
+
+                    return paginationDTO;
+                }
+
+                if (currentPage > pagesNumber) {
+                    throw new NoSuchPageException();
+                }
+
+                long offset = (currentPage - 1) * itemsPerPage;
+
+                getTransactions.setLong(1, id);
+                getTransactions.setLong(2, id);
+                getTransactions.setLong(3, itemsPerPage);
+                getTransactions.setLong(4, offset);
+
+                resultSet = getTransactions.executeQuery();
+
+                List<Transaction> transactions = new ArrayList<>();
+                while (resultSet.next()) {
+                    transactions.add(mapperFactory.getTransactionMapper().mapToObject(resultSet));
+                }
+
+                paginationDTO.setPagesNumber(pagesNumber);
+                paginationDTO.setCurrentPage(currentPage);
+                paginationDTO.setItemsPerPage(itemsPerPage);
+                paginationDTO.setItems(transactions);
+
+                connection.commit();
+
+                return paginationDTO;
+
+            } catch (SQLException e) {
+                connection.rollback();
+
+                logger.error(e);
+                throw new RuntimeException(e);
+            }
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new RuntimeException(e);
+        }
     }
 }

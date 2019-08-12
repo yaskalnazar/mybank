@@ -1,6 +1,7 @@
 package ua.yaskal.model.service;
 
 import ua.yaskal.model.dao.DAOFactory;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Transaction;
 
 import java.util.List;
@@ -32,4 +33,9 @@ public class TransactionService {
     public void setDaoFactory(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
+
+    public PaginationDTO<Transaction> getPageByAccountId(long id, long itemsPerPage, long currentPage) {
+        return daoFactory.createTransactionDAO().getPageByAccountId(id, itemsPerPage, currentPage);
+    }
+
 }

@@ -5,6 +5,7 @@ import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.command.admin.GetUserPageCommand;
 import ua.yaskal.controller.util.ValidationUtil;
+import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.Transaction;
@@ -17,9 +18,11 @@ import ua.yaskal.model.service.TransactionService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class UserCreditPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
+    private static final long ITEMS_PER_PAGE=10;
     private ValidationUtil validationUtil;
     private CreditService creditService;
     private TransactionService transactionService;
@@ -57,6 +60,13 @@ public class UserCreditPageCommand implements Command {
             throw new AccessDeniedException();
         }
 
+        long currentPage = validationUtil.isContains(request, Collections.singletonList("currentPage"))
+                ? Long.parseLong(request.getParameter("currentPage")) : 1;
+
+
+        request.setAttribute("page", transactionService.getPageByAccountId(creditId, ITEMS_PER_PAGE, currentPage));
+
+
         List<Transaction> transactions = transactionService.getAllByAccountId(creditId);
         transactions.stream().forEachOrdered(x -> {
             if (x.getSenderAccountId() == creditId){
@@ -65,7 +75,6 @@ public class UserCreditPageCommand implements Command {
         });
 
         request.setAttribute("credit",creditAccount);
-        request.setAttribute("accountTransactions", transactions);
         request.setAttribute("activeUserAccounts", accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
         return JspPath.USER_CREDIT_PAGE;
     }
