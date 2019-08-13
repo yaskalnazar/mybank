@@ -1,6 +1,5 @@
 package ua.yaskal.controller.command.user;
 
-import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.service.CreditRequestService;

@@ -3,7 +3,6 @@ package ua.yaskal.model.dao;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
-import ua.yaskal.model.entity.Transaction;
 
 import java.math.BigDecimal;
 import java.util.List;

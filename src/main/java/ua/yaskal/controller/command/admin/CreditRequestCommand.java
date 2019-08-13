@@ -13,7 +13,6 @@ import ua.yaskal.model.service.ScheduledService;
 import ua.yaskal.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class CreditRequestCommand implements Command {

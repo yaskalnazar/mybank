@@ -1,11 +1,9 @@
 package ua.yaskal.controller.listener;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.controller.command.general.LogOutCommand;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-import java.util.HashSet;
 
 
 public class SessionListener implements HttpSessionListener {

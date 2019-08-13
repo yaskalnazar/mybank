@@ -7,6 +7,7 @@ import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.exceptions.WrongAccountTypeException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,19 +15,19 @@ import java.util.ResourceBundle;
 
 public class JDBCAccountDAO implements AccountDAO {
     private final static Logger logger = Logger.getLogger(JDBCAccountDAO.class);
-    private Connection connection;
+    private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
 
-    public JDBCAccountDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
-        this.connection = connection;
+    public JDBCAccountDAO(DataSource dataSource, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
+        this.dataSource = dataSource;
         this.sqlRequestsBundle = sqlRequestsBundle;
         this.mapperFactory = mapperFactory;
     }
 
     @Override
     public Account getById(long id) {
-        try (PreparedStatement statement = connection.prepareStatement(sqlRequestsBundle.getString("account.select.by.id"))) {
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(sqlRequestsBundle.getString("account.select.by.id"))) {
             statement.setLong(1, id);
 
             logger.debug("Select account " + statement);
@@ -46,7 +47,7 @@ public class JDBCAccountDAO implements AccountDAO {
     @Override
     public List<Account> getAll() {
         List<Account> accounts = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("account.select.all"))) {
 
             ResultSet resultSet = statement.executeQuery();
@@ -66,7 +67,7 @@ public class JDBCAccountDAO implements AccountDAO {
 
     @Override
     public void update(Account item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("account.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -90,7 +91,7 @@ public class JDBCAccountDAO implements AccountDAO {
 
     @Override
     public long addNew(Account item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("account.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -118,7 +119,7 @@ public class JDBCAccountDAO implements AccountDAO {
     @Override
     public List<Account> getAllByOwnerId(long ownerId) {
         List<Account> accounts = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("account.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
@@ -140,7 +141,7 @@ public class JDBCAccountDAO implements AccountDAO {
     @Override
     public List<Account> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
         List<Account> accounts = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("account.select.all.by.owner.id.and.status"))) {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
@@ -164,7 +165,7 @@ public class JDBCAccountDAO implements AccountDAO {
     @Override
     public List<Account> getAllByStatus(Account.AccountStatus status) {
         List<Account> accounts = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("account.select.all.by.status"))) {
             statement.setString(1, status.name());
 
@@ -186,7 +187,7 @@ public class JDBCAccountDAO implements AccountDAO {
 
     @Override
     public void updateAccountStatus(long id, Account.AccountStatus status) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("account.update.status.by.id"))) {
             statement.setString(1, status.name());
             statement.setLong(2, id);

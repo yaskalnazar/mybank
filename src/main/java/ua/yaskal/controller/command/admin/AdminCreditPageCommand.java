@@ -8,7 +8,6 @@ import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.Transaction;
-import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
 import ua.yaskal.model.service.AccountService;
 import ua.yaskal.model.service.CreditService;
 import ua.yaskal.model.service.TransactionService;

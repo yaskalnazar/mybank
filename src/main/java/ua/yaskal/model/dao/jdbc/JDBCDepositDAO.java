@@ -1,20 +1,15 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
-import ua.yaskal.model.dao.DAOFactory;
 import ua.yaskal.model.dao.DepositDAO;
 import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dto.NewDepositContributionDTO;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
-import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.DepositAccount;
-import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.message.key.DepositAlreadyActiveException;
-import ua.yaskal.model.exceptions.message.key.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
-import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 
 import java.math.BigDecimal;
@@ -285,7 +280,7 @@ public class JDBCDepositDAO implements DepositDAO {
 
             try (PreparedStatement getDepositStatement = connection.prepareStatement(
                     sqlRequestsBundle.getString("deposit.select.by.id"));
-                ) {
+            ) {
 
                 getDepositStatement.setLong(1, contributionDTO.getDepositId());
 
@@ -305,10 +300,17 @@ public class JDBCDepositDAO implements DepositDAO {
                     throw new DepositAlreadyActiveException();
                 }
 
-                transactionDAO.addNew(contributionDTO.getTransaction());
+                try {
+                    transactionDAO.addNew(contributionDTO.getTransaction());
+                } catch (RuntimeException e) {
+                    connection.rollback();
+                    throw new RuntimeException(e);
+                }
+
 
                 depositAccount.setDepositEndDate(LocalDate.now().plusMonths(contributionDTO.getMonthsAmount()));
-                depositAccount.setDepositAmount(contributionDTO.getDepositAmount());
+                depositAccount.setDepositAmount(depositAccount.getDepositAmount().add(
+                        contributionDTO.getDepositAmount()));
                 depositAccount.setDepositRate(contributionDTO.getDepositRate());
 
                 update(depositAccount);

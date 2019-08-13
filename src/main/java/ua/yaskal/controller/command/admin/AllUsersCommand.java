@@ -4,7 +4,6 @@ import ua.yaskal.controller.JspPath;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dto.PaginationDTO;
-import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.service.UserService;
 

@@ -5,7 +5,6 @@ import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.CreditAccount;
-import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.service.CreditService;
 
 import javax.servlet.http.HttpServletRequest;
