@@ -8,7 +8,6 @@ import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.service.CreditRequestService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.Collections;
 
 /**

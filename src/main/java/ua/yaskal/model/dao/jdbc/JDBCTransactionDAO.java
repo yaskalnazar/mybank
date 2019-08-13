@@ -1,9 +1,11 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.PaymentDAO;
 import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dto.PaginationDTO;
+import ua.yaskal.model.entity.Payment;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.message.key.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
@@ -17,7 +19,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+/**
+ * Realization of {@link TransactionDAO} using JDBC.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.dao.DAO
+ * @see TransactionDAO
+ * @see Transaction
+ */
 public class JDBCTransactionDAO implements TransactionDAO {
     private final static Logger logger = Logger.getLogger(JDBCTransactionDAO.class);
     private DataSource dataSource;
@@ -210,6 +219,12 @@ public class JDBCTransactionDAO implements TransactionDAO {
         return transactions;
     }
 
+    /**
+     * This method used in pagination mechanism.
+     *
+     * @param id Id of senderAccountId or receiverAccountId
+     * @author Nazar Yaskal
+     */
     @Override
     public PaginationDTO<Transaction> getPageByAccountId(long id, long itemsPerPage, long currentPage) {
         PaginationDTO<Transaction> paginationDTO = new PaginationDTO<>();

@@ -1,6 +1,8 @@
 package ua.yaskal.model.dao.mappers.jdbc;
 
 import ua.yaskal.model.dao.mappers.Mapper;
+import ua.yaskal.model.entity.CreditRequest;
+import ua.yaskal.model.entity.Payment;
 import ua.yaskal.model.entity.Transaction;
 
 import java.math.BigDecimal;
@@ -8,6 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
+/**
+ * Realization of interface {@link Mapper} for entity {@link Transaction}.
+ *
+ * @author Nazar Yaskal
+ * @see CreditRequest
+ * @see Transaction
+ */
 public class JDBCTransactionMapper implements Mapper<Transaction> {
     @Override
     public Transaction mapToObject(ResultSet resultSet) throws SQLException {

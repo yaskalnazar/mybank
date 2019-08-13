@@ -1,9 +1,11 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.UserDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dto.PaginationDTO;
+import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.entity.User;
 import ua.yaskal.model.exceptions.NonUniqueEmailException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
@@ -16,6 +18,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Realization of {@link UserDAO} using JDBC.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.dao.DAO
+ * @see UserDAO
+ * @see User
+ */
 public class JDBCUserDAO implements UserDAO {
     private final static Logger logger = Logger.getLogger(JDBCUserDAO.class);
     private DataSource dataSource;
@@ -32,7 +42,7 @@ public class JDBCUserDAO implements UserDAO {
     public User getById(long id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement getUserStatement = connection.prepareStatement(
-                sqlRequestsBundle.getString("user.select.by.id"))) {
+                     sqlRequestsBundle.getString("user.select.by.id"))) {
             getUserStatement.setLong(1, id);
 
             logger.debug("Select user " + getUserStatement);
@@ -72,7 +82,7 @@ public class JDBCUserDAO implements UserDAO {
     public void update(User item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("user.update.by.id"))) {
+                     sqlRequestsBundle.getString("user.update.by.id"))) {
             statement.setString(1, item.getEmail());
             statement.setString(2, item.getName());
             statement.setString(3, item.getSurname());
@@ -99,7 +109,7 @@ public class JDBCUserDAO implements UserDAO {
     public long addNew(User item) throws NonUniqueEmailException {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement addUserStatement = connection.prepareStatement(
-                sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+                     sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             addUserStatement.setString(1, item.getEmail());
             addUserStatement.setString(2, item.getName());
             addUserStatement.setString(3, item.getSurname());
@@ -130,7 +140,7 @@ public class JDBCUserDAO implements UserDAO {
     public User getByEmail(String email) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement getUserStatement = connection.prepareStatement(
-                sqlRequestsBundle.getString("user.select.by.email"))) {
+                     sqlRequestsBundle.getString("user.select.by.email"))) {
             getUserStatement.setString(1, email);
 
             logger.debug("Select user " + getUserStatement);
@@ -147,10 +157,15 @@ public class JDBCUserDAO implements UserDAO {
         }
     }
 
+    /**
+     * This method used in pagination mechanism.
+     *
+     * @author Nazar Yaskal
+     */
     @Override
     public PaginationDTO<User> getAllPage(long itemsPerPage, long currentPage) {
         PaginationDTO<User> paginationDTO = new PaginationDTO<>();
-        try (Connection connection = dataSource.getConnection()){
+        try (Connection connection = dataSource.getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
 
@@ -190,7 +205,7 @@ public class JDBCUserDAO implements UserDAO {
                 getDeposits.setLong(1, itemsPerPage);
                 getDeposits.setLong(2, offset);
 
-                logger.debug("Trying increase get users page "+getDeposits);
+                logger.debug("Trying increase get users page " + getDeposits);
                 resultSet = getDeposits.executeQuery();
 
                 List<User> users = new ArrayList<>();

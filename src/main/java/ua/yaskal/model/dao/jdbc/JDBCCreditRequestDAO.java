@@ -1,6 +1,7 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.CreditRequestDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.CreditRequest;
@@ -12,6 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Realization of {@link CreditRequestDAO} using JDBC.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.dao.DAO
+ * @see CreditRequestDAO
+ * @see CreditRequest
+ */
 public class JDBCCreditRequestDAO implements CreditRequestDAO {
     private final static Logger logger = Logger.getLogger(JDBCCreditRequestDAO.class);
     private DataSource dataSource;

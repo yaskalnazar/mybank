@@ -1,11 +1,20 @@
 package ua.yaskal.model.dao.mappers.jdbc;
 
 import ua.yaskal.model.dao.mappers.Mapper;
+import ua.yaskal.model.entity.CreditRequest;
+import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Realization of interface {@link Mapper} for entity {@link User}.
+ *
+ * @author Nazar Yaskal
+ * @see CreditRequest
+ * @see User
+ */
 public class JDBCUserMapper implements Mapper<User> {
     @Override
     public User mapToObject(ResultSet resultSet) throws SQLException {

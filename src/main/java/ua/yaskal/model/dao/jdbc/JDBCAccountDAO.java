@@ -13,6 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Realization of {@link AccountDAO} using JDBC.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.dao.DAO
+ * @see AccountDAO
+ * @see Account
+ */
 public class JDBCAccountDAO implements AccountDAO {
     private final static Logger logger = Logger.getLogger(JDBCAccountDAO.class);
     private DataSource dataSource;
@@ -28,8 +36,8 @@ public class JDBCAccountDAO implements AccountDAO {
     @Override
     public Account getById(long id) {
         try (Connection connection = dataSource.getConnection();
-                PreparedStatement statement = connection.prepareStatement(
-                        sqlRequestsBundle.getString("account.select.by.id"))) {
+             PreparedStatement statement = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.select.by.id"))) {
             statement.setLong(1, id);
 
             logger.debug("Select account " + statement);
@@ -51,13 +59,13 @@ public class JDBCAccountDAO implements AccountDAO {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.select.all"))) {
+                     sqlRequestsBundle.getString("account.select.all"))) {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 try {
                     accounts.add(mapperFactory.getAccountMapper().mapToObject(resultSet));
-                } catch (WrongAccountTypeException e){
+                } catch (WrongAccountTypeException e) {
                     logger.warn("Can not map account id:" + e.getAccountId());
                 }
             }
@@ -72,7 +80,7 @@ public class JDBCAccountDAO implements AccountDAO {
     public void update(Account item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.update.by.id"))) {
+                     sqlRequestsBundle.getString("account.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
             statement.setObject(3, item.getClosingDate());
@@ -80,7 +88,7 @@ public class JDBCAccountDAO implements AccountDAO {
             statement.setString(5, item.getAccountStatus().name());
             statement.setLong(9, item.getId());
 
-            logger.debug("Trying update account "+statement);
+            logger.debug("Trying update account " + statement);
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Account was not updated: ", e);
@@ -97,7 +105,7 @@ public class JDBCAccountDAO implements AccountDAO {
     public long addNew(Account item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+                     sqlRequestsBundle.getString("account.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
             statement.setObject(3, item.getClosingDate());
@@ -126,14 +134,14 @@ public class JDBCAccountDAO implements AccountDAO {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.select.all.by.owner.id"))) {
+                     sqlRequestsBundle.getString("account.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 try {
                     accounts.add(mapperFactory.getAccountMapper().mapToObject(resultSet));
-                } catch (WrongAccountTypeException e){
+                } catch (WrongAccountTypeException e) {
                     logger.warn("Can not map account id:" + e.getAccountId());
                 }
             }
@@ -148,8 +156,8 @@ public class JDBCAccountDAO implements AccountDAO {
     public List<Account> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-                PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.select.all.by.owner.id.and.status"))) {
+             PreparedStatement statement = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.select.all.by.owner.id.and.status"))) {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
 
@@ -158,7 +166,7 @@ public class JDBCAccountDAO implements AccountDAO {
             while (resultSet.next()) {
                 try {
                     accounts.add(mapperFactory.getAccountMapper().mapToObject(resultSet));
-                } catch (WrongAccountTypeException e){
+                } catch (WrongAccountTypeException e) {
                     logger.warn("Can not map account id:" + e.getAccountId());
                 }
             }
@@ -174,7 +182,7 @@ public class JDBCAccountDAO implements AccountDAO {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.select.all.by.status"))) {
+                     sqlRequestsBundle.getString("account.select.all.by.status"))) {
             statement.setString(1, status.name());
 
 
@@ -182,7 +190,7 @@ public class JDBCAccountDAO implements AccountDAO {
             while (resultSet.next()) {
                 try {
                     accounts.add(mapperFactory.getAccountMapper().mapToObject(resultSet));
-                } catch (WrongAccountTypeException e){
+                } catch (WrongAccountTypeException e) {
                     logger.warn("Can not map account id:" + e.getAccountId());
                 }
             }
@@ -197,13 +205,13 @@ public class JDBCAccountDAO implements AccountDAO {
     public void updateAccountStatus(long id, Account.AccountStatus status) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.update.status.by.id"))) {
+                     sqlRequestsBundle.getString("account.update.status.by.id"))) {
             statement.setString(1, status.name());
             statement.setLong(2, id);
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            logger.error("Can not update account status "+id+status, e);
+            logger.error("Can not update account status " + id + status, e);
             throw new RuntimeException(e);
         }
     }

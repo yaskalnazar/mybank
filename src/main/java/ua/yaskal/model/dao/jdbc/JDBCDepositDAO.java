@@ -1,12 +1,14 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.DepositDAO;
 import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dto.NewDepositContributionDTO;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
+import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.exceptions.message.key.DepositAlreadyActiveException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
@@ -21,6 +23,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Realization of {@link DepositDAO} using JDBC.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.dao.DAO
+ * @see DepositDAO
+ * @see DepositAccount
+ */
 public class JDBCDepositDAO implements DepositDAO {
     private final static Logger logger = Logger.getLogger(JDBCDepositDAO.class);
     private DataSource dataSource;
@@ -63,7 +73,7 @@ public class JDBCDepositDAO implements DepositDAO {
         List<DepositAccount> depositAccounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("deposit.select.all"))) {
+                     sqlRequestsBundle.getString("deposit.select.all"))) {
 
 
             logger.debug("Getting all deposits" + statement);
@@ -82,7 +92,7 @@ public class JDBCDepositDAO implements DepositDAO {
     public void update(DepositAccount item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("deposit.update.by.id"))) {
+                     sqlRequestsBundle.getString("deposit.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
             statement.setObject(3, item.getClosingDate());
@@ -110,7 +120,7 @@ public class JDBCDepositDAO implements DepositDAO {
     public long addNew(DepositAccount item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("deposit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+                     sqlRequestsBundle.getString("deposit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
             statement.setObject(3, item.getClosingDate());
@@ -142,7 +152,7 @@ public class JDBCDepositDAO implements DepositDAO {
         List<DepositAccount> depositAccounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("deposit.select.all.by.owner.id"))) {
+                     sqlRequestsBundle.getString("deposit.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
             logger.debug("Getting all user deposits" + statement);
@@ -162,7 +172,7 @@ public class JDBCDepositDAO implements DepositDAO {
         List<DepositAccount> depositAccounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("deposit.select.all.by.owner.id.and.status"))) {
+                     sqlRequestsBundle.getString("deposit.select.all.by.owner.id.and.status"))) {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
 
@@ -182,7 +192,7 @@ public class JDBCDepositDAO implements DepositDAO {
     public void updateDepositAmount(long id, BigDecimal amount) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("deposit.update.amount.by.id"))) {
+                     sqlRequestsBundle.getString("deposit.update.amount.by.id"))) {
             statement.setBigDecimal(1, amount);
             statement.setLong(2, id);
 
@@ -199,7 +209,7 @@ public class JDBCDepositDAO implements DepositDAO {
     public void updateDepositRate(long id, BigDecimal rate) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("deposit.update.rate.by.id"))) {
+                     sqlRequestsBundle.getString("deposit.update.rate.by.id"))) {
             statement.setBigDecimal(1, rate);
             statement.setLong(2, id);
 
@@ -210,6 +220,11 @@ public class JDBCDepositDAO implements DepositDAO {
         }
     }
 
+    /**
+     * This method used in pagination mechanism.
+     *
+     * @author Nazar Yaskal
+     */
     @Override
     public PaginationDTO<DepositAccount> getAllPage(long itemsPerPage, long currentPage) {
         PaginationDTO<DepositAccount> paginationDTO = new PaginationDTO<>();

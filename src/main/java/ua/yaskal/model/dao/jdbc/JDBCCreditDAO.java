@@ -1,6 +1,7 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.AccountDAO;
 import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dto.PaginationDTO;
@@ -17,6 +18,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Realization of {@link CreditDAO} using JDBC.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.dao.DAO
+ * @see CreditDAO
+ * @see CreditAccount
+ */
 public class JDBCCreditDAO implements CreditDAO {
     private final static Logger logger = Logger.getLogger(JDBCCreditDAO.class);
     private DataSource dataSource;
@@ -34,7 +43,7 @@ public class JDBCCreditDAO implements CreditDAO {
     public CreditAccount getById(long id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement getCreditStatement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.select.by.id"))) {
+                     sqlRequestsBundle.getString("credit.select.by.id"))) {
             getCreditStatement.setLong(1, id);
 
             logger.debug("Select credit " + getCreditStatement);
@@ -56,16 +65,16 @@ public class JDBCCreditDAO implements CreditDAO {
         List<CreditAccount> creditAccounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.select.all"))) {
+                     sqlRequestsBundle.getString("credit.select.all"))) {
 
 
-            logger.debug("Getting all credits"+statement);
+            logger.debug("Getting all credits" + statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
             }
         } catch (SQLException e) {
-            logger.error("Can not get all credits",e);
+            logger.error("Can not get all credits", e);
             throw new RuntimeException(e);
         }
         return creditAccounts;
@@ -75,7 +84,7 @@ public class JDBCCreditDAO implements CreditDAO {
     public void update(CreditAccount item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.update.by.id"))) {
+                     sqlRequestsBundle.getString("credit.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
             statement.setObject(3, item.getClosingDate());
@@ -86,7 +95,7 @@ public class JDBCCreditDAO implements CreditDAO {
             statement.setBigDecimal(8, item.getAccruedInterest());
             statement.setLong(9, item.getId());
 
-            logger.debug("Trying update credit"+statement);
+            logger.debug("Trying update credit" + statement);
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Credit Account was not updated: ", e);
@@ -103,7 +112,7 @@ public class JDBCCreditDAO implements CreditDAO {
     public long addNew(CreditAccount item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+                     sqlRequestsBundle.getString("credit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
             statement.setObject(3, item.getClosingDate());
@@ -135,11 +144,11 @@ public class JDBCCreditDAO implements CreditDAO {
         List<CreditAccount> creditAccounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.select.all.by.owner.id"))) {
+                     sqlRequestsBundle.getString("credit.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
 
-            logger.debug("Getting all user credits"+statement);
+            logger.debug("Getting all user credits" + statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
@@ -156,12 +165,12 @@ public class JDBCCreditDAO implements CreditDAO {
         List<CreditAccount> creditAccounts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.select.all.by.owner.id.and.status"))) {
+                     sqlRequestsBundle.getString("credit.select.all.by.owner.id.and.status"))) {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
 
 
-            logger.debug("Getting all user credits"+statement);
+            logger.debug("Getting all user credits" + statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 creditAccounts.add(mapperFactory.getCreditMapper().mapToObject(resultSet));
@@ -177,11 +186,11 @@ public class JDBCCreditDAO implements CreditDAO {
     public void increaseAccruedInterestById(long id, BigDecimal accruedInterest) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.add.increase.interest.by.id"))) {
+                     sqlRequestsBundle.getString("credit.add.increase.interest.by.id"))) {
             statement.setBigDecimal(1, accruedInterest);
             statement.setLong(2, id);
 
-            logger.debug("Trying increase accrued interest"+statement);
+            logger.debug("Trying increase accrued interest" + statement);
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Can not increase credit accruedInterest", e);
@@ -193,7 +202,7 @@ public class JDBCCreditDAO implements CreditDAO {
     public void reduceAccruedInterestById(long id, BigDecimal accruedInterest) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("credit.add.reduce.interest.by.id"))) {
+                     sqlRequestsBundle.getString("credit.add.reduce.interest.by.id"))) {
             statement.setBigDecimal(1, accruedInterest);
             statement.setLong(2, id);
 
@@ -204,10 +213,15 @@ public class JDBCCreditDAO implements CreditDAO {
         }
     }
 
+    /**
+     * This method used in pagination mechanism.
+     *
+     * @author Nazar Yaskal
+     */
     @Override
     public PaginationDTO<CreditAccount> getAllPage(long itemsPerPage, long currentPage) {
         PaginationDTO<CreditAccount> paginationDTO = new PaginationDTO<>();
-        try(Connection connection = dataSource.getConnection()){
+        try (Connection connection = dataSource.getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
 
@@ -247,7 +261,7 @@ public class JDBCCreditDAO implements CreditDAO {
                 getCredits.setLong(1, itemsPerPage);
                 getCredits.setLong(2, offset);
 
-                logger.debug("Trying increase get credits page "+getCredits);
+                logger.debug("Trying increase get credits page " + getCredits);
                 resultSet = getCredits.executeQuery();
 
                 List<CreditAccount> creditAccounts = new ArrayList<>();

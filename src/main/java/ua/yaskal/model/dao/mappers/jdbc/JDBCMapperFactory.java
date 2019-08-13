@@ -4,6 +4,13 @@ import ua.yaskal.model.dao.mappers.Mapper;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.*;
 
+/**
+ * Realization of interface {@link MapperFactory} for creating JDBC{@link Mapper} instances.
+ *
+ * @author Nazar Yaskal
+ * @see Mapper
+ * @see MapperFactory
+ */
 public class JDBCMapperFactory implements MapperFactory {
     @Override
     public Mapper<User> getUserMapper() {

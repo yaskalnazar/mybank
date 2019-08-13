@@ -10,7 +10,6 @@ import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.Collections;
 
 /**

@@ -2,12 +2,20 @@ package ua.yaskal.model.dao.mappers.jdbc;
 
 import ua.yaskal.model.dao.mappers.Mapper;
 import ua.yaskal.model.entity.CreditRequest;
+import ua.yaskal.model.entity.DepositAccount;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
+/**
+ * Realization of interface {@link Mapper} for entity {@link CreditRequest}.
+ *
+ * @author Nazar Yaskal
+ * @see CreditRequest
+ * @see Mapper
+ */
 public class JDBCCreditRequestMapper implements Mapper<CreditRequest> {
     @Override
     public CreditRequest mapToObject(ResultSet resultSet) throws SQLException {

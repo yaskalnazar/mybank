@@ -1,8 +1,10 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.DepositDAO;
 import ua.yaskal.model.dao.PaymentDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.entity.Payment;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPaymentException;
@@ -13,7 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+/**
+ * Realization of {@link PaymentDAO} using JDBC.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.dao.DAO
+ * @see PaymentDAO
+ * @see Payment
+ */
 public class JDBCPaymentDAO implements PaymentDAO {
     private final static Logger logger = Logger.getLogger(JDBCPaymentDAO.class);
     private DataSource dataSource;
@@ -30,7 +39,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     public Payment getById(long id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.select.by.id"))) {
+                     sqlRequestsBundle.getString("payment.select.by.id"))) {
             statement.setLong(1, id);
 
             ResultSet resultSet = statement.executeQuery();
@@ -51,7 +60,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
         List<Payment> payments = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.select.all"))) {
+                     sqlRequestsBundle.getString("payment.select.all"))) {
 
             logger.debug("Getting all payments");
             ResultSet resultSet = statement.executeQuery();
@@ -69,7 +78,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     public void update(Payment item) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.update.by.id"))) {
+                     sqlRequestsBundle.getString("payment.update.by.id"))) {
             statement.setBigDecimal(1, item.getAmount());
             statement.setObject(2, item.getDate());
             statement.setString(3, item.getPaymentStatus().name());
@@ -90,7 +99,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     public boolean delete(long id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.delete.by.id"))) {
+                     sqlRequestsBundle.getString("payment.delete.by.id"))) {
             statement.setLong(1, id);
 
             logger.debug("Trying delete payment " + statement);
@@ -104,11 +113,11 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public long addNew(Payment item) {
-        try (   Connection connection = dataSource.getConnection();
-                PreparedStatement getActiveAccount = connection.prepareStatement(
-                sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
-                PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement getActiveAccount = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement statement = connection.prepareStatement(
+                     sqlRequestsBundle.getString("payment.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setBigDecimal(1, item.getAmount());
             statement.setObject(2, item.getDate());
             statement.setString(3, item.getPaymentStatus().name());
@@ -136,7 +145,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
                 throw new SQLException();
             }
         } catch (SQLException e) {
-            logger.error("Payment was not added",e);
+            logger.error("Payment was not added", e);
             throw new RuntimeException(e);
         }
     }
@@ -146,7 +155,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
         List<Payment> payments = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.select.by.payer.id"))) {
+                     sqlRequestsBundle.getString("payment.select.by.payer.id"))) {
             statement.setLong(1, payerId);
 
             logger.debug("Getting all by payerId" + payerId);
@@ -166,7 +175,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
         List<Payment> payments = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.select.by.requester.id"))) {
+                     sqlRequestsBundle.getString("payment.select.by.requester.id"))) {
             statement.setLong(1, requesterId);
 
             logger.debug("Getting all by requesterId" + requesterId);
@@ -185,7 +194,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     public boolean updateStatusById(Payment.PaymentStatus status, long id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                sqlRequestsBundle.getString("payment.update.status.by.id"))) {
+                     sqlRequestsBundle.getString("payment.update.status.by.id"))) {
             statement.setString(1, status.name());
             statement.setLong(2, id);
 
@@ -193,7 +202,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            logger.error("Can not update status",e);
+            logger.error("Can not update status", e);
             throw new RuntimeException(e);
         }
     }
