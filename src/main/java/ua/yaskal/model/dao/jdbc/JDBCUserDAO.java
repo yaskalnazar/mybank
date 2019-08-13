@@ -9,6 +9,7 @@ import ua.yaskal.model.exceptions.NonUniqueEmailException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchUserException;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,19 +18,20 @@ import java.util.ResourceBundle;
 
 public class JDBCUserDAO implements UserDAO {
     private final static Logger logger = Logger.getLogger(JDBCUserDAO.class);
-    private Connection connection;
+    private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
 
-    public JDBCUserDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
-        this.connection = connection;
+    public JDBCUserDAO(DataSource dataSource, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
+        this.dataSource = dataSource;
         this.sqlRequestsBundle = sqlRequestsBundle;
         this.mapperFactory = mapperFactory;
     }
 
     @Override
     public User getById(long id) {
-        try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.select.by.id"))) {
+        try (PreparedStatement getUserStatement = dataSource.getConnection().prepareStatement(
+                sqlRequestsBundle.getString("user.select.by.id"))) {
             getUserStatement.setLong(1, id);
 
             logger.debug("Select user " + getUserStatement);
@@ -49,7 +51,7 @@ public class JDBCUserDAO implements UserDAO {
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection
+        try (PreparedStatement preparedStatement = dataSource.getConnection()
                 .prepareStatement(sqlRequestsBundle.getString("user.select.all"))) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -66,7 +68,7 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public void update(User item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("user.update.by.id"))) {
             statement.setString(1, item.getEmail());
             statement.setString(2, item.getName());
@@ -92,7 +94,8 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public long addNew(User item) throws NonUniqueEmailException {
-        try (PreparedStatement addUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement addUserStatement = dataSource.getConnection().prepareStatement(
+                sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             addUserStatement.setString(1, item.getEmail());
             addUserStatement.setString(2, item.getName());
             addUserStatement.setString(3, item.getSurname());
@@ -121,7 +124,8 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public User getByEmail(String email) {
-        try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("user.select.by.email"))) {
+        try (PreparedStatement getUserStatement = dataSource.getConnection().prepareStatement(
+                sqlRequestsBundle.getString("user.select.by.email"))) {
             getUserStatement.setString(1, email);
 
             logger.debug("Select user " + getUserStatement);
@@ -141,7 +145,7 @@ public class JDBCUserDAO implements UserDAO {
     @Override
     public PaginationDTO<User> getAllPage(long itemsPerPage, long currentPage) {
         PaginationDTO<User> paginationDTO = new PaginationDTO<>();
-        try {
+        try (Connection connection = dataSource.getConnection()){
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
 

@@ -12,6 +12,7 @@ import ua.yaskal.model.exceptions.message.key.DepositAlreadyActiveException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 
+import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
@@ -22,14 +23,15 @@ import java.util.ResourceBundle;
 
 public class JDBCDepositDAO implements DepositDAO {
     private final static Logger logger = Logger.getLogger(JDBCDepositDAO.class);
-    private Connection connection;
+    private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
     private TransactionDAO transactionDAO;
 
 
-    public JDBCDepositDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory, TransactionDAO transactionDAO) {
-        this.connection = connection;
+    public JDBCDepositDAO(DataSource dataSource, ResourceBundle sqlRequestsBundle,
+                          MapperFactory mapperFactory, TransactionDAO transactionDAO) {
+        this.dataSource = dataSource;
         this.sqlRequestsBundle = sqlRequestsBundle;
         this.mapperFactory = mapperFactory;
         this.transactionDAO = transactionDAO;
@@ -37,7 +39,8 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public DepositAccount getById(long id) {
-        try (PreparedStatement getDepositStatement = connection.prepareStatement(sqlRequestsBundle.getString("deposit.select.by.id"))) {
+        try (PreparedStatement getDepositStatement = dataSource.getConnection()
+                .prepareStatement(sqlRequestsBundle.getString("deposit.select.by.id"))) {
             getDepositStatement.setLong(1, id);
 
             logger.debug("Select deposit " + getDepositStatement);
@@ -57,7 +60,7 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public List<DepositAccount> getAll() {
         List<DepositAccount> depositAccounts = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all"))) {
 
 
@@ -75,7 +78,7 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void update(DepositAccount item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -102,7 +105,7 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public long addNew(DepositAccount item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("deposit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -133,7 +136,7 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public List<DepositAccount> getAllByOwnerId(long ownerId) {
         List<DepositAccount> depositAccounts = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
@@ -152,7 +155,7 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public List<DepositAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
         List<DepositAccount> depositAccounts = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id.and.status"))) {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
@@ -171,7 +174,7 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void updateDepositAmount(long id, BigDecimal amount) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.amount.by.id"))) {
             statement.setBigDecimal(1, amount);
             statement.setLong(2, id);
@@ -187,7 +190,7 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void updateDepositRate(long id, BigDecimal rate) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.rate.by.id"))) {
             statement.setBigDecimal(1, rate);
             statement.setLong(2, id);
@@ -202,7 +205,7 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public PaginationDTO<DepositAccount> getAllPage(long itemsPerPage, long currentPage) {
         PaginationDTO<DepositAccount> paginationDTO = new PaginationDTO<>();
-        try {
+        try (Connection connection = dataSource.getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
 
@@ -274,7 +277,7 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void newDepositContribution(NewDepositContributionDTO contributionDTO) {
-        try {
+        try (Connection connection = dataSource.getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             connection.setAutoCommit(false);
 

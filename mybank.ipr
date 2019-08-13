@@ -30,8 +30,9 @@
           <element id="directory" name="lib">
             <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.17" />
             <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.6.1" />
-            <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
-            <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
+            <element id="library" level="project" name="Maven: org.apache.commons:commons-dbcp2:2.7.0" />
+            <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.7.0" />
+            <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
             <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
             <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
             <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
@@ -58,7 +59,7 @@
     </bytecodeTargetLevel>
   </component>
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="mybankdb@localhost" uuid="f7326901-7dc8-4f2e-9653-335da1ebc768">
+    <data-source source="LOCAL" name="mybankdb@localhost" uuid="c8f5b28c-5a5d-4340-877e-0b6f2034a469">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
@@ -318,7 +319,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="dataSourceStorageLocal">
-    <data-source name="mybankdb@localhost" uuid="f7326901-7dc8-4f2e-9653-335da1ebc768">
+    <data-source name="mybankdb@localhost" uuid="c8f5b28c-5a5d-4340-877e-0b6f2034a469">
       <database-info product="MySQL" version="8.0.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.47 ( Revision: fe1903b1ecb4a96a917f7ed3190d80c049b1de29 )" dbms="MYSQL" exact-version="8.0.16" exact-driver-version="5.1">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -352,26 +353,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.10/commons-codec-1.10-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-dbcp:commons-dbcp:1.4">
+    <library name="Maven: commons-logging:commons-logging:1.2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: commons-pool:commons-pool:1.5.4">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: javax.servlet.jsp:jsp-api:2.2">
@@ -438,6 +428,28 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.commons:commons-dbcp2:2.7.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-dbcp2/2.7.0/commons-dbcp2-2.7.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-dbcp2/2.7.0/commons-dbcp2-2.7.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-dbcp2/2.7.0/commons-dbcp2-2.7.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.commons:commons-pool2:2.7.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-pool2/2.7.0/commons-pool2-2.7.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-pool2/2.7.0/commons-pool2-2.7.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-pool2/2.7.0/commons-pool2-2.7.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.hamcrest:hamcrest-core:1.3">

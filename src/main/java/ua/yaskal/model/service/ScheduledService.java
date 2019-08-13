@@ -27,7 +27,7 @@ public class ScheduledService {
         this.scheduledExecutorService = scheduledExecutorService;
         this.daoFactory = daoFactory;
 
-        scheduleAccounts(daoFactory.createAccountDAO().getAllByStatus(Account.AccountStatus.ACTIVE));
+        //scheduleAccounts(daoFactory.createAccountDAO().getAllByStatus(Account.AccountStatus.ACTIVE));
     }
 
     public void scheduleAccounts(List<Account> accounts) {

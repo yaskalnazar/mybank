@@ -6,6 +6,7 @@ import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.entity.CreditRequest;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchCreditRequestException;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +14,19 @@ import java.util.ResourceBundle;
 
 public class JDBCCreditRequestDAO implements CreditRequestDAO {
     private final static Logger logger = Logger.getLogger(JDBCCreditRequestDAO.class);
-    private Connection connection;
+    private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
 
-    public JDBCCreditRequestDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
-        this.connection = connection;
+    public JDBCCreditRequestDAO(DataSource dataSource, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
+        this.dataSource = dataSource;
         this.sqlRequestsBundle = sqlRequestsBundle;
         this.mapperFactory = mapperFactory;
     }
 
     @Override
     public CreditRequest getById(long id) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.by.id"))) {
             statement.setLong(1, id);
 
@@ -45,7 +46,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     @Override
     public List<CreditRequest> getAll() {
         List<CreditRequest> creditRequests = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all"))) {
 
             ResultSet resultSet = statement.executeQuery();
@@ -61,7 +62,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
     @Override
     public void update(CreditRequest item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.update.by.id"))) {
             statement.setBigDecimal(1, item.getCreditLimit());
             statement.setBigDecimal(2, item.getCreditRate());
@@ -81,7 +82,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
     @Override
     public boolean delete(long id) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.delete.by.id"))) {
             statement.setLong(1, id);
 
@@ -96,7 +97,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
     @Override
     public long addNew(CreditRequest item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setBigDecimal(1, item.getCreditLimit());
             statement.setBigDecimal(2, item.getCreditRate());
@@ -123,7 +124,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     @Override
     public List<CreditRequest> getAllByStatus(CreditRequest.CreditRequestStatus status) {
         List<CreditRequest> creditRequests = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all.where.status"))) {
             statement.setString(1, status.name());
 
@@ -140,7 +141,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
 
     @Override
     public boolean updateStatusById(CreditRequest.CreditRequestStatus status, long id) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.change.status"))) {
             statement.setString(1, status.name());
             statement.setLong(2, id);
@@ -158,7 +159,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     @Override
     public List<CreditRequest> getAllByApplicantId(long applicantId) {
         List<CreditRequest> creditRequests = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id"))) {
             statement.setLong(1, applicantId);
 
@@ -176,7 +177,7 @@ public class JDBCCreditRequestDAO implements CreditRequestDAO {
     @Override
     public List<CreditRequest> getAllByApplicantIdAndStatus(long applicantId, CreditRequest.CreditRequestStatus status) {
         List<CreditRequest> creditRequests = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("credit.request.select.all.by.applicant.id.and.status"))) {
             statement.setLong(1, applicantId);
             statement.setString(2, status.name());

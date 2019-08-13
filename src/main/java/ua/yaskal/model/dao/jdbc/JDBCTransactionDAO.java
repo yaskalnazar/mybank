@@ -10,6 +10,7 @@ import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountExcepti
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchTransactionException;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,20 +20,20 @@ import java.util.ResourceBundle;
 
 public class JDBCTransactionDAO implements TransactionDAO {
     private final static Logger logger = Logger.getLogger(JDBCTransactionDAO.class);
-    private Connection connection;
+    private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
     private final static String ACCOUNTS_TRIGGER_SQLSTATE = "12001";
 
-    public JDBCTransactionDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
-        this.connection = connection;
+    public JDBCTransactionDAO(DataSource dataSource, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
+        this.dataSource = dataSource;
         this.sqlRequestsBundle = sqlRequestsBundle;
         this.mapperFactory = mapperFactory;
     }
 
     @Override
     public Transaction getById(long id) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.by.id"))) {
             statement.setLong(1, id);
 
@@ -52,7 +53,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAll() {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all"))) {
 
             ResultSet resultSet = statement.executeQuery();
@@ -78,7 +79,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
 
     @Override
     public long addNew(Transaction item) {
-        try {
+        try(Connection connection = dataSource.getConnection()) {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             connection.setAutoCommit(false);
 
@@ -152,7 +153,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAllByReceiverId(long id) {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.receiver.id"))) {
             statement.setLong(1, id);
 
@@ -170,7 +171,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAllBySenderId(long id) {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.sender.id"))) {
             statement.setLong(1, id);
 
@@ -188,7 +189,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAllByAccountId(long id) {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.account.id"))) {
             statement.setLong(1, id);
             statement.setLong(2, id);
@@ -207,7 +208,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public PaginationDTO<Transaction> getPageByAccountId(long id, long itemsPerPage, long currentPage) {
         PaginationDTO<Transaction> paginationDTO = new PaginationDTO<>();
-        try {
+        try (Connection connection=dataSource.getConnection()){
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
 

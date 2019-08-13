@@ -1,6 +1,8 @@
 package ua.yaskal.model.dao.jdbc;
 
-import org.apache.commons.dbcp.BasicDataSource;
+
+
+import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;
 import java.util.ResourceBundle;
@@ -21,7 +23,7 @@ public class JDBCConnectionsPool {
                     basicDataSource.setPassword(databaseProperties.getString("db.connection.password"));
                     basicDataSource.setMinIdle(5);
                     basicDataSource.setMaxIdle(10);
-                    basicDataSource.setMaxOpenPreparedStatements(100);
+                    //basicDataSource.setMaxOpenPreparedStatements(100);
                     dataSource = basicDataSource;
                 }
             }

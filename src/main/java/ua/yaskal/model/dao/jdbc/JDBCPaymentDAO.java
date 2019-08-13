@@ -7,6 +7,7 @@ import ua.yaskal.model.entity.Payment;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPaymentException;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,19 +16,19 @@ import java.util.ResourceBundle;
 
 public class JDBCPaymentDAO implements PaymentDAO {
     private final static Logger logger = Logger.getLogger(JDBCPaymentDAO.class);
-    private Connection connection;
+    private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
 
-    public JDBCPaymentDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
-        this.connection = connection;
+    public JDBCPaymentDAO(DataSource dataSource, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
+        this.dataSource = dataSource;
         this.sqlRequestsBundle = sqlRequestsBundle;
         this.mapperFactory = mapperFactory;
     }
 
     @Override
     public Payment getById(long id) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("payment.select.by.id"))) {
             statement.setLong(1, id);
 
@@ -47,7 +48,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     @Override
     public List<Payment> getAll() {
         List<Payment> payments = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("payment.select.all"))) {
 
             logger.debug("Getting all payments");
@@ -64,7 +65,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public void update(Payment item) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("payment.update.by.id"))) {
             statement.setBigDecimal(1, item.getAmount());
             statement.setObject(2, item.getDate());
@@ -84,7 +85,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public boolean delete(long id) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("payment.delete.by.id"))) {
             statement.setLong(1, id);
 
@@ -99,7 +100,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public long addNew(Payment item) {
-        try (PreparedStatement getActiveAccount = connection.prepareStatement(
+        try (   Connection connection = dataSource.getConnection();
+                PreparedStatement getActiveAccount = connection.prepareStatement(
                 sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
                 PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
@@ -138,7 +140,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     @Override
     public List<Payment> getAllByPayerId(long payerId) {
         List<Payment> payments = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("payment.select.by.payer.id"))) {
             statement.setLong(1, payerId);
 
@@ -157,7 +159,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
     @Override
     public List<Payment> getAllByRequesterId(long requesterId) {
         List<Payment> payments = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("payment.select.by.requester.id"))) {
             statement.setLong(1, requesterId);
 
@@ -175,7 +177,7 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public boolean updateStatusById(Payment.PaymentStatus status, long id) {
-        try (PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
                 sqlRequestsBundle.getString("payment.update.status.by.id"))) {
             statement.setString(1, status.name());
             statement.setLong(2, id);
