@@ -17,6 +17,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+/**
+ * This command used for getting page for sending transaction from one account to another.
+ * Required params: senderAccountId, receiverAccountId,
+ * amount if new transaction has been sent;
+ *
+ * @author Nazar Yaskal
+ */
 public class MakeTransactionCommand implements Command {
     private final static Logger logger = Logger.getLogger(MakeTransactionCommand.class);
     private ValidationUtil validationUtil;

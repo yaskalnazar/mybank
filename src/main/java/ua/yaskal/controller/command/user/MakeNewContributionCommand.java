@@ -15,6 +15,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+/**
+ * This command used for opening new deposit if old was finished.
+ * Required params: senderAccountId, receiverAccountId, depositAmount,
+ * depositRate if new deposit has been requested;
+ *
+ * @author Nazar Yaskal
+ */
 public class MakeNewContributionCommand implements Command {
     private final static Logger logger = Logger.getLogger(MakeNewContributionCommand.class);
     private final static long WORKAROUND_ACCOUNT_ID = 12;
@@ -36,6 +43,8 @@ public class MakeNewContributionCommand implements Command {
                 "depositAmount", "depositRate", "monthsAmount")) &&
                 validationUtil.isRequestValid(request, Arrays.asList("senderAccountId", "receiverAccountId",
                         "depositAmount", "depositRate", "monthsAmount"))) {
+
+
             long senderAccountId = Long.parseLong(request.getParameter("senderAccountId"));
             long depositId = Long.parseLong(request.getParameter("receiverAccountId"));
             BigDecimal depositAmount = new BigDecimal(request.getParameter("depositAmount"));
@@ -61,7 +70,7 @@ public class MakeNewContributionCommand implements Command {
             logger.debug("Trying to pay new deposit for account " + depositId);
             depositService.newDepositContribution(contributionDTO);
         }
-        return "redirect:/mybank/user/account/deposit_page?id="+request.getParameter("receiverAccountId");
+        return "redirect:/mybank/user/account/deposit_page?id=" + request.getParameter("receiverAccountId");
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

@@ -16,6 +16,12 @@ import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * This command used for getting login_form for QUEST and process input.
+ * Required params: email and password if QUEST SingIn;
+ *
+ * @author Nazar Yaskal
+ */
 public class LoginCommand implements Command {
     private final static Logger logger = Logger.getLogger(LoginCommand.class);
     private ValidationUtil validationUtil;
@@ -54,12 +60,12 @@ public class LoginCommand implements Command {
         }
 
 
-        signInUser(request,user);
+        signInUser(request, user);
         return "redirect:/mybank/home";
 
     }
 
-    private void signInUser(HttpServletRequest request, User user){
+    private void signInUser(HttpServletRequest request, User user) {
         if (Objects.nonNull(request.getServletContext().getAttribute(user.getEmail()))) {
             ((HttpSession) request.getServletContext().getAttribute(user.getEmail())).invalidate();
             request.getServletContext().removeAttribute(user.getEmail());

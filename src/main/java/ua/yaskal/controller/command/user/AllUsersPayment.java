@@ -16,6 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+/**
+ * This command used for getting all users payments for USER and process answer.
+ * Required params: answer if payments has been paid or rejected;
+ *
+ * @author Nazar Yaskal
+ */
 public class AllUsersPayment implements Command {
     private final static Logger logger = Logger.getLogger(AllUsersPayment.class);
     private ValidationUtil validationUtil;

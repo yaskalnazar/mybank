@@ -14,6 +14,12 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
 
+/**
+ * This command used for getting deposit open to USER and process answer.
+ * Required params: depositAmount, depositRate, monthsAmount if deposit has been requested;
+ *
+ * @author Nazar Yaskal
+ */
 public class DepositOpenCommand implements Command {
     private final static Logger logger = Logger.getLogger(DepositOpenCommand.class);
     private ValidationUtil validationUtil;

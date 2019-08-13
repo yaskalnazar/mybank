@@ -13,6 +13,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+/**
+ * This command used for getting page for replenishing account and process result.
+ * Required params: accountId, amount if new replenishment has been done;
+ *
+ * @author Nazar Yaskal
+ */
 public class ReplenishAccountCommand implements Command {
     private ValidationUtil validationUtil;
     private AccountService accountService;

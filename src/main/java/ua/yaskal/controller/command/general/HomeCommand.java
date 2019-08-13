@@ -8,16 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
-
+/**
+ * This command used to redirect to the appropriate page depending on the role of user.
+ *
+ * @author Nazar Yaskal
+ */
 public class HomeCommand implements Command {
     private final static Logger logger = Logger.getLogger(HomeCommand.class);
+
     @Override
     public String execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
 
         User user = (User) Optional.ofNullable(session.getAttribute("user"))
                 .orElse(User.getBuilder().setUserRole(User.Role.GUEST).build());
-        logger.trace("User " + user.getId() + " with role "+ user.getRole() +" redirect to home page");
+        logger.trace("User " + user.getId() + " with role " + user.getRole() + " redirect to home page");
         switch (user.getRole()) {
             case USER:
                 return "redirect:/mybank/user/home";

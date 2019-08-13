@@ -21,6 +21,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This command used to get deposit page for USER. Required params: id;
+ * currentPage - for showing transactions with pagination.
+ *
+ * @author Nazar Yaskal
+ */
 public class UserDepositPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
     private static final long ITEMS_PER_PAGE = 10;

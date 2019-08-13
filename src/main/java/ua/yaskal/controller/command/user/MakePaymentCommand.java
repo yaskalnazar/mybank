@@ -14,6 +14,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+/**
+ * This command used for getting page for sending payment from one account to another.
+ * Required params: payerAccountId, requesterAccountId,
+ * amount if new payment has been sent;
+ *
+ * @author Nazar Yaskal
+ */
 public class MakePaymentCommand implements Command {
     ValidationUtil validationUtil;
     PaymentService paymentService;

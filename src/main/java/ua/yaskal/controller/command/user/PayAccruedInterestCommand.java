@@ -14,6 +14,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+/**
+ * This command used for process interest payment on the creditAccount.
+ * Required params: senderAccountId, receiverAccountId,
+ * accruedInterestAmount if new request has been sent;
+ *
+ * @author Nazar Yaskal
+ */
 public class PayAccruedInterestCommand implements Command {
     private final static Logger logger = Logger.getLogger(PayAccruedInterestCommand.class);
     private final static long WORKAROUND_ACCOUNT_ID = 12;

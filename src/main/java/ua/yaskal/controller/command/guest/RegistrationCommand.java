@@ -12,6 +12,12 @@ import ua.yaskal.model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
+/**
+ * This command used for getting registration_form for QUEST and process input.
+ * Required params: email, name, surname, patronymic if QUEST SingUp;
+ *
+ * @author Nazar Yaskal
+ */
 public class RegistrationCommand implements Command {
     private final static Logger logger = Logger.getLogger(RegistrationCommand.class);
     private ValidationUtil validationUtil;

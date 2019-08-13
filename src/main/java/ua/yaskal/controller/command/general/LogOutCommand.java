@@ -7,6 +7,11 @@ import ua.yaskal.model.entity.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * This command used for logout with the preservation of the language.
+ *
+ * @author Nazar Yaskal
+ */
 public class LogOutCommand implements Command {
     private final static Logger logger = Logger.getLogger(LogOutCommand.class);
 

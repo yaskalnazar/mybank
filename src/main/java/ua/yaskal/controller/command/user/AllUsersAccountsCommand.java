@@ -7,6 +7,11 @@ import ua.yaskal.model.service.DepositService;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * This command used for getting all users accounts for USER.
+ *
+ * @author Nazar Yaskal
+ */
 public class AllUsersAccountsCommand implements Command {
     private DepositService depositService;
     private CreditService creditService;
@@ -19,9 +24,9 @@ public class AllUsersAccountsCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         request.setAttribute("deposits", depositService.getAllByOwnerId(
-                (long)request.getSession().getAttribute("userId")));
+                (long) request.getSession().getAttribute("userId")));
         request.setAttribute("credits", creditService.getAllByOwnerId(
-                (long)request.getSession().getAttribute("userId")));
+                (long) request.getSession().getAttribute("userId")));
         return JspPath.USER_ALL_ACCOUNTS;
     }
 

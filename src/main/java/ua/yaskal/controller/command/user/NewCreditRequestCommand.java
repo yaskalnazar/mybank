@@ -17,6 +17,13 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This command used for checking if the user can have a new credit,
+ * notification result and process new request.
+ * Required params: creditLimit, creditRate if new request has been sent;
+ *
+ * @author Nazar Yaskal
+ */
 public class NewCreditRequestCommand implements Command {
     private final static Logger logger = Logger.getLogger(NewCreditRequestCommand.class);
     private ValidationUtil validationUtil;
