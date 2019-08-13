@@ -49,28 +49,7 @@ public class JDBCDaoFactory extends DAOFactory {
         return new JDBCPaymentDAO(dataSource, sqlRequestsBundle, mapperFactory);
     }
 
- /*   private Connection getConnection() {
-        try {
-            logger.debug("Getting connection to DB URL:{"
-                    + databaseProperties.getString("db.connection.datasource.url")
-                    + "} Password:{"
-                    + databaseProperties.getString("db.connection.password")
-                    + "} User:{"
-                    + databaseProperties.getString("db.connection.user") + "}");
 
-            Class.forName(databaseProperties.getString("db.connection.driver"));
-            return DriverManager.getConnection(
-                    databaseProperties.getString("db.connection.datasource.url"),
-                    databaseProperties.getString("db.connection.password"),
-                    databaseProperties.getString("db.connection.user"));
-        } catch (SQLException e) {
-            logger.error("Cannot get connection to db", e);
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            logger.error("Not found class for sql driver", e);
-            throw new RuntimeException(e);
-        }
-    }*/
 
 
 }

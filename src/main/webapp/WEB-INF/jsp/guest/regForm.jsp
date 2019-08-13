@@ -45,7 +45,7 @@
                     <label for="name"><fmt:message key="page.message.name"/></label>
                     <input id="name" class="form-control"
                            type="text" name="name"  required="required"
-                           pattern="^[A-Z]{1}[a-z]{0,32}$"
+                           pattern="^[A-Z]{1}[a-z]{0,32}$|^[А-ЩЬЮЯЇІЄҐ]{1}[а-щьюяїієґ]{0,32}$"
                            placeholder="<fmt:message key="page.message.name"/>" value="${name}">
 
                     <c:if test="${not empty wrongName}">
@@ -58,7 +58,7 @@
                     <label for="surname"><fmt:message key="page.message.surname"/></label>
                     <input id="surname" class="form-control"
                            type="text" name="surname"  required="required"
-                           pattern="^[A-Z]{1}[a-z]{0,32}$"
+                           pattern="^[A-Z]{1}[a-z]{0,32}$|^[А-ЩЬЮЯЇІЄҐ]{1}[а-щьюяїієґ]{0,32}$"
                            placeholder="<fmt:message key="page.message.surname"/>"
                            value="${surname}">
                     <c:if test="${not empty wrongSurname}">
@@ -71,7 +71,7 @@
                     <label for="patronymic"><fmt:message key="page.message.patronymic"/></label>
                     <input id="patronymic" class="form-control"
                            type="text" name="patronymic"  required="required"
-                           pattern="^[A-Z]{1}[a-z]{0,32}$"
+                           pattern="^[A-Z]{1}[a-z]{0,32}$|^[А-ЩЬЮЯЇІЄҐ]{1}[а-щьюяїієґ]{0,32}$"
                            placeholder="<fmt:message key="page.message.patronymic"/>"
                            value="${patronymic}">
                     <c:if test="${not empty wrongPatronymic}">

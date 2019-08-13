@@ -23,9 +23,12 @@ public class JDBCConnectionsPool {
                     basicDataSource.setUrl(databaseProperties.getString("db.connection.datasource.url"));
                     basicDataSource.setUsername(databaseProperties.getString("db.connection.user"));
                     basicDataSource.setPassword(databaseProperties.getString("db.connection.password"));
-                    basicDataSource.setMinIdle(5);
-                    basicDataSource.setMaxIdle(100);
-                    //asicDataSource.setMaxOpenPreparedStatements(100);
+                    basicDataSource.setMinIdle(Integer.parseInt(
+                            databaseProperties.getString("db.connection.min.idle")));
+                    basicDataSource.setMaxIdle(Integer.parseInt(
+                            databaseProperties.getString("db.connection.max.idle")));
+                    basicDataSource.setMaxOpenPreparedStatements(Integer.parseInt(
+                            databaseProperties.getString("db.connection.min.open.prepared.statements")));
                     logger.debug("Getting DataSource "+basicDataSource.getUrl());
                     dataSource = basicDataSource;
                 }
