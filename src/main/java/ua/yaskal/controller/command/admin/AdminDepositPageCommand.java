@@ -16,6 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This command used to get deposit page for ADMIN. Required params: id;
+ * answer - if account has been blocked or unblocked.
+ *
+ * @author Nazar Yaskal
+ */
 public class AdminDepositPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
     private static final long ITEMS_PER_PAGE = 10;

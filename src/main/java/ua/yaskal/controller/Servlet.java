@@ -24,7 +24,10 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-
+/**
+ * Front Servlet. Handles request and manage it.
+ * @author Nazar Yaskal
+ */
 public class Servlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(Servlet.class);
     private Map<String, Command> commands = new HashMap<>();

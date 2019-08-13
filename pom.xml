@@ -10,10 +10,7 @@
 
 
 
-
-
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -25,27 +22,18 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-all</artifactId>
       <version>1.9.5</version>
       <scope>test</scope>
     </dependency>
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet/servlet-api &ndash;&gt;
-        <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-          <version>2.5</version>
-          <scope>provided</scope>
-        </dependency>-->
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>6.0</version>
       <scope>provided</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-dbcp2</artifactId>
@@ -62,20 +50,6 @@
       <version>2.2</version>
       <scope>provided</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/taglibs/standard
-    <dependency>
-      <groupId>taglibs</groupId>
-      <artifactId>standard</artifactId>
-      <version>1.1.2</version>
-    </dependency>-->
-    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-   <!-- <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.9.1</version>
-    </dependency>-->
-
-
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
@@ -88,7 +62,7 @@
       </dependency>
   </dependencies>
   <build>
-    <finalName>CoffeeMachine</finalName>
+    <finalName>mybank</finalName>
     <plugins>
 
       <plugin>
@@ -97,7 +71,7 @@
         <version>2.2</version>
         <configuration>
           <port>8888</port>
-          <path>/coffee</path>
+          <path>/mybank</path>
         </configuration>
       </plugin>
       <plugin>

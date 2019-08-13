@@ -9,6 +9,13 @@ import ua.yaskal.model.service.CreditService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
+
+/**
+ * This command used to get all_credits page for ADMIN.
+ * Required @param currentPage if pagination used;
+ *
+ * @author Nazar Yaskal
+ */
 public class AllCreditsCommand implements Command {
     private static final long ITEMS_PER_PAGE = 15;
     private ValidationUtil validationUtil;
@@ -29,7 +36,7 @@ public class AllCreditsCommand implements Command {
         long currentPage = validationUtil.isContains(request, Collections.singletonList("currentPage"))
                 ? Long.parseLong(request.getParameter("currentPage")) : 1;
 
-        return creditService.getAllPage( ITEMS_PER_PAGE, currentPage);
+        return creditService.getAllPage(ITEMS_PER_PAGE, currentPage);
     }
 
     public void setCreditService(CreditService creditService) {

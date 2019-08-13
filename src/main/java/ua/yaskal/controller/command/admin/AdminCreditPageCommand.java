@@ -16,6 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This command used to get credit page for ADMIN. Required params: id;
+ * answer - if account has been blocked or unblocked.
+ *
+ * @author Nazar Yaskal
+ */
 public class AdminCreditPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
     private static final long ITEMS_PER_PAGE = 10;
@@ -40,7 +46,7 @@ public class AdminCreditPageCommand implements Command {
             throw new RuntimeException("Incorrect id " + request.getRequestURI());
         }
 
-        if(validationUtil.isContains(request, Collections.singletonList("answer"))){
+        if (validationUtil.isContains(request, Collections.singletonList("answer"))) {
             processAnswer(request);
         }
 
@@ -49,7 +55,7 @@ public class AdminCreditPageCommand implements Command {
         CreditAccount creditAccount = creditService.getById(creditId);
 
         request.setAttribute("page", getPage(request, creditId));
-        request.setAttribute("credit",creditAccount);
+        request.setAttribute("credit", creditAccount);
 
         return JspPath.ADMIN_CREDIT_PAGE;
     }
@@ -70,15 +76,15 @@ public class AdminCreditPageCommand implements Command {
         return page;
     }
 
-    private void processAnswer(HttpServletRequest request){
+    private void processAnswer(HttpServletRequest request) {
         long creditId = Long.parseLong(request.getParameter("id"));
         String answer = request.getParameter("answer");
 
         if (answer.equals("block")) {
-            logger.debug("Blocking credit account " + creditId + " reason: "+ request.getParameter("blockingReason"));
+            logger.debug("Blocking credit account " + creditId + " reason: " + request.getParameter("blockingReason"));
             accountService.updateAccountStatus(creditId, Account.AccountStatus.BLOCKED);
             request.setAttribute("answer", answer);
-        } else if(answer.equals("unblock")){
+        } else if (answer.equals("unblock")) {
             logger.debug("Unblocking credit account " + creditId);
             accountService.updateAccountStatus(creditId, Account.AccountStatus.ACTIVE);
             request.setAttribute("answer", answer);

@@ -11,7 +11,14 @@ import ua.yaskal.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Collections;
 
+/**
+ * This command used to get user page for ADMIN.
+ * Required params: id;
+ *
+ * @author Nazar Yaskal
+ */
 public class GetUserPageCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
     private ValidationUtil validationUtil;
@@ -29,7 +36,7 @@ public class GetUserPageCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        if (!validationUtil.isContains(request, Arrays.asList("id")) ||
+        if (!validationUtil.isContains(request, Collections.singletonList("id")) ||
                 !validationUtil.isParamValid(request.getParameter("id"), "id")) {
             logger.warn("Incorrect id");
             throw new RuntimeException("Incorrect id " + request.getRequestURI());

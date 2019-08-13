@@ -15,6 +15,12 @@ import ua.yaskal.model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 
+/**
+ * This command used to get and process credit request page for ADMIN.
+ * Required params: id;
+ * answer currentPage if request has been approved or rejected;
+ * @author Nazar Yaskal
+ */
 public class CreditRequestCommand implements Command {
     private final static Logger logger = Logger.getLogger(CreditRequestCommand.class);
     private ValidationUtil validationUtil;

@@ -10,6 +10,11 @@ import ua.yaskal.model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 
+/**
+ * This command used to get all_users page for ADMIN.
+ * Required @param currentPage if pagination used;
+ * @author Nazar Yaskal
+ */
 public class AllUsersCommand implements Command {
     private static final long ITEMS_PER_PAGE = 15;
     private ValidationUtil validationUtil;

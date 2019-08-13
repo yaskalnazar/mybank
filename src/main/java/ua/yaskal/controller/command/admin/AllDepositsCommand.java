@@ -10,6 +10,12 @@ import ua.yaskal.model.service.DepositService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 
+/**
+ * This command used to get all_deposits page for ADMIN.
+ * Required @param currentPage if pagination used;
+ *
+ * @author Nazar Yaskal
+ */
 public class AllDepositsCommand implements Command {
     private static final long ITEMS_PER_PAGE = 15;
     private ValidationUtil validationUtil;

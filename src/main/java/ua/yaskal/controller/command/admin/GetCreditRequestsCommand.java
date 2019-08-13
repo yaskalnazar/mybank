@@ -9,7 +9,13 @@ import ua.yaskal.model.service.CreditRequestService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Collections;
 
+/**
+ * This command used to get all credit requests page for ADMIN.
+ * Required @requestStatus for filtering answers;
+ * @author Nazar Yaskal
+ */
 public class GetCreditRequestsCommand implements Command {
     private final static Logger logger = Logger.getLogger(GetCreditRequestsCommand.class);
     private ValidationUtil validationUtil;
@@ -22,7 +28,7 @@ public class GetCreditRequestsCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        if (!validationUtil.isContains(request, Arrays.asList("requestStatus"))) {
+        if (!validationUtil.isContains(request, Collections.singletonList("requestStatus"))) {
             request.setAttribute("creditRequests",
                     creditRequestService.getAllByStatus(CreditRequest.CreditRequestStatus.PENDING));
             request.setAttribute("status", "pending");
