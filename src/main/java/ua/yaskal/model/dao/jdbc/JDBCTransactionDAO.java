@@ -33,7 +33,8 @@ public class JDBCTransactionDAO implements TransactionDAO {
 
     @Override
     public Transaction getById(long id) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.by.id"))) {
             statement.setLong(1, id);
 
@@ -53,7 +54,8 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAll() {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all"))) {
 
             ResultSet resultSet = statement.executeQuery();
@@ -153,7 +155,8 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAllByReceiverId(long id) {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.receiver.id"))) {
             statement.setLong(1, id);
 
@@ -171,7 +174,8 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAllBySenderId(long id) {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.sender.id"))) {
             statement.setLong(1, id);
 
@@ -189,7 +193,8 @@ public class JDBCTransactionDAO implements TransactionDAO {
     @Override
     public List<Transaction> getAllByAccountId(long id) {
         List<Transaction> transactions = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("transaction.select.all.by.account.id"))) {
             statement.setLong(1, id);
             statement.setLong(2, id);

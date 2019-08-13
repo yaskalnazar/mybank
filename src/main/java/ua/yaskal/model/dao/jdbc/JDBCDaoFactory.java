@@ -1,6 +1,6 @@
 package ua.yaskal.model.dao.jdbc;
 
-import org.apache.log4j.Logger;
+
 import ua.yaskal.model.dao.*;
 import ua.yaskal.model.dao.mappers.MapperFactory;
 import ua.yaskal.model.dao.mappers.jdbc.JDBCMapperFactory;
@@ -9,8 +9,6 @@ import javax.sql.DataSource;
 import java.util.ResourceBundle;
 
 public class JDBCDaoFactory extends DAOFactory {
-    private final static Logger logger = Logger.getLogger(JDBCDaoFactory.class);
-    private static ResourceBundle databaseProperties = ResourceBundle.getBundle("database");
     private static ResourceBundle sqlRequestsBundle = ResourceBundle.getBundle("SQLRequests");
     private MapperFactory mapperFactory = new JDBCMapperFactory();
     private DataSource dataSource = JDBCConnectionsPool.getDataSource();

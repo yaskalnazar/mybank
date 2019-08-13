@@ -39,8 +39,9 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public DepositAccount getById(long id) {
-        try (PreparedStatement getDepositStatement = dataSource.getConnection()
-                .prepareStatement(sqlRequestsBundle.getString("deposit.select.by.id"))) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement getDepositStatement = connection.prepareStatement(
+                     sqlRequestsBundle.getString("deposit.select.by.id"))) {
             getDepositStatement.setLong(1, id);
 
             logger.debug("Select deposit " + getDepositStatement);
@@ -60,7 +61,8 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public List<DepositAccount> getAll() {
         List<DepositAccount> depositAccounts = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all"))) {
 
 
@@ -78,7 +80,8 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void update(DepositAccount item) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -105,7 +108,8 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public long addNew(DepositAccount item) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -136,7 +140,8 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public List<DepositAccount> getAllByOwnerId(long ownerId) {
         List<DepositAccount> depositAccounts = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
@@ -155,7 +160,8 @@ public class JDBCDepositDAO implements DepositDAO {
     @Override
     public List<DepositAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
         List<DepositAccount> depositAccounts = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id.and.status"))) {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
@@ -174,7 +180,8 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void updateDepositAmount(long id, BigDecimal amount) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.amount.by.id"))) {
             statement.setBigDecimal(1, amount);
             statement.setLong(2, id);
@@ -190,7 +197,8 @@ public class JDBCDepositDAO implements DepositDAO {
 
     @Override
     public void updateDepositRate(long id, BigDecimal rate) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("deposit.update.rate.by.id"))) {
             statement.setBigDecimal(1, rate);
             statement.setLong(2, id);

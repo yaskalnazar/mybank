@@ -28,7 +28,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public Payment getById(long id) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.select.by.id"))) {
             statement.setLong(1, id);
 
@@ -48,7 +49,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
     @Override
     public List<Payment> getAll() {
         List<Payment> payments = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.select.all"))) {
 
             logger.debug("Getting all payments");
@@ -65,7 +67,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public void update(Payment item) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.update.by.id"))) {
             statement.setBigDecimal(1, item.getAmount());
             statement.setObject(2, item.getDate());
@@ -85,7 +88,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public boolean delete(long id) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.delete.by.id"))) {
             statement.setLong(1, id);
 
@@ -140,7 +144,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
     @Override
     public List<Payment> getAllByPayerId(long payerId) {
         List<Payment> payments = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.select.by.payer.id"))) {
             statement.setLong(1, payerId);
 
@@ -159,7 +164,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
     @Override
     public List<Payment> getAllByRequesterId(long requesterId) {
         List<Payment> payments = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.select.by.requester.id"))) {
             statement.setLong(1, requesterId);
 
@@ -177,7 +183,8 @@ public class JDBCPaymentDAO implements PaymentDAO {
 
     @Override
     public boolean updateStatusById(Payment.PaymentStatus status, long id) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("payment.update.status.by.id"))) {
             statement.setString(1, status.name());
             statement.setLong(2, id);

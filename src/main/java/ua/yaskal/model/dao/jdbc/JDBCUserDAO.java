@@ -30,7 +30,8 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public User getById(long id) {
-        try (PreparedStatement getUserStatement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement getUserStatement = connection.prepareStatement(
                 sqlRequestsBundle.getString("user.select.by.id"))) {
             getUserStatement.setLong(1, id);
 
@@ -51,8 +52,9 @@ public class JDBCUserDAO implements UserDAO {
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-        try (PreparedStatement preparedStatement = dataSource.getConnection()
-                .prepareStatement(sqlRequestsBundle.getString("user.select.all"))) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     sqlRequestsBundle.getString("user.select.all"))) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -68,7 +70,8 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public void update(User item) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("user.update.by.id"))) {
             statement.setString(1, item.getEmail());
             statement.setString(2, item.getName());
@@ -94,7 +97,8 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public long addNew(User item) throws NonUniqueEmailException {
-        try (PreparedStatement addUserStatement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement addUserStatement = connection.prepareStatement(
                 sqlRequestsBundle.getString("user.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             addUserStatement.setString(1, item.getEmail());
             addUserStatement.setString(2, item.getName());
@@ -124,7 +128,8 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public User getByEmail(String email) {
-        try (PreparedStatement getUserStatement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement getUserStatement = connection.prepareStatement(
                 sqlRequestsBundle.getString("user.select.by.email"))) {
             getUserStatement.setString(1, email);
 

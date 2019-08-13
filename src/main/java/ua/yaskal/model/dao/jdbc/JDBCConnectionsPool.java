@@ -3,11 +3,13 @@ package ua.yaskal.model.dao.jdbc;
 
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
 import java.util.ResourceBundle;
 
 public class JDBCConnectionsPool {
+    private final static Logger logger = Logger.getLogger(JDBCConnectionsPool.class);
     private static ResourceBundle databaseProperties = ResourceBundle.getBundle("database");
     private volatile static DataSource dataSource;
 
@@ -22,8 +24,9 @@ public class JDBCConnectionsPool {
                     basicDataSource.setUsername(databaseProperties.getString("db.connection.user"));
                     basicDataSource.setPassword(databaseProperties.getString("db.connection.password"));
                     basicDataSource.setMinIdle(5);
-                    basicDataSource.setMaxIdle(10);
-                    //basicDataSource.setMaxOpenPreparedStatements(100);
+                    basicDataSource.setMaxIdle(100);
+                    //asicDataSource.setMaxOpenPreparedStatements(100);
+                    logger.debug("Getting DataSource "+basicDataSource.getUrl());
                     dataSource = basicDataSource;
                 }
             }

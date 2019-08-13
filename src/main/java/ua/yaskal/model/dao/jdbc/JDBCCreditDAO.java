@@ -32,11 +32,13 @@ public class JDBCCreditDAO implements CreditDAO {
 
     @Override
     public CreditAccount getById(long id) {
-        try (PreparedStatement getUserStatement = dataSource.getConnection().prepareStatement(sqlRequestsBundle.getString("credit.select.by.id"))) {
-            getUserStatement.setLong(1, id);
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement getCreditStatement = connection.prepareStatement(
+                sqlRequestsBundle.getString("credit.select.by.id"))) {
+            getCreditStatement.setLong(1, id);
 
-            logger.debug("Select credit " + getUserStatement);
-            ResultSet resultSet = getUserStatement.executeQuery();
+            logger.debug("Select credit " + getCreditStatement);
+            ResultSet resultSet = getCreditStatement.executeQuery();
             if (resultSet.next()) {
                 return mapperFactory.getCreditMapper().mapToObject(resultSet);
             } else {
@@ -52,7 +54,8 @@ public class JDBCCreditDAO implements CreditDAO {
     @Override
     public List<CreditAccount> getAll() {
         List<CreditAccount> creditAccounts = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all"))) {
 
 
@@ -70,7 +73,8 @@ public class JDBCCreditDAO implements CreditDAO {
 
     @Override
     public void update(CreditAccount item) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.update.by.id"))) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -97,7 +101,8 @@ public class JDBCCreditDAO implements CreditDAO {
 
     @Override
     public long addNew(CreditAccount item) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getAccountType().name());
             statement.setBigDecimal(2, item.getBalance());
@@ -128,7 +133,8 @@ public class JDBCCreditDAO implements CreditDAO {
     @Override
     public List<CreditAccount> getAllByOwnerId(long ownerId) {
         List<CreditAccount> creditAccounts = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
@@ -148,7 +154,8 @@ public class JDBCCreditDAO implements CreditDAO {
     @Override
     public List<CreditAccount> getAllByOwnerIdAndStatus(long ownerId, Account.AccountStatus status) {
         List<CreditAccount> creditAccounts = new ArrayList<>();
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.select.all.by.owner.id.and.status"))) {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
@@ -168,7 +175,8 @@ public class JDBCCreditDAO implements CreditDAO {
 
     @Override
     public void increaseAccruedInterestById(long id, BigDecimal accruedInterest) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.add.increase.interest.by.id"))) {
             statement.setBigDecimal(1, accruedInterest);
             statement.setLong(2, id);
@@ -183,7 +191,8 @@ public class JDBCCreditDAO implements CreditDAO {
 
     @Override
     public void reduceAccruedInterestById(long id, BigDecimal accruedInterest) {
-        try (PreparedStatement statement = dataSource.getConnection().prepareStatement(
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
                 sqlRequestsBundle.getString("credit.add.reduce.interest.by.id"))) {
             statement.setBigDecimal(1, accruedInterest);
             statement.setLong(2, id);
