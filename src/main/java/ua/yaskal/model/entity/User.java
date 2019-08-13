@@ -2,6 +2,12 @@ package ua.yaskal.model.entity;
 
 import java.util.List;
 
+/**
+ * This entity represents user in system.
+ * The class has POJO structure.
+ *
+ * @author Nazar Yaskal
+ */
 public class User {
     private long id;
     private String email;
@@ -43,6 +49,12 @@ public class User {
         this.role = role;
     }
 
+    /**
+     * This class realize pattern Builder for class {@link User}
+     *
+     * @author Nazar Yaskal
+     * @see User
+     */
     public static class UserBuilder {
         private long id;
         private String email;

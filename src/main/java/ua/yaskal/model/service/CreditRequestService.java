@@ -6,6 +6,11 @@ import ua.yaskal.model.entity.CreditRequest;
 
 import java.util.List;
 
+/**
+ * This service used for working with credit request instance.
+ *
+ * @author Nazar Yaskal
+ */
 public class CreditRequestService {
     private DAOFactory daoFactory;
 

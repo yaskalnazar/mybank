@@ -2,6 +2,12 @@ package ua.yaskal.model.dto;
 
 import java.math.BigDecimal;
 
+/**
+ * This DTO used for USER creating new deposit account.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.controller.command.user.DepositOpenCommand
+ */
 public class DepositDTO {
     private BigDecimal depositAmount;
     private BigDecimal depositRate;

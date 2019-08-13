@@ -3,6 +3,14 @@ package ua.yaskal.model.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * This entity represents the requests from one account to another that USER can send.
+ * If the payer agrees a new transaction is created otherwise payment change status to REJECTED.
+ * USER can send unlimited number of payments
+ * The class has POJO structure.
+ *
+ * @author Nazar Yaskal
+ */
 public class Payment {
     private long id;
     private long requesterAccountId;
@@ -32,6 +40,12 @@ public class Payment {
         return new PaymentBuilder();
     }
 
+    /**
+     * This class realize pattern Builder for class {@link Payment}
+     *
+     * @author Nazar Yaskal
+     * @see Payment
+     */
     public static class PaymentBuilder {
         private long id;
         private long requesterAccountId;

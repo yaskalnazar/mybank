@@ -5,6 +5,11 @@ import ua.yaskal.model.entity.Account;
 
 import java.util.List;
 
+/**
+ * This service used for working with account instance.
+ *
+ * @author Nazar Yaskal
+ */
 public class AccountService {
     private DAOFactory daoFactory;
 

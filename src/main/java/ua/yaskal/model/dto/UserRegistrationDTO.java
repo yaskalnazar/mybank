@@ -1,16 +1,18 @@
 package ua.yaskal.model.dto;
 
 
-
+/**
+ * This DTO used for registration user in system
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.controller.command.guest.RegistrationCommand
+ */
 public class UserRegistrationDTO {
     private String email;
     private String password;
     private String name;
     private String surname;
     private String patronymic;
-
-    public UserRegistrationDTO() {
-    }
 
     public UserRegistrationDTO(String email, String password, String name, String surname, String patronymic) {
         this.email = email;

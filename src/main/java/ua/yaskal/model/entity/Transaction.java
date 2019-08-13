@@ -3,6 +3,13 @@ package ua.yaskal.model.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * This entity represents transactions that made by users and system.
+ * USER or system can send unlimited number of transaction. All all fields are required.
+ * The class has POJO structure.
+ *
+ * @author Nazar Yaskal
+ */
 public class Transaction {
     private long id;
     private long senderAccountId;
@@ -18,11 +25,17 @@ public class Transaction {
         this.date = date;
     }
 
-    public static TransactionBuilder getBuilder(){
+    public static TransactionBuilder getBuilder() {
         return new TransactionBuilder();
     }
 
-    public static class TransactionBuilder{
+    /**
+     * This class realize pattern Builder for class {@link Transaction}
+     *
+     * @author Nazar Yaskal
+     * @see Transaction
+     */
+    public static class TransactionBuilder {
         private long id;
         private long senderAccountId;
         private long receiverAccountId;

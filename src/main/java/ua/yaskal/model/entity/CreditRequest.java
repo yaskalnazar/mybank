@@ -3,6 +3,14 @@ package ua.yaskal.model.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * This entity represents the requests for credit account creation that USER can make to ADMIN.
+ * User can have only one active request or active credit account.
+ * ADMIN, regardless of the applicant credit history, decides to approve or reject the request
+ * The class has POJO structure.
+ *
+ * @author Nazar Yaskal
+ */
 public class CreditRequest {
     private long id;
     private long applicantId;
@@ -27,11 +35,18 @@ public class CreditRequest {
         this.creditRequestStatus = creditRequestStatus;
     }
 
-    public static CreditRequestBuilder getBuilder(){
+    public static CreditRequestBuilder getBuilder() {
         return new CreditRequestBuilder();
     }
 
-    public static class CreditRequestBuilder{
+
+    /**
+     * This class realize pattern Builder for class {@link CreditRequest}
+     *
+     * @author Nazar Yaskal
+     * @see CreditRequest
+     */
+    public static class CreditRequestBuilder {
         private long id;
         private long applicantId;
         private BigDecimal creditRate;

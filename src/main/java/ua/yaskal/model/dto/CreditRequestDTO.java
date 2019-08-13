@@ -3,6 +3,12 @@ package ua.yaskal.model.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * This DTO used for USER creating new credit request.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.controller.command.user.NewCreditRequestCommand
+ */
 public class CreditRequestDTO {
     private long applicantId;
     private BigDecimal creditRate;

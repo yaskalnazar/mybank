@@ -1,5 +1,11 @@
 package ua.yaskal.model.dto;
 
+/**
+ * This DTO used for login user in system
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.controller.command.guest.LoginCommand
+ */
 public class UserLoginDTO {
     private String email;
     private String password;
@@ -7,9 +13,6 @@ public class UserLoginDTO {
     public UserLoginDTO(String email, String password) {
         this.email = email;
         this.password = password;
-    }
-
-    public UserLoginDTO() {
     }
 
     public String getEmail() {

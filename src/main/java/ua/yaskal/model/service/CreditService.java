@@ -10,6 +10,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * This service used for working with credit accounts instance.
+ *
+ * @author Nazar Yaskal
+ */
 public class CreditService {
     private DAOFactory daoFactory;
 

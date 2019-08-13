@@ -6,6 +6,11 @@ import ua.yaskal.model.entity.Transaction;
 
 import java.util.List;
 
+/**
+ * This service used for working with transactions instance.
+ *
+ * @author Nazar Yaskal
+ */
 public class TransactionService {
     private DAOFactory daoFactory;
 

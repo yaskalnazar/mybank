@@ -3,6 +3,15 @@ package ua.yaskal.model.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * This realization of abstract class {@link Account} that implements Deposit Policy.
+ * In such entity some part of the money is blocked for a certain period after which it is returned to the balance
+ * with interest, after which you can make a new contribution.
+ * The class has POJO structure.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.entity.Account
+ */
 public class DepositAccount extends Account {
     private BigDecimal depositAmount;
     private BigDecimal depositRate;
@@ -50,6 +59,12 @@ public class DepositAccount extends Account {
         this.depositEndDate = depositEndDate;
     }
 
+    /**
+     * This class realize pattern Builder for class {@link DepositAccount}
+     *
+     * @author Nazar Yaskal
+     * @see DepositAccount
+     */
     public static class DepositAccountBuilder {
         private long id;
         private BigDecimal balance;

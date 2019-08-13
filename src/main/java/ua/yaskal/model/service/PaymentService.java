@@ -5,6 +5,12 @@ import ua.yaskal.model.entity.Payment;
 
 import java.util.List;
 
+
+/**
+ * This service used for working with payments instance.
+ *
+ * @author Nazar Yaskal
+ */
 public class PaymentService {
     private DAOFactory daoFactory;
 

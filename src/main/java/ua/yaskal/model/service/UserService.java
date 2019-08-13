@@ -11,6 +11,11 @@ import ua.yaskal.model.exceptions.WrongPasswordException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This service used for working with user instance.
+ *
+ * @author Nazar Yaskal
+ */
 public class UserService {
     private DAOFactory daoFactory;
 

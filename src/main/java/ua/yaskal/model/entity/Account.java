@@ -3,6 +3,13 @@ package ua.yaskal.model.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * This entity is general template for all accounts.
+ *
+ * @author Nazar Yaskal
+ * @see CreditAccount
+ * @see DepositAccount
+ */
 public abstract class Account {
     private long id;
     private BigDecimal balance;

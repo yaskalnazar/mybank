@@ -2,7 +2,11 @@ package ua.yaskal.model.dto;
 
 import java.util.List;
 
-
+/**
+ * This DTO used for implementation of pagination
+ *
+ * @author Nazar Yaskal
+ */
 public class PaginationDTO<T> {
     private List<T> items;
     private long itemsPerPage;

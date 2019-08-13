@@ -3,6 +3,15 @@ package ua.yaskal.model.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * This realization of abstract class {@link Account} that implements Credit Policy.
+ * In such entity possible negative balance, but the absolute value of it must be not greater than credit limit.
+ * Every month interest is accrued on the loan depending on credit limit and credit rate.
+ * The class has POJO structure.
+ *
+ * @author Nazar Yaskal
+ * @see ua.yaskal.model.entity.Account
+ */
 public class CreditAccount extends Account {
     private BigDecimal creditRate;
     private BigDecimal creditLimit;
@@ -22,7 +31,7 @@ public class CreditAccount extends Account {
         this.accruedInterest = accruedInterest;
     }
 
-    public static CreditAccountBuilder getBuilder(){
+    public static CreditAccountBuilder getBuilder() {
         return new CreditAccountBuilder();
     }
 
@@ -58,6 +67,12 @@ public class CreditAccount extends Account {
         super.setAccountStatus(accountStatus);
     }
 
+    /**
+     * This class realize pattern Builder for class {@link CreditAccount}
+     *
+     * @author Nazar Yaskal
+     * @see CreditAccount
+     */
     public static class CreditAccountBuilder {
         private long id;
         private BigDecimal balance;

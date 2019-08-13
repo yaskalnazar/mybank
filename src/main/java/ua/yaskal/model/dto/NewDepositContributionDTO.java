@@ -4,6 +4,14 @@ import ua.yaskal.model.entity.Transaction;
 
 import java.math.BigDecimal;
 
+/**
+ * This DTO used for USER creating new deposit contribution on already existing deposit account.
+ *
+ * @param transaction contains information for transfer deposit amount to the system account
+ *                    from selected user account
+ * @author Nazar Yaskal
+ * @see ua.yaskal.controller.command.user.MakeNewContributionCommand
+ */
 public class NewDepositContributionDTO {
     private BigDecimal depositAmount;
     private BigDecimal depositRate;

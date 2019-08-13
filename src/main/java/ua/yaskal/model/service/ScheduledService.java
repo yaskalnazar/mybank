@@ -16,6 +16,11 @@ import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This service makes scheduled tasks in system.
+ *
+ * @author Nazar Yaskal
+ */
 public class ScheduledService {
     private final static Logger logger = Logger.getLogger(ScheduledService.class);
     private static final long NUMBER_YEARS_OF_CARD_VALID = 5;
@@ -23,6 +28,12 @@ public class ScheduledService {
     private final ScheduledExecutorService scheduledExecutorService;
     private final DAOFactory daoFactory;
 
+    /**
+     * Constructor used to create the entity and register all active accounts in the system for periodic tasks
+     *
+     * @param scheduledExecutorService
+     * @param daoFactory
+     */
     public ScheduledService(ScheduledExecutorService scheduledExecutorService, DAOFactory daoFactory) {
         this.scheduledExecutorService = scheduledExecutorService;
         this.daoFactory = daoFactory;
@@ -30,6 +41,12 @@ public class ScheduledService {
         scheduleAccounts(daoFactory.createAccountDAO().getAllByStatus(Account.AccountStatus.ACTIVE));
     }
 
+
+    /**
+     * Register accounts for periodic tasks.
+     *
+     * @param accounts Targeted accounts.
+     */
     public void scheduleAccounts(List<Account> accounts) {
         for (Account i : accounts) {
             if (i instanceof DepositAccount)
@@ -40,6 +57,11 @@ public class ScheduledService {
         accounts.forEach(this::setAccountClosing);
     }
 
+    /**
+     * Register deposit for processing depositEnd.
+     *
+     * @param deposit Targeted deposit.
+     */
     private void setDepositEnd(DepositAccount deposit) {
         if (deposit.getDepositAmount().compareTo(BigDecimal.ZERO) == 0) {
             return;
@@ -60,6 +82,11 @@ public class ScheduledService {
 
     }
 
+    /**
+     * Register credit for adding accrual interest every first day of month.
+     *
+     * @param credit Targeted credit.
+     */
     private void setCreditInterestAccrual(CreditAccount credit) {
         if (credit.getCreditLimit().compareTo(BigDecimal.ZERO) == 0) {
             return;
@@ -71,17 +98,32 @@ public class ScheduledService {
 
     }
 
-
+    /**
+     * Register account for closing and automatic reissue
+     *
+     * @param account Targeted account.
+     */
     private void setAccountClosing(Account account) {
         scheduledExecutorService.schedule(() -> reissueAccount(account),
                 calculateDaysDelay(account.getClosingDate()),
                 TimeUnit.DAYS);
     }
 
+    /**
+     * Calculate days from now to endDate
+     *
+     * @param endDate
+     */
     private long calculateDaysDelay(LocalDate endDate) {
         return ChronoUnit.DAYS.between(LocalDate.now(), endDate);
     }
 
+
+    /**
+     * Determines the type of account and causes a restart reissue
+     *
+     * @param account Targeted account.
+     */
     private Account reissueAccount(Account account) {
         if (account instanceof DepositAccount) {
             return reissueDeposit((DepositAccount) account);
@@ -93,7 +135,7 @@ public class ScheduledService {
     }
 
     private DepositAccount reissueDeposit(DepositAccount oldDeposit) {
-        logger.debug("Reissue deposit id: "+oldDeposit.getId());
+        logger.debug("Reissue deposit id: " + oldDeposit.getId());
         DepositAccount newDeposit = DepositAccount.getBuilder()
                 .setClosingDate(LocalDate.now().plusYears(NUMBER_YEARS_OF_CARD_VALID))
                 .setAccountStatus(Account.AccountStatus.ACTIVE)
@@ -117,7 +159,7 @@ public class ScheduledService {
     }
 
     private CreditAccount reissueCredit(CreditAccount oldCredit) {
-        logger.debug("Reissue credit id:"+oldCredit.getId());
+        logger.debug("Reissue credit id:" + oldCredit.getId());
         CreditAccount newCredit = CreditAccount.getBuilder()
                 .setClosingDate(LocalDate.now().plusYears(NUMBER_YEARS_OF_CARD_VALID))
                 .setAccountStatus(Account.AccountStatus.ACTIVE)
@@ -144,7 +186,7 @@ public class ScheduledService {
 
 
     private void transferBalance(Account oldAccount, Account newAccount) {
-        logger.debug("Transfer balance from "+oldAccount.getId()+" to "+newAccount.getId());
+        logger.debug("Transfer balance from " + oldAccount.getId() + " to " + newAccount.getId());
         daoFactory.createTransactionDAO().addNew(Transaction.getBuilder()
                 .setDate(LocalDateTime.now())
                 .setTransactionAmount(oldAccount.getBalance())
