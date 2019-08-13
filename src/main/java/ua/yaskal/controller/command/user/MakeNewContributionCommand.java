@@ -3,10 +3,11 @@ package ua.yaskal.controller.command.user;
 import org.apache.log4j.Logger;
 import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.util.ValidationUtil;
+import ua.yaskal.model.dto.NewDepositContributionDTO;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.message.key.AccessDeniedException;
 import ua.yaskal.model.service.AccountService;
-import ua.yaskal.model.service.CreditService;
+import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,33 +15,33 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
-public class PayAccruedInterestCommand implements Command {
-    private final static Logger logger = Logger.getLogger(PayAccruedInterestCommand.class);
+public class MakeNewContributionCommand implements Command {
+    private final static Logger logger = Logger.getLogger(MakeNewContributionCommand.class);
     private final static long WORKAROUND_ACCOUNT_ID = 12;
     private ValidationUtil validationUtil;
     private AccountService accountService;
     private TransactionService transactionService;
-    private CreditService creditService;
+    private DepositService depositService;
 
-    public PayAccruedInterestCommand(ValidationUtil validationUtil, AccountService accountService, TransactionService transactionService, CreditService creditService) {
+    public MakeNewContributionCommand(ValidationUtil validationUtil, AccountService accountService, TransactionService transactionService, DepositService depositService) {
         this.validationUtil = validationUtil;
         this.accountService = accountService;
         this.transactionService = transactionService;
-        this.creditService = creditService;
+        this.depositService = depositService;
     }
 
     @Override
     public String execute(HttpServletRequest request) {
-
-
-        if (validationUtil.isContains(request, Arrays.asList("senderAccountId", "receiverAccountId", "accruedInterestAmount")) &&
-                validationUtil.isRequestValid(request, Arrays.asList("senderAccountId", "receiverAccountId", "accruedInterestAmount"))){
-
+        if (validationUtil.isContains(request, Arrays.asList("senderAccountId", "receiverAccountId",
+                "depositAmount", "depositRate", "monthsAmount")) &&
+                validationUtil.isRequestValid(request, Arrays.asList("senderAccountId", "receiverAccountId",
+                        "depositAmount", "depositRate", "monthsAmount"))) {
             long senderAccountId = Long.parseLong(request.getParameter("senderAccountId"));
-            long receiverAccountId = Long.parseLong(request.getParameter("receiverAccountId"));
-            BigDecimal amount = new BigDecimal(request.getParameter("accruedInterestAmount"));
+            long depositId = Long.parseLong(request.getParameter("receiverAccountId"));
+            BigDecimal depositAmount = new BigDecimal(request.getParameter("depositAmount"));
+            BigDecimal depositRate = new BigDecimal(request.getParameter("depositRate"));
+            int monthsAmount = Integer.parseInt(request.getParameter("monthsAmount"));
             long userId = (long) request.getSession().getAttribute("userId");
-
 
             if (accountService.getById(senderAccountId).getOwnerId() != userId) {
                 logger.error("User " + userId + " attempt to access account" + senderAccountId + " without permission");
@@ -49,18 +50,18 @@ public class PayAccruedInterestCommand implements Command {
 
             Transaction transaction = Transaction.getBuilder()
                     .setSenderAccount(senderAccountId)
-                    .setTransactionAmount(amount)
+                    .setTransactionAmount(depositAmount)
                     .setReceiverAccount(WORKAROUND_ACCOUNT_ID)
                     .setDate(LocalDateTime.now())
                     .build();
 
-            logger.debug("Trying to pay accrued interest for account "+ receiverAccountId);
-            transactionService.makeNewTransaction(transaction);
-            creditService.reduceAccruedInterestById(receiverAccountId, amount);
+            NewDepositContributionDTO contributionDTO = new NewDepositContributionDTO(depositAmount, depositRate,
+                    monthsAmount, depositId, transaction);
 
+            logger.debug("Trying to pay new deposit for account " + depositId);
+            depositService.newDepositContribution(contributionDTO);
         }
-
-        return "redirect:/mybank/user/account/credit_page?id="+request.getParameter("receiverAccountId");
+        return "redirect:/mybank/user/account/deposit_page?id="+request.getParameter("receiverAccountId");
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {
@@ -75,7 +76,7 @@ public class PayAccruedInterestCommand implements Command {
         this.transactionService = transactionService;
     }
 
-    public void setCreditService(CreditService creditService) {
-        this.creditService = creditService;
+    public void setDepositService(DepositService depositService) {
+        this.depositService = depositService;
     }
 }

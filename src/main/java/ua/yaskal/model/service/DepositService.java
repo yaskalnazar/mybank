@@ -2,6 +2,7 @@ package ua.yaskal.model.service;
 
 import ua.yaskal.model.dao.DAOFactory;
 import ua.yaskal.model.dto.DepositDTO;
+import ua.yaskal.model.dto.NewDepositContributionDTO;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.DepositAccount;
@@ -55,5 +56,9 @@ public class DepositService {
 
     public void setDaoFactory(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
+    }
+
+    public void newDepositContribution(NewDepositContributionDTO contributionDTO) {
+        daoFactory.createDepositDAO().newDepositContribution(contributionDTO);
     }
 }

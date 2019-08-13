@@ -54,7 +54,7 @@ public class ScheduledService {
                             .build());
                     daoFactory.createDepositDAO().updateDepositRate(deposit.getId(), BigDecimal.ZERO);
                     daoFactory.createDepositDAO().updateDepositAmount(deposit.getId(), BigDecimal.ZERO);
-                    deposit.setDepositEndDate(deposit.getClosingDate().plusDays(1));
+                    //deposit.setDepositEndDate(deposit.getClosingDate().plusDays(1));
                 }, calculateDaysDelay(deposit.getDepositEndDate()),
                 TimeUnit.DAYS);
 

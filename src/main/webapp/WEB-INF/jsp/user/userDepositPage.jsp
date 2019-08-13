@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="messages"/>
@@ -17,12 +18,17 @@
         <div class="col-md-8 col-md-offset-2">
             <h3><fmt:message key="page.message.main.info"/>:</h3>
             <jsp:include page="../parts/depositMainInfo.jsp"/>
+            <c:if test="${isDepositInactive}">
+            <button type="button" class="btn btn-success ml-3" id="myBtn2">
+                    <fmt:message key="page.message.make.new.contribution"/>
+                </button>
+                <jsp:include page="../popUp/makeNewDepositContribution.jsp"/>
+            </c:if>
         </div>
         <div class="col-md-8 col-md-offset-2">
             <h3><fmt:message key="page.message.transactions"/>:</h3>
             <c:set var="transactions" value="${page.getItems()}" scope="request"/>
             <jsp:include page="../parts/transactionsTable.jsp"/>
-
 
             <nav aria-label="pagination">
                 <ul class="pagination justify-content-center">

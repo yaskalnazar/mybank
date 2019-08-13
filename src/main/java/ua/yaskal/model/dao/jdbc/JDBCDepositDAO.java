@@ -1,17 +1,25 @@
 package ua.yaskal.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
+import ua.yaskal.model.dao.DAOFactory;
 import ua.yaskal.model.dao.DepositDAO;
+import ua.yaskal.model.dao.TransactionDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.dto.NewDepositContributionDTO;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.DepositAccount;
+import ua.yaskal.model.entity.Transaction;
+import ua.yaskal.model.exceptions.message.key.DepositAlreadyActiveException;
+import ua.yaskal.model.exceptions.message.key.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 
 import java.math.BigDecimal;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,21 +30,23 @@ public class JDBCDepositDAO implements DepositDAO {
     private Connection connection;
     private ResourceBundle sqlRequestsBundle;
     private MapperFactory mapperFactory;
+    private TransactionDAO transactionDAO;
 
 
-    public JDBCDepositDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory) {
+    public JDBCDepositDAO(Connection connection, ResourceBundle sqlRequestsBundle, MapperFactory mapperFactory, TransactionDAO transactionDAO) {
         this.connection = connection;
         this.sqlRequestsBundle = sqlRequestsBundle;
         this.mapperFactory = mapperFactory;
+        this.transactionDAO = transactionDAO;
     }
 
     @Override
     public DepositAccount getById(long id) {
-        try (PreparedStatement getUserStatement = connection.prepareStatement(sqlRequestsBundle.getString("deposit.select.by.id"))) {
-            getUserStatement.setLong(1, id);
+        try (PreparedStatement getDepositStatement = connection.prepareStatement(sqlRequestsBundle.getString("deposit.select.by.id"))) {
+            getDepositStatement.setLong(1, id);
 
-            logger.debug("Select deposit " + getUserStatement);
-            ResultSet resultSet = getUserStatement.executeQuery();
+            logger.debug("Select deposit " + getDepositStatement);
+            ResultSet resultSet = getDepositStatement.executeQuery();
             if (resultSet.next()) {
                 return mapperFactory.getDepositMapper().mapToObject(resultSet);
             } else {
@@ -56,7 +66,7 @@ public class JDBCDepositDAO implements DepositDAO {
                 sqlRequestsBundle.getString("deposit.select.all"))) {
 
 
-            logger.debug("Getting all deposits"+statement);
+            logger.debug("Getting all deposits" + statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
@@ -82,7 +92,7 @@ public class JDBCDepositDAO implements DepositDAO {
             statement.setObject(8, item.getDepositEndDate());
             statement.setLong(9, item.getId());
 
-            logger.debug("Trying update deposit"+statement);
+            logger.debug("Trying update deposit" + statement);
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Deposit was not updated: ", e);
@@ -132,7 +142,7 @@ public class JDBCDepositDAO implements DepositDAO {
                 sqlRequestsBundle.getString("deposit.select.all.by.owner.id"))) {
             statement.setLong(1, ownerId);
 
-            logger.debug("Getting all user deposits"+statement);
+            logger.debug("Getting all user deposits" + statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
@@ -152,7 +162,7 @@ public class JDBCDepositDAO implements DepositDAO {
             statement.setLong(1, ownerId);
             statement.setString(2, status.name());
 
-            logger.debug("Getting all user deposits"+statement);
+            logger.debug("Getting all user deposits" + statement);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 depositAccounts.add(mapperFactory.getDepositMapper().mapToObject(resultSet));
@@ -172,7 +182,7 @@ public class JDBCDepositDAO implements DepositDAO {
             statement.setLong(2, id);
 
 
-            logger.debug("Updating deposit amount"+statement);
+            logger.debug("Updating deposit amount" + statement);
             statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Can not update deposit amount", e);
@@ -237,7 +247,7 @@ public class JDBCDepositDAO implements DepositDAO {
                 getDeposits.setLong(1, itemsPerPage);
                 getDeposits.setLong(2, offset);
 
-                logger.debug("Trying increase get deposits page "+getDeposits);
+                logger.debug("Trying increase get deposits page " + getDeposits);
                 resultSet = getDeposits.executeQuery();
 
                 List<DepositAccount> depositAccounts = new ArrayList<>();
@@ -258,6 +268,54 @@ public class JDBCDepositDAO implements DepositDAO {
                 connection.rollback();
 
                 logger.error(e);
+                throw new RuntimeException(e);
+            }
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void newDepositContribution(NewDepositContributionDTO contributionDTO) {
+        try {
+            connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement getDepositStatement = connection.prepareStatement(
+                    sqlRequestsBundle.getString("deposit.select.by.id"));
+                ) {
+
+                getDepositStatement.setLong(1, contributionDTO.getDepositId());
+
+
+                logger.debug("Select deposit " + getDepositStatement);
+                ResultSet resultSet = getDepositStatement.executeQuery();
+                DepositAccount depositAccount;
+                if (resultSet.next()) {
+                    depositAccount = mapperFactory.getDepositMapper().mapToObject(resultSet);
+                } else {
+                    logger.debug("No deposit with id:" + contributionDTO.getDepositId());
+                    throw new NoSuchAccountException();
+                }
+
+                if (depositAccount.getDepositEndDate().isAfter(LocalDate.now())) {
+                    connection.rollback();
+                    throw new DepositAlreadyActiveException();
+                }
+
+                transactionDAO.addNew(contributionDTO.getTransaction());
+
+                depositAccount.setDepositEndDate(LocalDate.now().plusMonths(contributionDTO.getMonthsAmount()));
+                depositAccount.setDepositAmount(contributionDTO.getDepositAmount());
+                depositAccount.setDepositRate(contributionDTO.getDepositRate());
+
+                update(depositAccount);
+                connection.commit();
+            } catch (SQLException e) {
+                connection.rollback();
+                logger.error("New deposit contribution was not updated", e);
                 throw new RuntimeException(e);
             }
 

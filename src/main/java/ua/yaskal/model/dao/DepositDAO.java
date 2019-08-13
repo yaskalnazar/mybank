@@ -1,5 +1,6 @@
 package ua.yaskal.model.dao;
 
+import ua.yaskal.model.dto.NewDepositContributionDTO;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
@@ -14,6 +15,6 @@ public interface DepositDAO extends DAO<DepositAccount> {
     void updateDepositAmount(long id, BigDecimal amount);
     void updateDepositRate(long id, BigDecimal rate);
     PaginationDTO<DepositAccount> getAllPage(long itemsPerPage, long currentPage);
-
+    void newDepositContribution(NewDepositContributionDTO contributionDTO);
 
 }

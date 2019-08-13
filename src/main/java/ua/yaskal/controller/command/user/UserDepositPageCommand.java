@@ -6,14 +6,17 @@ import ua.yaskal.controller.command.Command;
 import ua.yaskal.controller.command.admin.GetUserPageCommand;
 import ua.yaskal.controller.util.ValidationUtil;
 import ua.yaskal.model.dto.PaginationDTO;
+import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.DepositAccount;
 import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.message.key.AccessDeniedException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
+import ua.yaskal.model.service.AccountService;
 import ua.yaskal.model.service.DepositService;
 import ua.yaskal.model.service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,11 +27,13 @@ public class UserDepositPageCommand implements Command {
     private ValidationUtil validationUtil;
     private DepositService depositService;
     private TransactionService transactionService;
+    private AccountService accountService;
 
-    public UserDepositPageCommand(ValidationUtil validationUtil, DepositService depositService, TransactionService transactionService) {
+    public UserDepositPageCommand(ValidationUtil validationUtil, DepositService depositService, TransactionService transactionService, AccountService accountService) {
         this.validationUtil = validationUtil;
         this.depositService = depositService;
         this.transactionService = transactionService;
+        this.accountService = accountService;
     }
 
     @Override
@@ -57,6 +62,9 @@ public class UserDepositPageCommand implements Command {
 
         request.setAttribute("page", getPage(request, depositId));
         request.setAttribute("deposit", depositAccount);
+        request.setAttribute("activeUserAccounts",
+                accountService.getAllByOwnerIdAndStatus(userId, Account.AccountStatus.ACTIVE));
+        request.setAttribute("isDepositInactive", depositAccount.getDepositEndDate().isBefore(LocalDate.now()));
         return JspPath.USER_DEPOSIT_PAGE;
     }
 
@@ -86,5 +94,9 @@ public class UserDepositPageCommand implements Command {
 
     public void setTransactionService(TransactionService transactionService) {
         this.transactionService = transactionService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
     }
 }

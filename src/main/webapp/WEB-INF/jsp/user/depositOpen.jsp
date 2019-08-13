@@ -47,7 +47,7 @@
                     </p>
                     <label><fmt:message key="page.message.deposit.rate"/>
                         <input class="form-control" id="depositRate" type="number" name="depositRate" min="0"
-                               value="0.015"  readonly>
+                               value="0.015" readonly>
                     </label>
                     <label><fmt:message key="page.message.months.amount"/>
                         <select class="form-control" name="monthsAmount" id="monthsAmount" oninput="change()">
