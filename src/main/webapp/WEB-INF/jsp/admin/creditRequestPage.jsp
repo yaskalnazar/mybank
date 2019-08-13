@@ -17,8 +17,8 @@
         <div class="col-md-8 col-md-offset-2">
             <h3><fmt:message key="page.message.credit.request.info"/>:</h3>
             <jsp:include page="../parts/creditRequestMainInfo.jsp"/>
-                <c:set var="user" value="${applicant}" scope="request"/>
-                <jsp:include page="../parts/userMainInfo.jsp"/>
+            <c:set var="user" value="${applicant}" scope="request"/>
+            <jsp:include page="../parts/userMainInfo.jsp"/>
 
 
         </div>
@@ -47,6 +47,6 @@
         </div>
     </div>
 </div>
-</div>
+<jsp:include page="../parts/footer.jsp"/>
 </body>
 </html>
