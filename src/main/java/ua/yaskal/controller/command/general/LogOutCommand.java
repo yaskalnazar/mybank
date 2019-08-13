@@ -26,7 +26,7 @@ public class LogOutCommand implements Command {
         String locale = (String) request.getSession().getAttribute("locale");
         request.getSession().invalidate();
         request.getSession().setAttribute("locale", locale);
-        return "redirect:/mybank/guest/login";
+        return "redirect/mybank/api/guest/login";
 
     }
 }

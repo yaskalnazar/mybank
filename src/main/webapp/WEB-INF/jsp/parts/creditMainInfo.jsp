@@ -23,7 +23,7 @@
             <th><fmt:message key="page.message.owner.id"/>:</th>
             <td>
                 <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                    <a href="${pageContext.request.contextPath}/admin/user_page?id=${credit.getOwnerId()}">
+                    <a href="${pageContext.request.contextPath}/api/admin/user_page?id=${credit.getOwnerId()}">
                             ${credit.getOwnerId()}
                     </a>
                 </c:if>

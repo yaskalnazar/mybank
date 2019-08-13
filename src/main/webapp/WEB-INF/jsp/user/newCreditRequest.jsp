@@ -7,8 +7,7 @@
 <html>
 <head>
     <title><fmt:message key="page.message.credit.open"/></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
     <script>
         function change() {
             var temp = document.getElementById("creditLimit").value;
@@ -51,7 +50,7 @@
                             <h4><fmt:message key="page.message.credit.request.info"/>:</h4>
                             <c:set var="creditRequest" value="${creditRequest}" scope="request"/>
                             <jsp:include page="../parts/creditRequestMainInfo.jsp"/>
-                            <form method="post" name="form"  action="${pageContext.request.contextPath}/user/credit_request/close?id=${creditRequest.getId()}" autocomplete="off">
+                            <form method="post" name="form"  action="${pageContext.request.contextPath}/api/user/credit_request/close?id=${creditRequest.getId()}" autocomplete="off">
                                 <button name="answer" value="rejected" type="submit" class="btn btn-danger" style="margin-top:30px">
                                     <fmt:message key="page.message.cancel"/>
                                 </button>
@@ -86,7 +85,7 @@
                         <p>
                             <label><fmt:message key="page.message.credit.limit"/>:
                                 <input id="creditLimit" class="form-control" type="number" min="1000"
-                                       name="creditLimit" required oninput="change()"></label>
+                                       name="creditLimit" required="required" oninput="change()"></label>
                         </p>
                         <label><fmt:message key="page.message.credit.rate"/>:
                             <input class="form-control" id="creditRate" type="number" name="creditRate" min="0"

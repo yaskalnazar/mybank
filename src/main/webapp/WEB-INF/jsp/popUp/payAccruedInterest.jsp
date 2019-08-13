@@ -6,8 +6,8 @@
 
 
 <div class="container">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="<c:url value='/bootstrap/js/jquery-3.4.1.min.js' />" rel="stylesheet"></script>
+    <script src="<c:url value='/bootstrap/js/bootstrap.min.js' />" rel="stylesheet"></script>
     <div class="modal fade" id="myModal2" role="dialog">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
@@ -15,7 +15,7 @@
                     <h4 class="modal-title"><fmt:message key="page.message.pay"/></h4>
                 </div>
                 <form method="post" name="form" autocomplete="off"
-                      action="${pageContext.request.contextPath}/user/account/credit/pay_accrued_interest">
+                      action="${pageContext.request.contextPath}/api/user/account/credit/pay_accrued_interest">
                     <div class="modal-body">
                         <div class="form-group">
                             <label><fmt:message key="page.message.from.the.account"/>:</label>

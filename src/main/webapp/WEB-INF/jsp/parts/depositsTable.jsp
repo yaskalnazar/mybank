@@ -23,12 +23,12 @@
             <c:forEach items="${deposits}" var="deposit">
                 <tr>
                     <td><c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                        <a href="${pageContext.request.contextPath}/admin/account/deposit_page?id=${deposit.getId()}">
+                        <a href="${pageContext.request.contextPath}/api/admin/account/deposit_page?id=${deposit.getId()}">
                                 ${deposit.getId()}
                         </a>
                     </c:if>
                         <c:if test="${sessionScope.get('user').getRole() == 'USER'}">
-                            <a href="${pageContext.request.contextPath}/user/account/deposit_page?id=${deposit.getId()}">
+                            <a href="${pageContext.request.contextPath}/api/user/account/deposit_page?id=${deposit.getId()}">
                                     ${deposit.getId()}
                             </a>
                         </c:if></td>
@@ -36,7 +36,7 @@
                     <td>${deposit.getClosingDate()}</td>
                     <td>
                         <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                            <a href="${pageContext.request.contextPath}/admin/user_page?id=${deposit.getOwnerId()}">
+                            <a href="${pageContext.request.contextPath}/api/admin/user_page?id=${deposit.getOwnerId()}">
                                     ${deposit.getOwnerId()}
                             </a>
                         </c:if>

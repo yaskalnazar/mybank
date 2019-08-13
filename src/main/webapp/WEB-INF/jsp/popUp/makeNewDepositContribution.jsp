@@ -6,8 +6,11 @@
 
 
 <div class="container">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="<c:url value='/bootstrap/js/jquery-3.4.1.min.js' />" rel="stylesheet"></script>
+    <script src="<c:url value='/bootstrap/js/bootstrap.min.js' />" rel="stylesheet"></script>
+
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>--%>
     <script>
         function change() {
             var temp = document.getElementById("monthsAmount").value;
@@ -21,7 +24,7 @@
                     <h4 class="modal-title"><fmt:message key="page.message.make.new.contribution"/></h4>
                 </div>
                 <form method="post" name="form" autocomplete="off"
-                      action="${pageContext.request.contextPath}/user/account/deposit/make_new_contribution">
+                      action="${pageContext.request.contextPath}/api/user/account/deposit/make_new_contribution">
                     <div class="modal-body">
                         <div class="form-group">
                             <label><fmt:message key="page.message.from.the.account"/>:</label>

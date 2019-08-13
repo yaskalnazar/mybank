@@ -138,7 +138,8 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        path = path.replaceAll(".*/mybank/", "");
+
+        path = path.replaceAll(".*/mybank/api/", "");
         Command command = commands.getOrDefault(path,
                 (r) -> JspPath.ERROR404);
         System.out.println(command.getClass().getName());

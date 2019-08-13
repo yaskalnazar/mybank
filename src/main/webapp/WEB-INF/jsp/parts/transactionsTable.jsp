@@ -24,7 +24,7 @@
                     <td>${transaction.getDate()}</td>
                     <td>
                         <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                            <a href="${pageContext.request.contextPath}/admin/user_page?id=${transaction.getSenderAccountId()}">
+                            <a href="${pageContext.request.contextPath}/api/admin/user_page?id=${transaction.getSenderAccountId()}">
                                     ${transaction.getSenderAccountId()}
                             </a>
                         </c:if>
@@ -34,7 +34,7 @@
                     </td>
                     <td>
                         <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                            <a href="${pageContext.request.contextPath}/admin/user_page?id=${transaction.getReceiverAccountId()}">
+                            <a href="${pageContext.request.contextPath}/api/admin/user_page?id=${transaction.getReceiverAccountId()}">
                                     ${transaction.getReceiverAccountId()}
                             </a>
                         </c:if>

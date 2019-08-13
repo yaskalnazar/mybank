@@ -25,12 +25,12 @@
                 <tr>
                     <td>
                         <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                            <a href="${pageContext.request.contextPath}/admin/account/credit_page?id=${credit.getId()}">
+                            <a href="${pageContext.request.contextPath}/api/admin/account/credit_page?id=${credit.getId()}">
                                     ${credit.getId()}
                             </a>
                         </c:if>
                         <c:if test="${sessionScope.get('user').getRole() == 'USER'}">
-                            <a href="${pageContext.request.contextPath}/user/account/credit_page?id=${credit.getId()}">
+                            <a href="${pageContext.request.contextPath}/api/user/account/credit_page?id=${credit.getId()}">
                                     ${credit.getId()}
                             </a>
                         </c:if>
@@ -39,7 +39,7 @@
                     <td>${credit.getClosingDate()}</td>
                     <td>
                         <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                            <a href="${pageContext.request.contextPath}/admin/user_page?id=${credit.getOwnerId()}">
+                            <a href="${pageContext.request.contextPath}/api/admin/user_page?id=${credit.getOwnerId()}">
                                     ${credit.getOwnerId()}
                             </a>
                         </c:if>

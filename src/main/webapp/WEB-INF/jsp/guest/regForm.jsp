@@ -7,8 +7,7 @@
 <html>
 <head>
     <title><fmt:message key="page.message.registration"/></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="../parts/guestHeader.jsp"/>
@@ -17,7 +16,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h2 class="page-header"><fmt:message key="page.message.registration"/></h2>
-            <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/guest/registration">
+            <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/api/guest/registration">
                 <div class="form-group">
                     <label for="email"><fmt:message key="page.message.email"/></label>
                     <input id="email" class="form-control" required="required"
@@ -84,7 +83,7 @@
                     <fmt:message key="page.message.registration"/>
                 </button>
                 <a class="btn btn-secondary" style="margin-top:30px"
-                   href="${pageContext.request.contextPath}/guest/login" role="button">
+                   href="${pageContext.request.contextPath}/api/guest/login" role="button">
                     <fmt:message key="page.message.login"/>
                 </a>
             </form>

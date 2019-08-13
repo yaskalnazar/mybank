@@ -7,8 +7,8 @@
 <html>
 <head>
     <title><fmt:message key="page.message.all.deposits"/></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
+
 </head>
 <body>
 <jsp:include page="../parts/adminHeader.jsp"/>
@@ -21,19 +21,19 @@
             <ul class="pagination justify-content-center">
                 <li class="page-item ${page.getCurrentPage() == 1 ? 'disabled' : ''}">
                     <a class="page-link"
-                       href="${pageContext.request.contextPath}/admin/account/all/deposits?currentPage=${page.getCurrentPage() - 1}">
+                       href="${pageContext.request.contextPath}/api/admin/account/all/deposits?currentPage=${page.getCurrentPage() - 1}">
                         <span>&laquo;</span>
                     </a>
                 </li>
                 <c:forEach var="i" begin="1" end="${page.getPagesNumber()}">
                     <li class="page-item ${page.getCurrentPage() eq i ? 'active' : ''}">
                         <a class="page-link"
-                           href="${pageContext.request.contextPath}/admin/account/all/deposits?currentPage=${i}">${i}</a>
+                           href="${pageContext.request.contextPath}/api/admin/account/all/deposits?currentPage=${i}">${i}</a>
                     </li>
                 </c:forEach>
                 <li class="page-item ${page.getCurrentPage() == page.getPagesNumber() ? 'disabled' : ''}">
                     <a class="page-link"
-                       href="${pageContext.request.contextPath}/admin/account/all/deposits?currentPage=${page.getCurrentPage() + 1}">
+                       href="${pageContext.request.contextPath}/api/admin/account/all/deposits?currentPage=${page.getCurrentPage() + 1}">
                         <span>&raquo;</span>
                     </a>
                 </li>

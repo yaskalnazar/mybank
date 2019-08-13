@@ -7,8 +7,7 @@
 <html>
 <head>
     <title><fmt:message key="page.message.make.transaction"/></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
 
 </head>
 <body>
@@ -44,13 +43,13 @@
                     </div>
                     <div class="form-group">
                         <label for="receiverAccountId"><fmt:message key="page.message.recipients.card.id"/>:</label>
-                        <input class="form-control" type="number" min="0"
+                        <input class="form-control" type="number" min="0" required="required"
                                name="receiverAccountId" id="receiverAccountId">
                     </div>
                     <div class="form-group">
                         <label for="amount"><fmt:message key="page.message.amount"/>:</label>
 
-                        <input class="form-control" type="number" step="0.01" min="0"
+                        <input class="form-control" type="number" step="0.01" min="0" required="required"
                                name="amount" id="amount">
                     </div>
                     <div class="form-group">

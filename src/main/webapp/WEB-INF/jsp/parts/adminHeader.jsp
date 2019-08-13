@@ -9,29 +9,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">
+                <a class="nav-link" href="${pageContext.request.contextPath}/api/admin/home">
                     <fmt:message key="page.message.home"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/all_users">
+                <a class="nav-link" href="${pageContext.request.contextPath}/api/admin/all_users">
                     <fmt:message key="page.message.all.users"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/account/all/deposits">
+                <a class="nav-link" href="${pageContext.request.contextPath}/api/admin/account/all/deposits">
                     <fmt:message key="page.message.all.deposits"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/account/all/credits">
+                <a class="nav-link" href="${pageContext.request.contextPath}/api/admin/account/all/credits">
                     <fmt:message key="page.message.all.credits"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/credit_request/all">
+                <a class="nav-link" href="${pageContext.request.contextPath}/api/admin/credit_request/all">
                     <fmt:message key="page.message.credit.requests"/></a>
             </li>
         </ul>
     </div>
     <span style="float: right">
-        <button class="btn btn-secondary mr-2" onclick="window.location.href = '${pageContext.request.contextPath}/admin/logout';">
+        <button class="btn btn-secondary mr-2" onclick="window.location.href = '${pageContext.request.contextPath}/api/admin/logout';">
                     <fmt:message key="page.message.logout"/>
          </button>
          <fmt:message key="page.message.language"/>: <a href="?locale=en&${pageContext.request.queryString}">Eng</a> |

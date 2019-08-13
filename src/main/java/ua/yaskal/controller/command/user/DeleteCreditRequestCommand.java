@@ -28,7 +28,7 @@ public class DeleteCreditRequestCommand implements Command {
                 validationUtil.isRequestValid(request, Collections.singletonList("id"))) {
             creditRequestService.delete(Long.parseLong(request.getParameter("id")));
         }
-        return "redirect:/mybank/user/account/credit/open";
+        return "redirect/mybank/api/user/account/credit/open";
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

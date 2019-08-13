@@ -67,7 +67,7 @@ public class PayAccruedInterestCommand implements Command {
 
         }
 
-        return "redirect:/mybank/user/account/credit_page?id="+request.getParameter("receiverAccountId");
+        return "redirect/mybank/api/user/account/credit_page?id="+request.getParameter("receiverAccountId");
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

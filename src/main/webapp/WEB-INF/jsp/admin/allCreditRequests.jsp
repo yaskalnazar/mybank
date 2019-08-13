@@ -7,8 +7,8 @@
 <html>
 <head>
     <title><fmt:message key="page.message.credit.requests"/></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
+
 </head>
 <body>
 <div class="mx-3">
@@ -52,11 +52,11 @@
             <c:forEach items="${creditRequests}" var="creditRequest">
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/credit_request?id=${creditRequest.getId()}">
+                        <a href="${pageContext.request.contextPath}/api/admin/credit_request?id=${creditRequest.getId()}">
                                 ${creditRequest.getId()}
                         </a>
                     </td>
-                    <td><a href="${pageContext.request.contextPath}/admin/user_page?id=${creditRequest.getApplicantId()}">
+                    <td><a href="${pageContext.request.contextPath}/api/admin/user_page?id=${creditRequest.getApplicantId()}">
                             ${creditRequest.getApplicantId()}
                         </a>
                     </td>

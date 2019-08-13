@@ -5,15 +5,10 @@
 <fmt:setBundle basename="messages"/>
 
 
-
-
 <html>
 <head>
     <title><fmt:message key="page.message.login"/></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
 
 </head>
 <body>
@@ -40,7 +35,7 @@
                 </div>
             </c:if>
             <h2 class="page-header"><fmt:message key="page.message.login"/></h2>
-            <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/guest/login">
+            <form method="post" autocomplete="off" action="${pageContext.request.contextPath}/api/guest/login">
                 <div class="form-group">
                     <label for="email"><fmt:message key="page.message.email"/></label>
                     <input id="email" class="form-control" required="required"
@@ -56,7 +51,7 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px">
                     <fmt:message key="page.message.login"/>
                 </button>
-                <a class="btn btn-secondary" style="margin-top:30px" href="${pageContext.request.contextPath}/guest/registration" role="button">
+                <a class="btn btn-secondary" style="margin-top:30px" href="${pageContext.request.contextPath}/api/guest/registration" role="button">
                     <fmt:message key="page.message.registration"/>
                 </a>
             </form>
@@ -64,5 +59,6 @@
     </div>
 </div>
 <jsp:include page="../parts/footer.jsp"/>
+
 </body>
 </html>
