@@ -26,6 +26,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * Front Servlet. Handles request and manage it.
+ *
  * @author Nazar Yaskal
  */
 public class Servlet extends HttpServlet {
@@ -111,7 +112,7 @@ public class Servlet extends HttpServlet {
         commands.put("user/account/credit_page",
                 new UserCreditPageCommand(validationUtil, creditService, transactionService, accountService));
         commands.put("user/account/deposit_page",
-                new UserDepositPageCommand(validationUtil, depositService, transactionService,accountService));
+                new UserDepositPageCommand(validationUtil, depositService, transactionService, accountService));
         commands.put("user/payment/make_new",
                 new MakePaymentCommand(validationUtil, paymentService, accountService));
         commands.put("user/payment/all",

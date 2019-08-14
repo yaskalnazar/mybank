@@ -27,7 +27,7 @@ import java.util.List;
  * @author Nazar Yaskal
  */
 public class UserCreditPageCommand implements Command {
-    private final static Logger logger = Logger.getLogger(GetUserPageCommand.class);
+    private final static Logger logger = Logger.getLogger(UserCreditPageCommand.class);
     private static final long ITEMS_PER_PAGE = 10;
     private ValidationUtil validationUtil;
     private CreditService creditService;

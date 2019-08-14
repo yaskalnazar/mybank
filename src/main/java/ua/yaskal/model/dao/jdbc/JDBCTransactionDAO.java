@@ -102,7 +102,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
                          sqlRequestsBundle.getString("account.increase.balance"));
                  PreparedStatement insertTransaction = connection.prepareStatement(
                          sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
-
+                //TODO chek balance
 
                 getActiveAccount.setLong(1, item.getReceiverAccountId());
                 logger.debug("Select receiver account " + getActiveAccount);

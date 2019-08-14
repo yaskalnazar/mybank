@@ -25,11 +25,11 @@ public class HomeCommand implements Command {
         logger.trace("User " + user.getId() + " with role " + user.getRole() + " redirect to home page");
         switch (user.getRole()) {
             case USER:
-                return "redirect/mybank/api/user/home";
+                return "redirect:/mybank/api/user/home";
             case ADMIN:
-                return "redirect/mybank/api/admin/home";
+                return "redirect:/mybank/api/admin/home";
             default:
-                return "redirect/mybank/api/guest/login";
+                return "redirect:/mybank/api/guest/login";
         }
     }
 }

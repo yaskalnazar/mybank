@@ -22,9 +22,9 @@ import java.util.Arrays;
  * @author Nazar Yaskal
  */
 public class MakePaymentCommand implements Command {
-    ValidationUtil validationUtil;
-    PaymentService paymentService;
-    AccountService accountService;
+    private ValidationUtil validationUtil;
+    private PaymentService paymentService;
+    private AccountService accountService;
 
     public MakePaymentCommand(ValidationUtil validationUtil, PaymentService paymentService, AccountService accountService) {
         this.validationUtil = validationUtil;

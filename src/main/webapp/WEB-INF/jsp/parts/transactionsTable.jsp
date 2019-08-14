@@ -33,14 +33,7 @@
                         </c:if>
                     </td>
                     <td>
-                        <c:if test="${sessionScope.get('user').getRole() == 'ADMIN'}">
-                            <a href="${pageContext.request.contextPath}/api/admin/user_page?id=${transaction.getReceiverAccountId()}">
-                                    ${transaction.getReceiverAccountId()}
-                            </a>
-                        </c:if>
-                        <c:if test="${sessionScope.get('user').getRole() != 'ADMIN'}">
                             ${transaction.getReceiverAccountId()}
-                        </c:if>
                     </td>
                 </tr>
             </c:forEach>

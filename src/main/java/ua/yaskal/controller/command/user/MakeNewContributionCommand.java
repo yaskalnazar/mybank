@@ -70,7 +70,7 @@ public class MakeNewContributionCommand implements Command {
             logger.debug("Trying to pay new deposit for account " + depositId);
             depositService.newDepositContribution(contributionDTO);
         }
-        return "redirect/mybank/api/user/account/deposit_page?id=" + request.getParameter("receiverAccountId");
+        return "redirect:/mybank/api/user/account/deposit_page?id=" + request.getParameter("receiverAccountId");
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

@@ -61,7 +61,7 @@ public class LoginCommand implements Command {
 
 
         signInUser(request, user);
-        return "redirect/mybank/api/home";
+        return "redirect:/mybank/api/home";
 
     }
 
