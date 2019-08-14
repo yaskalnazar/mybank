@@ -18,6 +18,8 @@ import java.util.List;
  */
 public class DepositService {
     private DAOFactory daoFactory;
+    private static final long NUMBER_YEARS_OF_CARD_VALID = 5;
+
 
     public DepositService(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -25,8 +27,8 @@ public class DepositService {
 
     public DepositAccount openNewDeposit(DepositDTO depositDTO) {
         DepositAccount depositAccount = DepositAccount.getBuilder()
-                .setBalance(new BigDecimal(0))
-                .setClosingDate(LocalDate.now().plusYears(5))
+                .setBalance(BigDecimal.ZERO)
+                .setClosingDate(LocalDate.now().plusYears(NUMBER_YEARS_OF_CARD_VALID))
                 .setOwnerId(depositDTO.getOwnerId())
                 .setAccountStatus(Account.AccountStatus.ACTIVE)
                 .setDepositAmount(depositDTO.getDepositAmount())

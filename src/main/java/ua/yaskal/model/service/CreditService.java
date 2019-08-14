@@ -17,6 +17,8 @@ import java.util.List;
  */
 public class CreditService {
     private DAOFactory daoFactory;
+    private static final long NUMBER_YEARS_OF_CARD_VALID = 5;
+
 
     public CreditService(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -32,13 +34,13 @@ public class CreditService {
 
     public CreditAccount addNew(CreditRequest creditRequest) {
         CreditAccount creditAccount = CreditAccount.getBuilder()
-                .setBalance(new BigDecimal(0))
-                .setClosingDate(LocalDate.now().plusYears(5))
+                .setBalance(BigDecimal.ZERO)
+                .setClosingDate(LocalDate.now().plusYears(NUMBER_YEARS_OF_CARD_VALID))
                 .setOwnerId(creditRequest.getApplicantId())
                 .setAccountStatus(Account.AccountStatus.ACTIVE)
                 .setCreditLimit(creditRequest.getCreditLimit())
                 .setCreditRate(creditRequest.getCreditRate())
-                .setAccruedInterest(new BigDecimal(0))
+                .setAccruedInterest(BigDecimal.ZERO)
                 .build();
 
         creditAccount.setId(daoFactory.createCreditDAO().addNew(creditAccount));
