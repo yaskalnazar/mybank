@@ -41,13 +41,10 @@ public class Servlet extends HttpServlet {
     private DepositService depositService;
     private UserService userService;
     private CreditRequestService creditRequestService;
-    private ScheduledService scheduledService;
+    //private ScheduledService scheduledService;
 
 
     public void init(ServletConfig servletConfig) {
-        logger.info("----------------------------------------------------------");
-        logger.info("Starting project");
-        logger.info("----------------------------------------------------------");
 
         daoFactory = DAOFactory.getInstance();
         validationUtil = new ValidationUtil();
@@ -59,11 +56,11 @@ public class Servlet extends HttpServlet {
         userService = new UserService(daoFactory);
         creditRequestService = new CreditRequestService(daoFactory);
 
-        ScheduledThreadPoolExecutor scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
+   /*     ScheduledThreadPoolExecutor scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
         scheduledExecutorService.setRemoveOnCancelPolicy(true);
         scheduledExecutorService.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
         scheduledExecutorService.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
-        scheduledService = new ScheduledService(scheduledExecutorService, daoFactory);
+        scheduledService = new ScheduledService(scheduledExecutorService, daoFactory);*/
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
@@ -88,7 +85,7 @@ public class Servlet extends HttpServlet {
         commands.put("admin/account/all/credits",
                 new AllCreditsCommand(validationUtil, creditService));
         commands.put("admin/credit_request",
-                new CreditRequestCommand(validationUtil, creditRequestService, userService, creditService, scheduledService));
+                new CreditRequestCommand(validationUtil, creditRequestService, userService, creditService));
         commands.put("admin/credit_request/all",
                 new GetCreditRequestsCommand(validationUtil, creditRequestService));
         commands.put("admin/user_page",
@@ -102,7 +99,7 @@ public class Servlet extends HttpServlet {
         commands.put("user/account/all",
                 new AllUsersAccountsCommand(depositService, creditService));
         commands.put("user/account/deposit/open",
-                new DepositOpenCommand(validationUtil, depositService, scheduledService));
+                new DepositOpenCommand(validationUtil, depositService));
         commands.put("user/account/credit/open",
                 new NewCreditRequestCommand(validationUtil, creditRequestService, creditService));
         commands.put("user/account/replenish",

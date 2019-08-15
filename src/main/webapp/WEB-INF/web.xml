@@ -44,7 +44,9 @@
         ua.yaskal.controller.listener.SessionListener
     </listener-class>
   </listener>
-
+  <listener>
+    <listener-class>ua.yaskal.controller.listener.ContextListener</listener-class>
+  </listener>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

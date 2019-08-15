@@ -24,12 +24,10 @@ public class DepositOpenCommand implements Command {
     private final static Logger logger = Logger.getLogger(DepositOpenCommand.class);
     private ValidationUtil validationUtil;
     private DepositService depositService;
-    private ScheduledService scheduledService;
 
-    public DepositOpenCommand(ValidationUtil validationUtil, DepositService depositService, ScheduledService scheduledService) {
+    public DepositOpenCommand(ValidationUtil validationUtil, DepositService depositService) {
         this.validationUtil = validationUtil;
         this.depositService = depositService;
-        this.scheduledService = scheduledService;
     }
 
     @Override
@@ -68,7 +66,6 @@ public class DepositOpenCommand implements Command {
         DepositAccount depositAccount;
         try {
             depositAccount = depositService.openNewDeposit(depositDTO);
-            scheduledService.scheduleAccounts(Collections.singletonList(depositAccount));
 
         } catch (Exception e){
             logger.warn("Deposit open error"+e);
@@ -87,9 +84,5 @@ public class DepositOpenCommand implements Command {
 
     public void setDepositService(DepositService depositService) {
         this.depositService = depositService;
-    }
-
-    public void setScheduledService(ScheduledService scheduledService) {
-        this.scheduledService = scheduledService;
     }
 }

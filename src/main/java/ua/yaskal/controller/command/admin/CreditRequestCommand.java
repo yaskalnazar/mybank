@@ -27,15 +27,12 @@ public class CreditRequestCommand implements Command {
     private CreditRequestService creditRequestService;
     private UserService userService;
     private CreditService creditService;
-    private ScheduledService scheduledService;
 
-    public CreditRequestCommand(ValidationUtil validationUtil, CreditRequestService creditRequestService,
-                                UserService userService, CreditService creditService, ScheduledService scheduledService) {
+    public CreditRequestCommand(ValidationUtil validationUtil, CreditRequestService creditRequestService, UserService userService, CreditService creditService) {
         this.validationUtil = validationUtil;
         this.creditRequestService = creditRequestService;
         this.userService = userService;
         this.creditService = creditService;
-        this.scheduledService = scheduledService;
     }
 
     @Override
@@ -75,7 +72,6 @@ public class CreditRequestCommand implements Command {
             creditRequest.setCreditRequestStatus(CreditRequest.CreditRequestStatus.APPROVED);
 
             CreditAccount creditAccount = creditService.addNew(creditRequest);
-            scheduledService.scheduleAccounts(Collections.singletonList(creditAccount));
 
             logger.debug("Credit account " + creditAccount.getId() + " open");
             request.setAttribute("answer", "approved");
@@ -103,9 +99,5 @@ public class CreditRequestCommand implements Command {
 
     public void setCreditService(CreditService creditService) {
         this.creditService = creditService;
-    }
-
-    public void setScheduledService(ScheduledService scheduledService) {
-        this.scheduledService = scheduledService;
     }
 }
