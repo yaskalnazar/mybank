@@ -13,11 +13,10 @@ import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchTransactionException;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.zip.ZipEntry;
 
 /**
  * Realization of {@link TransactionDAO} using JDBC.
@@ -96,19 +95,36 @@ public class JDBCTransactionDAO implements TransactionDAO {
 
             try (PreparedStatement getActiveAccount = connection.prepareStatement(
                     sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
+                 PreparedStatement getBalanceAndCreditLimit = connection.prepareStatement(
+                         sqlRequestsBundle.getString("account.select.balance.and.credit.limit.by.id"), Statement.RETURN_GENERATED_KEYS);
                  PreparedStatement reduceBalance = connection.prepareStatement(
                          sqlRequestsBundle.getString("account.reduce.balance"));
                  PreparedStatement increaseBalance = connection.prepareStatement(
                          sqlRequestsBundle.getString("account.increase.balance"));
                  PreparedStatement insertTransaction = connection.prepareStatement(
                          sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
-                //TODO chek balance
 
                 getActiveAccount.setLong(1, item.getReceiverAccountId());
                 logger.debug("Select receiver account " + getActiveAccount);
                 ResultSet resultSet = getActiveAccount.executeQuery();
                 if (!resultSet.next()) {
-                    logger.debug("No active account with id:" + item.getReceiverAccountId());
+                    logger.debug("No active receiver account with id:" + item.getReceiverAccountId());
+                    throw new NoSuchActiveAccountException();
+                }
+
+                getBalanceAndCreditLimit.setLong(1, item.getSenderAccountId());
+                logger.debug("Check balance " + getBalanceAndCreditLimit);
+                resultSet = getBalanceAndCreditLimit.executeQuery();
+                if (resultSet.next()) {
+                    BigDecimal balance = resultSet.getBigDecimal("balance");
+                    BigDecimal creditLimit = Optional.ofNullable(
+                            resultSet.getBigDecimal("credit_limit")).orElse(BigDecimal.ZERO);
+                    if (balance.add(creditLimit).compareTo(item.getTransactionAmount()) < 0){
+                        logger.warn("Not enough money on account "+item.getSenderAccountId()+" for sending "+item.getTransactionAmount());
+                        throw new NotEnoughMoneyException();
+                    }
+                } else {
+                    logger.debug("No active sender account with id:" + item.getSenderAccountId());
                     throw new NoSuchActiveAccountException();
                 }
 
