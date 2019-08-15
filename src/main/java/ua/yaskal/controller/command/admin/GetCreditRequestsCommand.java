@@ -63,7 +63,4 @@ public class GetCreditRequestsCommand implements Command {
         this.validationUtil = validationUtil;
     }
 
-    public void setCreditRequestService(CreditRequestService creditRequestService) {
-        this.creditRequestService = creditRequestService;
-    }
 }

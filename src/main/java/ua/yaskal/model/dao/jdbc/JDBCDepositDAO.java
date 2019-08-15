@@ -389,17 +389,21 @@ public class JDBCDepositDAO implements DepositDAO {
             getBalanceAndCreditLimit.setLong(1, item.getSenderAccountId());
             logger.debug("Check balance " + getBalanceAndCreditLimit);
             resultSet = getBalanceAndCreditLimit.executeQuery();
+
+            BigDecimal balance;
+            BigDecimal creditLimit;
             if (resultSet.next()) {
-                BigDecimal balance = resultSet.getBigDecimal("balance");
-                BigDecimal creditLimit = Optional.ofNullable(
+                 balance = resultSet.getBigDecimal("balance");
+                 creditLimit = Optional.ofNullable(
                         resultSet.getBigDecimal("credit_limit")).orElse(BigDecimal.ZERO);
-                if (balance.add(creditLimit).compareTo(item.getTransactionAmount()) < 0) {
-                    logger.warn("Not enough money on account " + item.getSenderAccountId() + " for sending " + item.getTransactionAmount());
-                    throw new NotEnoughMoneyException();
-                }
             } else {
                 logger.debug("No active sender account with id:" + item.getSenderAccountId());
                 throw new NoSuchActiveAccountException();
+            }
+
+            if (balance.add(creditLimit).compareTo(item.getTransactionAmount()) < 0) {
+                logger.warn("Not enough money on account " + item.getSenderAccountId() + " for sending " + item.getTransactionAmount());
+                throw new NotEnoughMoneyException();
             }
 
             reduceBalance.setBigDecimal(1, item.getTransactionAmount());
