@@ -5,6 +5,7 @@ import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.CreditRequest;
+import ua.yaskal.model.entity.Transaction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -58,6 +59,10 @@ public class CreditService {
 
     public void setDaoFactory(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
+    }
+
+    public void payAccruedInterest(Transaction transaction, long receiverCreditId){
+        daoFactory.createCreditDAO().payAccruedInterest(transaction, receiverCreditId);
     }
 
     public void increaseAccruedInterestById(long id, BigDecimal accruedInterest) {

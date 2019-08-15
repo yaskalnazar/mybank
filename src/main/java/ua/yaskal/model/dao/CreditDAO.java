@@ -3,6 +3,7 @@ package ua.yaskal.model.dao;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
+import ua.yaskal.model.entity.Transaction;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,4 +27,5 @@ public interface CreditDAO extends DAO<CreditAccount> {
     PaginationDTO<CreditAccount> getAllPage(long itemsPerPage, long currentPage);
 
 
+    void payAccruedInterest(Transaction transaction, long receiverCreditId);
 }

@@ -41,7 +41,7 @@ public class PayAccruedInterestCommand implements Command {
 
 
         if (validationUtil.isContains(request, Arrays.asList("senderAccountId", "receiverAccountId", "accruedInterestAmount")) &&
-                validationUtil.isRequestValid(request, Arrays.asList("senderAccountId", "receiverAccountId", "accruedInterestAmount"))){
+                validationUtil.isRequestValid(request, Arrays.asList("senderAccountId", "receiverAccountId", "accruedInterestAmount"))) {
 
             long senderAccountId = Long.parseLong(request.getParameter("senderAccountId"));
             long receiverAccountId = Long.parseLong(request.getParameter("receiverAccountId"));
@@ -61,13 +61,12 @@ public class PayAccruedInterestCommand implements Command {
                     .setDate(LocalDateTime.now())
                     .build();
 
-            logger.debug("Trying to pay accrued interest for account "+ receiverAccountId);
-            transactionService.makeNewTransaction(transaction);
-            creditService.reduceAccruedInterestById(receiverAccountId, amount);
+            logger.debug("Trying to pay accrued interest for account " + receiverAccountId);
+            creditService.payAccruedInterest(transaction, receiverAccountId);
 
         }
 
-        return "redirect:/mybank/api/user/account/credit_page?id="+request.getParameter("receiverAccountId");
+        return "redirect:/mybank/api/user/account/credit_page?id=" + request.getParameter("receiverAccountId");
     }
 
     public void setValidationUtil(ValidationUtil validationUtil) {

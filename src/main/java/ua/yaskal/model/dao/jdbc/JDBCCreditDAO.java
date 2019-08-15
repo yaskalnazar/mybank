@@ -4,19 +4,23 @@ import org.apache.log4j.Logger;
 import ua.yaskal.model.dao.AccountDAO;
 import ua.yaskal.model.dao.CreditDAO;
 import ua.yaskal.model.dao.mappers.MapperFactory;
+import ua.yaskal.model.dto.NewDepositContributionDTO;
 import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
+import ua.yaskal.model.entity.DepositAccount;
+import ua.yaskal.model.entity.Transaction;
+import ua.yaskal.model.exceptions.message.key.DepositAlreadyActiveException;
+import ua.yaskal.model.exceptions.message.key.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * Realization of {@link CreditDAO} using JDBC.
@@ -27,6 +31,7 @@ import java.util.ResourceBundle;
  * @see CreditAccount
  */
 public class JDBCCreditDAO implements CreditDAO {
+    private final static String ACCOUNTS_TRIGGER_SQLSTATE = "12001";
     private final static Logger logger = Logger.getLogger(JDBCCreditDAO.class);
     private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
@@ -208,7 +213,7 @@ public class JDBCCreditDAO implements CreditDAO {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            logger.error("Can not increase credit accruedInterest", e);
+            logger.error("Can not reduce credit accruedInterest", e);
             throw new RuntimeException(e);
         }
     }
@@ -287,6 +292,116 @@ public class JDBCCreditDAO implements CreditDAO {
 
         } catch (SQLException e) {
             logger.error(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void payAccruedInterest(Transaction transaction, long receiverCreditId) {
+        try (Connection connection = dataSource.getConnection()) {
+            connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement statement = connection.prepareStatement(
+                         sqlRequestsBundle.getString("credit.add.reduce.interest.by.id"))) {
+                statement.setBigDecimal(1, transaction.getTransactionAmount());
+                statement.setLong(2, receiverCreditId);
+
+                statement.executeUpdate();
+                addNewTransaction(transaction,connection);
+                connection.commit();
+            } catch (SQLException e) {
+                connection.rollback();
+                logger.error("Can not reduce credit accruedInterest", e);
+                throw new RuntimeException(e);
+            }
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * This method used for money transfer to service account when paying accrued interest
+     *
+     * @author Nazar Yaskal
+     * @see ua.yaskal.controller.command.user.MakeNewContributionCommand
+     * @see #payAccruedInterest(Transaction, long)
+     */
+    private long addNewTransaction(Transaction item, Connection connection) throws SQLException {
+        try (PreparedStatement getActiveAccount = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement getBalanceAndCreditLimit = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.select.balance.and.credit.limit.by.id"), Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement reduceBalance = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.reduce.balance"));
+             PreparedStatement increaseBalance = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.increase.balance"));
+             PreparedStatement insertTransaction = connection.prepareStatement(
+                     sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+
+            getActiveAccount.setLong(1, item.getReceiverAccountId());
+            logger.debug("Select receiver account " + getActiveAccount);
+            ResultSet resultSet = getActiveAccount.executeQuery();
+            if (!resultSet.next()) {
+                logger.debug("No active receiver account with id:" + item.getReceiverAccountId());
+                throw new NoSuchActiveAccountException();
+            }
+
+            getBalanceAndCreditLimit.setLong(1, item.getSenderAccountId());
+            logger.debug("Check balance " + getBalanceAndCreditLimit);
+            resultSet = getBalanceAndCreditLimit.executeQuery();
+            if (resultSet.next()) {
+                BigDecimal balance = resultSet.getBigDecimal("balance");
+                BigDecimal creditLimit = Optional.ofNullable(
+                        resultSet.getBigDecimal("credit_limit")).orElse(BigDecimal.ZERO);
+                if (balance.add(creditLimit).compareTo(item.getTransactionAmount()) < 0) {
+                    logger.warn("Not enough money on account " + item.getSenderAccountId() + " for sending " + item.getTransactionAmount());
+                    throw new NotEnoughMoneyException();
+                }
+            } else {
+                logger.debug("No active sender account with id:" + item.getSenderAccountId());
+                throw new NoSuchActiveAccountException();
+            }
+
+            reduceBalance.setBigDecimal(1, item.getTransactionAmount());
+            reduceBalance.setLong(2, item.getSenderAccountId());
+
+            increaseBalance.setBigDecimal(1, item.getTransactionAmount());
+            increaseBalance.setLong(2, item.getReceiverAccountId());
+
+
+            insertTransaction.setObject(1, item.getDate());
+            insertTransaction.setBigDecimal(2, item.getTransactionAmount());
+            insertTransaction.setLong(3, item.getReceiverAccountId());
+            insertTransaction.setLong(4, item.getSenderAccountId());
+
+
+            logger.debug("Try reduce balance" + reduceBalance);
+            logger.debug("Try increase balance" + increaseBalance);
+            logger.debug("Try add new Transaction" + insertTransaction);
+            reduceBalance.execute();
+            increaseBalance.execute();
+            insertTransaction.execute();
+            resultSet = insertTransaction.getGeneratedKeys();
+
+            if (resultSet.next()) {
+                return resultSet.getLong(1);
+            } else {
+                throw new SQLException();
+            }
+        } catch (SQLException e) {
+            connection.rollback();
+            if (e.getSQLState().equals(ACCOUNTS_TRIGGER_SQLSTATE)) {
+                logger.warn("NotEnoughMoneyException", e);
+                throw new NotEnoughMoneyException();
+            }
+            if (e.getErrorCode() == 1452) {
+                logger.warn("NoSuchActiveAccountException", e);
+                throw new NoSuchActiveAccountException();
+            }
+            logger.error("Transaction was not added", e);
             throw new RuntimeException(e);
         }
     }
