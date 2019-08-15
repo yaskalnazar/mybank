@@ -66,20 +66,29 @@ public class ScheduledService {
         if (deposit.getDepositAmount().compareTo(BigDecimal.ZERO) == 0) {
             return;
         }
-        scheduledExecutorService.schedule(() -> {
-                    daoFactory.createTransactionDAO().addNew(Transaction.getBuilder()
-                            .setSenderAccount(WORKAROUND_ACCOUNT_ID)
-                            .setReceiverAccount(deposit.getId())
-                            .setTransactionAmount(deposit.getDepositAmount().add(
-                                    deposit.getDepositAmount().multiply(deposit.getDepositRate())))
-                            .setDate(LocalDateTime.now())
-                            .build());
-                    daoFactory.createDepositDAO().updateDepositRate(deposit.getId(), BigDecimal.ZERO);
-                    daoFactory.createDepositDAO().updateDepositAmount(deposit.getId(), BigDecimal.ZERO);
-                    //deposit.setDepositEndDate(deposit.getClosingDate().plusDays(1));
-                }, calculateDaysDelay(deposit.getDepositEndDate()),
-                TimeUnit.DAYS);
 
+        scheduledExecutorService.schedule(() -> processDepositEnd(deposit),
+                calculateDaysDelay(deposit.getDepositEndDate()), TimeUnit.DAYS);
+
+    }
+
+    private void processDepositEnd(DepositAccount deposit){
+        Transaction transaction = Transaction.getBuilder()
+                .setSenderAccount(WORKAROUND_ACCOUNT_ID)
+                .setReceiverAccount(deposit.getId())
+                .setTransactionAmount(deposit.getDepositAmount().add(
+                        deposit.getDepositAmount().multiply(deposit.getDepositRate())))
+                .setDate(LocalDateTime.now())
+                .build();
+
+        daoFactory.createTransactionDAO()
+                .addNew(transaction);
+
+        daoFactory.createDepositDAO()
+                .updateDepositRate(deposit.getId(), BigDecimal.ZERO);
+
+        daoFactory.createDepositDAO()
+                .updateDepositAmount(deposit.getId(), BigDecimal.ZERO);
     }
 
     /**
@@ -91,8 +100,9 @@ public class ScheduledService {
         if (credit.getCreditLimit().compareTo(BigDecimal.ZERO) == 0) {
             return;
         }
-        scheduledExecutorService.schedule(() -> daoFactory.createCreditDAO().increaseAccruedInterestById(credit.getId(),
-                credit.getCreditLimit().multiply(credit.getCreditRate())),
+        scheduledExecutorService.schedule(() -> daoFactory.createCreditDAO()
+                        .increaseAccruedInterestById(credit.getId(),
+                                credit.getCreditLimit().multiply(credit.getCreditRate())),
                 calculateDaysDelay(LocalDate.now().plusMonths(1).withDayOfMonth(11)),
                 TimeUnit.DAYS);
 
