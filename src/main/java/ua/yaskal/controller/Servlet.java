@@ -41,7 +41,6 @@ public class Servlet extends HttpServlet {
     private DepositService depositService;
     private UserService userService;
     private CreditRequestService creditRequestService;
-    //private ScheduledService scheduledService;
 
 
     public void init(ServletConfig servletConfig) {
@@ -55,12 +54,6 @@ public class Servlet extends HttpServlet {
         depositService = new DepositService(daoFactory);
         userService = new UserService(daoFactory);
         creditRequestService = new CreditRequestService(daoFactory);
-
-   /*     ScheduledThreadPoolExecutor scheduledExecutorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
-        scheduledExecutorService.setRemoveOnCancelPolicy(true);
-        scheduledExecutorService.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
-        scheduledExecutorService.setContinueExistingPeriodicTasksAfterShutdownPolicy(false);
-        scheduledService = new ScheduledService(scheduledExecutorService, daoFactory);*/
 
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());

@@ -21,7 +21,7 @@ public class ContextListener implements ServletContextListener {
         logger.info("----------------------------------------------------------");
         logger.info("Starting project");
         logger.info("----------------------------------------------------------");
-        executorService = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(5);
+        executorService = Executors.newScheduledThreadPool(5);
         scheduledService = new ScheduledService(executorService, DAOFactory.getInstance());
 
     }
