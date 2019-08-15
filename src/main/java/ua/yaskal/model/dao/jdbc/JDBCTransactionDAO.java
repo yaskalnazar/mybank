@@ -103,8 +103,9 @@ public class JDBCTransactionDAO implements TransactionDAO {
                          sqlRequestsBundle.getString("account.increase.balance"));
                  PreparedStatement insertTransaction = connection.prepareStatement(
                          sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+                throw new RuntimeException();
 
-                getActiveAccount.setLong(1, item.getReceiverAccountId());
+               /* getActiveAccount.setLong(1, item.getReceiverAccountId());
                 logger.debug("Select receiver account " + getActiveAccount);
                 ResultSet resultSet = getActiveAccount.executeQuery();
                 if (!resultSet.next()) {
@@ -156,7 +157,7 @@ public class JDBCTransactionDAO implements TransactionDAO {
                     return resultSet.getLong(1);
                 } else {
                     throw new SQLException();
-                }
+                }*/
             } catch (SQLException e) {
                 connection.rollback();
                 if (e.getSQLState().equals(ACCOUNTS_TRIGGER_SQLSTATE)) {

@@ -10,18 +10,18 @@ import ua.yaskal.model.dto.PaginationDTO;
 import ua.yaskal.model.entity.Account;
 import ua.yaskal.model.entity.CreditAccount;
 import ua.yaskal.model.entity.DepositAccount;
+import ua.yaskal.model.entity.Transaction;
 import ua.yaskal.model.exceptions.message.key.DepositAlreadyActiveException;
+import ua.yaskal.model.exceptions.message.key.NotEnoughMoneyException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchAccountException;
+import ua.yaskal.model.exceptions.message.key.no.such.NoSuchActiveAccountException;
 import ua.yaskal.model.exceptions.message.key.no.such.NoSuchPageException;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Realization of {@link DepositDAO} using JDBC.
@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
  * @see DepositAccount
  */
 public class JDBCDepositDAO implements DepositDAO {
+    private final static String ACCOUNTS_TRIGGER_SQLSTATE = "12001";
     private final static Logger logger = Logger.getLogger(JDBCDepositDAO.class);
     private DataSource dataSource;
     private ResourceBundle sqlRequestsBundle;
@@ -298,6 +299,16 @@ public class JDBCDepositDAO implements DepositDAO {
         }
     }
 
+    /**
+     * This method used for updating making new deposit contribution when the previous one is over.
+     * Two other methods {@link #addNewTransaction(Transaction, Connection)}
+     * and {@link #update(DepositAccount, Connection)} are used in the process
+     *
+     * @author Nazar Yaskal
+     * @see ua.yaskal.controller.command.user.MakeNewContributionCommand
+     * @see #addNewTransaction(Transaction, Connection)
+     * @see #update(DepositAccount, Connection)
+     */
     @Override
     public void newDepositContribution(NewDepositContributionDTO contributionDTO) {
         try (Connection connection = dataSource.getConnection()) {
@@ -326,20 +337,15 @@ public class JDBCDepositDAO implements DepositDAO {
                     throw new DepositAlreadyActiveException();
                 }
 
-                try {
-                    transactionDAO.addNew(contributionDTO.getTransaction());
-                } catch (RuntimeException e) {
-                    connection.rollback();
-                    throw new RuntimeException(e);
-                }
+                addNewTransaction(contributionDTO.getTransaction(), connection);
 
 
                 depositAccount.setDepositEndDate(LocalDate.now().plusMonths(contributionDTO.getMonthsAmount()));
                 depositAccount.setDepositAmount(depositAccount.getDepositAmount().add(
                         contributionDTO.getDepositAmount()));
                 depositAccount.setDepositRate(contributionDTO.getDepositRate());
+                update(depositAccount, connection);
 
-                update(depositAccount);
                 connection.commit();
             } catch (SQLException e) {
                 connection.rollback();
@@ -349,6 +355,120 @@ public class JDBCDepositDAO implements DepositDAO {
 
         } catch (SQLException e) {
             logger.error(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * This method used for money transfer to service account when making new deposit contribution
+     *
+     * @author Nazar Yaskal
+     * @see ua.yaskal.controller.command.user.MakeNewContributionCommand
+     * @see #newDepositContribution(NewDepositContributionDTO)
+     */
+    private long addNewTransaction(Transaction item, Connection connection) throws SQLException {
+        try (PreparedStatement getActiveAccount = connection.prepareStatement(
+                sqlRequestsBundle.getString("account.select.active.by.id"), Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement getBalanceAndCreditLimit = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.select.balance.and.credit.limit.by.id"), Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement reduceBalance = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.reduce.balance"));
+             PreparedStatement increaseBalance = connection.prepareStatement(
+                     sqlRequestsBundle.getString("account.increase.balance"));
+             PreparedStatement insertTransaction = connection.prepareStatement(
+                     sqlRequestsBundle.getString("transaction.insert.new"), Statement.RETURN_GENERATED_KEYS)) {
+
+            getActiveAccount.setLong(1, item.getReceiverAccountId());
+            logger.debug("Select receiver account " + getActiveAccount);
+            ResultSet resultSet = getActiveAccount.executeQuery();
+            if (!resultSet.next()) {
+                logger.debug("No active receiver account with id:" + item.getReceiverAccountId());
+                throw new NoSuchActiveAccountException();
+            }
+
+            getBalanceAndCreditLimit.setLong(1, item.getSenderAccountId());
+            logger.debug("Check balance " + getBalanceAndCreditLimit);
+            resultSet = getBalanceAndCreditLimit.executeQuery();
+            if (resultSet.next()) {
+                BigDecimal balance = resultSet.getBigDecimal("balance");
+                BigDecimal creditLimit = Optional.ofNullable(
+                        resultSet.getBigDecimal("credit_limit")).orElse(BigDecimal.ZERO);
+                if (balance.add(creditLimit).compareTo(item.getTransactionAmount()) < 0) {
+                    logger.warn("Not enough money on account " + item.getSenderAccountId() + " for sending " + item.getTransactionAmount());
+                    throw new NotEnoughMoneyException();
+                }
+            } else {
+                logger.debug("No active sender account with id:" + item.getSenderAccountId());
+                throw new NoSuchActiveAccountException();
+            }
+
+            reduceBalance.setBigDecimal(1, item.getTransactionAmount());
+            reduceBalance.setLong(2, item.getSenderAccountId());
+
+            increaseBalance.setBigDecimal(1, item.getTransactionAmount());
+            increaseBalance.setLong(2, item.getReceiverAccountId());
+
+
+            insertTransaction.setObject(1, item.getDate());
+            insertTransaction.setBigDecimal(2, item.getTransactionAmount());
+            insertTransaction.setLong(3, item.getReceiverAccountId());
+            insertTransaction.setLong(4, item.getSenderAccountId());
+
+
+            logger.debug("Try reduce balance" + reduceBalance);
+            logger.debug("Try increase balance" + increaseBalance);
+            logger.debug("Try add new Transaction" + insertTransaction);
+            reduceBalance.execute();
+            increaseBalance.execute();
+            insertTransaction.execute();
+            resultSet = insertTransaction.getGeneratedKeys();
+
+            if (resultSet.next()) {
+                return resultSet.getLong(1);
+            } else {
+                throw new SQLException();
+            }
+        } catch (SQLException e) {
+            connection.rollback();
+            if (e.getSQLState().equals(ACCOUNTS_TRIGGER_SQLSTATE)) {
+                logger.warn("NotEnoughMoneyException", e);
+                throw new NotEnoughMoneyException();
+            }
+            if (e.getErrorCode() == 1452) {
+                logger.warn("NoSuchActiveAccountException", e);
+                throw new NoSuchActiveAccountException();
+            }
+            logger.error("Transaction was not added", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * This method used for updating depositAmount, depositRate and depositEndDate
+     * when making new deposit contribution
+     *
+     * @author Nazar Yaskal
+     * @see ua.yaskal.controller.command.user.MakeNewContributionCommand
+     * @see #newDepositContribution(NewDepositContributionDTO)
+     */
+    private void update(DepositAccount item, Connection connection) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sqlRequestsBundle.getString("deposit.update.by.id"))) {
+            statement.setString(1, item.getAccountType().name());
+            statement.setBigDecimal(2, item.getBalance());
+            statement.setObject(3, item.getClosingDate());
+            statement.setLong(4, item.getOwnerId());
+            statement.setString(5, item.getAccountStatus().name());
+            statement.setBigDecimal(6, item.getDepositAmount());
+            statement.setBigDecimal(7, item.getDepositRate());
+            statement.setObject(8, item.getDepositEndDate());
+            statement.setLong(9, item.getId());
+
+            logger.debug("Trying update deposit" + statement);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            connection.rollback();
+            logger.error("Deposit was not updated: ", e);
             throw new RuntimeException(e);
         }
     }
